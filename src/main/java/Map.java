@@ -19,6 +19,7 @@ public class Map {
     private List<Ground> grounds;
     private List<Block> blocks;
 
+    private List<Stair> stairs;
 
     //private List<Coin> coins;
     public Map(int width,int height,Player player) {
@@ -26,7 +27,9 @@ public class Map {
         this.height = height;
         this.player=player;
         this.grounds = createGrounds();
+
         this.blocks = createBlocks();
+        this.stairs = createStairs();
         //this.coins = createCoins();
         //this.monsters = createMonsters();
     }
@@ -56,11 +59,79 @@ public class Map {
 
         return grounds;
     }
+    private List<Stair> createStairs() {
+        List<Stair> stairs = new ArrayList<>();
+
+        int i =0;
+        for(int c = 363; c <367;c++) {
+            i++;
+            for(int a =0;a<i;a++)
+            {
+                stairs.add(new Stair(c, height - 4 -a));
+            }
+        }
+
+        i =0;
+        for(int c = 373; c > 369;c--) {
+            i++;
+            for(int a =0;a<i;a++)
+            {
+                stairs.add(new Stair(c, height - 4 -a));
+            }
+        }
+        i =0;
+        for(int c = 378; c <383;c++) {
+            if(c!=382)i++;
+            for(int a =0;a<i;a++)
+            {
+                stairs.add(new Stair(c, height - 4 -a));
+            }
+        }
+
+        i =0;
+        for(int c = 389; c >385;c--) {
+            i++;
+            for(int a =0;a<i;a++)
+            {
+                stairs.add(new Stair(c, height - 4 -a));
+            }
+        }
+        i =0;
+        for(int c = 412; c <421;c++) {
+            if(c!=420)i++;
+            for(int a =0;a<i;a++)
+            {
+                stairs.add(new Stair(c, height - 4 -a));
+            }
+        }
+
+        return stairs;
+    }
+
     private List<Block> createBlocks() {
         List<Block> blocks = new ArrayList<>();
-        blocks.add(new Block(18, height - 7));
+        blocks.add(new Block(22, height - 7));
+        blocks.add(new Block(24, height - 7));
+        blocks.add(new Block(26, height - 7));
+        blocks.add(new Block(80, height - 7));
+        blocks.add(new Block(82, height - 7));
+        for(int i = 83; i<=90;i++) blocks.add(new Block(i, height - 12));
+        for(int i = 94; i<=96;i++) blocks.add(new Block(i, height - 12));
+        blocks.add(new Block(97, height - 7));
+        blocks.add(new Block(103, height - 7));
+        blocks.add(new Block(104, height - 7));
+        blocks.add(new Block(121, height - 7));
+        for(int i = 124; i<=126;i++) blocks.add(new Block(i, height - 12));
+        blocks.add(new Block(131, height - 12));
+        blocks.add(new Block(132, height - 7));
+        blocks.add(new Block(133, height - 7));
+        blocks.add(new Block(134, height - 12));
+        blocks.add(new Block(399, height - 7));
+        blocks.add(new Block(400, height - 7));
+        blocks.add(new Block(402, height - 7));
         return blocks;
     }
+
 
     public void draw(TextGraphics graphics)
     {
@@ -70,6 +141,8 @@ public class Map {
             ground.draw(graphics);
         for (Block block : blocks)
             block.draw(graphics);
+        for(Stair stair:stairs)
+            stair.draw(graphics);
         graphics.setCharacter(player.getPosition().getX(), player.getPosition().getY(), TextCharacter.fromCharacter('X')[0]);
     }
     public boolean canPlayerMove(Position p)
@@ -114,9 +187,15 @@ public class Map {
                         Position p = new Position(block.getPosition().getX()-1,block.getPosition().getY());
                         block.setPosition(p);
                     }
+                    for(Stair stair: stairs)
+                    {
+                        Position p = new Position(stair.getPosition().getX()-1,stair.getPosition().getY());
+                        stair.setPosition(p);
+                    }
                 }
                 break;
         }
     }
 
 }
+

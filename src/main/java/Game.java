@@ -86,19 +86,13 @@ public class Game {
                     processKey(k);
                     processKey(key);
                     draw();
-                    processKey(k);
-                    processKey(key);
-                    draw();
-                    processKey(k);
-                    processKey(key);
-                    draw();
                 }
             }
 
             if (salto)
             {
                 draw();
-                for(int i=1; i<=4;i++)
+                for(int i=1; i<=3;i++)
                 {
                     processKey(key);
                     draw();

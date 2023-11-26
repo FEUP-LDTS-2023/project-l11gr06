@@ -12,20 +12,6 @@ public class Player extends Element {
         super(p);
     }
     public Position moveUp() {
-        /*
-        long beginJump=System.currentTimeMillis();
-        int altura=0;
-        while(altura<=4) {
-            if (System.currentTimeMillis()==beginJump + 250) {
-                Position p = new Position(getPosition().getX(), getPosition().getY()-1);
-                setPosition(p);
-                beginJump+=250;
-                altura++;
-            }
-
-        }
-         */
-
         return new Position(getPosition().getX(), getPosition().getY() - 1);
     }
 
@@ -33,8 +19,6 @@ public class Player extends Element {
         return new Position(getPosition().getX()-1, getPosition().getY());
     }
     public Position moveRight() {return new Position(getPosition().getX()+1, getPosition().getY());}
-
-
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
         graphics.enableModifiers(SGR.BOLD);
