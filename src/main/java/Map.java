@@ -63,7 +63,7 @@ public class Map {
         String keyT = key.getKeyType().toString();
         switch (keyT) {
             case "ArrowUp":
-                player.moveUp(player);
+                player.moveUp();
                 break;
             case "ArrowLeft":
                 movePlayer(player.moveLeft());

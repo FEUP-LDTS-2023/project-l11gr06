@@ -11,13 +11,15 @@ public class Player extends Element {
     public Player(Position p) {
         super(p);
     }
-    public Position moveUp(Player pl) {
+    public Position moveUp() {
         long beginJump=System.currentTimeMillis();
-        for (int i=0; i<5; i++) {
-            if (System.currentTimeMillis()==beginJump + 125) {
-                Position p = new Position(getPosition().getX(), getPosition().getY()+1);
-                pl.setPosition(p);
-                beginJump+=125;
+        int altura=0;
+        while(altura<=4) {
+            if (System.currentTimeMillis()==beginJump + 250) {
+                Position p = new Position(getPosition().getX(), getPosition().getY()-1);
+                setPosition(p);
+                beginJump+=250;
+                altura++;
             }
 
         }
