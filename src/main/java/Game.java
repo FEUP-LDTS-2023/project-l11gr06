@@ -13,13 +13,13 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 
 public class Game {
+
     public static int width_game = 65;
     public static int height_game = 20;
     Player player = new Player(3, height_game-4);
 
     Map map = new Map(585,20,player);
     private final TerminalScreen screen;
-
 
     public Game(int w,int h) throws IOException {
         //Terminal terminal = new DefaultTerminalFactory().createTerminal();
@@ -30,7 +30,6 @@ public class Game {
         screen.doResizeIfNecessary();     // resize screen if necessary
         TerminalSize terminalSize = new TerminalSize(w, h);
         TextGraphics graphics = screen.newTextGraphics();
-
         // DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
     }
 
@@ -87,21 +86,24 @@ public class Game {
                     processKey(k);
                     processKey(key);
                     draw();
-                }
-            }
-
-
-            if (salto)
-            {
-                draw();
-                for(int i=1; i<=3;i++)
-                {
+                    processKey(k);
+                    processKey(key);
+                    draw();
+                    processKey(k);
                     processKey(key);
                     draw();
                 }
             }
 
-
+            if (salto)
+            {
+                draw();
+                for(int i=1; i<=4;i++)
+                {
+                    processKey(key);
+                    draw();
+                }
+            }
             else processKey(key);
             while(player.getPosition().getY()!=height_game-4)
             {
