@@ -170,6 +170,35 @@ public class Map {
         return false;
     }
 
+    public boolean collision()
+    {
+        for(Block block:blocks)
+        {
+            Position p = new Position(block.getPosition().getX(),block.getPosition().getY()-1);
+            if(player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        for(Ground ground:grounds)
+        {
+            Position p = new Position(ground.getPosition().getX(),ground.getPosition().getY()-1);
+            if(player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        for(Stair stair:stairs)
+        {
+            Position p = new Position(stair.getPosition().getX(),stair.getPosition().getY()-1);
+            if(player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
     public void processKey(KeyStroke key) {

@@ -59,46 +59,21 @@ public class Game {
                 processKey(key);
             }
             key = screen.readInput();
-            if (key.getKeyType().toString() == "ArrowLeft" && salto)
+            if ((key.getKeyType().toString() == "ArrowRight"||key.getKeyType().toString() == "ArrowLeft") && salto)
             {
                 salto = false;
                 if(System.currentTimeMillis()<t+500)
                 {
                     processKey(key);
                     draw();
-                    processKey(k);
-                    processKey(key);
-                    draw();
-                    processKey(k);
-                    processKey(key);
-                    draw();
-                    processKey(k);
-                    processKey(key);
-                    draw();
-                    processKey(k);
-                    processKey(key);
-                    draw();
-                }
-            }
-            else if (key.getKeyType().toString() == "ArrowRight" && salto)
-            {
-                salto = false;
-                if(System.currentTimeMillis()<t+500)
-                {
-                    processKey(key);
-                    draw();
-                    processKey(k);
-                    processKey(key);
-                    draw();
-                    processKey(k);
-                    processKey(key);
-                    draw();
-                    processKey(k);
-                    processKey(key);
-                    draw();
-                    processKey(k);
-                    processKey(key);
-                    draw();
+                    if(!map.break_block()) {
+                        for (int i = 0; i < 4; i++) {
+                            processKey(k);
+                            processKey(key);
+                            draw();
+                            if (map.break_block()) break;
+                        }
+                    }
                 }
             }
 
@@ -107,18 +82,17 @@ public class Game {
                 draw();
                 for(int i=1; i<=4;i++)
                 {
-
                     processKey(key);
                     draw();
                     if(map.break_block())break;
-
 
                 }
             }
             else processKey(key);
 
-            while(player.getPosition().getY()!=height_game-4)
+            while(player.getPosition().getY()!=height_game)
             {
+                if(map.collision()) break;
                 Position p = new Position(player.getPosition().getX(),player.getPosition().getY()+1);
                 player.setPosition(p);
                 draw();
