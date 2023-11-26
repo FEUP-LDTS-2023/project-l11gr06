@@ -49,14 +49,43 @@ public class Game {
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') screen.close();
             if (key.getKeyType() == KeyType.EOF)
                 break;
+            long t = System.currentTimeMillis();
+            boolean salto = false;
+            KeyStroke k=key;
             if (key.getKeyType().toString() == "ArrowUp")
             {
-                for(int i=0; i<=4;i++)
+                k = key;
+                salto = true;
+                processKey(key);
+            }
+            key = screen.readInput();
+            if (key.getKeyType().toString() == "ArrowLeft" && salto)
+            {
+                salto = false;
+                if(System.currentTimeMillis()<t+500) {
+                    processKey(key);
+                    draw();
+                    processKey(k);
+                    processKey(key);
+                    draw();
+                    processKey(k);
+                    processKey(key);
+                    draw();
+                }
+            }
+
+
+            if (salto)
+            {
+                draw();
+                for(int i=1; i<=3;i++)
                 {
                     processKey(key);
                     draw();
                 }
             }
+
+
             else processKey(key);
             while(player.getPosition().getY()!=height-4)
             {
@@ -69,8 +98,6 @@ public class Game {
                     e.printStackTrace();
                 }
             }
-
-
 
         }
     }
