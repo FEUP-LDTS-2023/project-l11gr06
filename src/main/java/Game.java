@@ -13,9 +13,11 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 
 public class Game {
+
     Player player = new Player(39, 36);
     Map map = new Map(80,40,player);
     private final TerminalScreen screen;
+
 
     public Game(int width, int height) throws IOException {
         //Terminal terminal = new DefaultTerminalFactory().createTerminal();
@@ -45,7 +47,29 @@ public class Game {
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') screen.close();
             if (key.getKeyType() == KeyType.EOF)
                 break;
-            processKey(key);
+            if (key.getKeyType().toString() == "ArrowUp")
+            {
+                for(int i=0; i<=4;i++)
+                {
+                    processKey(key);
+                    draw();
+                }
+            }
+            else processKey(key);
+            while(player.getPosition().getY()!=36)
+            {
+                Position p = new Position(player.getPosition().getX(),player.getPosition().getY()+1);
+                player.setPosition(p);
+                draw();
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+
         }
     }
     private void processKey(KeyStroke key) {

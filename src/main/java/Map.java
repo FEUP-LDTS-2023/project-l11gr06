@@ -17,6 +17,8 @@ public class Map {
     private int width;
     private int height;
     private List<Ground> grounds;
+
+
     //private List<Coin> coins;
     public Map(int width,int height,Player player) {
         this.width = width;
@@ -63,7 +65,12 @@ public class Map {
         String keyT = key.getKeyType().toString();
         switch (keyT) {
             case "ArrowUp":
-                player.moveUp(player);
+                movePlayer(player.moveUp());
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 break;
             case "ArrowLeft":
                 movePlayer(player.moveLeft());
