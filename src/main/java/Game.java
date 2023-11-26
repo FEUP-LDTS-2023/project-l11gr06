@@ -13,9 +13,11 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 
 public class Game {
+    int width = 65;
+    int height = 20;
+    Player player = new Player(3, height-4);
 
-    Player player = new Player(39, 36);
-    Map map = new Map(80,40,player);
+    Map map = new Map(width,height,player);
     private final TerminalScreen screen;
 
 
@@ -56,7 +58,7 @@ public class Game {
                 }
             }
             else processKey(key);
-            while(player.getPosition().getY()!=36)
+            while(player.getPosition().getY()!=height-4)
             {
                 Position p = new Position(player.getPosition().getX(),player.getPosition().getY()+1);
                 player.setPosition(p);

@@ -32,9 +32,7 @@ public class Player extends Element {
     public Position moveLeft() {
         return new Position(getPosition().getX()-1, getPosition().getY());
     }
-    //public Position moveRight() {
-    //    return new Position(getPosition().getX()+1, getPosition().getY());
-    //}
+    public Position moveRight() {return new Position(getPosition().getX()+1, getPosition().getY());}
 
 
     public void draw(TextGraphics graphics) {

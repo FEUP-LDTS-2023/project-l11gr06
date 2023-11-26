@@ -17,6 +17,7 @@ public class Map {
     private int width;
     private int height;
     private List<Ground> grounds;
+    private List<Block> blocks;
 
 
     //private List<Coin> coins;
@@ -25,6 +26,7 @@ public class Map {
         this.height = height;
         this.player=player;
         this.grounds = createGrounds();
+        this.blocks = createBlocks();
         //this.coins = createCoins();
         //this.monsters = createMonsters();
     }
@@ -38,6 +40,11 @@ public class Map {
         }
         return grounds;
     }
+    private List<Block> createBlocks() {
+        List<Block> blocks = new ArrayList<>();
+        blocks.add(new Block(18, height - 7));
+        return blocks;
+    }
 
     public void draw(TextGraphics graphics)
     {
@@ -45,6 +52,8 @@ public class Map {
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
         for (Ground ground : grounds)
             ground.draw(graphics);
+        for (Block block : blocks)
+            block.draw(graphics);
         graphics.setCharacter(player.getPosition().getX(), player.getPosition().getY(), TextCharacter.fromCharacter('X')[0]);
     }
     public boolean canPlayerMove(Position p)
@@ -75,9 +84,9 @@ public class Map {
             case "ArrowLeft":
                 movePlayer(player.moveLeft());
                 break;
-            //case "ArrowRight":
-            //  movePlayer(player.moveRight());
-            //break;
+            case "ArrowRight":
+                if(player.getPosition().getX()<width/2) movePlayer(player.moveRight());
+                break;
         }
     }
 
