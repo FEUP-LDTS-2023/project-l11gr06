@@ -21,6 +21,8 @@ public class Map {
 
     private List<Stair> stairs;
 
+    private List<GoalPole> poles;
+
 
     //private List<Coin> coins;
     public Map(int width,int height,Player player) {
@@ -31,8 +33,15 @@ public class Map {
 
         this.blocks = createBlocks();
         this.stairs = createStairs();
+        this.poles = createPoles();
         //this.coins = createCoins();
         //this.monsters = createMonsters();
+    }
+    private List<GoalPole> createPoles()
+    {
+        List<GoalPole> poles = new ArrayList<>();
+        for(int i = 0; i < 9;i++) poles.add(new GoalPole(429,height-5-i));
+        return poles;
     }
 
     private List<Ground> createGrounds() {
@@ -105,7 +114,7 @@ public class Map {
                 stairs.add(new Stair(c, height - 4 -a));
             }
         }
-
+        stairs.add(new Stair(429,height-4));
         return stairs;
     }
 
@@ -144,6 +153,8 @@ public class Map {
             block.draw(graphics);
         for(Stair stair:stairs)
             stair.draw(graphics);
+        for(GoalPole pole: poles)
+            pole.draw(graphics);
         graphics.setCharacter(player.getPosition().getX(), player.getPosition().getY(), TextCharacter.fromCharacter('X')[0]);
     }
     public boolean canPlayerMove(Position p)
@@ -275,6 +286,7 @@ public class Map {
                 if(!collision_x_back())if(player.getPosition().getX()!=0)movePlayer(player.moveLeft());
                 break;
             case "ArrowRight":
+                for(GoalPole pole: poles) if(player.getPosition().getX()==pole.getPosition().getX()) System.exit(0);
                 if(!collision_x_front())
                 {
                     if(player.getPosition().getX()< Game.width_game/2) movePlayer(player.moveRight());
@@ -294,6 +306,11 @@ public class Map {
                         {
                             Position p = new Position(stair.getPosition().getX()-1,stair.getPosition().getY());
                             stair.setPosition(p);
+                        }
+                        for(GoalPole pole: poles)
+                        {
+                            Position p = new Position(pole.getPosition().getX()-1,pole.getPosition().getY());
+                            pole.setPosition(p);
                         }
                     }
                 }

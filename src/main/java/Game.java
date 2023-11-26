@@ -20,7 +20,7 @@ public class Game {
 
     Map map = new Map(585,20,player);
     private final TerminalScreen screen;
-    Terminal terminal;
+    private Terminal terminal;
     public Game(int w,int h) throws IOException {
         //Terminal terminal = new DefaultTerminalFactory().createTerminal();
         terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(w, h)).createTerminal();
