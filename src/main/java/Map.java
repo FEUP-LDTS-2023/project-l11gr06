@@ -82,10 +82,23 @@ public class Map {
                 }
                 break;
             case "ArrowLeft":
-                movePlayer(player.moveLeft());
+                if(player.getPosition().getX()!=0)movePlayer(player.moveLeft());
                 break;
             case "ArrowRight":
                 if(player.getPosition().getX()<width/2) movePlayer(player.moveRight());
+                else
+                {
+                    for(Ground ground: grounds)
+                    {
+                        Position p = new Position(ground.getPosition().getX()-1,ground.getPosition().getY());
+                        ground.setPosition(p);
+                    }
+                    for(Block block: blocks)
+                    {
+                        Position p = new Position(block.getPosition().getX()-1,block.getPosition().getY());
+                        block.setPosition(p);
+                    }
+                }
                 break;
         }
     }
