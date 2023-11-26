@@ -21,6 +21,7 @@ public class Map {
 
     private List<Stair> stairs;
 
+
     //private List<Coin> coins;
     public Map(int width,int height,Player player) {
         this.width = width;

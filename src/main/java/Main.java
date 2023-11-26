@@ -1,7 +1,11 @@
 import java.io.IOException;
-
 public class Main {
+
     public static void main(String[] args) throws IOException {
-        new Game(65,20).run();
+        int lives = 3;
+        while (lives > 0) {
+            new Game(65, 20).run();
+            lives--;
+        }
     }
 }

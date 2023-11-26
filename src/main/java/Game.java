@@ -20,10 +20,10 @@ public class Game {
 
     Map map = new Map(585,20,player);
     private final TerminalScreen screen;
-
+    Terminal terminal;
     public Game(int w,int h) throws IOException {
         //Terminal terminal = new DefaultTerminalFactory().createTerminal();
-        Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(w, h)).createTerminal();
+        terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(w, h)).createTerminal();
         screen = new TerminalScreen(terminal);
         screen.setCursorPosition(null);// we don’t need a cursor
         screen.startScreen();             // screens must be started
@@ -32,6 +32,7 @@ public class Game {
         TextGraphics graphics = screen.newTextGraphics();
         // DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
     }
+
 
 
     private void draw() throws IOException {
@@ -44,6 +45,7 @@ public class Game {
 
     public void run() throws IOException {
         while (true) {
+            //if(map.getLives()>)System.out.println("Game Over");
             draw();
             KeyStroke key = screen.readInput();
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') screen.close();
@@ -89,9 +91,13 @@ public class Game {
                 }
             }
             else processKey(key);
-
             while(player.getPosition().getY()!=height_game)
             {
+                if(player.getPosition().getY()==height_game-1)
+                {
+                    terminal.close();
+                    return;
+                }
                 if(map.collision()) break;
                 Position p = new Position(player.getPosition().getX(),player.getPosition().getY()+1);
                 player.setPosition(p);
@@ -102,6 +108,7 @@ public class Game {
                     e.printStackTrace();
                 }
             }
+
 
         }
     }
