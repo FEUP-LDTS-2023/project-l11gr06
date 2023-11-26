@@ -171,12 +171,12 @@ public class Map {
         return false;
     }
 
-    public boolean collision()
+    public boolean collision_y()
     {
         for(Block block:blocks)
         {
             Position p = new Position(block.getPosition().getX(),block.getPosition().getY()-1);
-            if(player.getPosition().equals(p))
+            if(player.getPosition().equals(p)&&player.getPosition().equals(p))
             {
                 return true;
             }
@@ -199,7 +199,62 @@ public class Map {
         }
         return false;
     }
-
+    public boolean collision_x_front()
+    {
+        for(Block block:blocks)
+        {
+            Position p = new Position(block.getPosition().getX()-1,block.getPosition().getY());
+            if(player.getPosition().equals(p)&&player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        for(Ground ground:grounds)
+        {
+            Position p = new Position(ground.getPosition().getX()-1,ground.getPosition().getY());
+            if(player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        for(Stair stair:stairs)
+        {
+            Position p = new Position(stair.getPosition().getX()-1,stair.getPosition().getY());
+            if(player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean collision_x_back()
+    {
+        for(Block block:blocks)
+        {
+            Position p = new Position(block.getPosition().getX()+1,block.getPosition().getY());
+            if(player.getPosition().equals(p)&&player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        for(Ground ground:grounds)
+        {
+            Position p = new Position(ground.getPosition().getX()+1,ground.getPosition().getY());
+            if(player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        for(Stair stair:stairs)
+        {
+            Position p = new Position(stair.getPosition().getX()+1,stair.getPosition().getY());
+            if(player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     public void processKey(KeyStroke key) {
@@ -217,26 +272,29 @@ public class Map {
                 }
                 break;
             case "ArrowLeft":
-                if(player.getPosition().getX()!=0)movePlayer(player.moveLeft());
+                if(!collision_x_back())if(player.getPosition().getX()!=0)movePlayer(player.moveLeft());
                 break;
             case "ArrowRight":
-                if(player.getPosition().getX()< Game.width_game/2) movePlayer(player.moveRight());
-                else
+                if(!collision_x_front())
                 {
-                    for(Ground ground: grounds)
+                    if(player.getPosition().getX()< Game.width_game/2) movePlayer(player.moveRight());
+                    else
                     {
-                        Position p = new Position(ground.getPosition().getX()-1,ground.getPosition().getY());
-                        ground.setPosition(p);
-                    }
-                    for(Block block: blocks)
-                    {
-                        Position p = new Position(block.getPosition().getX()-1,block.getPosition().getY());
-                        block.setPosition(p);
-                    }
-                    for(Stair stair: stairs)
-                    {
-                        Position p = new Position(stair.getPosition().getX()-1,stair.getPosition().getY());
-                        stair.setPosition(p);
+                        for(Ground ground: grounds)
+                        {
+                            Position p = new Position(ground.getPosition().getX()-1,ground.getPosition().getY());
+                            ground.setPosition(p);
+                        }
+                        for(Block block: blocks)
+                        {
+                            Position p = new Position(block.getPosition().getX()-1,block.getPosition().getY());
+                            block.setPosition(p);
+                        }
+                        for(Stair stair: stairs)
+                        {
+                            Position p = new Position(stair.getPosition().getX()-1,stair.getPosition().getY());
+                            stair.setPosition(p);
+                        }
                     }
                 }
                 break;

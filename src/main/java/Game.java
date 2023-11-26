@@ -98,7 +98,7 @@ public class Game {
                     terminal.close();
                     return;
                 }
-                if(map.collision()) break;
+                if(map.collision_y()) break;
                 Position p = new Position(player.getPosition().getX(),player.getPosition().getY()+1);
                 player.setPosition(p);
                 draw();
@@ -116,3 +116,4 @@ public class Game {
         map.processKey(key);
     }
 }
+
