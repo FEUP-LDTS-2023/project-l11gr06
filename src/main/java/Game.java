@@ -1,7 +1,11 @@
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
+import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
@@ -43,7 +47,29 @@ public class Game {
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') screen.close();
             if (key.getKeyType() == KeyType.EOF)
                 break;
-            processKey(key);
+            if (key.getKeyType().toString() == "ArrowUp")
+            {
+                for(int i=0; i<=4;i++)
+                {
+                    processKey(key);
+                    draw();
+                }
+            }
+            else processKey(key);
+            while(player.getPosition().getY()!=36)
+            {
+                Position p = new Position(player.getPosition().getX(),player.getPosition().getY()+1);
+                player.setPosition(p);
+                draw();
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+
         }
     }
     private void processKey(KeyStroke key) {

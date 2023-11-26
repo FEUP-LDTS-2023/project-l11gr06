@@ -12,6 +12,7 @@ public class Player extends Element {
         super(p);
     }
     public Position moveUp() {
+        /*
         long beginJump=System.currentTimeMillis();
         int altura=0;
         while(altura<=4) {
@@ -23,6 +24,8 @@ public class Player extends Element {
             }
 
         }
+         */
+
         return new Position(getPosition().getX(), getPosition().getY() - 1);
     }
 
