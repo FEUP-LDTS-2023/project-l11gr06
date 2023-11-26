@@ -13,22 +13,22 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 
 public class Game {
-    int width = 65;
-    int height = 20;
-    Player player = new Player(3, height-4);
+    public static int width_game = 65;
+    public static int height_game = 20;
+    Player player = new Player(3, height_game-4);
 
-    Map map = new Map(width,height,player);
+    Map map = new Map(585,20,player);
     private final TerminalScreen screen;
 
 
-    public Game(int width, int height) throws IOException {
+    public Game(int w,int h) throws IOException {
         //Terminal terminal = new DefaultTerminalFactory().createTerminal();
-        Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).createTerminal();
+        Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(w, h)).createTerminal();
         screen = new TerminalScreen(terminal);
         screen.setCursorPosition(null);// we don’t need a cursor
         screen.startScreen();             // screens must be started
         screen.doResizeIfNecessary();     // resize screen if necessary
-        TerminalSize terminalSize = new TerminalSize(width, height);
+        TerminalSize terminalSize = new TerminalSize(w, h);
         TextGraphics graphics = screen.newTextGraphics();
 
         // DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
@@ -62,7 +62,23 @@ public class Game {
             if (key.getKeyType().toString() == "ArrowLeft" && salto)
             {
                 salto = false;
-                if(System.currentTimeMillis()<t+500) {
+                if(System.currentTimeMillis()<t+500)
+                {
+                    processKey(key);
+                    draw();
+                    processKey(k);
+                    processKey(key);
+                    draw();
+                    processKey(k);
+                    processKey(key);
+                    draw();
+                }
+            }
+            else if (key.getKeyType().toString() == "ArrowRight" && salto)
+            {
+                salto = false;
+                if(System.currentTimeMillis()<t+500)
+                {
                     processKey(key);
                     draw();
                     processKey(k);
@@ -87,7 +103,7 @@ public class Game {
 
 
             else processKey(key);
-            while(player.getPosition().getY()!=height-4)
+            while(player.getPosition().getY()!=height_game-4)
             {
                 Position p = new Position(player.getPosition().getX(),player.getPosition().getY()+1);
                 player.setPosition(p);

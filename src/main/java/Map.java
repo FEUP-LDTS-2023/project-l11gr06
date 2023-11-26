@@ -33,11 +33,27 @@ public class Map {
 
     private List<Ground> createGrounds() {
         List<Ground> grounds = new ArrayList<>();
-        for (int c = 0; c < width; c++) {
+        for (int c = 0; c < 175; c++) {
             grounds.add(new Ground(c, height - 1));
             grounds.add(new Ground(c, height - 2));
             grounds.add(new Ground(c, height - 3));
         }
+        for(int c = 178; c <221;c++) {
+            grounds.add(new Ground(c, height - 1));
+            grounds.add(new Ground(c, height - 2));
+            grounds.add(new Ground(c, height - 3));
+        }
+        for(int c = 224; c <383;c++) {
+            grounds.add(new Ground(c, height - 1));
+            grounds.add(new Ground(c, height - 2));
+            grounds.add(new Ground(c, height - 3));
+        }
+        for(int c = 386; c <width;c++) {
+            grounds.add(new Ground(c, height - 1));
+            grounds.add(new Ground(c, height - 2));
+            grounds.add(new Ground(c, height - 3));
+        }
+
         return grounds;
     }
     private List<Block> createBlocks() {
@@ -85,7 +101,7 @@ public class Map {
                 if(player.getPosition().getX()!=0)movePlayer(player.moveLeft());
                 break;
             case "ArrowRight":
-                if(player.getPosition().getX()<width/2) movePlayer(player.moveRight());
+                if(player.getPosition().getX()< Game.width_game/2) movePlayer(player.moveRight());
                 else
                 {
                     for(Ground ground: grounds)
