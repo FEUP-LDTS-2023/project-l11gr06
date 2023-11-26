@@ -157,13 +157,29 @@ public class Map {
     public void movePlayer(Position position) {
         player.setPosition(position);}
 
+    public boolean break_block()
+    {
+        for(Block block:blocks)
+        {
+            if(player.getPosition().equals(block.getPosition()))
+            {
+                blocks.remove(block);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 
     public void processKey(KeyStroke key) {
         System.out.println(key);
         String keyT = key.getKeyType().toString();
+        int b_block = 0;
         switch (keyT) {
             case "ArrowUp":
                 movePlayer(player.moveUp());
+
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
@@ -198,4 +214,3 @@ public class Map {
     }
 
 }
-

@@ -41,6 +41,7 @@ public class Game {
         screen.refresh();
     }
 
+
     public void run() throws IOException {
         while (true) {
             draw();
@@ -71,6 +72,12 @@ public class Game {
                     processKey(k);
                     processKey(key);
                     draw();
+                    processKey(k);
+                    processKey(key);
+                    draw();
+                    processKey(k);
+                    processKey(key);
+                    draw();
                 }
             }
             else if (key.getKeyType().toString() == "ArrowRight" && salto)
@@ -86,19 +93,30 @@ public class Game {
                     processKey(k);
                     processKey(key);
                     draw();
+                    processKey(k);
+                    processKey(key);
+                    draw();
+                    processKey(k);
+                    processKey(key);
+                    draw();
                 }
             }
 
             if (salto)
             {
                 draw();
-                for(int i=1; i<=3;i++)
+                for(int i=1; i<=4;i++)
                 {
+
                     processKey(key);
                     draw();
+                    if(map.break_block())break;
+
+
                 }
             }
             else processKey(key);
+
             while(player.getPosition().getY()!=height_game-4)
             {
                 Position p = new Position(player.getPosition().getX(),player.getPosition().getY()+1);
