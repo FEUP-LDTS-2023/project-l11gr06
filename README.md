@@ -1,8 +1,8 @@
 # LDTS_11_6 - Super Mario Bros
 ### 2023/2024
-* Duarte Marques; up202204973@up.pt;
-* Maria Vieira; up202204802@up.pt;
-* Marta Cruz; up202205028@up.pt.
+* Duarte Marques; up202204973@up.pt
+* Maria Vieira; up202204802@up.pt
+* Marta Cruz; up202205028@up.pt
 #### Todos os mesmos participaram de igual forma para o desenvolvimento do projeto.
 
 ## Objetivo

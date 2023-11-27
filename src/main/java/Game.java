@@ -16,9 +16,9 @@ public class Game {
 
     public static int width_game = 65;
     public static int height_game = 20;
-    Player player = new Player(3, height_game-4);
+    public Player player = new Player(3, height_game-4);
 
-    Map map = new Map(585,20,player);
+    public Map map = new Map(585,20,player);
     private final TerminalScreen screen;
     private Terminal terminal;
     public Game(int w,int h) throws IOException {
@@ -116,4 +116,3 @@ public class Game {
         map.processKey(key);
     }
 }
-
