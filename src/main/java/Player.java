@@ -14,7 +14,6 @@ public class Player extends Element {
     public Position moveUp() {
         return new Position(getPosition().getX(), getPosition().getY() - 1);
     }
-
     public Position moveLeft() {
         return new Position(getPosition().getX()-1, getPosition().getY());
     }

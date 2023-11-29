@@ -23,6 +23,13 @@ public class Map {
 
     private List<GoalPole> poles;
 
+    private List <BrownMushroom> b_mushrooms;
+
+    private List <Turtle> turtles;
+
+    private List <PiranhaPlant> p_plants;
+
+
 
     //private List<Coin> coins;
     public Map(int width,int height,Player player) {
@@ -37,13 +44,11 @@ public class Map {
         //this.coins = createCoins();
         //this.monsters = createMonsters();
     }
-    private List<GoalPole> createPoles()
-    {
+    private List<GoalPole> createPoles() {
         List<GoalPole> poles = new ArrayList<>();
         for(int i = 0; i < 9;i++) poles.add(new GoalPole(429,height-5-i));
         return poles;
     }
-
     private List<Ground> createGrounds() {
         List<Ground> grounds = new ArrayList<>();
         for (int c = 0; c < 175; c++) {
@@ -117,7 +122,6 @@ public class Map {
         stairs.add(new Stair(429,height-4));
         return stairs;
     }
-
     private List<Block> createBlocks() {
         List<Block> blocks = new ArrayList<>();
         blocks.add(new Block(22, height - 7));
@@ -141,8 +145,6 @@ public class Map {
         blocks.add(new Block(402, height - 7));
         return blocks;
     }
-
-
     public void draw(TextGraphics graphics)
     {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
@@ -164,11 +166,9 @@ public class Map {
         return p.getX()<width-1 && p.getX()>0 && p.getY()<height-3 && p.getY()>0;
 
     }
-
-
-    public void movePlayer(Position position) {
+    public void movePlayer(Position position)
+    {
         player.setPosition(position);}
-
     public boolean break_block()
     {
         for(Block block:blocks)
@@ -181,7 +181,6 @@ public class Map {
         }
         return false;
     }
-
     public boolean collision_y()
     {
         for(Block block:blocks)
@@ -210,12 +209,12 @@ public class Map {
         }
         return false;
     }
-    public boolean collision_x_front()
+    public boolean collision_x_front(Element element)
     {
         for(Block block:blocks)
         {
             Position p = new Position(block.getPosition().getX()-1,block.getPosition().getY());
-            if(player.getPosition().equals(p)&&player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -223,7 +222,7 @@ public class Map {
         for(Ground ground:grounds)
         {
             Position p = new Position(ground.getPosition().getX()-1,ground.getPosition().getY());
-            if(player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -231,19 +230,19 @@ public class Map {
         for(Stair stair:stairs)
         {
             Position p = new Position(stair.getPosition().getX()-1,stair.getPosition().getY());
-            if(player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
         }
         return false;
     }
-    public boolean collision_x_back()
+    public boolean collision_x_back(Element element)
     {
         for(Block block:blocks)
         {
             Position p = new Position(block.getPosition().getX()+1,block.getPosition().getY());
-            if(player.getPosition().equals(p)&&player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -251,7 +250,7 @@ public class Map {
         for(Ground ground:grounds)
         {
             Position p = new Position(ground.getPosition().getX()+1,ground.getPosition().getY());
-            if(player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -259,15 +258,13 @@ public class Map {
         for(Stair stair:stairs)
         {
             Position p = new Position(stair.getPosition().getX()+1,stair.getPosition().getY());
-            if(player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
         }
         return false;
     }
-
-
     public void processKey(KeyStroke key) {
         System.out.println(key);
         String keyT = key.getKeyType().toString();
@@ -283,11 +280,11 @@ public class Map {
                 }
                 break;
             case "ArrowLeft":
-                if(!collision_x_back())if(player.getPosition().getX()!=0)movePlayer(player.moveLeft());
+                if(!collision_x_back(player))if(player.getPosition().getX()!=0)movePlayer(player.moveLeft());
                 break;
             case "ArrowRight":
                 for(GoalPole pole: poles) if(player.getPosition().getX()==pole.getPosition().getX()) System.exit(0);
-                if(!collision_x_front())
+                if(!collision_x_front(player))
                 {
                     if(player.getPosition().getX()< Game.width_game/2) movePlayer(player.moveRight());
                     else
