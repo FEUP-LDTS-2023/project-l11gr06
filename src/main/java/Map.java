@@ -203,6 +203,19 @@ public class Map {
         return false;
     }
 
+    public boolean reveal_mysteryblock()
+    {
+        for(MysteryBlock mysteryblock:mysteryBlocks)
+        {
+            if(player.getPosition().equals(mysteryblock.getPosition()))
+            {
+                mysteryblock.setMysteryState(1);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean collision_y()
     {
         for(Block block:blocks)
