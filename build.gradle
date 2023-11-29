@@ -21,6 +21,6 @@ test {
 }
 
 application {
-    mainClass.set("org.example.Main")
+    mainClass.set("Main")
 }
 
