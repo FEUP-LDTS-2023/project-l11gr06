@@ -22,6 +22,7 @@ public class Map {
     private List<Stair> stairs;
 
     private List<GoalPole> poles;
+    private List<MysteryBlock> mysteryBlocks;
 
 
     //private List<Coin> coins;
@@ -34,6 +35,7 @@ public class Map {
         this.blocks = createBlocks();
         this.stairs = createStairs();
         this.poles = createPoles();
+        this.mysteryBlocks = createMystery();
         //this.coins = createCoins();
         //this.monsters = createMonsters();
     }
@@ -127,19 +129,38 @@ public class Map {
         blocks.add(new Block(82, height - 7));
         for(int i = 83; i<=90;i++) blocks.add(new Block(i, height - 12));
         for(int i = 94; i<=96;i++) blocks.add(new Block(i, height - 12));
-        blocks.add(new Block(97, height - 7));
+        blocks.add(new Block(97, height - 7)); //TEM COIN
         blocks.add(new Block(103, height - 7));
-        blocks.add(new Block(104, height - 7));
+        blocks.add(new Block(104, height - 7)); //TEM ESTRELA
         blocks.add(new Block(121, height - 7));
         for(int i = 124; i<=126;i++) blocks.add(new Block(i, height - 12));
         blocks.add(new Block(131, height - 12));
         blocks.add(new Block(132, height - 7));
         blocks.add(new Block(133, height - 7));
         blocks.add(new Block(134, height - 12));
-        blocks.add(new Block(399, height - 7));
+        blocks.add(new Block(399, height - 7)); //172
         blocks.add(new Block(400, height - 7));
         blocks.add(new Block(402, height - 7));
         return blocks;
+    }
+
+    private List<MysteryBlock> createMystery()
+    {
+        List<MysteryBlock> mysteryBlocks = new ArrayList<>();
+        mysteryBlocks.add(new MysteryBlock(18, height - 7));
+        mysteryBlocks.add(new MysteryBlock(23, height - 7)); //TEM COGUMELO
+        mysteryBlocks.add(new MysteryBlock(25, height - 7));
+        mysteryBlocks.add(new MysteryBlock(24, height - 12));
+        mysteryBlocks.add(new MysteryBlock(81, height - 7)); //TEM COGUMELO
+        mysteryBlocks.add(new MysteryBlock(97, height - 12));
+        mysteryBlocks.add(new MysteryBlock(109, height - 7));
+        mysteryBlocks.add(new MysteryBlock(112, height - 7));
+        mysteryBlocks.add(new MysteryBlock(112, height - 12)); //TEM COGUMELO
+        mysteryBlocks.add(new MysteryBlock(132, height - 12));
+        mysteryBlocks.add(new MysteryBlock(133, height - 12));
+        mysteryBlocks.add(new MysteryBlock(174, height - 12));
+
+        return mysteryBlocks;
     }
 
 
