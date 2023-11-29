@@ -87,6 +87,9 @@ public class Game {
                     processKey(key);
                     draw();
                     if(map.break_block())break;
+                    if (map.reveal_mysteryblock()) {
+                        break;
+                    }
 
                 }
             }

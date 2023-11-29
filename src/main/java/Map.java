@@ -176,6 +176,8 @@ public class Map {
             stair.draw(graphics);
         for(GoalPole pole: poles)
             pole.draw(graphics);
+        for(MysteryBlock mysteryblock: mysteryBlocks)
+            mysteryblock.draw(graphics);
         graphics.setCharacter(player.getPosition().getX(), player.getPosition().getY(), TextCharacter.fromCharacter('X')[0]);
     }
     public boolean canPlayerMove(Position p)
@@ -242,6 +244,14 @@ public class Map {
                 return true;
             }
         }
+        for(MysteryBlock mysteryblock:mysteryBlocks)
+        {
+            Position p = new Position(mysteryblock.getPosition().getX(),mysteryblock.getPosition().getY()-1);
+            if(player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
         return false;
     }
     public boolean collision_x_front()
@@ -270,6 +280,14 @@ public class Map {
                 return true;
             }
         }
+        for(MysteryBlock mysteryblock:mysteryBlocks)
+        {
+            Position p = new Position(mysteryblock.getPosition().getX()-1,mysteryblock.getPosition().getY());
+            if(player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
         return false;
     }
     public boolean collision_x_back()
@@ -293,6 +311,14 @@ public class Map {
         for(Stair stair:stairs)
         {
             Position p = new Position(stair.getPosition().getX()+1,stair.getPosition().getY());
+            if(player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        for(MysteryBlock mysteryblock:mysteryBlocks)
+        {
+            Position p = new Position(mysteryblock.getPosition().getX()+1,mysteryblock.getPosition().getY());
             if(player.getPosition().equals(p))
             {
                 return true;
@@ -345,6 +371,11 @@ public class Map {
                         {
                             Position p = new Position(pole.getPosition().getX()-1,pole.getPosition().getY());
                             pole.setPosition(p);
+                        }
+                        for(MysteryBlock mysteryblock:mysteryBlocks)
+                        {
+                            Position p = new Position(mysteryblock.getPosition().getX()-1,mysteryblock.getPosition().getY());
+                            mysteryblock.setPosition(p);
                         }
                     }
                 }
