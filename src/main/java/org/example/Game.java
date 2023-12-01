@@ -9,8 +9,9 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
+import java.util.List;
 
-public class Game implements Runnable{
+public class Game{
 
     public static int width_game = 65;
     public static int height_game = 20;
@@ -20,7 +21,6 @@ public class Game implements Runnable{
     private final TerminalScreen screen;
     private Terminal terminal;
     public Game(int w,int h) throws IOException {
-        //Terminal terminal = new DefaultTerminalFactory().createTerminal();
         terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(w, h)).createTerminal();
         screen = new TerminalScreen(terminal);
         screen.setCursorPosition(null);// we don’t need a cursor
@@ -33,32 +33,32 @@ public class Game implements Runnable{
 
 
 
-    private void draw() throws IOException {
+    public void draw() throws IOException {
         screen.clear();
         map.draw(screen.newTextGraphics());
         player.draw(screen.newTextGraphics());
         screen.refresh();
     }
-
-    public void run() {
-        while(true)
+    public boolean gravity(Element element) throws IOException {
+        while(element.getPosition().getY()!=height_game)
         {
-            map.moveMonster();
+            if(element.getPosition().getY()==height_game-1 && element instanceof Player) return false;
+            if(map.collision_y(element)) break;
+            Position p = new Position(element.getPosition().getX(),element.getPosition().getY()+1);
+            element.setPosition(p);
+            draw();
             try {
-                draw();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            try {
-                Thread.sleep(500);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
+        return true;
     }
 
+
     public void runGame() throws IOException {
-        Thread t1 = new Thread(this);
+        Thread t1 = new Thread(new MonsterMoving(map,this));
         t1.start();
         while (true) {
             draw();
@@ -106,22 +106,12 @@ public class Game implements Runnable{
                 }
             }
             else processKey(key);
-            while(player.getPosition().getY()!=height_game)
+            Thread t2 = new Thread(new Gravity(map,this,player));
+            t2.start();
+            if(player.getPosition().getY()==height_game-1)
             {
-                if(player.getPosition().getY()==height_game-1)
-                {
-                    terminal.close();
-                    return;
-                }
-                if(map.collision_y()) break;
-                Position p = new Position(player.getPosition().getX(),player.getPosition().getY()+1);
-                player.setPosition(p);
-                draw();
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                terminal.close();
+                return;
             }
 
 

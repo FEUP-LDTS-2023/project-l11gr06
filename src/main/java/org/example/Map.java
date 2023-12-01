@@ -147,8 +147,8 @@ public class Map {
     {
         List <BrownMushroom> b_mushrooms = new ArrayList<>();
         b_mushrooms.add(new BrownMushroom(20, height - 4));
-        b_mushrooms.add(new BrownMushroom(40, height - 4));
-        b_mushrooms.add(new BrownMushroom(50, height - 4));
+        b_mushrooms.add(new BrownMushroom(40, height - 10));
+        b_mushrooms.add(new BrownMushroom(50, height - 10));
         return b_mushrooms;
     }
     public void draw(TextGraphics graphics)
@@ -189,12 +189,12 @@ public class Map {
         }
         return false;
     }
-    public boolean collision_y()
+    public boolean collision_y(Element element)
     {
         for(Block block:blocks)
         {
             Position p = new Position(block.getPosition().getX(),block.getPosition().getY()-1);
-            if(player.getPosition().equals(p)&&player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -202,7 +202,7 @@ public class Map {
         for(Ground ground:grounds)
         {
             Position p = new Position(ground.getPosition().getX(),ground.getPosition().getY()-1);
-            if(player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -210,7 +210,7 @@ public class Map {
         for(Stair stair:stairs)
         {
             Position p = new Position(stair.getPosition().getX(),stair.getPosition().getY()-1);
-            if(player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -273,27 +273,29 @@ public class Map {
         }
         return false;
     }
-    public void moveMonster()
+    public void moveMonster(BrownMushroom b)
     {
-        for(BrownMushroom b: b_mushrooms)
-        {
-            b.setMove(b.getPosition().getX() < 65 && b.getPosition().getX() >= 0);
-            if(b.getMove())
+            if(b.getMoveDirection()==0)
             {
-                if(b.getMoveDirection()==0)
-                {
-                    if(!collision_x_back(b)) b.setPosition(b.moveLeft());
-                    else b.setMoveDirection(1);
-                }
-                else if (b.getMoveDirection()==1)
-                {
-                    if(!collision_x_front(b)) b.setPosition(b.moveRight());
-                    else b.setMoveDirection(0);
-                }
+                if(!collision_x_back(b)) b.setPosition(b.moveLeft());
+                else b.setMoveDirection(1);
             }
-        }
+            else if (b.getMoveDirection()==1)
+            {
+                if(!collision_x_front(b)) b.setPosition(b.moveRight());
+                else b.setMoveDirection(0);
+            }
     }
 
+    public List<BrownMushroom> monstersToMove()
+    {
+        List<BrownMushroom> l = new ArrayList<>();
+        for(BrownMushroom b: b_mushrooms) {
+            b.setMove(b.getPosition().getX() < 65 && b.getPosition().getX() >= 0);
+            if (b.getMove()) l.add(b);
+        }
+        return l;
+    }
 
     public void processKey(KeyStroke key) {
         System.out.println(key);
