@@ -22,6 +22,7 @@ public class Map {
     private List<GoalPole> poles;
     private List<MysteryBlock> mysteryBlocks;
     private List<Coin> coins;
+    private List<RedMushroom> redMushrooms;
 
     public Map(int width,int height,Player player) {
         this.width = width;
@@ -34,6 +35,7 @@ public class Map {
         this.poles = createPoles();
         this.mysteryBlocks = createMystery();
         this.coins = createCoins();
+        this.redMushrooms = createRedMushrooms();
         //this.monsters = createMonsters();
     }
     private List<GoalPole> createPoles()
@@ -173,6 +175,14 @@ public class Map {
         return coins;
     }
 
+    private List<RedMushroom> createRedMushrooms() {
+        List<RedMushroom> redMushrooms = new ArrayList<>();
+        redMushrooms.add(new RedMushroom(23, height - 7));
+        redMushrooms.add(new RedMushroom(81, height - 7));
+        redMushrooms.add(new RedMushroom(112, height - 12));
+        return redMushrooms;
+    }
+
 
 
     public void draw(TextGraphics graphics)
@@ -189,6 +199,9 @@ public class Map {
             pole.draw(graphics);
         for (Coin coin:coins) {
             coin.draw(graphics);
+        }
+        for (RedMushroom m: redMushrooms) {
+            m.draw(graphics);
         }
         for(MysteryBlock mysteryblock: mysteryBlocks)
             mysteryblock.draw(graphics);
@@ -231,6 +244,12 @@ public class Map {
                     if (coin.getPosition().equals(mysteryblock.getPosition())) {
                         Position p =new Position(coin.getPosition().getX(), coin.getPosition().getY()-1);
                         coin.setPosition(p);
+                    }
+                }
+                for (RedMushroom mushroom:redMushrooms) {
+                    if (mushroom.getPosition().equals(mysteryblock.getPosition())) {
+                        Position p =new Position(mushroom.getPosition().getX(), mushroom.getPosition().getY()-1);
+                        mushroom.setPosition(p);
                     }
                 }
                 return true;

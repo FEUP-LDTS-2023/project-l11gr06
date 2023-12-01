@@ -16,6 +16,6 @@ public class RedMushroom extends Element {
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#8A3324"));
         graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()), "R");
+        graphics.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()), "@");
     }
 }
