@@ -18,7 +18,7 @@ public class Game {
     public static int height_game = 20;
     public Player player = new Player(3, height_game-4);
 
-    public Map map = new Map(585,20,player);
+    public Map map = new Map(250,20,player);
     private final TerminalScreen screen;
     private Terminal terminal;
     public Game(int w,int h) throws IOException {

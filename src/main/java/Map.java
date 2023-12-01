@@ -18,9 +18,7 @@ public class Map {
     private int height;
     private List<Ground> grounds;
     private List<Block> blocks;
-
     private List<Stair> stairs;
-
     private List<GoalPole> poles;
 
 
@@ -40,28 +38,28 @@ public class Map {
     private List<GoalPole> createPoles()
     {
         List<GoalPole> poles = new ArrayList<>();
-        for(int i = 0; i < 9;i++) poles.add(new GoalPole(429,height-5-i));
+        for(int i = 0; i < 9;i++) poles.add(new GoalPole(202,height-5-i));
         return poles;
     }
 
     private List<Ground> createGrounds() {
         List<Ground> grounds = new ArrayList<>();
-        for (int c = 0; c < 175; c++) {
+        for (int c = 0; c < 71; c++) {
             grounds.add(new Ground(c, height - 1));
             grounds.add(new Ground(c, height - 2));
             grounds.add(new Ground(c, height - 3));
         }
-        for(int c = 178; c <221;c++) {
+        for(int c = 74; c <89;c++) {
             grounds.add(new Ground(c, height - 1));
             grounds.add(new Ground(c, height - 2));
             grounds.add(new Ground(c, height - 3));
         }
-        for(int c = 224; c <383;c++) {
+        for(int c = 92; c <156;c++) {
             grounds.add(new Ground(c, height - 1));
             grounds.add(new Ground(c, height - 2));
             grounds.add(new Ground(c, height - 3));
         }
-        for(int c = 386; c <width;c++) {
+        for(int c = 159; c <width;c++) {
             grounds.add(new Ground(c, height - 1));
             grounds.add(new Ground(c, height - 2));
             grounds.add(new Ground(c, height - 3));
@@ -73,7 +71,7 @@ public class Map {
         List<Stair> stairs = new ArrayList<>();
 
         int i =0;
-        for(int c = 363; c <367;c++) {
+        for(int c = 137; c <141;c++) {
             i++;
             for(int a =0;a<i;a++)
             {
@@ -82,7 +80,7 @@ public class Map {
         }
 
         i =0;
-        for(int c = 373; c > 369;c--) {
+        for(int c = 147; c > 143;c--) {
             i++;
             for(int a =0;a<i;a++)
             {
@@ -90,8 +88,8 @@ public class Map {
             }
         }
         i =0;
-        for(int c = 378; c <383;c++) {
-            if(c!=382)i++;
+        for(int c = 151; c <156;c++) {
+            if(c!=155)i++;
             for(int a =0;a<i;a++)
             {
                 stairs.add(new Stair(c, height - 4 -a));
@@ -99,7 +97,7 @@ public class Map {
         }
 
         i =0;
-        for(int c = 389; c >385;c--) {
+        for(int c = 163; c >159;c--) {
             i++;
             for(int a =0;a<i;a++)
             {
@@ -107,14 +105,14 @@ public class Map {
             }
         }
         i =0;
-        for(int c = 412; c <421;c++) {
-            if(c!=420)i++;
+        for(int c = 185; c <194;c++) {
+            if(c!=193)i++;
             for(int a =0;a<i;a++)
             {
                 stairs.add(new Stair(c, height - 4 -a));
             }
         }
-        stairs.add(new Stair(429,height-4));
+        stairs.add(new Stair(202,height-4));
         return stairs;
     }
 
@@ -136,9 +134,9 @@ public class Map {
         blocks.add(new Block(132, height - 7));
         blocks.add(new Block(133, height - 7));
         blocks.add(new Block(134, height - 12));
-        blocks.add(new Block(399, height - 7));
-        blocks.add(new Block(400, height - 7));
-        blocks.add(new Block(402, height - 7));
+        blocks.add(new Block(172, height - 7));
+        blocks.add(new Block(173, height - 7));
+        blocks.add(new Block(175, height - 7));
         return blocks;
     }
 
