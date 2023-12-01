@@ -1,18 +1,16 @@
-import com.googlecode.lanterna.TerminalPosition;
+package org.example;
+
 import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
 
-public class Game {
+public class Game implements Runnable{
 
     public static int width_game = 65;
     public static int height_game = 20;
@@ -42,10 +40,27 @@ public class Game {
         screen.refresh();
     }
 
+    public void run() {
+        while(true)
+        {
+            map.moveMonster();
+            try {
+                draw();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 
-    public void run() throws IOException {
+    public void runGame() throws IOException {
+        Thread t1 = new Thread(this);
+        t1.start();
         while (true) {
-            //if(map.getLives()>)System.out.println("Game Over");
             draw();
             KeyStroke key = screen.readInput();
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') screen.close();

@@ -1,3 +1,5 @@
+package org.example;
+
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public abstract class Element {

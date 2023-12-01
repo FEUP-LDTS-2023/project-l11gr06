@@ -1,19 +1,18 @@
+package org.example;
+
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.screen.Screen;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Map {
     private Player player;
-    //private List<Monster> monsters;
+    //private List<org.example.Monster> monsters;
     private int width;
     private int height;
     private List<Ground> grounds;
@@ -29,8 +28,6 @@ public class Map {
 
     private List <PiranhaPlant> p_plants;
 
-
-
     //private List<Coin> coins;
     public Map(int width,int height,Player player) {
         this.width = width;
@@ -41,6 +38,7 @@ public class Map {
         this.blocks = createBlocks();
         this.stairs = createStairs();
         this.poles = createPoles();
+        this.b_mushrooms = createB_mushrooms();
         //this.coins = createCoins();
         //this.monsters = createMonsters();
     }
@@ -145,6 +143,14 @@ public class Map {
         blocks.add(new Block(402, height - 7));
         return blocks;
     }
+    private List <BrownMushroom> createB_mushrooms()
+    {
+        List <BrownMushroom> b_mushrooms = new ArrayList<>();
+        b_mushrooms.add(new BrownMushroom(20, height - 4));
+        b_mushrooms.add(new BrownMushroom(40, height - 4));
+        b_mushrooms.add(new BrownMushroom(50, height - 4));
+        return b_mushrooms;
+    }
     public void draw(TextGraphics graphics)
     {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
@@ -157,6 +163,8 @@ public class Map {
             stair.draw(graphics);
         for(GoalPole pole: poles)
             pole.draw(graphics);
+        for(BrownMushroom b: b_mushrooms)
+            b.draw(graphics);
         graphics.setCharacter(player.getPosition().getX(), player.getPosition().getY(), TextCharacter.fromCharacter('X')[0]);
     }
     public boolean canPlayerMove(Position p)
@@ -265,6 +273,28 @@ public class Map {
         }
         return false;
     }
+    public void moveMonster()
+    {
+        for(BrownMushroom b: b_mushrooms)
+        {
+            b.setMove(b.getPosition().getX() < 65 && b.getPosition().getX() >= 0);
+            if(b.getMove())
+            {
+                if(b.getMoveDirection()==0)
+                {
+                    if(!collision_x_back(b)) b.setPosition(b.moveLeft());
+                    else b.setMoveDirection(1);
+                }
+                else if (b.getMoveDirection()==1)
+                {
+                    if(!collision_x_front(b)) b.setPosition(b.moveRight());
+                    else b.setMoveDirection(0);
+                }
+            }
+        }
+    }
+
+
     public void processKey(KeyStroke key) {
         System.out.println(key);
         String keyT = key.getKeyType().toString();
@@ -309,10 +339,20 @@ public class Map {
                             Position p = new Position(pole.getPosition().getX()-1,pole.getPosition().getY());
                             pole.setPosition(p);
                         }
+                        for(BrownMushroom b:b_mushrooms)
+                        {
+                            if(b.getMove())
+                            {
+                                Position p = new Position(b.getPosition().getX()-1,b.getPosition().getY());
+                                b.setPosition(p);
+                            }
+
+                        }
                     }
                 }
                 break;
         }
     }
+
 
 }
