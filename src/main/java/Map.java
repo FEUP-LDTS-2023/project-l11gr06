@@ -18,14 +18,11 @@ public class Map {
     private int height;
     private List<Ground> grounds;
     private List<Block> blocks;
-
     private List<Stair> stairs;
-
     private List<GoalPole> poles;
     private List<MysteryBlock> mysteryBlocks;
+    private List<Coin> coins;
 
-
-    //private List<Coin> coins;
     public Map(int width,int height,Player player) {
         this.width = width;
         this.height = height;
@@ -36,7 +33,7 @@ public class Map {
         this.stairs = createStairs();
         this.poles = createPoles();
         this.mysteryBlocks = createMystery();
-        //this.coins = createCoins();
+        this.coins = createCoins();
         //this.monsters = createMonsters();
     }
     private List<GoalPole> createPoles()
@@ -159,9 +156,23 @@ public class Map {
         mysteryBlocks.add(new MysteryBlock(132, height - 12));
         mysteryBlocks.add(new MysteryBlock(133, height - 12));
         mysteryBlocks.add(new MysteryBlock(174, height - 12));
-
         return mysteryBlocks;
     }
+
+    private List<Coin> createCoins() {
+        List<Coin> coins = new ArrayList<>();
+        coins.add(new Coin(18, height - 7));
+        coins.add(new Coin(25, height - 7));
+        coins.add(new Coin(24, height - 12));
+        coins.add(new Coin(97, height - 12));
+        coins.add(new Coin(109, height - 7));
+        coins.add(new Coin(112, height - 7));
+        coins.add(new Coin(132, height - 12));
+        coins.add(new Coin(133, height - 12));
+        coins.add(new Coin(174, height - 12));
+        return coins;
+    }
+
 
 
     public void draw(TextGraphics graphics)
@@ -176,8 +187,12 @@ public class Map {
             stair.draw(graphics);
         for(GoalPole pole: poles)
             pole.draw(graphics);
+        for (Coin coin:coins) {
+            coin.draw(graphics);
+        }
         for(MysteryBlock mysteryblock: mysteryBlocks)
             mysteryblock.draw(graphics);
+
         graphics.setCharacter(player.getPosition().getX(), player.getPosition().getY(), TextCharacter.fromCharacter('X')[0]);
     }
     public boolean canPlayerMove(Position p)
@@ -212,6 +227,12 @@ public class Map {
             if(player.getPosition().equals(mysteryblock.getPosition()))
             {
                 mysteryblock.setMysteryState(1);
+                for (Coin coin:coins) {
+                    if (coin.getPosition().equals(mysteryblock.getPosition())) {
+                        Position p =new Position(coin.getPosition().getX(), coin.getPosition().getY()-1);
+                        coin.setPosition(p);
+                    }
+                }
                 return true;
             }
         }
