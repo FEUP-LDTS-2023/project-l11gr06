@@ -1,14 +1,15 @@
-package org.example;
-
 import java.io.IOException;
 
 public class MonsterMoving implements Runnable{
     private Map map;
     private Game game;
-    public MonsterMoving(Map m, Game g)
+
+    private Player player;
+    public MonsterMoving(Map m, Game g, Player p)
     {
         map=m;
         game=g;
+        player=p;
     }
     public void run() {
         while(true)
@@ -24,12 +25,17 @@ public class MonsterMoving implements Runnable{
                         throw new RuntimeException(e);
                     }
                 }
-
-            }
-            try {
-                game.draw();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+                if (map.monsterCollision(b))
+                {
+                    player.setPosition(new Position(player.getPosition().getX(),game.height_game-1));
+                    return;
+                }
+                if(map.monsterDies(b)) break;
+                try {
+                    game.draw();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
             try {
                 Thread.sleep(500);

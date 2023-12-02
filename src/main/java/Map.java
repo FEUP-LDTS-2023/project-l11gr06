@@ -1,5 +1,3 @@
-package org.example;
-
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextCharacter;
@@ -12,7 +10,7 @@ import java.util.List;
 
 public class Map {
     private Player player;
-    //private List<org.example.Monster> monsters;
+    //private List<Monster> monsters;
     private int width;
     private int height;
     private List<Ground> grounds;
@@ -122,6 +120,7 @@ public class Map {
     }
     private List<Block> createBlocks() {
         List<Block> blocks = new ArrayList<>();
+        blocks.add(new Block(5, height - 4));
         blocks.add(new Block(22, height - 7));
         blocks.add(new Block(24, height - 7));
         blocks.add(new Block(26, height - 7));
@@ -286,7 +285,6 @@ public class Map {
                 else b.setMoveDirection(0);
             }
     }
-
     public List<BrownMushroom> monstersToMove()
     {
         List<BrownMushroom> l = new ArrayList<>();
@@ -295,6 +293,22 @@ public class Map {
             if (b.getMove()) l.add(b);
         }
         return l;
+    }
+    public boolean monsterCollision(Monster m) {
+        if(player.getPosition().getY()== m.getPosition().getY())
+            return (player.getPosition().getX()== m.getPosition().getX()-1 ||
+                    player.getPosition().getX()== m.getPosition().getX()+1);
+        else if(player.getPosition().getX()== m.getPosition().getX())
+            return player.getPosition().getY()== m.getPosition().getY()+1;
+        else return false;
+    }
+    public boolean monsterDies(Monster m) {
+        if (player.getPosition().getY() == m.getPosition().getY() - 1 && player.getPosition().getX() == m.getPosition().getX())
+            if (m instanceof BrownMushroom) {
+                b_mushrooms.remove(m);
+                return true;
+            }
+        return false;
     }
 
     public void processKey(KeyStroke key) {

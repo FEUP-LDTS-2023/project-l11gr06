@@ -1,5 +1,3 @@
-package org.example;
-
 import java.io.IOException;
 
 public class Gravity implements Runnable {
@@ -26,7 +24,7 @@ public class Gravity implements Runnable {
                 throw new RuntimeException(e);
             }
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

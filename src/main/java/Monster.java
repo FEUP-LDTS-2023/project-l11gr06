@@ -1,5 +1,3 @@
-package org.example;
-
 public abstract class Monster extends Element{
     private boolean move=false;
     private int moveDirection = 0;

@@ -1,5 +1,3 @@
-package org.example;
-
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
@@ -9,7 +7,6 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
-import java.util.List;
 
 public class Game{
 
@@ -58,7 +55,7 @@ public class Game{
 
 
     public void runGame() throws IOException {
-        Thread t1 = new Thread(new MonsterMoving(map,this));
+        Thread t1 = new Thread(new MonsterMoving(map,this,player));
         t1.start();
         while (true) {
             draw();

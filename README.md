@@ -31,7 +31,7 @@ Figura 1: Modelo do Menu Inicial.
 
 ## Design Pattern
 Para a implementação do projeto foi utilizado o Factory Method.
-Este Pattern permite que as subclasses (org.example.Player, org.example.Ground, org.example.GoalPole, org.example.Block e org.example.Stair) escolham o tipo de objetos a serem criados. Além disso, promove a reutilização de código.
+Este Pattern permite que as subclasses (Player, Ground, GoalPole, Block e Stair) escolham o tipo de objetos a serem criados. Além disso, promove a reutilização de código.
 
 
 ![UML.jpeg](UML.jpeg)
