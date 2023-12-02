@@ -19,6 +19,7 @@ public class Game {
     public Player player = new Player(3, height_game-4);
 
     public Map map = new Map(585,20,player);
+    public int points=0;
     private final TerminalScreen screen;
     private Terminal terminal;
     public Game(int w,int h) throws IOException {
@@ -93,9 +94,19 @@ public class Game {
 
                 }
             }
-            else processKey(key);
+            else {
+                processKey(key);
+                if (map.collect_coins()) {
+                    points+=100;
+                    draw();
+                }
+            }
             while(player.getPosition().getY()!=height_game)
             {
+                if (map.collect_coins()) {
+                    points+=100;
+                    draw();
+                }
                 if(player.getPosition().getY()==height_game-1)
                 {
                     terminal.close();

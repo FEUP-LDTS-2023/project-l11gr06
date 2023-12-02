@@ -258,6 +258,19 @@ public class Map {
         return false;
     }
 
+    public boolean collect_coins() {
+        for(Coin coin:coins) {
+            for (MysteryBlock m:mysteryBlocks) {
+                if (coin.getPosition().equals(m.getPosition())) return false;
+            }
+            if (player.getPosition().equals(coin.getPosition())) {
+                coins.remove(coin);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean collision_y()
     {
         for(Block block:blocks)
@@ -417,6 +430,17 @@ public class Map {
                             Position p = new Position(mysteryblock.getPosition().getX()-1,mysteryblock.getPosition().getY());
                             mysteryblock.setPosition(p);
                         }
+                        for(Coin coin:coins)
+                        {
+                            Position p = new Position(coin.getPosition().getX()-1,coin.getPosition().getY());
+                            coin.setPosition(p);
+                        }
+                        for(RedMushroom rm:redMushrooms)
+                        {
+                            Position p = new Position(rm.getPosition().getX()-1,rm.getPosition().getY());
+                            rm.setPosition(p);
+                        }
+
                     }
                 }
                 break;
