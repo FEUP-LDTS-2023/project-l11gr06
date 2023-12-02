@@ -271,6 +271,20 @@ public class Map {
         return false;
     }
 
+    public boolean collect_mushroom() {
+        for(RedMushroom rm:redMushrooms) {
+            for (MysteryBlock m:mysteryBlocks) {
+                if (rm.getPosition().equals(m.getPosition())) return false;
+            }
+            if (player.getPosition().equals(rm.getPosition())) {
+                //SUPERMARIO STATE
+                redMushrooms.remove(rm);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean collision_y()
     {
         for(Block block:blocks)

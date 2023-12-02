@@ -100,11 +100,19 @@ public class Game {
                     points+=100;
                     draw();
                 }
+                if (map.collect_mushroom()) {
+                    points+=1000;
+                    draw();
+                }
             }
             while(player.getPosition().getY()!=height_game)
             {
                 if (map.collect_coins()) {
                     points+=100;
+                    draw();
+                }
+                if (map.collect_mushroom()) {
+                    points+=1000;
                     draw();
                 }
                 if(player.getPosition().getY()==height_game-1)
