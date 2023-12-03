@@ -15,9 +15,4 @@ public class BrownMushroom extends Monster{
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(new TerminalPosition(getPosition().getX(),getPosition().getY()), "#");
     }
-    public Position moveLeft() {
-        return new Position(getPosition().getX()-1, getPosition().getY());
-    }
-    public Position moveRight() {return new Position(getPosition().getX()+1, getPosition().getY());}
-
 }

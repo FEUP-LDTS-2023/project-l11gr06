@@ -4,6 +4,7 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Turtle extends Monster{
+    private int state = 0;
     public Turtle(Position p){
         super(p);
     }
@@ -11,12 +12,19 @@ public class Turtle extends Monster{
         super(x,y);
     }
     public void draw(TextGraphics graphics) {
+
         graphics.setForegroundColor(TextColor.Factory.fromString("#8A3324"));
         graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(getPosition().getX(),getPosition().getY()), "T");
+        if(state==0)
+            graphics.putString(new TerminalPosition(getPosition().getX(),getPosition().getY()), "T");
+        else
+            graphics.putString(new TerminalPosition(getPosition().getX(),getPosition().getY()), "w");
+
     }
-    public Position moveLeft() {
-        return new Position(getPosition().getX()-1, getPosition().getY());
+    public int getState() {
+        return state;
     }
-    public Position moveRight() {return new Position(getPosition().getX()+1, getPosition().getY());}
+    public void setState(int state) {
+        this.state = state;
+    }
 }

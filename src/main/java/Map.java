@@ -20,7 +20,7 @@ public class Map {
 
     private List<GoalPole> poles;
 
-    private List <BrownMushroom> b_mushrooms;
+    private List <Monster> monsters;
 
     private List <Turtle> turtles;
 
@@ -32,11 +32,10 @@ public class Map {
         this.height = height;
         this.player=player;
         this.grounds = createGrounds();
-
         this.blocks = createBlocks();
         this.stairs = createStairs();
         this.poles = createPoles();
-        this.b_mushrooms = createB_mushrooms();
+        this.monsters = createMonster();
         //this.coins = createCoins();
         //this.monsters = createMonsters();
     }
@@ -142,13 +141,11 @@ public class Map {
         blocks.add(new Block(402, height - 7));
         return blocks;
     }
-    private List <BrownMushroom> createB_mushrooms()
+    private List <Monster> createMonster()
     {
-        List <BrownMushroom> b_mushrooms = new ArrayList<>();
-        b_mushrooms.add(new BrownMushroom(20, height - 4));
-        b_mushrooms.add(new BrownMushroom(40, height - 10));
-        b_mushrooms.add(new BrownMushroom(50, height - 10));
-        return b_mushrooms;
+        List <Monster> monsters = new ArrayList<>();
+        monsters.add(new Turtle(35, height - 10));
+        return monsters;
     }
     public void draw(TextGraphics graphics)
     {
@@ -162,8 +159,8 @@ public class Map {
             stair.draw(graphics);
         for(GoalPole pole: poles)
             pole.draw(graphics);
-        for(BrownMushroom b: b_mushrooms)
-            b.draw(graphics);
+        for(Monster m:monsters)
+            m.draw(graphics);
         graphics.setCharacter(player.getPosition().getX(), player.getPosition().getY(), TextCharacter.fromCharacter('X')[0]);
     }
     public boolean canPlayerMove(Position p)
@@ -272,45 +269,61 @@ public class Map {
         }
         return false;
     }
-    public void moveMonster(BrownMushroom b)
+    public void moveMonster(Monster m)
     {
-            if(b.getMoveDirection()==0)
+            if(m.getMoveDirection()==0)
             {
-                if(!collision_x_back(b)) b.setPosition(b.moveLeft());
-                else b.setMoveDirection(1);
+                if(!collision_x_back(m)) m.setPosition(m.moveLeft());
+                else m.setMoveDirection(1);
             }
-            else if (b.getMoveDirection()==1)
+            else if (m.getMoveDirection()==1)
             {
-                if(!collision_x_front(b)) b.setPosition(b.moveRight());
-                else b.setMoveDirection(0);
+                if(!collision_x_front(m)) m.setPosition(m.moveRight());
+                else m.setMoveDirection(0);
             }
     }
-    public List<BrownMushroom> monstersToMove()
+    public List<Monster> monstersToMove()
     {
-        List<BrownMushroom> l = new ArrayList<>();
-        for(BrownMushroom b: b_mushrooms) {
-            b.setMove(b.getPosition().getX() < 65 && b.getPosition().getX() >= 0);
-            if (b.getMove()) l.add(b);
+        List<Monster> l = new ArrayList<>();
+        for(Monster m: monsters) {
+            m.setMove(m.getPosition().getX() < 65 && m.getPosition().getX() >= 0);
+            if (m.getMove()) l.add(m);
         }
         return l;
     }
     public boolean monsterCollision(Monster m) {
-        if(player.getPosition().getY()== m.getPosition().getY())
-            return (player.getPosition().getX()== m.getPosition().getX()-1 ||
-                    player.getPosition().getX()== m.getPosition().getX()+1);
-        else if(player.getPosition().getX()== m.getPosition().getX())
-            return player.getPosition().getY()== m.getPosition().getY()+1;
-        else return false;
-    }
-    public boolean monsterDies(Monster m) {
-        if (player.getPosition().getY() == m.getPosition().getY() - 1 && player.getPosition().getX() == m.getPosition().getX())
-            if (m instanceof BrownMushroom) {
-                b_mushrooms.remove(m);
-                return true;
+        if(player.getPosition().getY()==m.getPosition().getY()) {
+            if(m instanceof Turtle && ((Turtle) m).getState()==1)
+            {
+                if(player.getPosition().getX() - 1 == m.getPosition().getX())
+                {
+                    ((Turtle) m).setState(2);
+                    m.setMoveDirection(0);
+                }
+                else if (player.getPosition().getX() + 1 == m.getPosition().getX())
+                {
+                    ((Turtle) m).setState(2);
+                    m.setMoveDirection(1);
+                }
             }
+            if (player.getPosition().getX() - 1 == m.getPosition().getX() && m.getMoveDirection()==1) return true;
+            else return (player.getPosition().getX() + 1 == m.getPosition().getX() && m.getMoveDirection()==0);
+        }
+        else if(player.getPosition().getX()==m.getPosition().getX())
+            return player.getPosition().getY()-1==m.getPosition().getY();
         return false;
     }
-
+    public boolean monsterDies(Monster m) {
+        if (player.getPosition().getY() == m.getPosition().getY() - 1 && player.getPosition().getX() == m.getPosition().getX()) {
+            if (m instanceof BrownMushroom) {
+                monsters.remove(m);
+                return true;
+            } else if (m instanceof Turtle && ((Turtle) m).getState() == 0) ((Turtle) m).setState(1);
+            else if (m instanceof Turtle && ((Turtle) m).getState() == 1) ((Turtle) m).setState(2);
+            else if (m instanceof Turtle && ((Turtle) m).getState() == 2) ((Turtle) m).setState(1);
+        }
+        return false;
+    }
     public void processKey(KeyStroke key) {
         System.out.println(key);
         String keyT = key.getKeyType().toString();
@@ -355,12 +368,12 @@ public class Map {
                             Position p = new Position(pole.getPosition().getX()-1,pole.getPosition().getY());
                             pole.setPosition(p);
                         }
-                        for(BrownMushroom b:b_mushrooms)
+                        for(Monster m:monsters)
                         {
-                            if(b.getMove())
+                            if(m.getMove())
                             {
-                                Position p = new Position(b.getPosition().getX()-1,b.getPosition().getY());
-                                b.setPosition(p);
+                                Position p = new Position(m.getPosition().getX()-1,m.getPosition().getY());
+                                m.setPosition(p);
                             }
 
                         }
