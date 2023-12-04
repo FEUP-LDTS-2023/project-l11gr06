@@ -20,6 +20,7 @@ public class Map {
     private List<Block> blocks;
     private List<Stair> stairs;
     private List<GoalPole> poles;
+    private List<Pipe> pipes;
 
 
     //private List<Coin> coins;
@@ -32,6 +33,7 @@ public class Map {
         this.blocks = createBlocks();
         this.stairs = createStairs();
         this.poles = createPoles();
+        this.pipes = createPipes();
         //this.coins = createCoins();
         //this.monsters = createMonsters();
     }
@@ -97,7 +99,7 @@ public class Map {
         }
 
         i =0;
-        for(int c = 163; c >159;c--) {
+        for(int c = 162; c >158;c--) {
             i++;
             for(int a =0;a<i;a++)
             {
@@ -140,6 +142,45 @@ public class Map {
         return blocks;
     }
 
+    private List<Pipe> createPipes(){
+        List<Pipe> pipes = new ArrayList<>();
+        pipes.add(new Pipe(30,height-4,'M'));
+        pipes.add(new Pipe(30,height-5,'O'));
+        pipes.add(new Pipe(31,height-4,'N'));
+        pipes.add(new Pipe(31,height-5,'P'));
+        pipes.add(new Pipe(40,height-4,'M'));
+        pipes.add(new Pipe(40,height-5,'M'));
+        pipes.add(new Pipe(40,height-6,'O'));
+        pipes.add(new Pipe(41,height-4,'N'));
+        pipes.add(new Pipe(41,height-5,'N'));
+        pipes.add(new Pipe(41,height-6,'P'));
+        pipes.add(new Pipe(48,height-4,'M'));
+        pipes.add(new Pipe(48,height-5,'M'));
+        pipes.add(new Pipe(48,height-6,'M'));
+        pipes.add(new Pipe(48,height-7,'0'));
+        pipes.add(new Pipe(49,height-4,'N'));
+        pipes.add(new Pipe(49,height-5,'N'));
+        pipes.add(new Pipe(49,height-6,'N'));
+        pipes.add(new Pipe(49,height-7,'P'));
+        pipes.add(new Pipe(59,height-4,'M'));
+        pipes.add(new Pipe(59,height-5,'M'));
+        pipes.add(new Pipe(59,height-6,'M'));
+        pipes.add(new Pipe(59,height-7,'0'));
+        pipes.add(new Pipe(60,height-4,'N'));
+        pipes.add(new Pipe(60,height-5,'N'));
+        pipes.add(new Pipe(60,height-6,'N'));
+        pipes.add(new Pipe(60,height-7,'P'));
+        pipes.add(new Pipe(167,height-4,'M'));
+        pipes.add(new Pipe(167,height-5,'O'));
+        pipes.add(new Pipe(168,height-4,'N'));
+        pipes.add(new Pipe(168,height-5,'P'));
+        pipes.add(new Pipe(183,height-4,'M'));
+        pipes.add(new Pipe(183,height-5,'O'));
+        pipes.add(new Pipe(184,height-4,'N'));
+        pipes.add(new Pipe(184,height-5,'P'));
+        return pipes;
+    }
+
 
     public void draw(TextGraphics graphics)
     {
@@ -153,6 +194,8 @@ public class Map {
             stair.draw(graphics);
         for(GoalPole pole: poles)
             pole.draw(graphics);
+        for(Pipe pipe: pipes)
+            pipe.draw(graphics);
         graphics.setCharacter(player.getPosition().getX(), player.getPosition().getY(), TextCharacter.fromCharacter('X')[0]);
     }
     public boolean canPlayerMove(Position p)
@@ -206,6 +249,14 @@ public class Map {
                 return true;
             }
         }
+        for(Pipe pipe:pipes)
+        {
+            Position p = new Position(pipe.getPosition().getX(),pipe.getPosition().getY()-1);
+            if(player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
         return false;
     }
     public boolean collision_x_front()
@@ -229,6 +280,14 @@ public class Map {
         for(Stair stair:stairs)
         {
             Position p = new Position(stair.getPosition().getX()-1,stair.getPosition().getY());
+            if(player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        for(Pipe pipe:pipes)
+        {
+            Position p = new Position(pipe.getPosition().getX()-1,pipe.getPosition().getY());
             if(player.getPosition().equals(p))
             {
                 return true;
@@ -262,6 +321,15 @@ public class Map {
                 return true;
             }
         }
+        for(Pipe pipe:pipes)
+        {
+            Position p = new Position(pipe.getPosition().getX()+1,pipe.getPosition().getY());
+            if(player.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -309,6 +377,11 @@ public class Map {
                         {
                             Position p = new Position(pole.getPosition().getX()-1,pole.getPosition().getY());
                             pole.setPosition(p);
+                        }
+                        for(Pipe pipe: pipes)
+                        {
+                            Position p = new Position(pipe.getPosition().getX()-1,pipe.getPosition().getY());
+                            pipe.setPosition(p);
                         }
                     }
                 }
