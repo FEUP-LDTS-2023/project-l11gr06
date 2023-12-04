@@ -18,7 +18,7 @@ public class Game {
     public static int height_game = 20;
     public Player player = new Player(3, height_game-4);
 
-    public Map map = new Map(585,20,player);
+    public Map map = new Map(250,20,player);
     public int points=0;
     private final TerminalScreen screen;
     private Terminal terminal;
@@ -99,7 +99,7 @@ public class Game {
                 if (map.collect_coins()) {
                     points+=100;
                     draw();
-                }
+            }
                 if (map.collect_mushroom()) {
                     points+=1000;
                     draw();
