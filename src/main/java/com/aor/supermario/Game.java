@@ -1,11 +1,10 @@
-import com.googlecode.lanterna.TerminalPosition;
+package com.aor.supermario;
+
+import com.aor.supermario.model.Position;
 import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
@@ -46,7 +45,7 @@ public class Game {
 
     public void run() throws IOException {
         while (true) {
-            //if(map.getLives()>)System.out.println("Game Over");
+            //if(map.getLives()>)System.out.println("com.aor.supermario.controller.Game Over");
             draw();
             KeyStroke key = screen.readInput();
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') screen.close();

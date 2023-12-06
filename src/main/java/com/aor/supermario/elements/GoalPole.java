@@ -1,9 +1,13 @@
+package com.aor.supermario.elements;
+
+import com.aor.supermario.Game;
+import com.aor.supermario.model.Position;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public class GoalPole extends Element{
+public class GoalPole extends Element {
 
     public GoalPole(Position p){
         super(p);
@@ -13,7 +17,7 @@ public class GoalPole extends Element{
     }
     public void draw(TextGraphics graphics) {
 
-        if(getPosition().getY()==Game.height_game-13)
+        if(getPosition().getY()== Game.height_game-13)
         {
             graphics.setForegroundColor(TextColor.Factory.fromString("#8A3324"));
             graphics.enableModifiers(SGR.BOLD);

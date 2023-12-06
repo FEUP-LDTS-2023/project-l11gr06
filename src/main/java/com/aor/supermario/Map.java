@@ -1,15 +1,16 @@
+package com.aor.supermario;
+
+import com.aor.supermario.elements.*;
+import com.aor.supermario.model.Position;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.screen.Screen;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Map {
     private Player player;
@@ -26,7 +27,7 @@ public class Map {
     private List<Pipe> pipes;
 
 
-    //private List<Coin> coins;
+    //private List<com.aor.supermario.controller.Coin> coins;
     public Map(int width,int height,Player player) {
         this.width = width;
         this.height = height;
@@ -152,14 +153,14 @@ public class Map {
     {
         List<MysteryBlock> mysteryBlocks = new ArrayList<>();
         mysteryBlocks.add(new MysteryBlock(18, height - 7));
-        mysteryBlocks.add(new MysteryBlock(23, height - 7)); //TEM COGUMELO
+        mysteryBlocks.add(new MysteryBlock(23, height - 7));
         mysteryBlocks.add(new MysteryBlock(25, height - 7));
         mysteryBlocks.add(new MysteryBlock(24, height - 12));
-        mysteryBlocks.add(new MysteryBlock(81, height - 7)); //TEM COGUMELO
+        mysteryBlocks.add(new MysteryBlock(81, height - 7));
         mysteryBlocks.add(new MysteryBlock(97, height - 12));
         mysteryBlocks.add(new MysteryBlock(109, height - 7));
         mysteryBlocks.add(new MysteryBlock(112, height - 7));
-        mysteryBlocks.add(new MysteryBlock(112, height - 12)); //TEM COGUMELO
+        mysteryBlocks.add(new MysteryBlock(112, height - 12));
         mysteryBlocks.add(new MysteryBlock(132, height - 12));
         mysteryBlocks.add(new MysteryBlock(133, height - 12));
         mysteryBlocks.add(new MysteryBlock(174, height - 12));

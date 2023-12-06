@@ -1,3 +1,5 @@
+package com.aor.supermario;
+
 import java.io.IOException;
 
 public class Main {
