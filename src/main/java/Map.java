@@ -142,9 +142,9 @@ public class Map {
     private List <Monster> createMonster()
     {
         List <Monster> monsters = new ArrayList<>();
-        monsters.add(new Turtle(35, height - 4));
-        monsters.add (new BrownMushroom(25,height-4));
-        //monsters.add(new PiranhaPlant(27,height-4));
+        //monsters.add(new Turtle(35, height - 4));
+        //monsters.add (new BrownMushroom(25,height-4));
+        monsters.add(new PiranhaPlant(27,height-4));
         return monsters;
     }
     public void draw(TextGraphics graphics)
@@ -269,7 +269,7 @@ public class Map {
         }
         return false;
     }
-    public void monstermonstercollision(Monster m)
+    public void monsterMonsterCollision(Monster m)
     {
         for(Monster mt:monsters) {
             if (m.getPosition().getY() == mt.getPosition().getY()) {
@@ -292,7 +292,7 @@ public class Map {
     }
     public void moveMonster(Monster m)
     {
-        monstermonstercollision(m);
+        monsterMonsterCollision(m);
         if(m.getMoveDirection()==0)
         {
             if(!collision_x_back(m)) m.setPosition(m.moveLeft());
@@ -314,8 +314,10 @@ public class Map {
         return l;
     }
     public boolean monsterCollision(Monster m) {
-        if(m instanceof PiranhaPlant)
-            if(((PiranhaPlant) m).getOpenCloseState()==4)return false;
+        if(m instanceof PiranhaPlant) {
+            if (((PiranhaPlant) m).getOpenCloseState() == 4) return false;
+            else return player.getPosition().equals(m.getPosition());
+        }
 
         if(player.getPosition().getY()==m.getPosition().getY()) {
             if(m instanceof Turtle && ((Turtle) m).getState()==1)
