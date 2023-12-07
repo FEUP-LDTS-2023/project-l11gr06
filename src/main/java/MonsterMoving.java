@@ -11,6 +11,7 @@ public class MonsterMoving implements Runnable{
         game=g;
         player=p;
     }
+
     public void run() {
         while(true)
         {

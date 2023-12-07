@@ -159,6 +159,7 @@ public class Map {
         mysteryBlocks.add(new MysteryBlock(109, height - 7));
         mysteryBlocks.add(new MysteryBlock(112, height - 7));
         mysteryBlocks.add(new MysteryBlock(112, height - 12)); //TEM COGUMELO
+        mysteryBlocks.add(new MysteryBlock(115, height - 7));
         mysteryBlocks.add(new MysteryBlock(132, height - 12));
         mysteryBlocks.add(new MysteryBlock(133, height - 12));
         mysteryBlocks.add(new MysteryBlock(174, height - 12));
@@ -230,9 +231,42 @@ public class Map {
 
     private List <Monster> createMonster()
     {
-        List <Monster> monsters = new ArrayList<>();;
+        List <Monster> monsters = new ArrayList<>();
+        monsters.add(new BrownMushroom(25, height - 4));
+
         monsters.add(new PiranhaPlant(30,height-6));
         monsters.add(new PiranhaPlant(31,height-6));
+
+        monsters.add(new PiranhaPlant(40,height-7));
+        monsters.add(new PiranhaPlant(41,height-7));
+
+        monsters.add(new BrownMushroom(42, height - 4));
+
+        monsters.add(new PiranhaPlant(48,height-8));
+        monsters.add(new PiranhaPlant(49,height-8));
+
+        monsters.add(new BrownMushroom(53, height - 4));
+        monsters.add(new BrownMushroom(55, height - 4));
+
+        monsters.add(new BrownMushroom(83, height - 13));
+        monsters.add(new BrownMushroom(83, height - 15));
+
+        monsters.add(new BrownMushroom(100, height - 4));
+        monsters.add(new BrownMushroom(102, height - 4));
+
+        monsters.add(new Turtle(110, height - 4));
+
+        monsters.add(new BrownMushroom(117, height - 4));
+        monsters.add(new BrownMushroom(119, height - 4));
+
+        monsters.add(new BrownMushroom(127, height - 4));
+        monsters.add(new BrownMushroom(129, height - 4));
+
+        monsters.add(new BrownMushroom(131, height - 4));
+        monsters.add(new BrownMushroom(133, height - 4));
+
+        monsters.add(new PiranhaPlant(183,height-6));
+        monsters.add(new PiranhaPlant(184,height-6));
         return monsters;
     }
     public void draw(TextGraphics graphics)
