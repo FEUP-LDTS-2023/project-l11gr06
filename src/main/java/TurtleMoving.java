@@ -21,7 +21,7 @@ public class TurtleMoving implements Runnable{
                 throw new RuntimeException(e);
             }
             try {
-                Thread.sleep(50);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

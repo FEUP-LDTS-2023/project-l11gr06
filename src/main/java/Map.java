@@ -22,8 +22,6 @@ public class Map {
 
     private List <Monster> monsters;
 
-    private List <Turtle> turtles;
-
     private List <PiranhaPlant> p_plants;
 
     //private List<Coin> coins;
@@ -144,7 +142,9 @@ public class Map {
     private List <Monster> createMonster()
     {
         List <Monster> monsters = new ArrayList<>();
-        monsters.add(new Turtle(35, height - 10));
+        monsters.add(new Turtle(35, height - 4));
+        monsters.add (new BrownMushroom(25,height-4));
+        //monsters.add(new PiranhaPlant(27,height-4));
         return monsters;
     }
     public void draw(TextGraphics graphics)
@@ -269,18 +269,40 @@ public class Map {
         }
         return false;
     }
+    public void monstermonstercollision(Monster m)
+    {
+        for(Monster mt:monsters) {
+            if (m.getPosition().getY() == mt.getPosition().getY()) {
+                if ((m.getPosition().getX()+1 == mt.getPosition().getX())&&
+                        m.getMoveDirection()==1 && mt.getMoveDirection()==0)
+                {
+                    m.setMoveDirection(0);
+                    mt.setMoveDirection(1);
+                }
+                else if((m.getPosition().getX()-1 == mt.getPosition().getX())&&
+                        m.getMoveDirection()==0 && mt.getMoveDirection()==1)
+                {
+                    m.setMoveDirection(1);
+                    mt.setMoveDirection(0);
+                }
+            }
+        }
+
+
+    }
     public void moveMonster(Monster m)
     {
-            if(m.getMoveDirection()==0)
-            {
-                if(!collision_x_back(m)) m.setPosition(m.moveLeft());
-                else m.setMoveDirection(1);
-            }
-            else if (m.getMoveDirection()==1)
-            {
-                if(!collision_x_front(m)) m.setPosition(m.moveRight());
-                else m.setMoveDirection(0);
-            }
+        monstermonstercollision(m);
+        if(m.getMoveDirection()==0)
+        {
+            if(!collision_x_back(m)) m.setPosition(m.moveLeft());
+            else m.setMoveDirection(1);
+        }
+        else if (m.getMoveDirection()==1)
+        {
+            if(!collision_x_front(m)) m.setPosition(m.moveRight());
+            else m.setMoveDirection(0);
+        }
     }
     public List<Monster> monstersToMove()
     {
@@ -292,6 +314,9 @@ public class Map {
         return l;
     }
     public boolean monsterCollision(Monster m) {
+        if(m instanceof PiranhaPlant)
+            if(((PiranhaPlant) m).getOpenCloseState()==4)return false;
+
         if(player.getPosition().getY()==m.getPosition().getY()) {
             if(m instanceof Turtle && ((Turtle) m).getState()==1)
             {
@@ -306,7 +331,8 @@ public class Map {
                     m.setMoveDirection(1);
                 }
             }
-            if (player.getPosition().getX() - 1 == m.getPosition().getX() && m.getMoveDirection()==1) return true;
+            if(player.getPosition()== m.getPosition())return true;
+            else if (player.getPosition().getX() - 1 == m.getPosition().getX() && m.getMoveDirection()==1) return true;
             else return (player.getPosition().getX() + 1 == m.getPosition().getX() && m.getMoveDirection()==0);
         }
         else if(player.getPosition().getX()==m.getPosition().getX())

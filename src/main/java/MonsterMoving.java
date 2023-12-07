@@ -3,8 +3,8 @@ import java.io.IOException;
 public class MonsterMoving implements Runnable{
     private Map map;
     private Game game;
-
     private Player player;
+
     public MonsterMoving(Map m, Game g, Player p)
     {
         map=m;

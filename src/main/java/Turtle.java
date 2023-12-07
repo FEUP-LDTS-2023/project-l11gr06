@@ -5,6 +5,11 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Turtle extends Monster{
     private int state = 0;
+
+    //state=0 -> tartaruga inicial
+    //state=1 -> carapaça parada
+    //state=2 -> carapaça a mover
+
     public Turtle(Position p){
         super(p);
     }

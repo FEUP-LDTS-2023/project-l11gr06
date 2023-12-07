@@ -25,7 +25,6 @@ public class Game{
         screen.doResizeIfNecessary();     // resize screen if necessary
         TerminalSize terminalSize = new TerminalSize(w, h);
         TextGraphics graphics = screen.newTextGraphics();
-        // DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
     }
 
 
@@ -36,27 +35,12 @@ public class Game{
         player.draw(screen.newTextGraphics());
         screen.refresh();
     }
-    public boolean gravity(Element element) throws IOException {
-        while(element.getPosition().getY()!=height_game)
-        {
-            if(element.getPosition().getY()==height_game-1 && element instanceof Player) return false;
-            if(map.collision_y(element)) break;
-            Position p = new Position(element.getPosition().getX(),element.getPosition().getY()+1);
-            element.setPosition(p);
-            draw();
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return true;
-    }
-
 
     public void runGame() throws IOException {
         Thread t1 = new Thread(new MonsterMoving(map,this,player));
         t1.start();
+        Thread t_ = new Thread(new PiranhaPlantMoving(map,this,player));
+        t_.start();
         while (true) {
             draw();
             KeyStroke key = screen.readInput();
