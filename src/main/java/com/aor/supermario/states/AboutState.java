@@ -1,9 +1,9 @@
 package com.aor.supermario.states;
 
-import com.aor.supermario.Map;
+import com.aor.supermario.model.Map;
 
-public class AboutState extends State<Menu> {
-    public AboutState(Menu model) {
+public class AboutState extends State<About> {
+    public AboutState(About model) {
         super(model);
     }
 

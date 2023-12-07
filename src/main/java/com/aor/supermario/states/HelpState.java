@@ -1,9 +1,9 @@
 package com.aor.supermario.states;
 
-import com.aor.supermario.Map;
+import com.aor.supermario.model.Map;
 
-public class HelpState extends State<Menu> {
-    public HelpState(Menu model) {
+public class HelpState extends State<Help> {
+    public HelpState(Help model) {
         super(model);
     }
 

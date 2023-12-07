@@ -1,15 +1,18 @@
 package com.aor.supermario;
 
+import com.aor.supermario.elements.Player;
+import com.aor.supermario.model.Map;
 import com.aor.supermario.model.Position;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.graphics.TextGraphics;
+import com.aor.supermario.states.MenuState;
+import com.aor.supermario.states.State;
+import com.aor.supermario.gui.LanternaGUI;
+import com.aor.supermario.model.Menu;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class Game {
 
@@ -19,8 +22,16 @@ public class Game {
 
     public Map map = new Map(250,20,player);
     public int points=0;
-    private final TerminalScreen screen;
-    private Terminal terminal;
+    private final LanternaGUI gui;
+    private State state;
+    //private final TerminalScreen screen;
+    //private Terminal terminal;
+
+    public Game() throws FontFormatException, IOException, URISyntaxException {
+        this.gui = new LanternaGUI(width_game, height_game);
+        this.state = new MenuState(new Menu());
+    }
+    /*
     public Game(int w,int h) throws IOException {
         //Terminal terminal = new DefaultTerminalFactory().createTerminal();
         terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(w, h)).createTerminal();
@@ -31,9 +42,11 @@ public class Game {
         TerminalSize terminalSize = new TerminalSize(w, h);
         TextGraphics graphics = screen.newTextGraphics();
         // DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
+    }*/
+
+    public void setState(State state) {
+        this.state = state;
     }
-
-
 
     private void draw() throws IOException {
         screen.clear();

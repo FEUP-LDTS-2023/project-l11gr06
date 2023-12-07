@@ -1,5 +1,6 @@
 package com.aor.supermario.states;
 
+import com.aor.supermario.model.Menu;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;

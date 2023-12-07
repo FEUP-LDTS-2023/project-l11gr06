@@ -18,9 +18,4 @@ public class Pipe extends Element {
         character = c;
     }
 
-    public void draw(TextGraphics graphics) {
-        graphics.setForegroundColor(TextColor.Factory.fromString("#8A3324"));
-        graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()), String.valueOf(character));
-    }
 }

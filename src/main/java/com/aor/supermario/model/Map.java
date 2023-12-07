@@ -1,7 +1,9 @@
-package com.aor.supermario;
+package com.aor.supermario.model;
 
+import com.aor.supermario.Game;
+import com.aor.supermario.elements.Player;
 import com.aor.supermario.elements.*;
-import com.aor.supermario.model.Position;
+import com.aor.supermario.model.MapBuilder;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextCharacter;
@@ -9,7 +11,6 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Map {
@@ -27,13 +28,11 @@ public class Map {
     private List<Pipe> pipes;
 
 
-    //private List<com.aor.supermario.controller.Coin> coins;
     public Map(int width,int height,Player player) {
         this.width = width;
         this.height = height;
         this.player=player;
         this.grounds = createGrounds();
-
         this.blocks = createBlocks();
         this.stairs = createStairs();
         this.poles = createPoles();
@@ -41,195 +40,78 @@ public class Map {
         this.coins = createCoins();
         this.redMushrooms = createRedMushrooms();
         this.pipes = createPipes();
-        //this.coins = createCoins();
+        this.coins = createCoins();
         //this.monsters = createMonsters();
     }
-    private List<GoalPole> createPoles()
-    {
-        List<GoalPole> poles = new ArrayList<>();
-        for(int i = 0; i < 9;i++) poles.add(new GoalPole(202,height-5-i));
-        return poles;
+    public int getWidth() {
+        return width;
+    }
+    public int getHeight() {
+        return height;
+    }
+    public Player getPlayer() {
+        return player;
+    }
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
-    private List<Ground> createGrounds() {
-        List<Ground> grounds = new ArrayList<>();
-        for (int c = 0; c < 71; c++) {
-            grounds.add(new Ground(c, height - 1));
-            grounds.add(new Ground(c, height - 2));
-            grounds.add(new Ground(c, height - 3));
-        }
-        for(int c = 74; c <89;c++) {
-            grounds.add(new Ground(c, height - 1));
-            grounds.add(new Ground(c, height - 2));
-            grounds.add(new Ground(c, height - 3));
-        }
-        for(int c = 92; c <156;c++) {
-            grounds.add(new Ground(c, height - 1));
-            grounds.add(new Ground(c, height - 2));
-            grounds.add(new Ground(c, height - 3));
-        }
-        for(int c = 159; c <width;c++) {
-            grounds.add(new Ground(c, height - 1));
-            grounds.add(new Ground(c, height - 2));
-            grounds.add(new Ground(c, height - 3));
-        }
+    //public List<Monster> getMonsters() {
+    //    return monsters;
+    //}
 
+    //public void setMonsters(List<Monster> monsters) {
+    //    this.monsters = monsters;
+    //}
+
+    public List<Ground> getGrounds() {
         return grounds;
     }
-    private List<Stair> createStairs() {
-        List<Stair> stairs = new ArrayList<>();
-
-        int i =0;
-        for(int c = 137; c <141;c++) {
-            i++;
-            for(int a =0;a<i;a++)
-            {
-                stairs.add(new Stair(c, height - 4 -a));
-            }
-        }
-
-        i =0;
-        for(int c = 147; c > 143;c--) {
-            i++;
-            for(int a =0;a<i;a++)
-            {
-                stairs.add(new Stair(c, height - 4 -a));
-            }
-        }
-        i =0;
-        for(int c = 151; c <156;c++) {
-            if(c!=155)i++;
-            for(int a =0;a<i;a++)
-            {
-                stairs.add(new Stair(c, height - 4 -a));
-            }
-        }
-
-        i =0;
-        for(int c = 162; c >158;c--) {
-            i++;
-            for(int a =0;a<i;a++)
-            {
-                stairs.add(new Stair(c, height - 4 -a));
-            }
-        }
-        i =0;
-        for(int c = 185; c <194;c++) {
-            if(c!=193)i++;
-            for(int a =0;a<i;a++)
-            {
-                stairs.add(new Stair(c, height - 4 -a));
-            }
-        }
-        stairs.add(new Stair(202,height-4));
-        return stairs;
+    public void setGrounds(List<Ground> grounds) {
+        this.grounds = grounds;
     }
-
-    private List<Block> createBlocks() {
-        List<Block> blocks = new ArrayList<>();
-        blocks.add(new Block(22, height - 7));
-        blocks.add(new Block(24, height - 7));
-        blocks.add(new Block(26, height - 7));
-        blocks.add(new Block(80, height - 7));
-        blocks.add(new Block(82, height - 7));
-        for(int i = 83; i<=90;i++) blocks.add(new Block(i, height - 12));
-        for(int i = 94; i<=96;i++) blocks.add(new Block(i, height - 12));
-        blocks.add(new Block(97, height - 7)); //TEM COIN
-        blocks.add(new Block(103, height - 7));
-        blocks.add(new Block(104, height - 7)); //TEM ESTRELA
-        blocks.add(new Block(121, height - 7));
-        for(int i = 124; i<=126;i++) blocks.add(new Block(i, height - 12));
-        blocks.add(new Block(131, height - 12));
-        blocks.add(new Block(132, height - 7));
-        blocks.add(new Block(133, height - 7));
-        blocks.add(new Block(134, height - 12));
-        blocks.add(new Block(172, height - 7));
-        blocks.add(new Block(173, height - 7));
-        blocks.add(new Block(175, height - 7));
+    public List<Block> getBlocks() {
         return blocks;
     }
-
-    private List<MysteryBlock> createMystery()
-    {
-        List<MysteryBlock> mysteryBlocks = new ArrayList<>();
-        mysteryBlocks.add(new MysteryBlock(18, height - 7));
-        mysteryBlocks.add(new MysteryBlock(23, height - 7));
-        mysteryBlocks.add(new MysteryBlock(25, height - 7));
-        mysteryBlocks.add(new MysteryBlock(24, height - 12));
-        mysteryBlocks.add(new MysteryBlock(81, height - 7));
-        mysteryBlocks.add(new MysteryBlock(97, height - 12));
-        mysteryBlocks.add(new MysteryBlock(109, height - 7));
-        mysteryBlocks.add(new MysteryBlock(112, height - 7));
-        mysteryBlocks.add(new MysteryBlock(112, height - 12));
-        mysteryBlocks.add(new MysteryBlock(132, height - 12));
-        mysteryBlocks.add(new MysteryBlock(133, height - 12));
-        mysteryBlocks.add(new MysteryBlock(174, height - 12));
-        return mysteryBlocks;
+    public void setBlocks(List<Block> blocks) {
+        this.blocks = blocks;
     }
-
-    private List<Coin> createCoins() {
-        List<Coin> coins = new ArrayList<>();
-        coins.add(new Coin(18, height - 7));
-        coins.add(new Coin(25, height - 7));
-        coins.add(new Coin(24, height - 12));
-        coins.add(new Coin(97, height - 12));
-        coins.add(new Coin(109, height - 7));
-        coins.add(new Coin(112, height - 7));
-        coins.add(new Coin(132, height - 12));
-        coins.add(new Coin(133, height - 12));
-        coins.add(new Coin(174, height - 12));
+    public List<Coin> getCoins() {
         return coins;
     }
-
-    private List<RedMushroom> createRedMushrooms() {
-        List<RedMushroom> redMushrooms = new ArrayList<>();
-        redMushrooms.add(new RedMushroom(23, height - 7));
-        redMushrooms.add(new RedMushroom(81, height - 7));
-        redMushrooms.add(new RedMushroom(112, height - 12));
-        return redMushrooms;
+    public void setCoins(List<Coin> coins) {
+        this.coins = coins;
     }
-
-
-    private List<Pipe> createPipes(){
-        List<Pipe> pipes = new ArrayList<>();
-        pipes.add(new Pipe(30,height-4,'M'));
-        pipes.add(new Pipe(30,height-5,'O'));
-        pipes.add(new Pipe(31,height-4,'N'));
-        pipes.add(new Pipe(31,height-5,'P'));
-        pipes.add(new Pipe(40,height-4,'M'));
-        pipes.add(new Pipe(40,height-5,'M'));
-        pipes.add(new Pipe(40,height-6,'O'));
-        pipes.add(new Pipe(41,height-4,'N'));
-        pipes.add(new Pipe(41,height-5,'N'));
-        pipes.add(new Pipe(41,height-6,'P'));
-        pipes.add(new Pipe(48,height-4,'M'));
-        pipes.add(new Pipe(48,height-5,'M'));
-        pipes.add(new Pipe(48,height-6,'M'));
-        pipes.add(new Pipe(48,height-7,'0'));
-        pipes.add(new Pipe(49,height-4,'N'));
-        pipes.add(new Pipe(49,height-5,'N'));
-        pipes.add(new Pipe(49,height-6,'N'));
-        pipes.add(new Pipe(49,height-7,'P'));
-        pipes.add(new Pipe(59,height-4,'M'));
-        pipes.add(new Pipe(59,height-5,'M'));
-        pipes.add(new Pipe(59,height-6,'M'));
-        pipes.add(new Pipe(59,height-7,'0'));
-        pipes.add(new Pipe(60,height-4,'N'));
-        pipes.add(new Pipe(60,height-5,'N'));
-        pipes.add(new Pipe(60,height-6,'N'));
-        pipes.add(new Pipe(60,height-7,'P'));
-        pipes.add(new Pipe(167,height-4,'M'));
-        pipes.add(new Pipe(167,height-5,'O'));
-        pipes.add(new Pipe(168,height-4,'N'));
-        pipes.add(new Pipe(168,height-5,'P'));
-        pipes.add(new Pipe(183,height-4,'M'));
-        pipes.add(new Pipe(183,height-5,'O'));
-        pipes.add(new Pipe(184,height-4,'N'));
-        pipes.add(new Pipe(184,height-5,'P'));
+    public List<GoalPole> getGoalPole() {
+        return poles;
+    }
+    public void setGoalPoles(List<GoalPole> goalPoles) {
+        this.poles = poles;
+    }
+    public List<MysteryBlock> getMysteryBlocks() {
+        return mysteryBlocks;
+    }
+    public void setMysteryBlocks(List<MysteryBlock> mysteryBlocks) {
+        this.mysteryBlocks = mysteryBlocks;
+    }
+    public List<Pipe> getPipes() {
         return pipes;
     }
-
-
+    public void setPipes(List<Pipe> pipes) {
+        this.pipes = pipes;
+    }
+    public List<RedMushroom> getRedMushrooms() {
+        return redMushrooms;
+    }
+    public void setRedMushrooms(List<RedMushroom> redMushrooms) {
+        this.redMushrooms = redMushrooms;
+    }
+    public List<Stair> getStairs() {
+        return stairs;
+    }
+    public void setStairs(List<Stair> stairs) {
+        this.stairs = stairs;
+    }
     public void draw(TextGraphics graphics)
     {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));

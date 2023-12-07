@@ -1,6 +1,6 @@
 package com.aor.supermario.states;
 
-import com.aor.supermario.Map;
+import com.aor.supermario.model.Map;
 
 public class VictoryState extends State<Map> {
     public VictoryState(Map map) {

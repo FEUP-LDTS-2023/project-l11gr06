@@ -3,12 +3,12 @@ package com.aor.supermario.model;
 import java.util.Arrays;
 import java.util.List;
 
-public class Menu {
+public class Help {
     private final List<String> entries;
     private int currentEntry = 0;
 
-    public Menu() {
-        this.entries = Arrays.asList("Start","Help", "About", "Exit");
+    public Help() {
+        this.entries = Arrays.asList("Instructions", "Exit");
     }
 
     public void nextEntry() {
@@ -32,16 +32,11 @@ public class Menu {
     }
 
     public boolean isSelectedExit() {
-        return isSelected(3);
-    }
-    public boolean isSelectedStart() {
-        return isSelected(0);
-    }
-    public boolean isSelectedHelp() {
         return isSelected(1);
     }
-    public boolean isSelectedAbout() {
-        return isSelected(2);
+
+    public boolean isSelectedStart() {
+        return isSelected(0);
     }
 
     public int getNumberEntries() {

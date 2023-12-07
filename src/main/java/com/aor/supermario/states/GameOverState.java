@@ -1,6 +1,6 @@
 package com.aor.supermario.states;
 
-import com.aor.supermario.Map;
+import com.aor.supermario.model.Map;
 
 public class GameOverState extends State<Map> {
     public GameOverState(Map map) {

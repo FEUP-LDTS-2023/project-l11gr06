@@ -15,21 +15,5 @@ public class GoalPole extends Element {
     public GoalPole(int x, int y) {
         super(x,y);
     }
-    public void draw(TextGraphics graphics) {
-
-        if(getPosition().getY()== Game.height_game-13)
-        {
-            graphics.setForegroundColor(TextColor.Factory.fromString("#8A3324"));
-            graphics.enableModifiers(SGR.BOLD);
-            graphics.putString(new TerminalPosition(getPosition().getX(),getPosition().getY()), "<");
-        }
-        else
-        {
-            graphics.setForegroundColor(TextColor.Factory.fromString("#8A3324"));
-            graphics.enableModifiers(SGR.BOLD);
-            graphics.putString(new TerminalPosition(getPosition().getX(),getPosition().getY()), "|");
-        }
-    }
-
 
 }

@@ -6,12 +6,24 @@ import java.io.IOException;
 
 public interface GUI {
     ACTION getNextAction() throws IOException;
+    void drawPlayer(Position position);
 
-    void drawHero(Position position);
+    void drawGround(Position position);
 
-    void drawWall(Position position);
+    //void drawMonster(Position position);
 
-    void drawMonster(Position position);
+    void drawBlock(Position position);
+
+    void drawMysteryBlock(Position position);
+
+    void drawStair(Position position);
+
+    void drawPipe(Position position);
+    void drawCoin(Position position);
+
+    void drawRedMushroom(Position position);
+
+    void drawGoalPole(Position position);
 
     void drawText(Position position, String text, String color);
 

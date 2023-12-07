@@ -1,6 +1,11 @@
 package com.aor.supermario.gui;
 
+import com.aor.supermario.Game;
+import com.aor.supermario.elements.GoalPole;
+import com.aor.supermario.elements.MysteryBlock;
 import com.aor.supermario.model.Position;
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -81,21 +86,56 @@ public class LanternaGUI implements GUI {
         return ACTION.NONE;
     }
 
-    @Override
-    public void drawHero(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'H', "#FFD700");
-    }
 
     @Override
-    public void drawWall(Position position) {
-        drawCharacter(position.getX(), position.getY(), '#', "#3333FF");
+    public void drawPlayer(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'X', "#FFFF33");
     }
-
     @Override
-    public void drawMonster(Position position) {
-        drawCharacter(position.getX(), position.getY(), '@', "#CC0000");
+    public void drawGround(Position position) {
+        drawCharacter(position.getX(), position.getY(), '_', "#3333FF");
     }
-
+    //@Override
+    //public void drawMonster(Position position) {
+    //    drawCharacter(position.getX(), position.getY(), 'M', "#CC0000");
+    //}
+    @Override
+    public void drawBlock(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'B',"#8A3324");
+    }
+    @Override
+    public void drawMysteryBlock(Position position) {
+        if (MysteryBlock.getMysteryState() == 0) {
+            drawCharacter(position.getX(), position.getY(), '?', "#8A3324");
+        } else {
+            drawCharacter(position.getX(), position.getY(), '!', "#8A3324");
+        }
+    }
+    @Override
+    public void drawStair(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'O', "#8A3324");
+    }
+    @Override
+    public void drawPipe(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'P', "#8A3324");
+    }
+    @Override
+    public void drawRedMushroom(Position position) {
+        drawCharacter(position.getX(), position.getY(), '@', "#8A3324");
+    }
+    @Override
+    public void drawCoin(Position position) {
+        drawCharacter(position.getX(), position.getY(), '0', "#8A3324");
+    }
+    @Override
+    public void drawGoalPole(Position position) {
+        if(GoalPole.getPosition().getY()== Game.height_game-13)
+            drawCharacter(position.getX(), position.getY(), '<', "#8A3324");
+        else
+        {
+            drawCharacter(position.getX(), position.getY(), '|', "#8A3324");
+        }
+    }
     @Override
     public void drawText(Position position, String text, String color) {
         TextGraphics tg = screen.newTextGraphics();
