@@ -5,6 +5,7 @@ import com.aor.supermario.model.Map;
 import com.aor.supermario.model.Position;
 import com.aor.supermario.states.MenuState;
 import com.aor.supermario.states.State;
+import com.aor.supermario.gui.GUI;
 import com.aor.supermario.gui.LanternaGUI;
 import com.aor.supermario.model.Menu;
 import com.googlecode.lanterna.input.KeyStroke;
@@ -15,17 +16,16 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class Game {
-
     public static int width_game = 65;
     public static int height_game = 20;
-    public Player player = new Player(3, height_game-4);
+
+    public static int map_width=250;
+    public static int map_height=20;
 
     public Map map = new Map(250,20);
     public int points=0;
     private final LanternaGUI gui;
     private State state;
-    //private final TerminalScreen screen;
-    //private Terminal terminal;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(width_game, height_game);
@@ -47,18 +47,46 @@ public class Game {
     public void setState(State state) {
         this.state = state;
     }
-
+/*
     private void draw() throws IOException {
         screen.clear();
         map.draw(screen.newTextGraphics());
         player.draw(screen.newTextGraphics());
         screen.refresh();
     }
+*/
 
+    /*
+    private void start() throws IOException {
+        int FPS = 10;
+        int frameTime = 1000 / FPS;
+
+        while (this.state != null) {
+            long startTime = System.currentTimeMillis();
+
+            state.step(this, gui, startTime);
+
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            long sleepTime = frameTime - elapsedTime;
+
+            try {
+                if (sleepTime > 0) Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+            }
+        }
+
+        gui.close();
+    }*/
 
     public void run() throws IOException {
-        while (true) {
-            //if(map.getLives()>)System.out.println("com.aor.supermario.controller.Game Over");
+        while (this.state != null) {
+            long startTime = System.currentTimeMillis();
+            state.step(this, gui, startTime);
+
+
+        }
+
+            while (true) {
             draw();
             KeyStroke key = screen.readInput();
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') screen.close();
@@ -145,8 +173,7 @@ public class Game {
 
 
         }
+        gui.close();
     }
-    private void processKey(KeyStroke key) {
-        map.processKey(key);
-    }
+
 }

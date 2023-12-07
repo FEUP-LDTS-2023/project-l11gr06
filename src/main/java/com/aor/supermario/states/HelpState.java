@@ -1,6 +1,7 @@
 package com.aor.supermario.states;
 
 import com.aor.supermario.controller.Controller;
+import com.aor.supermario.controller.HelpController;
 import com.aor.supermario.model.Help;
 import com.aor.supermario.model.Map;
 import com.aor.supermario.viewer.HelpViewer;
@@ -22,4 +23,4 @@ public class HelpState extends State<Help> {
     }
 }
 
-}
+

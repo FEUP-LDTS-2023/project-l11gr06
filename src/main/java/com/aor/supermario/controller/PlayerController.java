@@ -6,12 +6,20 @@ import com.aor.supermario.elements.*;
 import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.Position;
 import com.aor.supermario.model.Map;
-import com.googlecode.lanterna.input.KeyStroke;
+
+import static com.aor.supermario.model.Map.*;
 
 public class PlayerController extends GameController {
     public PlayerController(Map map) {
         super(map);
     }
+    /*    public Position moveUp() {
+        return new Position(getPosition().getX(), getPosition().getY() - 1);
+    }
+    public Position moveLeft() {
+        return new Position(getPosition().getX()-1, getPosition().getY());
+    }
+    public Position moveRight() {return new Position(getPosition().getX()+1, getPosition().getY());}*/
 
     public void moveLeft() {
         movePlayer(getModel().getPlayer().getPosition().getLeft());
@@ -44,134 +52,53 @@ public class PlayerController extends GameController {
             }
         }
         if (action == GUI.ACTION.RIGHT) {
-            for(GoalPole pole: getModel().getGoalPole()) if(Map.getPlayer().getPosition().getX()==pole.getPosition().getX()) System.exit(0);
-            if(!collision_x_front())
-            {
-                if(Map.getPlayer().getPosition().getX()< Game.width_game/2) movePlayer(player.moveRight());
-                else
-                {
-                    for(Ground ground: grounds)
-                    {
-                        Position p = new Position(ground.getPosition().getX()-1,ground.getPosition().getY());
+            for (GoalPole pole : getModel().getGoalPole())
+                if (getPlayer().getPosition().getX() == pole.getPosition().getX()) System.exit(0);
+            if (!collision_x_front()) {
+                if (getPlayer().getPosition().getX() < Game.width_game / 2) movePlayer(getPlayer().moveRight());
+                else {
+                    for (Ground ground : getModel().getGrounds()) {
+                        Position p = new Position(ground.getPosition().getX() - 1, ground.getPosition().getY());
                         ground.setPosition(p);
                     }
-                    for(Block block: blocks)
-                    {
-                        Position p = new Position(block.getPosition().getX()-1,block.getPosition().getY());
+                    for (Block block : getModel().getBlocks()) {
+                        Position p = new Position(block.getPosition().getX() - 1, block.getPosition().getY());
                         block.setPosition(p);
                     }
-                    for(Stair stair: stairs)
-                    {
-                        Position p = new Position(stair.getPosition().getX()-1,stair.getPosition().getY());
+                    for (Stair stair : getModel().getStairs()) {
+                        Position p = new Position(stair.getPosition().getX() - 1, stair.getPosition().getY());
                         stair.setPosition(p);
                     }
-                    for(GoalPole pole: poles)
-                    {
-                        Position p = new Position(pole.getPosition().getX()-1,pole.getPosition().getY());
+                    for (GoalPole pole : getModel().getGoalPole()) {
+                        Position p = new Position(pole.getPosition().getX() - 1, pole.getPosition().getY());
                         pole.setPosition(p);
                     }
-                    for(MysteryBlock mysteryblock:mysteryBlocks)
-                    {
-                        Position p = new Position(mysteryblock.getPosition().getX()-1,mysteryblock.getPosition().getY());
+                    for (MysteryBlock mysteryblock : getModel().getMysteryBlocks()) {
+                        Position p = new Position(mysteryblock.getPosition().getX() - 1, mysteryblock.getPosition().getY());
                         mysteryblock.setPosition(p);
                     }
-                    for(Coin coin:coins)
-                    {
-                        Position p = new Position(coin.getPosition().getX()-1,coin.getPosition().getY());
+                    for (Coin coin : getModel().getCoins()) {
+                        Position p = new Position(coin.getPosition().getX() - 1, coin.getPosition().getY());
                         coin.setPosition(p);
                     }
-                    for(RedMushroom rm:redMushrooms)
-                    {
-                        Position p = new Position(rm.getPosition().getX()-1,rm.getPosition().getY());
+                    for (RedMushroom rm : getModel().getRedMushrooms()) {
+                        Position p = new Position(rm.getPosition().getX() - 1, rm.getPosition().getY());
                         rm.setPosition(p);
                     }
 
-                    for(Pipe pipe: pipes)
-                    {
-                        Position p = new Position(pipe.getPosition().getX()-1,pipe.getPosition().getY());
+                    for (Pipe pipe : getModel().getPipes()) {
+                        Position p = new Position(pipe.getPosition().getX() - 1, pipe.getPosition().getY());
                         pipe.setPosition(p);
                     }
                 }
+            }
         }
         if (action == GUI.ACTION.DOWN) {
             moveDown();
         }
         if (action == GUI.ACTION.LEFT) {
-            if(!collision_x_back())if(player.getPosition().getX()!=0)movePlayer(player.moveLeft());
-            moveLeft();
+            if (!collision_x_back()) if (getPlayer().getPosition().getX() != 0) movePlayer(getPlayer().moveLeft());
+                moveLeft();
+            }
         }
-    }
-
-
-
-    public void processKey(KeyStroke key) {
-        System.out.println(key);
-        String keyT = key.getKeyType().toString();
-        int b_block = 0;
-        switch (keyT) {
-            case "ArrowUp":
-                movePlayer(player.moveUp());
-
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "ArrowLeft":
-                if(!collision_x_back())if(player.getPosition().getX()!=0)movePlayer(player.moveLeft());
-                break;
-            case "ArrowRight":
-                for(GoalPole pole: poles) if(player.getPosition().getX()==pole.getPosition().getX()) System.exit(0);
-                if(!collision_x_front())
-                {
-                    if(player.getPosition().getX()< Game.width_game/2) movePlayer(player.moveRight());
-                    else
-                    {
-                        for(Ground ground: grounds)
-                        {
-                            Position p = new Position(ground.getPosition().getX()-1,ground.getPosition().getY());
-                            ground.setPosition(p);
-                        }
-                        for(Block block: blocks)
-                        {
-                            Position p = new Position(block.getPosition().getX()-1,block.getPosition().getY());
-                            block.setPosition(p);
-                        }
-                        for(Stair stair: stairs)
-                        {
-                            Position p = new Position(stair.getPosition().getX()-1,stair.getPosition().getY());
-                            stair.setPosition(p);
-                        }
-                        for(GoalPole pole: poles)
-                        {
-                            Position p = new Position(pole.getPosition().getX()-1,pole.getPosition().getY());
-                            pole.setPosition(p);
-                        }
-                        for(MysteryBlock mysteryblock:mysteryBlocks)
-                        {
-                            Position p = new Position(mysteryblock.getPosition().getX()-1,mysteryblock.getPosition().getY());
-                            mysteryblock.setPosition(p);
-                        }
-                        for(Coin coin:coins)
-                        {
-                            Position p = new Position(coin.getPosition().getX()-1,coin.getPosition().getY());
-                            coin.setPosition(p);
-                        }
-                        for(RedMushroom rm:redMushrooms)
-                        {
-                            Position p = new Position(rm.getPosition().getX()-1,rm.getPosition().getY());
-                            rm.setPosition(p);
-                        }
-
-                        for(Pipe pipe: pipes)
-                        {
-                            Position p = new Position(pipe.getPosition().getX()-1,pipe.getPosition().getY());
-                            pipe.setPosition(p);
-                        }
-                    }
-                }
-                break;
-        }
-    }
 }

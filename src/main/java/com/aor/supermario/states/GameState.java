@@ -1,5 +1,10 @@
 package com.aor.supermario.states;
+import com.aor.supermario.controller.Controller;
+import com.aor.supermario.controller.MapController;
 import com.aor.supermario.model.Map;
+import com.aor.supermario.viewer.Viewer;
+import com.aor.supermario.viewer.game.GameViewer;
+
 public class GameState extends State<Map> {
     public GameState(Map map) {
         super(map);
@@ -12,6 +17,6 @@ public class GameState extends State<Map> {
 
     @Override
     protected Controller<Map> getController() {
-        return new ArenaController(getModel());
+        return new MapController(getModel());
     }
 }
