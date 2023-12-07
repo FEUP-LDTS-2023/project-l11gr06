@@ -1,4 +1,4 @@
-package com.aor.supermario.viewer;
+package com.aor.supermario.viewer.game;
 
 import com.aor.supermario.elements.Block;
 import com.aor.supermario.elements.Element;

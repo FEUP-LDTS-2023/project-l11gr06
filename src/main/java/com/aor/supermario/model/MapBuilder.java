@@ -1,6 +1,6 @@
 package com.aor.supermario.model;
 
-import com.aor.supermario.elements.Player;
+import com.aor.supermario.elements.*;
 
 import java.util.List;
 
@@ -8,15 +8,15 @@ public abstract class MapBuilder {
     public Map createMap() {
         Map map = new Map(getWidth(), getHeight());
 
-        Map.setPlayer(createPlayer());
-        Map.setGrounds(createGrounds());
-        Map.setBlocks(createBlocks());
-        Map.setStairs(createStair());
-        Map.setMysteryBlocks(createMysteryBlocks());
-        Map.setCoins(createCoins());
-        Map.setPipes(createPipes());
-        Map.setGoalPoles(createGoalPole());
-        Map.setRedMushrooms(createRedMushroom());
+        map.setPlayer(createPlayer());
+        map.setGrounds(createGrounds());
+        map.setBlocks(createBlocks());
+        map.setStairs(createStairs());
+        map.setMysteryBlocks(createMysteryBlocks());
+        map.setCoins(createCoins());
+        map.setPipes(createPipes());
+        map.setGoalPoles(createGoalPole());
+        map.setRedMushrooms(createRedMushrooms());
         //Map.setMonsters(createMonsters());
 
         return map;
@@ -24,15 +24,14 @@ public abstract class MapBuilder {
 
     protected abstract int getWidth();
     protected abstract int getHeight();
-    protected abstract List<Map> createGrounds();
-    protected abstract List<Map> createStair();
-    protected abstract List<Map> createBlocks();
-    protected abstract List<Map> createMysteryBlocks();
-    protected abstract List<Map> createCoins();
-    protected abstract List<Map> createPipes();
-    protected abstract List<Map> createGoalPole();
-    protected abstract List<Map> createRedMushroom();
-    //protected abstract List<Map> createMonsters();
+    protected abstract List<Ground> createGrounds();
+    protected abstract List<Stair> createStairs();
+    protected abstract List<Block> createBlocks();
+    protected abstract List<MysteryBlock> createMysteryBlocks();
+    protected abstract List<Coin> createCoins();
+    protected abstract List<RedMushroom> createRedMushrooms();
+    protected abstract List<Pipe> createPipes();
+    protected abstract List<GoalPole> createGoalPole();
     protected abstract Player createPlayer();
-
+    //protected abstract List<Map> createMonsters();
 }

@@ -6,6 +6,7 @@ import java.io.IOException;
 
 public interface GUI {
     ACTION getNextAction() throws IOException;
+
     void drawPlayer(Position position);
 
     void drawGround(Position position);

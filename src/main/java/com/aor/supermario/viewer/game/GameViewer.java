@@ -1,9 +1,10 @@
-package com.aor.supermario.viewer;
+package com.aor.supermario.viewer.game;
 import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.Position;
 import com.aor.supermario.model.Map;
 import com.aor.supermario.elements.Element;
-import com.aor.supermario.viewer.Viewer;
+import com.aor.supermario.viewer.*;
+
 import java.util.List;
 
 public class GameViewer extends Viewer<Map> {

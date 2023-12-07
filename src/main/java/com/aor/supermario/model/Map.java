@@ -1,7 +1,6 @@
 package com.aor.supermario.model;
 
 import com.aor.supermario.Game;
-import com.aor.supermario.elements.Player;
 import com.aor.supermario.elements.*;
 import com.aor.supermario.model.MapBuilder;
 import com.googlecode.lanterna.TerminalPosition;
@@ -15,7 +14,6 @@ import java.util.List;
 
 public class Map {
     private Player player;
-    //private List<Monster> monsters;
     private int width;
     private int height;
     private List<Ground> grounds;
@@ -26,22 +24,12 @@ public class Map {
     private List<Coin> coins;
     private List<RedMushroom> redMushrooms;
     private List<Pipe> pipes;
+    //private List<Monster> monsters;
 
 
-    public Map(int width,int height,Player player) {
+    public Map(int width,int height) {
         this.width = width;
         this.height = height;
-        this.player=player;
-        this.grounds = createGrounds();
-        this.blocks = createBlocks();
-        this.stairs = createStairs();
-        this.poles = createPoles();
-        this.mysteryBlocks = createMystery();
-        this.coins = createCoins();
-        this.redMushrooms = createRedMushrooms();
-        this.pipes = createPipes();
-        this.coins = createCoins();
-        //this.monsters = createMonsters();
     }
     public int getWidth() {
         return width;
@@ -112,31 +100,7 @@ public class Map {
     public void setStairs(List<Stair> stairs) {
         this.stairs = stairs;
     }
-    public void draw(TextGraphics graphics)
-    {
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
-        for (Ground ground : grounds)
-            ground.draw(graphics);
-        for (Block block : blocks)
-            block.draw(graphics);
-        for(Stair stair:stairs)
-            stair.draw(graphics);
-        for(GoalPole pole: poles)
-            pole.draw(graphics);
-        for (Coin coin:coins) {
-            coin.draw(graphics);
-        }
-        for (RedMushroom m: redMushrooms) {
-            m.draw(graphics);
-        }
-        for(MysteryBlock mysteryblock: mysteryBlocks)
-            mysteryblock.draw(graphics);
 
-        for(Pipe pipe: pipes)
-            pipe.draw(graphics);
-        graphics.setCharacter(player.getPosition().getX(), player.getPosition().getY(), TextCharacter.fromCharacter('X')[0]);
-    }
     public boolean canPlayerMove(Position p)
     {
         for (Ground ground : grounds){
@@ -145,9 +109,9 @@ public class Map {
 
     }
 
-
+/*
     public void movePlayer(Position position) {
-        player.setPosition(position);}
+        player.setPosition(position);}*/
 
     public boolean break_block()
     {
@@ -352,7 +316,6 @@ public class Map {
     public void processKey(KeyStroke key) {
         System.out.println(key);
         String keyT = key.getKeyType().toString();
-        int b_block = 0;
         switch (keyT) {
             case "ArrowUp":
                 movePlayer(player.moveUp());

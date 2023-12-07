@@ -1,6 +1,10 @@
 package com.aor.supermario.states;
 
+import com.aor.supermario.controller.Controller;
+import com.aor.supermario.controller.MenuController;
 import com.aor.supermario.model.Menu;
+import com.aor.supermario.viewer.MenuViewer;
+import com.aor.supermario.viewer.Viewer;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;

@@ -1,6 +1,8 @@
 package com.aor.supermario.states;
 
+import com.aor.supermario.controller.Controller;
 import com.aor.supermario.model.Map;
+import com.aor.supermario.viewer.Viewer;
 
 public class GameOverState extends State<Map> {
     public GameOverState(Map map) {
@@ -9,7 +11,7 @@ public class GameOverState extends State<Map> {
 
     @Override
     protected Viewer<Map> getViewer() {
-        return new GameViewer(getModel());
+        return new GameOverViewer(getModel());
     }
 
     @Override

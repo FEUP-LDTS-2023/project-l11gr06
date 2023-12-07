@@ -20,7 +20,7 @@ public class Game {
     public static int height_game = 20;
     public Player player = new Player(3, height_game-4);
 
-    public Map map = new Map(250,20,player);
+    public Map map = new Map(250,20);
     public int points=0;
     private final LanternaGUI gui;
     private State state;

@@ -9,9 +9,7 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Player extends Element {
     private int points;
-    private int state=0;
-
-
+    private int state=0; //small mario
 
     public Player(int x, int y) {
         super(x, y);

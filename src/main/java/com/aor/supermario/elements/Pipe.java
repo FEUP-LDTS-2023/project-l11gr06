@@ -17,5 +17,8 @@ public class Pipe extends Element {
         super(x, y);
         character = c;
     }
-
+    public void moveMapLeft() {
+        Position p=new Position(getPosition().getX()-1, getPosition().getY());
+        setPosition(p);
+    }
 }

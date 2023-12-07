@@ -48,11 +48,14 @@ public class LanternaGUI implements GUI {
 
     private Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfig) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height + 1);
+
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
                 .setInitialTerminalSize(terminalSize);
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         Terminal terminal = terminalFactory.createTerminal();
+        terminal.setBackgroundColor(TextColor.Factory.fromString("#336699"));
+        //graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
         return terminal;
     }
 
@@ -86,7 +89,6 @@ public class LanternaGUI implements GUI {
         return ACTION.NONE;
     }
 
-
     @Override
     public void drawPlayer(Position position) {
         drawCharacter(position.getX(), position.getY(), 'X', "#FFFF33");
@@ -95,6 +97,7 @@ public class LanternaGUI implements GUI {
     public void drawGround(Position position) {
         drawCharacter(position.getX(), position.getY(), '_', "#3333FF");
     }
+
     //@Override
     //public void drawMonster(Position position) {
     //    drawCharacter(position.getX(), position.getY(), 'M', "#CC0000");

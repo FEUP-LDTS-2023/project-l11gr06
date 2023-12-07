@@ -7,7 +7,7 @@ public class About {
     private final List<String> entries;
     private int currentEntry = 0;
     public About() {
-        this.entries = Arrays.asList("Credits", "Exit");
+        this.entries = Arrays.asList("Return to menu");
     }
     public void nextEntry() {
         currentEntry++;
@@ -25,10 +25,7 @@ public class About {
     public boolean isSelected(int i) {
         return currentEntry == i;
     }
-    public boolean isSelectedExit() {
-        return isSelected(1);
-    }
-    public boolean isSelectedStart() {
+    public boolean isSelectedMenu() {
         return isSelected(0);
     }
     public int getNumberEntries() {

@@ -1,7 +1,10 @@
 package com.aor.supermario.states;
 import com.aor.supermario.Game;
+import com.aor.supermario.controller.Controller;
 import com.aor.supermario.gui.GUI;
 import com.aor.supermario.gui.LanternaGUI;
+import com.aor.supermario.viewer.Viewer;
+
 import java.io.IOException;
 
 

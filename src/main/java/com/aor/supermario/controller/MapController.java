@@ -20,7 +20,7 @@ public class MapController extends GameController {
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
-        if (action == GUI.ACTION.QUIT || getModel().getPlayer().getEnergy() == 0)
+        if (action == GUI.ACTION.QUIT) //|| getModel().getPlayer().getlives() == 0 IMPORTANTE MUDAR
             game.setState(new MenuState(new Menu()));
         else {
             playerController.step(game, action, time);

@@ -1,71 +1,62 @@
 package com.aor.supermario.model;
 
 import com.aor.supermario.elements.*;
-import com.aor.supermario.model.*;
-import com.aor.supermario.gui.*;
+import com.aor.supermario.model.Map;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Map1Builder extends MapBuilder{
     @Override
+    protected Player createPlayer() {
+        Player player=new Player(3, getHeight()-4);
+        return player;
+    }
+    @Override
     protected List<GoalPole> createGoalPole()
     {
         List<GoalPole> poles = new ArrayList<>();
-        for(int i = 0; i < 9;i++) poles.add(new GoalPole(202,height-5-i));
+        for(int i = 0; i < 9;i++) poles.add(new GoalPole(202,getHeight()-5-i));
         return poles;
     }
 
     @Override
-    protected List<Map> createRedMushroom() {
-        return null;
-    }
-
-    @Override
-    protected Player createPlayer() {
-        return null;
-    }
-
-    @Override
     protected int getWidth() {
-        return width;
+        return getWidth();
     }
 
     @Override
     protected int getHeight() {
-        return 0;
+        return getHeight();
     }
 
     @Override
     protected List<Ground> createGrounds() {
         List<Ground> grounds = new ArrayList<>();
         for (int c = 0; c < 71; c++) {
-            grounds.add(new Ground(c, height - 1));
-            grounds.add(new Ground(c, height - 2));
-            grounds.add(new Ground(c, height - 3));
+            grounds.add(new Ground(c, getHeight()- 1));
+            grounds.add(new Ground(c, getHeight() - 2));
+            grounds.add(new Ground(c, getHeight() - 3));
         }
         for(int c = 74; c <89;c++) {
-            grounds.add(new Ground(c, height - 1));
-            grounds.add(new Ground(c, height - 2));
-            grounds.add(new Ground(c, height - 3));
+            grounds.add(new Ground(c, getHeight() - 1));
+            grounds.add(new Ground(c, getHeight() - 2));
+            grounds.add(new Ground(c, getHeight() - 3));
         }
         for(int c = 92; c <156;c++) {
-            grounds.add(new Ground(c, height - 1));
-            grounds.add(new Ground(c, height - 2));
-            grounds.add(new Ground(c, height - 3));
+            grounds.add(new Ground(c, getHeight() - 1));
+            grounds.add(new Ground(c, getHeight() - 2));
+            grounds.add(new Ground(c, getHeight() - 3));
         }
-        for(int c = 159; c <width;c++) {
-            grounds.add(new Ground(c, height - 1));
-            grounds.add(new Ground(c, height - 2));
-            grounds.add(new Ground(c, height - 3));
+        for(int c = 159; c <getWidth();c++) {
+            grounds.add(new Ground(c, getHeight() - 1));
+            grounds.add(new Ground(c, getHeight() - 2));
+            grounds.add(new Ground(c, getHeight() - 3));
         }
 
         return grounds;
     }
 
-    @Override
-    protected List<Map> createStair() {
-        return null;
-    }
 
     @Override
     protected List<Stair> createStairs() {
@@ -76,7 +67,7 @@ public class Map1Builder extends MapBuilder{
             i++;
             for(int a =0;a<i;a++)
             {
-                stairs.add(new Stair(c, height - 4 -a));
+                stairs.add(new Stair(c, getHeight() - 4 -a));
             }
         }
 
@@ -85,7 +76,7 @@ public class Map1Builder extends MapBuilder{
             i++;
             for(int a =0;a<i;a++)
             {
-                stairs.add(new Stair(c, height - 4 -a));
+                stairs.add(new Stair(c, getHeight() - 4 -a));
             }
         }
         i =0;
@@ -93,7 +84,7 @@ public class Map1Builder extends MapBuilder{
             if(c!=155)i++;
             for(int a =0;a<i;a++)
             {
-                stairs.add(new Stair(c, height - 4 -a));
+                stairs.add(new Stair(c, getHeight() - 4 -a));
             }
         }
 
@@ -102,7 +93,7 @@ public class Map1Builder extends MapBuilder{
             i++;
             for(int a =0;a<i;a++)
             {
-                stairs.add(new Stair(c, height - 4 -a));
+                stairs.add(new Stair(c, getHeight() - 4 -a));
             }
         }
         i =0;
@@ -110,114 +101,115 @@ public class Map1Builder extends MapBuilder{
             if(c!=193)i++;
             for(int a =0;a<i;a++)
             {
-                stairs.add(new Stair(c, height - 4 -a));
+                stairs.add(new Stair(c, getHeight() - 4 -a));
             }
         }
-        stairs.add(new Stair(202,height-4));
+        stairs.add(new Stair(202,getHeight() - 4));
         return stairs;
     }
     @Override
     protected List<Block> createBlocks() {
         List<Block> blocks = new ArrayList<>();
-        blocks.add(new Block(22, height - 7));
-        blocks.add(new Block(24, height - 7));
-        blocks.add(new Block(26, height - 7));
-        blocks.add(new Block(80, height - 7));
-        blocks.add(new Block(82, height - 7));
-        for(int i = 83; i<=90;i++) blocks.add(new Block(i, height - 12));
-        for(int i = 94; i<=96;i++) blocks.add(new Block(i, height - 12));
-        blocks.add(new Block(97, height - 7)); //TEM COIN
-        blocks.add(new Block(103, height - 7));
-        blocks.add(new Block(104, height - 7)); //TEM ESTRELA
-        blocks.add(new Block(121, height - 7));
-        for(int i = 124; i<=126;i++) blocks.add(new Block(i, height - 12));
-        blocks.add(new Block(131, height - 12));
-        blocks.add(new Block(132, height - 7));
-        blocks.add(new Block(133, height - 7));
-        blocks.add(new Block(134, height - 12));
-        blocks.add(new Block(172, height - 7));
-        blocks.add(new Block(173, height - 7));
-        blocks.add(new Block(175, height - 7));
+        blocks.add(new Block(22, getHeight() - 7));
+        blocks.add(new Block(24, getHeight() - 7));
+        blocks.add(new Block(26, getHeight() - 7));
+        blocks.add(new Block(80, getHeight() - 7));
+        blocks.add(new Block(82, getHeight() - 7));
+        for(int i = 83; i<=90;i++) blocks.add(new Block(i, getHeight() - 12));
+        for(int i = 94; i<=96;i++) blocks.add(new Block(i, getHeight() - 12));
+        blocks.add(new Block(97, getHeight() - 7)); //TEM COIN
+        blocks.add(new Block(103, getHeight() - 7));
+        blocks.add(new Block(104, getHeight() - 7)); //TEM ESTRELA
+        blocks.add(new Block(121, getHeight() - 7));
+        for(int i = 124; i<=126;i++) blocks.add(new Block(i, getHeight() - 12));
+        blocks.add(new Block(131, getHeight() - 12));
+        blocks.add(new Block(132, getHeight() - 7));
+        blocks.add(new Block(133, getHeight() - 7));
+        blocks.add(new Block(134, getHeight() - 12));
+        blocks.add(new Block(172, getHeight() - 7));
+        blocks.add(new Block(173, getHeight() - 7));
+        blocks.add(new Block(175, getHeight() - 7));
         return blocks;
     }
 
+    @Override
     protected List<MysteryBlock> createMysteryBlocks()
     {
         List<MysteryBlock> mysteryBlocks = new ArrayList<>();
-        mysteryBlocks.add(new MysteryBlock(18, height - 7));
-        mysteryBlocks.add(new MysteryBlock(23, height - 7));
-        mysteryBlocks.add(new MysteryBlock(25, height - 7));
-        mysteryBlocks.add(new MysteryBlock(24, height - 12));
-        mysteryBlocks.add(new MysteryBlock(81, height - 7));
-        mysteryBlocks.add(new MysteryBlock(97, height - 12));
-        mysteryBlocks.add(new MysteryBlock(109, height - 7));
-        mysteryBlocks.add(new MysteryBlock(112, height - 7));
-        mysteryBlocks.add(new MysteryBlock(112, height - 12));
-        mysteryBlocks.add(new MysteryBlock(132, height - 12));
-        mysteryBlocks.add(new MysteryBlock(133, height - 12));
-        mysteryBlocks.add(new MysteryBlock(174, height - 12));
+        mysteryBlocks.add(new MysteryBlock(18, getHeight() - 7));
+        mysteryBlocks.add(new MysteryBlock(23, getHeight() - 7));
+        mysteryBlocks.add(new MysteryBlock(25, getHeight() - 7));
+        mysteryBlocks.add(new MysteryBlock(24, getHeight() - 12));
+        mysteryBlocks.add(new MysteryBlock(81, getHeight() - 7));
+        mysteryBlocks.add(new MysteryBlock(97, getHeight() - 12));
+        mysteryBlocks.add(new MysteryBlock(109, getHeight() - 7));
+        mysteryBlocks.add(new MysteryBlock(112, getHeight() - 7));
+        mysteryBlocks.add(new MysteryBlock(112, getHeight() - 12));
+        mysteryBlocks.add(new MysteryBlock(132, getHeight() - 12));
+        mysteryBlocks.add(new MysteryBlock(133, getHeight() - 12));
+        mysteryBlocks.add(new MysteryBlock(174, getHeight() - 12));
         return mysteryBlocks;
     }
-
+    @Override
     protected List<Coin> createCoins() {
         List<Coin> coins = new ArrayList<>();
-        coins.add(new Coin(18, height - 7));
-        coins.add(new Coin(25, height - 7));
-        coins.add(new Coin(24, height - 12));
-        coins.add(new Coin(97, height - 12));
-        coins.add(new Coin(109, height - 7));
-        coins.add(new Coin(112, height - 7));
-        coins.add(new Coin(132, height - 12));
-        coins.add(new Coin(133, height - 12));
-        coins.add(new Coin(174, height - 12));
+        coins.add(new Coin(18, getHeight() - 7));
+        coins.add(new Coin(25, getHeight() - 7));
+        coins.add(new Coin(24, getHeight() - 12));
+        coins.add(new Coin(97, getHeight() - 12));
+        coins.add(new Coin(109, getHeight() - 7));
+        coins.add(new Coin(112, getHeight() - 7));
+        coins.add(new Coin(132, getHeight() - 12));
+        coins.add(new Coin(133, getHeight() - 12));
+        coins.add(new Coin(174, getHeight() - 12));
         return coins;
     }
-
+    @Override
     protected List<RedMushroom> createRedMushrooms() {
         List<RedMushroom> redMushrooms = new ArrayList<>();
-        redMushrooms.add(new RedMushroom(23, height - 7));
-        redMushrooms.add(new RedMushroom(81, height - 7));
-        redMushrooms.add(new RedMushroom(112, height - 12));
+        redMushrooms.add(new RedMushroom(23, getHeight() - 7));
+        redMushrooms.add(new RedMushroom(81, getHeight() - 7));
+        redMushrooms.add(new RedMushroom(112, getHeight() - 12));
         return redMushrooms;
     }
 
-
+    @Override
     protected List<Pipe> createPipes(){
         List<Pipe> pipes = new ArrayList<>();
-        pipes.add(new Pipe(30,height-4,'M'));
-        pipes.add(new Pipe(30,height-5,'O'));
-        pipes.add(new Pipe(31,height-4,'N'));
-        pipes.add(new Pipe(31,height-5,'P'));
-        pipes.add(new Pipe(40,height-4,'M'));
-        pipes.add(new Pipe(40,height-5,'M'));
-        pipes.add(new Pipe(40,height-6,'O'));
-        pipes.add(new Pipe(41,height-4,'N'));
-        pipes.add(new Pipe(41,height-5,'N'));
-        pipes.add(new Pipe(41,height-6,'P'));
-        pipes.add(new Pipe(48,height-4,'M'));
-        pipes.add(new Pipe(48,height-5,'M'));
-        pipes.add(new Pipe(48,height-6,'M'));
-        pipes.add(new Pipe(48,height-7,'0'));
-        pipes.add(new Pipe(49,height-4,'N'));
-        pipes.add(new Pipe(49,height-5,'N'));
-        pipes.add(new Pipe(49,height-6,'N'));
-        pipes.add(new Pipe(49,height-7,'P'));
-        pipes.add(new Pipe(59,height-4,'M'));
-        pipes.add(new Pipe(59,height-5,'M'));
-        pipes.add(new Pipe(59,height-6,'M'));
-        pipes.add(new Pipe(59,height-7,'0'));
-        pipes.add(new Pipe(60,height-4,'N'));
-        pipes.add(new Pipe(60,height-5,'N'));
-        pipes.add(new Pipe(60,height-6,'N'));
-        pipes.add(new Pipe(60,height-7,'P'));
-        pipes.add(new Pipe(167,height-4,'M'));
-        pipes.add(new Pipe(167,height-5,'O'));
-        pipes.add(new Pipe(168,height-4,'N'));
-        pipes.add(new Pipe(168,height-5,'P'));
-        pipes.add(new Pipe(183,height-4,'M'));
-        pipes.add(new Pipe(183,height-5,'O'));
-        pipes.add(new Pipe(184,height-4,'N'));
-        pipes.add(new Pipe(184,height-5,'P'));
+        pipes.add(new Pipe(30,getHeight()-4,'M'));
+        pipes.add(new Pipe(30,getHeight()-5,'O'));
+        pipes.add(new Pipe(31,getHeight()-4,'N'));
+        pipes.add(new Pipe(31,getHeight()-5,'P'));
+        pipes.add(new Pipe(40,getHeight()-4,'M'));
+        pipes.add(new Pipe(40,getHeight()-5,'M'));
+        pipes.add(new Pipe(40,getHeight()-6,'O'));
+        pipes.add(new Pipe(41,getHeight()-4,'N'));
+        pipes.add(new Pipe(41,getHeight()-5,'N'));
+        pipes.add(new Pipe(41,getHeight()-6,'P'));
+        pipes.add(new Pipe(48,getHeight()-4,'M'));
+        pipes.add(new Pipe(48,getHeight()-5,'M'));
+        pipes.add(new Pipe(48,getHeight()-6,'M'));
+        pipes.add(new Pipe(48,getHeight()-7,'0'));
+        pipes.add(new Pipe(49,getHeight()-4,'N'));
+        pipes.add(new Pipe(49,getHeight()-5,'N'));
+        pipes.add(new Pipe(49,getHeight()-6,'N'));
+        pipes.add(new Pipe(49,getHeight()-7,'P'));
+        pipes.add(new Pipe(59,getHeight()-4,'M'));
+        pipes.add(new Pipe(59,getHeight()-5,'M'));
+        pipes.add(new Pipe(59,getHeight()-6,'M'));
+        pipes.add(new Pipe(59,getHeight()-7,'0'));
+        pipes.add(new Pipe(60,getHeight()-4,'N'));
+        pipes.add(new Pipe(60,getHeight()-5,'N'));
+        pipes.add(new Pipe(60,getHeight()-6,'N'));
+        pipes.add(new Pipe(60,getHeight()-7,'P'));
+        pipes.add(new Pipe(167,getHeight()-4,'M'));
+        pipes.add(new Pipe(167,getHeight()-5,'O'));
+        pipes.add(new Pipe(168,getHeight()-4,'N'));
+        pipes.add(new Pipe(168,getHeight()-5,'P'));
+        pipes.add(new Pipe(183,getHeight()-4,'M'));
+        pipes.add(new Pipe(183,getHeight()-5,'O'));
+        pipes.add(new Pipe(184,getHeight()-4,'N'));
+        pipes.add(new Pipe(184,getHeight()-5,'P'));
         return pipes;
     }
 }

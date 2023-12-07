@@ -8,12 +8,12 @@ public class VictoryState extends State<Map> {
     }
 
     @Override
-    protected Viewer<Map> getViewer() {
+    protected Viewer<Victory> getViewer() {
         return new GameViewer(getModel());
     }
 
     @Override
-    protected Controller<Map> getController() {
+    protected Controller<Victory> getController() {
         return new ArenaController(getModel());
     }
 }
