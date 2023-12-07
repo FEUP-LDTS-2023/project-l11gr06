@@ -18,7 +18,7 @@ public class Game {
     public static int height_game = 20;
     public Player player = new Player(3, height_game-4);
 
-    public Map map = new Map(250,20,player);
+    public Level1 level1 = new Level1(250,20,player);
     public int points=0;
     private final TerminalScreen screen;
     private Terminal terminal;
@@ -38,15 +38,15 @@ public class Game {
 
     public void draw() throws IOException {
         screen.clear();
-        map.draw(screen.newTextGraphics());
+        level1.draw(screen.newTextGraphics());
         player.draw(screen.newTextGraphics());
         screen.refresh();
     }
 
     public void runGame() throws IOException {
-        Thread t1 = new Thread(new MonsterMoving(map,this,player));
+        Thread t1 = new Thread(new MonsterMoving(level1,this,player));
         t1.start();
-        Thread t_ = new Thread(new PiranhaPlantMoving(map,this,player));
+        Thread t_ = new Thread(new PiranhaPlantMoving(level1,this,player));
         t_.start();
         while (true) {
             //if(map.getLives()>)System.out.println("Game Over");
@@ -72,12 +72,12 @@ public class Game {
                 {
                     processKey(key);
                     draw();
-                    if(!map.break_block()) {
+                    if(!level1.break_block()) {
                         for (int i = 0; i < 4; i++) {
                             processKey(k);
                             processKey(key);
                             draw();
-                            if (map.break_block()) break;
+                            if (level1.break_block()) break;
                         }
                     }
                 }
@@ -90,21 +90,21 @@ public class Game {
                 {
                     processKey(key);
                     draw();
-                    if(map.break_block())break;
-                    if (map.reveal_mysteryblock()) {
+                    if(level1.break_block())break;
+                    if (level1.reveal_mysteryblock()) {
                         break;
                     }
 
                 }
             }
             else processKey(key);
-            Thread t2 = new Thread(new Gravity(map,this,player));
+            Thread t2 = new Thread(new Gravity(level1,this,player));
             t2.start();
-            if (map.collect_coins()) {
+            if (level1.collect_coins()) {
                 points+=100;
                 draw();
             }
-            if (map.collect_mushroom()) {
+            if (level1.collect_mushroom()) {
                 points+=1000;
                 draw();
             }
@@ -118,6 +118,6 @@ public class Game {
         }
     }
     private void processKey(KeyStroke key) {
-        map.processKey(key);
+        level1.processKey(key);
     }
 }
