@@ -19,6 +19,10 @@ public class Map {
     private List<Stair> stairs;
 
     private List<GoalPole> poles;
+    private List<MysteryBlock> mysteryBlocks;
+    private List<Coin> coins;
+    private List<RedMushroom> redMushrooms;
+    private List<Pipe> pipes;
 
     private List <Monster> monsters;
 
@@ -34,32 +38,38 @@ public class Map {
         this.stairs = createStairs();
         this.poles = createPoles();
         this.monsters = createMonster();
+        this.mysteryBlocks = createMystery();
+        this.coins = createCoins();
+        this.redMushrooms = createRedMushrooms();
+        this.pipes = createPipes();
         //this.coins = createCoins();
         //this.monsters = createMonsters();
     }
-    private List<GoalPole> createPoles() {
+    private List<GoalPole> createPoles()
+    {
         List<GoalPole> poles = new ArrayList<>();
-        for(int i = 0; i < 9;i++) poles.add(new GoalPole(429,height-5-i));
+        for(int i = 0; i < 9;i++) poles.add(new GoalPole(202,height-5-i));
         return poles;
     }
+
     private List<Ground> createGrounds() {
         List<Ground> grounds = new ArrayList<>();
-        for (int c = 0; c < 175; c++) {
+        for (int c = 0; c < 71; c++) {
             grounds.add(new Ground(c, height - 1));
             grounds.add(new Ground(c, height - 2));
             grounds.add(new Ground(c, height - 3));
         }
-        for(int c = 178; c <221;c++) {
+        for(int c = 74; c <89;c++) {
             grounds.add(new Ground(c, height - 1));
             grounds.add(new Ground(c, height - 2));
             grounds.add(new Ground(c, height - 3));
         }
-        for(int c = 224; c <383;c++) {
+        for(int c = 92; c <156;c++) {
             grounds.add(new Ground(c, height - 1));
             grounds.add(new Ground(c, height - 2));
             grounds.add(new Ground(c, height - 3));
         }
-        for(int c = 386; c <width;c++) {
+        for(int c = 159; c <width;c++) {
             grounds.add(new Ground(c, height - 1));
             grounds.add(new Ground(c, height - 2));
             grounds.add(new Ground(c, height - 3));
@@ -71,7 +81,7 @@ public class Map {
         List<Stair> stairs = new ArrayList<>();
 
         int i =0;
-        for(int c = 363; c <367;c++) {
+        for(int c = 137; c <141;c++) {
             i++;
             for(int a =0;a<i;a++)
             {
@@ -80,7 +90,7 @@ public class Map {
         }
 
         i =0;
-        for(int c = 373; c > 369;c--) {
+        for(int c = 147; c > 143;c--) {
             i++;
             for(int a =0;a<i;a++)
             {
@@ -88,8 +98,8 @@ public class Map {
             }
         }
         i =0;
-        for(int c = 378; c <383;c++) {
-            if(c!=382)i++;
+        for(int c = 151; c <156;c++) {
+            if(c!=155)i++;
             for(int a =0;a<i;a++)
             {
                 stairs.add(new Stair(c, height - 4 -a));
@@ -97,7 +107,7 @@ public class Map {
         }
 
         i =0;
-        for(int c = 389; c >385;c--) {
+        for(int c = 162; c >158;c--) {
             i++;
             for(int a =0;a<i;a++)
             {
@@ -105,19 +115,19 @@ public class Map {
             }
         }
         i =0;
-        for(int c = 412; c <421;c++) {
-            if(c!=420)i++;
+        for(int c = 185; c <194;c++) {
+            if(c!=193)i++;
             for(int a =0;a<i;a++)
             {
                 stairs.add(new Stair(c, height - 4 -a));
             }
         }
-        stairs.add(new Stair(429,height-4));
+        stairs.add(new Stair(202,height-4));
         return stairs;
     }
+
     private List<Block> createBlocks() {
         List<Block> blocks = new ArrayList<>();
-        blocks.add(new Block(5, height - 4));
         blocks.add(new Block(22, height - 7));
         blocks.add(new Block(24, height - 7));
         blocks.add(new Block(26, height - 7));
@@ -125,20 +135,102 @@ public class Map {
         blocks.add(new Block(82, height - 7));
         for(int i = 83; i<=90;i++) blocks.add(new Block(i, height - 12));
         for(int i = 94; i<=96;i++) blocks.add(new Block(i, height - 12));
-        blocks.add(new Block(97, height - 7));
+        blocks.add(new Block(97, height - 7)); //TEM COIN
         blocks.add(new Block(103, height - 7));
-        blocks.add(new Block(104, height - 7));
+        blocks.add(new Block(104, height - 7)); //TEM ESTRELA
         blocks.add(new Block(121, height - 7));
         for(int i = 124; i<=126;i++) blocks.add(new Block(i, height - 12));
         blocks.add(new Block(131, height - 12));
         blocks.add(new Block(132, height - 7));
         blocks.add(new Block(133, height - 7));
         blocks.add(new Block(134, height - 12));
-        blocks.add(new Block(399, height - 7));
-        blocks.add(new Block(400, height - 7));
-        blocks.add(new Block(402, height - 7));
+        blocks.add(new Block(172, height - 7));
+        blocks.add(new Block(173, height - 7));
+        blocks.add(new Block(175, height - 7));
         return blocks;
     }
+
+    private List<MysteryBlock> createMystery()
+    {
+        List<MysteryBlock> mysteryBlocks = new ArrayList<>();
+        mysteryBlocks.add(new MysteryBlock(18, height - 7));
+        mysteryBlocks.add(new MysteryBlock(23, height - 7)); //TEM COGUMELO
+        mysteryBlocks.add(new MysteryBlock(25, height - 7));
+        mysteryBlocks.add(new MysteryBlock(24, height - 12));
+        mysteryBlocks.add(new MysteryBlock(81, height - 7)); //TEM COGUMELO
+        mysteryBlocks.add(new MysteryBlock(97, height - 12));
+        mysteryBlocks.add(new MysteryBlock(109, height - 7));
+        mysteryBlocks.add(new MysteryBlock(112, height - 7));
+        mysteryBlocks.add(new MysteryBlock(112, height - 12)); //TEM COGUMELO
+        mysteryBlocks.add(new MysteryBlock(132, height - 12));
+        mysteryBlocks.add(new MysteryBlock(133, height - 12));
+        mysteryBlocks.add(new MysteryBlock(174, height - 12));
+        return mysteryBlocks;
+    }
+
+    private List<Coin> createCoins() {
+        List<Coin> coins = new ArrayList<>();
+        coins.add(new Coin(18, height - 7));
+        coins.add(new Coin(25, height - 7));
+        coins.add(new Coin(24, height - 12));
+        coins.add(new Coin(97, height - 12));
+        coins.add(new Coin(109, height - 7));
+        coins.add(new Coin(112, height - 7));
+        coins.add(new Coin(132, height - 12));
+        coins.add(new Coin(133, height - 12));
+        coins.add(new Coin(174, height - 12));
+        return coins;
+    }
+
+    private List<RedMushroom> createRedMushrooms() {
+        List<RedMushroom> redMushrooms = new ArrayList<>();
+        redMushrooms.add(new RedMushroom(23, height - 7));
+        redMushrooms.add(new RedMushroom(81, height - 7));
+        redMushrooms.add(new RedMushroom(112, height - 12));
+        return redMushrooms;
+    }
+
+
+    private List<Pipe> createPipes(){
+        List<Pipe> pipes = new ArrayList<>();
+        pipes.add(new Pipe(30,height-4,'M'));
+        pipes.add(new Pipe(30,height-5,'O'));
+        pipes.add(new Pipe(31,height-4,'N'));
+        pipes.add(new Pipe(31,height-5,'P'));
+        pipes.add(new Pipe(40,height-4,'M'));
+        pipes.add(new Pipe(40,height-5,'M'));
+        pipes.add(new Pipe(40,height-6,'O'));
+        pipes.add(new Pipe(41,height-4,'N'));
+        pipes.add(new Pipe(41,height-5,'N'));
+        pipes.add(new Pipe(41,height-6,'P'));
+        pipes.add(new Pipe(48,height-4,'M'));
+        pipes.add(new Pipe(48,height-5,'M'));
+        pipes.add(new Pipe(48,height-6,'M'));
+        pipes.add(new Pipe(48,height-7,'0'));
+        pipes.add(new Pipe(49,height-4,'N'));
+        pipes.add(new Pipe(49,height-5,'N'));
+        pipes.add(new Pipe(49,height-6,'N'));
+        pipes.add(new Pipe(49,height-7,'P'));
+        pipes.add(new Pipe(59,height-4,'M'));
+        pipes.add(new Pipe(59,height-5,'M'));
+        pipes.add(new Pipe(59,height-6,'M'));
+        pipes.add(new Pipe(59,height-7,'0'));
+        pipes.add(new Pipe(60,height-4,'N'));
+        pipes.add(new Pipe(60,height-5,'N'));
+        pipes.add(new Pipe(60,height-6,'N'));
+        pipes.add(new Pipe(60,height-7,'P'));
+        pipes.add(new Pipe(167,height-4,'M'));
+        pipes.add(new Pipe(167,height-5,'O'));
+        pipes.add(new Pipe(168,height-4,'N'));
+        pipes.add(new Pipe(168,height-5,'P'));
+        pipes.add(new Pipe(183,height-4,'M'));
+        pipes.add(new Pipe(183,height-5,'O'));
+        pipes.add(new Pipe(184,height-4,'N'));
+        pipes.add(new Pipe(184,height-5,'P'));
+        return pipes;
+    }
+
+
     private List <Monster> createMonster()
     {
         List <Monster> monsters = new ArrayList<>();
@@ -161,6 +253,17 @@ public class Map {
             pole.draw(graphics);
         for(Monster m:monsters)
             m.draw(graphics);
+        for (Coin coin:coins) {
+            coin.draw(graphics);
+        }
+        for (RedMushroom m: redMushrooms) {
+            m.draw(graphics);
+        }
+        for(MysteryBlock mysteryblock: mysteryBlocks)
+            mysteryblock.draw(graphics);
+
+        for(Pipe pipe: pipes)
+            pipe.draw(graphics);
         graphics.setCharacter(player.getPosition().getX(), player.getPosition().getY(), TextCharacter.fromCharacter('X')[0]);
     }
     public boolean canPlayerMove(Position p)
@@ -173,6 +276,7 @@ public class Map {
     public void movePlayer(Position position)
     {
         player.setPosition(position);}
+
     public boolean break_block()
     {
         for(Block block:blocks)
@@ -186,6 +290,60 @@ public class Map {
         return false;
     }
     public boolean collision_y(Element element)
+
+    public boolean reveal_mysteryblock()
+    {
+        for(MysteryBlock mysteryblock:mysteryBlocks)
+        {
+            if(player.getPosition().equals(mysteryblock.getPosition()))
+            {
+                mysteryblock.setMysteryState(1);
+                for (Coin coin:coins) {
+                    if (coin.getPosition().equals(mysteryblock.getPosition())) {
+                        Position p =new Position(coin.getPosition().getX(), coin.getPosition().getY()-1);
+                        coin.setPosition(p);
+                    }
+                }
+                for (RedMushroom mushroom:redMushrooms) {
+                    if (mushroom.getPosition().equals(mysteryblock.getPosition())) {
+                        Position p =new Position(mushroom.getPosition().getX(), mushroom.getPosition().getY()-1);
+                        mushroom.setPosition(p);
+                    }
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean collect_coins() {
+        for(Coin coin:coins) {
+            for (MysteryBlock m:mysteryBlocks) {
+                if (coin.getPosition().equals(m.getPosition())) return false;
+            }
+            if (player.getPosition().equals(coin.getPosition())) {
+                coins.remove(coin);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean collect_mushroom() {
+        for(RedMushroom rm:redMushrooms) {
+            for (MysteryBlock m:mysteryBlocks) {
+                if (rm.getPosition().equals(m.getPosition())) return false;
+            }
+            if (player.getPosition().equals(rm.getPosition())) {
+                //SUPERMARIO STATE
+                redMushrooms.remove(rm);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean collision_y()
     {
         for(Block block:blocks)
         {
@@ -206,6 +364,23 @@ public class Map {
         for(Stair stair:stairs)
         {
             Position p = new Position(stair.getPosition().getX(),stair.getPosition().getY()-1);
+            if(element.getPosition().equals(p))
+            if(element.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        for(MysteryBlock mysteryblock:mysteryBlocks)
+        {
+            Position p = new Position(mysteryblock.getPosition().getX(),mysteryblock.getPosition().getY()-1);
+            if(element.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        for(Pipe pipe:pipes)
+        {
+            Position p = new Position(pipe.getPosition().getX(),pipe.getPosition().getY()-1);
             if(element.getPosition().equals(p))
             {
                 return true;
@@ -239,6 +414,22 @@ public class Map {
                 return true;
             }
         }
+        for(MysteryBlock mysteryblock:mysteryBlocks)
+        {
+            Position p = new Position(mysteryblock.getPosition().getX()-1,mysteryblock.getPosition().getY());
+            if(element.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        for(Pipe pipe:pipes)
+        {
+            Position p = new Position(pipe.getPosition().getX()-1,pipe.getPosition().getY());
+            if(element.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
         return false;
     }
     public boolean collision_x_back(Element element)
@@ -267,6 +458,23 @@ public class Map {
                 return true;
             }
         }
+        for(MysteryBlock mysteryblock:mysteryBlocks)
+        {
+            Position p = new Position(mysteryblock.getPosition().getX()+1,mysteryblock.getPosition().getY());
+            if(element.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+        for(Pipe pipe:pipes)
+        {
+            Position p = new Position(pipe.getPosition().getX()+1,pipe.getPosition().getY());
+            if(element.getPosition().equals(p))
+            {
+                return true;
+            }
+        }
+
         return false;
     }
     public void monsterMonsterCollision(Monster m)
@@ -405,11 +613,30 @@ public class Map {
                             }
 
                         }
+                        for(MysteryBlock mysteryblock:mysteryBlocks)
+                        {
+                            Position p = new Position(mysteryblock.getPosition().getX()-1,mysteryblock.getPosition().getY());
+                            mysteryblock.setPosition(p);
+                        }
+                        for(Coin coin:coins)
+                        {
+                            Position p = new Position(coin.getPosition().getX()-1,coin.getPosition().getY());
+                            coin.setPosition(p);
+                        }
+                        for(RedMushroom rm:redMushrooms)
+                        {
+                            Position p = new Position(rm.getPosition().getX()-1,rm.getPosition().getY());
+                            rm.setPosition(p);
+                        }
+
+                        for(Pipe pipe: pipes)
+                        {
+                            Position p = new Position(pipe.getPosition().getX()-1,pipe.getPosition().getY());
+                            pipe.setPosition(p);
+                        }
                     }
                 }
                 break;
         }
     }
-
-
 }
