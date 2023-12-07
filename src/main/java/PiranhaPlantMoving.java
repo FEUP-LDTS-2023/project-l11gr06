@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PiranhaPlantMoving implements Runnable{
     private Map map;
@@ -12,10 +14,13 @@ public class PiranhaPlantMoving implements Runnable{
         player=p;
     }
     public void run() {
+        List<Monster> l=new ArrayList<>();
         while(true) {
             for (Monster m : map.monstersToMove()) {
                 if (m instanceof PiranhaPlant) {
-                    Monster pl = m;
+                    l.add(m);
+                }
+            }
                     int state=0;
                     for(int i=0;i<3;i++) {
                         if(i==1)state=2;
@@ -27,53 +32,56 @@ public class PiranhaPlantMoving implements Runnable{
                                 throw new RuntimeException(e);
                             }
                             try {
-                                Thread.sleep(100);
+                                Thread.sleep(300);
                             } catch (InterruptedException e) {
                                 throw new RuntimeException(e);
                             }
+                            for(Monster p: l)
+                            {
+                                ((PiranhaPlant) p).setOpenCloseState(state + 1);
+                            }
 
-                            ((PiranhaPlant) m).setOpenCloseState(state + 1);
                             try {
                                 game.draw();
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
                             try {
-                                Thread.sleep(100);
+                                Thread.sleep(300);
                             } catch (InterruptedException e) {
                                 throw new RuntimeException(e);
                             }
-
-                            ((PiranhaPlant) m).setOpenCloseState(state);
+                            for(Monster p: l)
+                            {
+                                ((PiranhaPlant) p).setOpenCloseState(state);
+                            }
                             try {
                                 game.draw();
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
                             try {
-                                Thread.sleep(500);
+                                Thread.sleep(300);
                             } catch (InterruptedException e) {
                                 throw new RuntimeException(e);
                             }
                         }
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
+
                     }
-                    ((PiranhaPlant) m).setOpenCloseState(4);
+                for(Monster p: l)
+                {
+                    ((PiranhaPlant) p).setOpenCloseState(4);
+                }
+
                     try {
                         game.draw();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
     }

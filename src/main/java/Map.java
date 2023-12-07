@@ -23,12 +23,9 @@ public class Map {
     private List<Coin> coins;
     private List<RedMushroom> redMushrooms;
     private List<Pipe> pipes;
-
     private List <Monster> monsters;
 
-    private List <PiranhaPlant> p_plants;
 
-    //private List<Coin> coins;
     public Map(int width,int height,Player player) {
         this.width = width;
         this.height = height;
@@ -233,10 +230,9 @@ public class Map {
 
     private List <Monster> createMonster()
     {
-        List <Monster> monsters = new ArrayList<>();
-        //monsters.add(new Turtle(35, height - 4));
-        //monsters.add (new BrownMushroom(25,height-4));
-        monsters.add(new PiranhaPlant(27,height-4));
+        List <Monster> monsters = new ArrayList<>();;
+        monsters.add(new PiranhaPlant(30,height-6));
+        monsters.add(new PiranhaPlant(31,height-6));
         return monsters;
     }
     public void draw(TextGraphics graphics)
@@ -289,7 +285,6 @@ public class Map {
         }
         return false;
     }
-    public boolean collision_y(Element element)
 
     public boolean reveal_mysteryblock()
     {
@@ -343,7 +338,7 @@ public class Map {
         return false;
     }
 
-    public boolean collision_y()
+    public boolean collision_y(Element element)
     {
         for(Block block:blocks)
         {
@@ -364,7 +359,6 @@ public class Map {
         for(Stair stair:stairs)
         {
             Position p = new Position(stair.getPosition().getX(),stair.getPosition().getY()-1);
-            if(element.getPosition().equals(p))
             if(element.getPosition().equals(p))
             {
                 return true;
