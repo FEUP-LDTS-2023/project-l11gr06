@@ -9,8 +9,8 @@ import com.aor.supermario.viewer.Viewer;
 import com.aor.supermario.viewer.game.GameViewer;
 
 public class AboutState extends State<About> {
-    public AboutState(About model) {
-        super(model);
+    public AboutState(About about) {
+        super(about);
     }
 
     @Override

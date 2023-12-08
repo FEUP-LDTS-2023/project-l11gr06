@@ -26,11 +26,9 @@ public class Menu {
     public String getEntry(int i) {
         return entries.get(i);
     }
-
     public boolean isSelected(int i) {
         return currentEntry == i;
     }
-
     public boolean isSelectedExit() {
         return isSelected(3);
     }
@@ -43,7 +41,6 @@ public class Menu {
     public boolean isSelectedAbout() {
         return isSelected(2);
     }
-
     public int getNumberEntries() {
         return this.entries.size();
     }

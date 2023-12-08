@@ -1,11 +1,8 @@
 package com.aor.supermario.gui;
 
 import com.aor.supermario.Game;
-import com.aor.supermario.elements.GoalPole;
-import com.aor.supermario.elements.MysteryBlock;
+import com.aor.supermario.model.elements.MysteryBlock;
 import com.aor.supermario.model.Position;
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -60,8 +57,8 @@ public class LanternaGUI implements GUI {
     }
 
     private AWTTerminalFontConfiguration loadSquareFont() throws URISyntaxException, FontFormatException, IOException {
-        URL resource = getClass().getClassLoader().getResource("fonts/square.ttf");
-        assert resource != null;
+        URL resource = getClass().getClassLoader().getResource("fonts/pixelbabania-vi-deluxe-light.ttf");
+        //assert resource != null;
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 
@@ -76,17 +73,16 @@ public class LanternaGUI implements GUI {
     public ACTION getNextAction() throws IOException {
         KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return ACTION.NONE;
-
         if (keyStroke.getKeyType() == KeyType.EOF) return ACTION.QUIT;
         if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'q') return ACTION.QUIT;
-
-        if (keyStroke.getKeyType() == KeyType.ArrowUp) return ACTION.UP;
+        if (keyStroke.getKeyType() == KeyType.ArrowUp) {
+            boolean salto=false;
+            return ACTION.UP;
+        }
         if (keyStroke.getKeyType() == KeyType.ArrowRight) return ACTION.RIGHT;
         if (keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
         if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
-
         if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
-
         return ACTION.NONE;
     }
 
@@ -133,7 +129,7 @@ public class LanternaGUI implements GUI {
     }
     @Override
     public void drawGoalPole(Position position) {
-        if(GoalPole.getPosition().getY()== Game.height_game-13)
+        if(position.getY() == Game.height_game-13)
             drawCharacter(position.getX(), position.getY(), '<', "#8A3324");
         else
         {

@@ -31,7 +31,7 @@ public class MenuController extends Controller<Menu> {
                 if (getModel().isSelectedExit()) game.setState(null);
                 if (getModel().isSelectedHelp()) game.setState(new HelpState(new Help()));
                 if (getModel().isSelectedAbout()) game.setState(new AboutState(new About()));
-                if (getModel().isSelectedStart()) game.setState(new GameState(new Map1Builder().createMap()));
+                if (getModel().isSelectedStart()) game.setState(new GameState(new Map1Builder(250,20).createMap()));
         }
     }
 }

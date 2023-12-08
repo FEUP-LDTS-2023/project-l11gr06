@@ -1,13 +1,19 @@
 package com.aor.supermario.model;
 
-import com.aor.supermario.elements.*;
-import com.aor.supermario.model.Map;
+import com.aor.supermario.model.elements.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Map1Builder extends MapBuilder{
-    @Override
+
+    private final int width;
+    private final int height;
+
+    public Map1Builder(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
     protected Player createPlayer() {
         Player player=new Player(3, getHeight()-4);
         return player;
@@ -16,18 +22,17 @@ public class Map1Builder extends MapBuilder{
     protected List<GoalPole> createGoalPole()
     {
         List<GoalPole> poles = new ArrayList<>();
-        for(int i = 0; i < 9;i++) poles.add(new GoalPole(202,getHeight()-5-i));
+        for(int i = 0; i < 9;i++) poles.add(new GoalPole(202, getHeight()-5-i));
         return poles;
     }
-
     @Override
-    protected int getWidth() {
-        return getWidth();
+    public int getWidth() {
+        return width;
     }
 
     @Override
-    protected int getHeight() {
-        return getHeight();
+    public int getHeight() {
+        return height;
     }
 
     @Override

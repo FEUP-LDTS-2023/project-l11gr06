@@ -1,10 +1,12 @@
 package com.aor.supermario.model;
 
-import com.aor.supermario.elements.*;
+import com.aor.supermario.model.elements.*;
 
 import java.util.List;
 
+
 public abstract class MapBuilder {
+
     public Map createMap() {
         Map map = new Map(getWidth(), getHeight());
 
@@ -22,8 +24,8 @@ public abstract class MapBuilder {
         return map;
     }
 
-    protected abstract int getWidth();
-    protected abstract int getHeight();
+    public abstract int getWidth();
+    public abstract int getHeight();
     protected abstract List<Ground> createGrounds();
     protected abstract List<Stair> createStairs();
     protected abstract List<Block> createBlocks();

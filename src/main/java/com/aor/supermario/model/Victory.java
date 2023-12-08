@@ -26,11 +26,9 @@ public class Victory {
     public String getEntry(int i) {
         return entries.get(i);
     }
-
     public boolean isSelected(int i) {
         return currentEntry == i;
     }
-
     public boolean isSelectedExit() {
         return isSelected(2);
     }
@@ -40,7 +38,6 @@ public class Victory {
     public boolean isSelectedMenu() {
         return isSelected(1);
     }
-
     public int getNumberEntries() {
         return this.entries.size();
     }

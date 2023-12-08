@@ -1,31 +1,23 @@
 package com.aor.supermario.model;
 
-import com.aor.supermario.Game;
-import com.aor.supermario.elements.*;
-import com.aor.supermario.model.MapBuilder;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
+import com.aor.supermario.model.elements.*;
 
 import java.util.List;
 
 public class Map {
-    private static Player player;
-    private int width;
-    private int height;
-    private static List<Ground> grounds;
-    private static List<Block> blocks;
-    private static List<Stair> stairs;
+    private Player player;
+    private final int width;
+    private final int height;
+    private List<Ground> grounds;
+    private List<Block> blocks;
+    private List<Stair> stairs;
     private List<GoalPole> poles;
-    private static List<MysteryBlock> mysteryBlocks;
+    private List<MysteryBlock> mysteryBlocks;
     private List<Coin> coins;
     private List<RedMushroom> redMushrooms;
-    private static List<Pipe> pipes;
-    //private List<Monster> monsters;
+    private List<Pipe> pipes;
 
+    //private List<Monster> monsters;
 
     public Map(int width,int height) {
         this.width = width;
@@ -37,7 +29,7 @@ public class Map {
     public int getHeight() {
         return height;
     }
-    public static Player getPlayer() {
+    public Player getPlayer() {
         return player;
     }
     public void setPlayer(Player player) {
@@ -73,7 +65,7 @@ public class Map {
     public List<GoalPole> getGoalPole() {
         return poles;
     }
-    public void setGoalPoles(List<GoalPole> goalPoles) {
+    public void setGoalPoles(List<GoalPole> poles) {
         this.poles = poles;
     }
     public List<MysteryBlock> getMysteryBlocks() {
@@ -128,18 +120,18 @@ public class Map {
 
     public boolean reveal_mysteryblock()
     {
-        for(MysteryBlock mysteryblock:mysteryBlocks)
+        for(MysteryBlock mysteryblock:getMysteryBlocks())
         {
-            if(player.getPosition().equals(mysteryblock.getPosition()))
+            if(getPlayer().getPosition().equals(mysteryblock.getPosition()))
             {
                 mysteryblock.setMysteryState(1);
-                for (Coin coin:coins) {
+                for (Coin coin:getCoins()) {
                     if (coin.getPosition().equals(mysteryblock.getPosition())) {
                         Position p =new Position(coin.getPosition().getX(), coin.getPosition().getY()-1);
                         coin.setPosition(p);
                     }
                 }
-                for (RedMushroom mushroom:redMushrooms) {
+                for (RedMushroom mushroom:getRedMushrooms()) {
                     if (mushroom.getPosition().equals(mysteryblock.getPosition())) {
                         Position p =new Position(mushroom.getPosition().getX(), mushroom.getPosition().getY()-1);
                         mushroom.setPosition(p);
@@ -222,7 +214,7 @@ public class Map {
         }
         return false;
     }
-    public static boolean collision_x_front()
+    public boolean collision_x_front()
     {
         for(Block block:blocks)
         {
@@ -266,7 +258,7 @@ public class Map {
         }
         return false;
     }
-    public static boolean collision_x_back()
+    public boolean collision_x_back()
     {
         for(Block block:blocks)
         {

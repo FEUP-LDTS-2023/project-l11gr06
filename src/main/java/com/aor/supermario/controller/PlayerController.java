@@ -2,17 +2,16 @@ package com.aor.supermario.controller;
 
 
 import com.aor.supermario.Game;
-import com.aor.supermario.elements.*;
 import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.Position;
 import com.aor.supermario.model.Map;
-
-import static com.aor.supermario.model.Map.*;
+import com.aor.supermario.model.elements.*;
 
 public class PlayerController extends GameController {
     public PlayerController(Map map) {
         super(map);
     }
+
     /*    public Position moveUp() {
         return new Position(getPosition().getX(), getPosition().getY() - 1);
     }
@@ -53,9 +52,9 @@ public class PlayerController extends GameController {
         }
         if (action == GUI.ACTION.RIGHT) {
             for (GoalPole pole : getModel().getGoalPole())
-                if (getPlayer().getPosition().getX() == pole.getPosition().getX()) System.exit(0);
-            if (!collision_x_front()) {
-                if (getPlayer().getPosition().getX() < Game.width_game / 2) movePlayer(getPlayer().moveRight());
+                if (getModel().getPlayer().getPosition().getX() == pole.getPosition().getX()) System.exit(0);
+            if (!getModel().collision_x_front()) {
+                if (getModel().getPlayer().getPosition().getX() < Game.width_game / 2) movePlayer(getModel().getPlayer().moveRight());
                 else {
                     for (Ground ground : getModel().getGrounds()) {
                         Position p = new Position(ground.getPosition().getX() - 1, ground.getPosition().getY());
@@ -85,7 +84,6 @@ public class PlayerController extends GameController {
                         Position p = new Position(rm.getPosition().getX() - 1, rm.getPosition().getY());
                         rm.setPosition(p);
                     }
-
                     for (Pipe pipe : getModel().getPipes()) {
                         Position p = new Position(pipe.getPosition().getX() - 1, pipe.getPosition().getY());
                         pipe.setPosition(p);
@@ -97,8 +95,8 @@ public class PlayerController extends GameController {
             moveDown();
         }
         if (action == GUI.ACTION.LEFT) {
-            if (!collision_x_back()) if (getPlayer().getPosition().getX() != 0) movePlayer(getPlayer().moveLeft());
-                moveLeft();
+            if (!getModel().collision_x_back())
+                if (getModel().getPlayer().getPosition().getX() != 0) moveLeft();
             }
         }
 }

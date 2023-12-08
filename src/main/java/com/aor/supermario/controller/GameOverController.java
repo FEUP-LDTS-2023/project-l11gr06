@@ -3,7 +3,6 @@ package com.aor.supermario.controller;
 import com.aor.supermario.Game;
 import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.*;
-import com.aor.supermario.states.AboutState;
 import com.aor.supermario.states.GameState;
 import com.aor.supermario.states.MenuState;
 
@@ -24,7 +23,7 @@ public class GameOverController extends Controller<GameOver> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedRestart()) game.setState(new GameState(new Map1Builder().createMap()));
+                if (getModel().isSelectedRestart()) game.setState(new GameState(new Map1Builder(250,20).createMap()));
                 if (getModel().isSelectedMenu()) game.setState(new MenuState(new Menu()));
                 if (getModel().isSelectedExit()) game.setState(null);
         }

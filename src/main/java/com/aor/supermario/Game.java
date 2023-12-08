@@ -1,15 +1,9 @@
 package com.aor.supermario;
 
-import com.aor.supermario.elements.Player;
-import com.aor.supermario.model.Map;
-import com.aor.supermario.model.Position;
 import com.aor.supermario.states.MenuState;
 import com.aor.supermario.states.State;
-import com.aor.supermario.gui.GUI;
 import com.aor.supermario.gui.LanternaGUI;
 import com.aor.supermario.model.Menu;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 
 import java.awt.*;
 import java.io.IOException;
@@ -19,11 +13,11 @@ public class Game {
     public static int width_game = 65;
     public static int height_game = 20;
 
-    public static int map_width=250;
-    public static int map_height=20;
+    //public static int map_width=250;
+    //public static int map_height=20;
 
-    public Map map = new Map(250,20);
-    public int points=0;
+    //public Map map = new Map(250,20);
+    public int points = 0;
     private final LanternaGUI gui;
     private State state;
 
@@ -79,22 +73,31 @@ public class Game {
     }*/
 
     public void run() throws IOException {
+        int FPS = 10;
+        int frameTime = 1000 / FPS;
+
         while (this.state != null) {
             long startTime = System.currentTimeMillis();
+
             state.step(this, gui, startTime);
 
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            long sleepTime = frameTime - elapsedTime;
 
+            try {
+                if (sleepTime > 0) Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+            }
         }
 
-            while (true) {
-            draw();
-            KeyStroke key = screen.readInput();
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') screen.close();
-            if (key.getKeyType() == KeyType.EOF)
-                break;
+        gui.close();
+    }
+}
+
+    /*
             long t = System.currentTimeMillis();
-            boolean salto = false;
-            KeyStroke k=key;
+            boolean saltovertical = false;
+
             if (key.getKeyType().toString() == "ArrowUp")
             {
                 k = key;
@@ -176,4 +179,4 @@ public class Game {
         gui.close();
     }
 
-}
+}*/
