@@ -1,9 +1,11 @@
 package com.aor.supermario;
 
+import com.aor.supermario.model.elements.Block;
 import com.aor.supermario.states.MenuState;
 import com.aor.supermario.states.State;
 import com.aor.supermario.gui.LanternaGUI;
 import com.aor.supermario.model.Menu;
+import com.aor.supermario.model.Map;
 
 import java.awt.*;
 import java.io.IOException;
@@ -20,6 +22,10 @@ public class Game {
     public int points = 0;
     private final LanternaGUI gui;
     private State state;
+
+    public LanternaGUI getGui() {
+        return gui;
+    }
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(width_game, height_game);

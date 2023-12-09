@@ -1,15 +1,21 @@
 package com.aor.supermario.controller;
 
-
 import com.aor.supermario.Game;
 import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.Position;
 import com.aor.supermario.model.Map;
 import com.aor.supermario.model.elements.*;
+import com.aor.supermario.viewer.game.PlayerViewer;
+import com.aor.supermario.viewer.Viewer;
+import com.aor.supermario.gui.LanternaGUI;
+
+import java.io.IOException;
 
 public class PlayerController extends GameController {
-    public PlayerController(Map map) {
-        super(map);
+
+
+    public PlayerController(Map map, Viewer v) {
+        super(map, v);
     }
 
     /*    public Position moveUp() {
@@ -41,20 +47,29 @@ public class PlayerController extends GameController {
     }
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (action == GUI.ACTION.UP) {
-            moveUp();
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            for (int i = 1; i <= 4; i++) {
+                moveUp();
+                getViewer().draw(game.getGui());
+                if (getModel().break_block()) break;
+                if (getModel().reveal_mysteryblock()) {
+                    break;
+
+                }
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
         if (action == GUI.ACTION.RIGHT) {
             for (GoalPole pole : getModel().getGoalPole())
                 if (getModel().getPlayer().getPosition().getX() == pole.getPosition().getX()) System.exit(0);
             if (!getModel().collision_x_front()) {
-                if (getModel().getPlayer().getPosition().getX() < Game.width_game / 2) movePlayer(getModel().getPlayer().moveRight());
+                if (getModel().getPlayer().getPosition().getX() < Game.width_game / 2)
+                    movePlayer(getModel().getPlayer().moveRight());
                 else {
                     for (Ground ground : getModel().getGrounds()) {
                         Position p = new Position(ground.getPosition().getX() - 1, ground.getPosition().getY());
@@ -92,11 +107,27 @@ public class PlayerController extends GameController {
             }
         }
         if (action == GUI.ACTION.DOWN) {
-            moveDown();
+            //moveDown();
         }
         if (action == GUI.ACTION.LEFT) {
             if (!getModel().collision_x_back())
                 if (getModel().getPlayer().getPosition().getX() != 0) moveLeft();
+        }
+        if (action == GUI.ACTION.NONE) {
+            while (getModel().getPlayer().getPosition().getY() != getModel().getHeight()-1) {
+                if (getModel().collision_y(getModel().getPlayer())) break;
+                moveDown();
+                getViewer().draw(game.getGui());
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
+
+
+    }
 }
+
+

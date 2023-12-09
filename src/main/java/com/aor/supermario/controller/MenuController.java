@@ -10,12 +10,13 @@ import com.aor.supermario.model.Menu;
 import com.aor.supermario.states.AboutState;
 import com.aor.supermario.states.GameState;
 import com.aor.supermario.states.HelpState;
+import com.aor.supermario.viewer.Viewer;
 
 import java.io.IOException;
 
 public class MenuController extends Controller<Menu> {
-    public MenuController(Menu menu) {
-        super(menu);
+    public MenuController(Menu menu, Viewer v) {
+        super(menu, v);
     }
 
     @Override

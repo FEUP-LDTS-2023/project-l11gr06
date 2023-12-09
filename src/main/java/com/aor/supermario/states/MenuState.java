@@ -25,7 +25,7 @@ public class MenuState extends State<Menu> {
 
     @Override
     protected Controller<Menu> getController() {
-        return new MenuController(getModel());
+        return new MenuController(getModel(), getViewer());
     }
 }
 

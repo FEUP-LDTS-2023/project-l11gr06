@@ -170,12 +170,12 @@ public class Map {
         return false;
     }
 
-    public boolean collision_y()
+    public boolean collision_y(Element element)
     {
         for(Block block:blocks)
         {
             Position p = new Position(block.getPosition().getX(),block.getPosition().getY()-1);
-            if(player.getPosition().equals(p)&&player.getPosition().equals(p))
+            if(element.getPosition().equals(p)&&element.getPosition().equals(p))
             {
                 return true;
             }
@@ -183,7 +183,7 @@ public class Map {
         for(Ground ground:grounds)
         {
             Position p = new Position(ground.getPosition().getX(),ground.getPosition().getY()-1);
-            if(player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -191,7 +191,7 @@ public class Map {
         for(Stair stair:stairs)
         {
             Position p = new Position(stair.getPosition().getX(),stair.getPosition().getY()-1);
-            if(player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -199,7 +199,7 @@ public class Map {
         for(MysteryBlock mysteryblock:mysteryBlocks)
         {
             Position p = new Position(mysteryblock.getPosition().getX(),mysteryblock.getPosition().getY()-1);
-            if(player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -207,7 +207,7 @@ public class Map {
         for(Pipe pipe:pipes)
         {
             Position p = new Position(pipe.getPosition().getX(),pipe.getPosition().getY()-1);
-            if(player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }

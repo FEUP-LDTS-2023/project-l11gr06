@@ -19,7 +19,7 @@ public class VictoryState extends State<Victory> {
 
     @Override
     protected Controller<Victory> getController() {
-        return new VictoryController(getModel());
+        return new VictoryController(getModel(), getViewer());
     }
 }
 

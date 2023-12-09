@@ -20,7 +20,7 @@ public class AboutState extends State<About> {
 
     @Override
     protected Controller<About> getController() {
-        return new AboutController(getModel());
+        return new AboutController(getModel(), getViewer());
     }
 }
 

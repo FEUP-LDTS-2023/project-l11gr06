@@ -5,12 +5,13 @@ import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.*;
 import com.aor.supermario.states.GameState;
 import com.aor.supermario.states.MenuState;
+import com.aor.supermario.viewer.Viewer;
 
 import java.io.IOException;
 
 public class GameOverController extends Controller<GameOver> {
-    public GameOverController(GameOver gameOver) {
-        super(gameOver);
+    public GameOverController(GameOver gameOver, Viewer v) {
+        super(gameOver, v);
     }
 
     @Override

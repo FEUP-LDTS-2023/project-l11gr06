@@ -6,12 +6,13 @@ import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.About;
 import com.aor.supermario.model.Menu;
 import com.aor.supermario.states.MenuState;
+import com.aor.supermario.viewer.Viewer;
 
 import java.io.IOException;
 
 public class AboutController extends Controller<About> {
-    public AboutController(About about) {
-        super(about);
+    public AboutController(About about, Viewer v) {
+        super(about, v);
     }
 
     @Override

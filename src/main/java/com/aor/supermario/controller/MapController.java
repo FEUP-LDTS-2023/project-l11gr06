@@ -5,6 +5,7 @@ import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.Map;
 import com.aor.supermario.model.Menu;
 import com.aor.supermario.states.MenuState;
+import com.aor.supermario.viewer.Viewer;
 
 import java.io.IOException;
 
@@ -12,10 +13,10 @@ public class MapController extends GameController {
     private final PlayerController playerController;
     //private final MonsterController monsterController;
 
-    public MapController(Map map) {
-        super(map);
+    public MapController(Map map, Viewer v) {
+        super(map, v);
 
-        this.playerController = new PlayerController(map);
+        this.playerController = new PlayerController(map,v );
         //this.monsterController = new MonsterController(map);
     }
 

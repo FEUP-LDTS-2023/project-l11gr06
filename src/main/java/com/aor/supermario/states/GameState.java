@@ -17,6 +17,6 @@ public class GameState extends State<Map> {
 
     @Override
     protected Controller<Map> getController() {
-        return new MapController(getModel());
+        return new MapController(getModel(), getViewer());
     }
 }

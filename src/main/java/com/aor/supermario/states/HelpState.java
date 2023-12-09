@@ -19,7 +19,7 @@ public class HelpState extends State<Help> {
 
     @Override
     protected Controller<Help> getController() {
-        return new HelpController(getModel());
+        return new HelpController(getModel(), getViewer());
     }
 }
 

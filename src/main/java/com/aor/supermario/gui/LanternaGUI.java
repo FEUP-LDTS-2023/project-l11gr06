@@ -3,6 +3,7 @@ package com.aor.supermario.gui;
 import com.aor.supermario.Game;
 import com.aor.supermario.model.elements.MysteryBlock;
 import com.aor.supermario.model.Position;
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -44,17 +45,35 @@ public class LanternaGUI implements GUI {
     }
 
     private Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfig) throws IOException {
-        TerminalSize terminalSize = new TerminalSize(width, height + 1);
+        TerminalSize terminalSize = new TerminalSize(width, height);
 
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
                 .setInitialTerminalSize(terminalSize);
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         Terminal terminal = terminalFactory.createTerminal();
-        terminal.setBackgroundColor(TextColor.Factory.fromString("#336699"));
+        terminal.setBackgroundColor(TextColor.Factory.fromString("#89CFF0"));
         //graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
         return terminal;
     }
+
+/*
+
+    private Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfig) throws IOException {
+        TerminalSize terminalSize = new TerminalSize(width, height + 1);
+        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
+        terminalFactory.setForceAWTOverSwing(true);
+        Terminal terminal = terminalFactory.createTerminal();
+        setTerminalBackgroundColor(terminal);
+        return terminal;
+    }
+    private static void setTerminalBackgroundColor(Terminal terminal) throws IOException {
+        TextGraphics graphics = terminal.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#87CEFA"));
+        graphics.fillRectangle(new TerminalPosition(0,0), new TerminalSize(52*8, 8*5), ' ');
+
+    }*/
+
 
     private AWTTerminalFontConfiguration loadSquareFont() throws URISyntaxException, FontFormatException, IOException {
         URL resource = getClass().getClassLoader().getResource("fonts/pixelbabania-vi-deluxe-light.ttf");
@@ -75,10 +94,7 @@ public class LanternaGUI implements GUI {
         if (keyStroke == null) return ACTION.NONE;
         if (keyStroke.getKeyType() == KeyType.EOF) return ACTION.QUIT;
         if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'q') return ACTION.QUIT;
-        if (keyStroke.getKeyType() == KeyType.ArrowUp) {
-            boolean salto=false;
-            return ACTION.UP;
-        }
+        if (keyStroke.getKeyType() == KeyType.ArrowUp) {return ACTION.UP;}
         if (keyStroke.getKeyType() == KeyType.ArrowRight) return ACTION.RIGHT;
         if (keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
         if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
