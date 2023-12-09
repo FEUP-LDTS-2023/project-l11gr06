@@ -39,14 +39,17 @@ public class Game {
         int FPS = 10;
         int frameTime = 1000 / FPS;
 
+        int i=0;
         while (this.state != null) {
-            if (state instanceof GameState) {
+            if (state instanceof GameState && i==0) {
                 Thread t1 = new Thread(new MonsterMoving(
                         ((GameState) state).getViewer().getModel(),
                         ((GameState) state).getViewer(),
                         this, ((GameState) state).getViewer().getModel().getPlayer()));
                 t1.start();
+                i =1;
             }
+            else if(!(state instanceof GameState)) i=0;
             long startTime = System.currentTimeMillis();
 
             state.step(this, gui, startTime);
