@@ -1,15 +1,19 @@
+import com.googlecode.lanterna.terminal.Terminal;
+
 import java.io.IOException;
 
 public class MonsterMoving implements Runnable{
     private Map map;
     private Game game;
     private Player player;
+    private Terminal terminal;
 
-    public MonsterMoving(Map m, Game g, Player p)
+    public MonsterMoving(Map m, Game g, Player p, Terminal terminal)
     {
         map=m;
         game=g;
         player=p;
+        this.terminal = terminal;
     }
 
     public void run() {
@@ -36,7 +40,11 @@ public class MonsterMoving implements Runnable{
                 if (map.monsterCollision(m))
                 {
                     if(m instanceof Turtle && ((Turtle) m).getState()==1) ((Turtle) m).setState(2);
-                    player.setPosition(new Position(player.getPosition().getX(),game.height_game-1));
+                    try {
+                        terminal.close();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                     return;
                 }
                 if(map.monsterDies(m)) break;

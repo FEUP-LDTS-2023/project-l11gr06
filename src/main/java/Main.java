@@ -8,5 +8,6 @@ public class Main {
             new Game(65, 20).runGame();
             lives--;
         }
+        System.exit(0);
     }
 }

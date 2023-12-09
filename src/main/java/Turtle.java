@@ -10,9 +10,6 @@ public class Turtle extends Monster{
     //state=1 -> carapaça parada
     //state=2 -> carapaça a mover
 
-    public Turtle(Position p){
-        super(p);
-    }
     public Turtle(int x, int y) {
         super(x,y);
     }

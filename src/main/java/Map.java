@@ -4,20 +4,18 @@ import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Map {
     private Player player;
-    //private List<Monster> monsters;
     private int width;
     private int height;
     private List<Ground> grounds;
     private List<Block> blocks;
-
     private List<Stair> stairs;
-
     private List<GoalPole> poles;
     private List<MysteryBlock> mysteryBlocks;
     private List<Coin> coins;
@@ -39,6 +37,7 @@ public class Map {
         this.coins = createCoins();
         this.redMushrooms = createRedMushrooms();
         this.pipes = createPipes();
+
         //this.coins = createCoins();
         //this.monsters = createMonsters();
     }
@@ -232,13 +231,10 @@ public class Map {
     private List <Monster> createMonster()
     {
         List <Monster> monsters = new ArrayList<>();
-        monsters.add(new BrownMushroom(25, height - 4));
+        monsters.add(new Turtle(25, height - 4));
 
         monsters.add(new PiranhaPlant(30,height-6));
         monsters.add(new PiranhaPlant(31,height-6));
-
-        monsters.add(new PiranhaPlant(40,height-7));
-        monsters.add(new PiranhaPlant(41,height-7));
 
         monsters.add(new BrownMushroom(42, height - 4));
 
@@ -554,7 +550,6 @@ public class Map {
             if (((PiranhaPlant) m).getOpenCloseState() == 4) return false;
             else return player.getPosition().equals(m.getPosition());
         }
-
         if(player.getPosition().getY()==m.getPosition().getY()) {
             if(m instanceof Turtle && ((Turtle) m).getState()==1)
             {
@@ -569,7 +564,6 @@ public class Map {
                     m.setMoveDirection(1);
                 }
             }
-            if(player.getPosition()== m.getPosition())return true;
             else if (player.getPosition().getX() - 1 == m.getPosition().getX() && m.getMoveDirection()==1) return true;
             else return (player.getPosition().getX() + 1 == m.getPosition().getX() && m.getMoveDirection()==0);
         }
@@ -578,24 +572,83 @@ public class Map {
         return false;
     }
     public boolean monsterDies(Monster m) {
+        if (player.getPosition().equals(m.getPosition())&&(m instanceof BrownMushroom))monsters.remove(m);
         if (player.getPosition().getY() == m.getPosition().getY() - 1 && player.getPosition().getX() == m.getPosition().getX()) {
             if (m instanceof BrownMushroom) {
                 monsters.remove(m);
-                return true;
-            } else if (m instanceof Turtle && ((Turtle) m).getState() == 0) ((Turtle) m).setState(1);
+            } else if (m instanceof Turtle && ((Turtle) m).getState() == 0) {
+                ((Turtle) m).setState(1);
+                if (player.getPosition().getX() < Game.width_game / 2) movePlayer(player.moveRight());
+                else moveMap();
+                if (player.getPosition().getX() < Game.width_game / 2) movePlayer(player.moveRight());
+                else moveMap();
+            }
             else if (m instanceof Turtle && ((Turtle) m).getState() == 1) ((Turtle) m).setState(2);
             else if (m instanceof Turtle && ((Turtle) m).getState() == 2) ((Turtle) m).setState(1);
+            return true;
         }
         return false;
+    }
+    public void moveMap()
+    {
+        for(Ground ground: grounds)
+        {
+            Position p = new Position(ground.getPosition().getX()-1,ground.getPosition().getY());
+            ground.setPosition(p);
+        }
+        for(Block block: blocks)
+        {
+            Position p = new Position(block.getPosition().getX()-1,block.getPosition().getY());
+            block.setPosition(p);
+        }
+        for(Stair stair: stairs)
+        {
+            Position p = new Position(stair.getPosition().getX()-1,stair.getPosition().getY());
+            stair.setPosition(p);
+        }
+        for(GoalPole pole: poles)
+        {
+            Position p = new Position(pole.getPosition().getX()-1,pole.getPosition().getY());
+            pole.setPosition(p);
+        }
+        for(Monster m:monsters)
+        {
+            if(m.getMove())
+            {
+                Position p = new Position(m.getPosition().getX()-1,m.getPosition().getY());
+                m.setPosition(p);
+            }
+
+        }
+        for(MysteryBlock mysteryblock:mysteryBlocks)
+        {
+            Position p = new Position(mysteryblock.getPosition().getX()-1,mysteryblock.getPosition().getY());
+            mysteryblock.setPosition(p);
+        }
+        for(Coin coin:coins)
+        {
+            Position p = new Position(coin.getPosition().getX()-1,coin.getPosition().getY());
+            coin.setPosition(p);
+        }
+        for(RedMushroom rm:redMushrooms)
+        {
+            Position p = new Position(rm.getPosition().getX()-1,rm.getPosition().getY());
+            rm.setPosition(p);
+        }
+
+        for(Pipe pipe: pipes)
+        {
+            Position p = new Position(pipe.getPosition().getX()-1,pipe.getPosition().getY());
+            pipe.setPosition(p);
+        }
     }
     public void processKey(KeyStroke key) {
         System.out.println(key);
         String keyT = key.getKeyType().toString();
-        int b_block = 0;
         switch (keyT) {
             case "ArrowUp":
-                movePlayer(player.moveUp());
 
+                movePlayer(player.moveUp());
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
@@ -612,59 +665,26 @@ public class Map {
                     if(player.getPosition().getX()< Game.width_game/2) movePlayer(player.moveRight());
                     else
                     {
-                        for(Ground ground: grounds)
-                        {
-                            Position p = new Position(ground.getPosition().getX()-1,ground.getPosition().getY());
-                            ground.setPosition(p);
-                        }
-                        for(Block block: blocks)
-                        {
-                            Position p = new Position(block.getPosition().getX()-1,block.getPosition().getY());
-                            block.setPosition(p);
-                        }
-                        for(Stair stair: stairs)
-                        {
-                            Position p = new Position(stair.getPosition().getX()-1,stair.getPosition().getY());
-                            stair.setPosition(p);
-                        }
-                        for(GoalPole pole: poles)
-                        {
-                            Position p = new Position(pole.getPosition().getX()-1,pole.getPosition().getY());
-                            pole.setPosition(p);
-                        }
-                        for(Monster m:monsters)
-                        {
-                            if(m.getMove())
-                            {
-                                Position p = new Position(m.getPosition().getX()-1,m.getPosition().getY());
-                                m.setPosition(p);
-                            }
-
-                        }
-                        for(MysteryBlock mysteryblock:mysteryBlocks)
-                        {
-                            Position p = new Position(mysteryblock.getPosition().getX()-1,mysteryblock.getPosition().getY());
-                            mysteryblock.setPosition(p);
-                        }
-                        for(Coin coin:coins)
-                        {
-                            Position p = new Position(coin.getPosition().getX()-1,coin.getPosition().getY());
-                            coin.setPosition(p);
-                        }
-                        for(RedMushroom rm:redMushrooms)
-                        {
-                            Position p = new Position(rm.getPosition().getX()-1,rm.getPosition().getY());
-                            rm.setPosition(p);
-                        }
-
-                        for(Pipe pipe: pipes)
-                        {
-                            Position p = new Position(pipe.getPosition().getX()-1,pipe.getPosition().getY());
-                            pipe.setPosition(p);
-                        }
+                        moveMap();
                     }
                 }
                 break;
         }
+        if(key.getKeyType() == KeyType.Character && (key.getCharacter() == 'x'||key.getCharacter() == 'X'))
+        {
+            for(GoalPole pole: poles) if(player.getPosition().getX()==pole.getPosition().getX()) System.exit(0);
+            if(!collision_x_front(player)) {
+                if (player.getPosition().getX() < Game.width_game / 2) movePlayer(player.moveRight());
+                else {
+                    moveMap();
+                }
+            }
+        }
+        else if(key.getKeyType() == KeyType.Character && (key.getCharacter() == 'z'||key.getCharacter() == 'Z'))
+        {
+            if(!collision_x_back(player))if(player.getPosition().getX()!=0)movePlayer(player.moveLeft());
+        }
+    }
+        {
     }
 }
