@@ -13,13 +13,13 @@ import java.io.IOException;
 
 public class MapController extends GameController {
     private final PlayerController playerController;
-    //private final MonsterController monsterController;
+    private final MonsterController monsterController;
 
     public MapController(Map map, Viewer v) {
         super(map, v);
 
         this.playerController = new PlayerController(map,v );
-        //this.monsterController = new MonsterController(map);
+        this.monsterController = new MonsterController(map, v);
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
@@ -27,7 +27,7 @@ public class MapController extends GameController {
             game.setState(new MenuState(new Menu()));
         else {
             playerController.step(game, action, time);
-            //monsterController.step(game, action, time);
+            monsterController.step(game, action, time);
         }
     }
 }

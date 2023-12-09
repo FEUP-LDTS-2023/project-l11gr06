@@ -1,6 +1,10 @@
 package com.aor.supermario.model;
 
+import com.aor.supermario.Game;
+import com.aor.supermario.controller.MonsterMoving;
 import com.aor.supermario.model.elements.*;
+import com.aor.supermario.states.GameState;
+import com.aor.supermario.viewer.Viewer;
 
 import java.util.List;
 
@@ -19,7 +23,8 @@ public abstract class MapBuilder {
         map.setPipes(createPipes());
         map.setGoalPoles(createGoalPole());
         map.setRedMushrooms(createRedMushrooms());
-        //Map.setMonsters(createMonsters());
+        map.setMonsters(createMonsters());
+
 
         return map;
     }
@@ -35,5 +40,5 @@ public abstract class MapBuilder {
     protected abstract List<Pipe> createPipes();
     protected abstract List<GoalPole> createGoalPole();
     protected abstract Player createPlayer();
-    //protected abstract List<Map> createMonsters();
+    protected abstract List<Monster> createMonsters();
 }

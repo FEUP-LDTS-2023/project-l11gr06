@@ -3,10 +3,7 @@ package com.aor.supermario.controller;
 import com.aor.supermario.Game;
 import com.aor.supermario.gui.GUI;
 //import com.aor.supermario.model.game.arena.LoaderArenaBuilder;
-import com.aor.supermario.model.About;
-import com.aor.supermario.model.Help;
-import com.aor.supermario.model.Map1Builder;
-import com.aor.supermario.model.Menu;
+import com.aor.supermario.model.*;
 import com.aor.supermario.states.AboutState;
 import com.aor.supermario.states.GameState;
 import com.aor.supermario.states.HelpState;
@@ -35,6 +32,7 @@ public class MenuController extends Controller<Menu> {
                 if (getModel().isSelectedAbout()) game.setState(new AboutState(new About()));
                 if (getModel().isSelectedStart()) {
                     while (lives > 0) {
+
                         game.setState(new GameState(new Map1Builder(250, 20).createMap()));
                         lives--;
                     }

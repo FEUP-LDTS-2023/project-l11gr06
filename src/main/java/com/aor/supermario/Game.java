@@ -1,5 +1,6 @@
 package com.aor.supermario;
 
+import com.aor.supermario.controller.MonsterMoving;
 import com.aor.supermario.model.elements.Block;
 import com.aor.supermario.states.GameState;
 import com.aor.supermario.states.MenuState;
@@ -27,6 +28,7 @@ public class Game {
     public Game() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(width_game, height_game);
         this.state = new MenuState(new Menu());
+
     }
 
     public void setState(State state) {
@@ -38,7 +40,15 @@ public class Game {
         int frameTime = 1000 / FPS;
 
         while (this.state != null) {
+            if (state instanceof GameState) {
+                Thread t1 = new Thread(new MonsterMoving(
+                        ((GameState) state).getViewer().getModel(),
+                        ((GameState) state).getViewer(),
+                        this, ((GameState) state).getViewer().getModel().getPlayer()));
+                t1.start();
+            }
             long startTime = System.currentTimeMillis();
+
             state.step(this, gui, startTime);
 
             long elapsedTime = System.currentTimeMillis() - startTime;

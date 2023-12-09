@@ -18,6 +18,8 @@ public class Map1Builder extends MapBuilder{
         Player player=new Player(1, getHeight()-4);
         return player;
     }
+
+
     @Override
     protected List<GoalPole> createGoalPole()
     {
@@ -216,5 +218,44 @@ public class Map1Builder extends MapBuilder{
         pipes.add(new Pipe(184,getHeight()-4,'N'));
         pipes.add(new Pipe(184,getHeight()-5,'P'));
         return pipes;
+    }
+    @Override
+    protected List <Monster> createMonsters()
+    {
+        List <Monster> monsters = new ArrayList<>();
+        monsters.add(new BrownMushroom(25, height - 4));
+
+        //monsters.add(new PiranhaPlant(30,height-6));
+        //monsters.add(new PiranhaPlant(31,height-6));
+
+        monsters.add(new BrownMushroom(42, height - 4));
+
+
+        //monsters.add(new PiranhaPlant(48,height-8));
+        //monsters.add(new PiranhaPlant(49,height-8));
+
+        monsters.add(new BrownMushroom(53, height - 4));
+        monsters.add(new BrownMushroom(55, height - 4));
+
+        monsters.add(new BrownMushroom(83, height - 13));
+        monsters.add(new BrownMushroom(83, height - 15));
+
+        monsters.add(new BrownMushroom(100, height - 4));
+        monsters.add(new BrownMushroom(102, height - 4));
+
+        monsters.add(new Turtle(110, height - 4));
+
+        monsters.add(new BrownMushroom(117, height - 4));
+        monsters.add(new BrownMushroom(119, height - 4));
+
+        monsters.add(new BrownMushroom(127, height - 4));
+        monsters.add(new BrownMushroom(129, height - 4));
+
+        monsters.add(new BrownMushroom(131, height - 4));
+        monsters.add(new BrownMushroom(133, height - 4));
+
+        //monsters.add(new PiranhaPlant(183,height-6));
+        //monsters.add(new PiranhaPlant(184,height-6));
+        return monsters;
     }
 }

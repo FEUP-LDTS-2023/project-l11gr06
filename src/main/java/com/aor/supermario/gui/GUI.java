@@ -1,6 +1,7 @@
 package com.aor.supermario.gui;
 
 import com.aor.supermario.model.Position;
+import com.aor.supermario.model.elements.Turtle;
 
 import java.io.IOException;
 
@@ -25,6 +26,12 @@ public interface GUI {
     void drawRedMushroom(Position position);
 
     void drawGoalPole(Position position);
+
+    void drawBrownMushroom(Position position);
+
+    void drawTurtle(Position position);
+
+    void drawTurtleShell(Position position);
 
     void drawText(Position position, String text, String color);
 

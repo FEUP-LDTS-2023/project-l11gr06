@@ -3,7 +3,6 @@ package com.aor.supermario.gui;
 import com.aor.supermario.Game;
 import com.aor.supermario.model.elements.MysteryBlock;
 import com.aor.supermario.model.Position;
-import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -22,6 +21,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 public class LanternaGUI implements GUI {
+
     private final Screen screen;
 
     public LanternaGUI(Screen screen) {
@@ -141,6 +141,18 @@ public class LanternaGUI implements GUI {
         {
             drawCharacter(position.getX(), position.getY(), '|', "#8A3324");
         }
+    }
+    @Override
+    public void drawBrownMushroom(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'M', "#8A3324");
+    }
+    @Override
+    public void drawTurtle(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'T', "#8A3324");
+    }
+    @Override
+    public void drawTurtleShell(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'w', "#8A3324");
     }
     @Override
     public void drawText(Position position, String text, String color) {
