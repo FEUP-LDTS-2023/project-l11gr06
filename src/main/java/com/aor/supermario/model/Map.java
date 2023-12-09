@@ -1,5 +1,7 @@
 package com.aor.supermario.model;
 
+import com.aor.supermario.Game;
+import com.aor.supermario.controller.PlayerController;
 import com.aor.supermario.model.elements.*;
 
 import java.util.List;
@@ -214,12 +216,12 @@ public class Map {
         }
         return false;
     }
-    public boolean collision_x_front()
+    public boolean collision_x_front(Element element)
     {
         for(Block block:blocks)
         {
             Position p = new Position(block.getPosition().getX()-1,block.getPosition().getY());
-            if(player.getPosition().equals(p)&&player.getPosition().equals(p))
+            if(element.getPosition().equals(p)&&element.getPosition().equals(p))
             {
                 return true;
             }
@@ -227,7 +229,7 @@ public class Map {
         for(Ground ground:grounds)
         {
             Position p = new Position(ground.getPosition().getX()-1,ground.getPosition().getY());
-            if(player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -235,7 +237,7 @@ public class Map {
         for(Stair stair:stairs)
         {
             Position p = new Position(stair.getPosition().getX()-1,stair.getPosition().getY());
-            if(player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -243,7 +245,7 @@ public class Map {
         for(MysteryBlock mysteryblock:mysteryBlocks)
         {
             Position p = new Position(mysteryblock.getPosition().getX()-1,mysteryblock.getPosition().getY());
-            if(player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -251,7 +253,7 @@ public class Map {
         for(Pipe pipe:pipes)
         {
             Position p = new Position(pipe.getPosition().getX()-1,pipe.getPosition().getY());
-            if(player.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -303,5 +305,6 @@ public class Map {
 
         return false;
     }
+
 
 }

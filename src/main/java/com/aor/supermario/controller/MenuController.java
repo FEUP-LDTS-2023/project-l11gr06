@@ -15,6 +15,7 @@ import com.aor.supermario.viewer.Viewer;
 import java.io.IOException;
 
 public class MenuController extends Controller<Menu> {
+    public int lives=3;
     public MenuController(Menu menu, Viewer v) {
         super(menu, v);
     }
@@ -32,7 +33,12 @@ public class MenuController extends Controller<Menu> {
                 if (getModel().isSelectedExit()) game.setState(null);
                 if (getModel().isSelectedHelp()) game.setState(new HelpState(new Help()));
                 if (getModel().isSelectedAbout()) game.setState(new AboutState(new About()));
-                if (getModel().isSelectedStart()) game.setState(new GameState(new Map1Builder(250,20).createMap()));
+                if (getModel().isSelectedStart()) {
+                    while (lives > 0) {
+                        game.setState(new GameState(new Map1Builder(250, 20).createMap()));
+                        lives--;
+                    }
+                }
         }
     }
 }

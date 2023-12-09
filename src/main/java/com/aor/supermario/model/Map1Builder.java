@@ -15,7 +15,7 @@ public class Map1Builder extends MapBuilder{
         this.height = height;
     }
     protected Player createPlayer() {
-        Player player=new Player(3, getHeight()-4);
+        Player player=new Player(1, getHeight()-4);
         return player;
     }
     @Override

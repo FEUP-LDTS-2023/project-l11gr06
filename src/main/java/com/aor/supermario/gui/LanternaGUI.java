@@ -99,6 +99,9 @@ public class LanternaGUI implements GUI {
         if (keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
         if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
         if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
+        if (keyStroke.getKeyType() == KeyType.Character && (keyStroke.getCharacter() == 'x'||keyStroke.getCharacter() == 'X')) return ACTION.JUMPR;
+        if (keyStroke.getKeyType() == KeyType.Character && (keyStroke.getCharacter() == 'z' || keyStroke.getCharacter() == 'Z')) return ACTION.JUMPL;
+        if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
         return ACTION.NONE;
     }
 
@@ -124,7 +127,7 @@ public class LanternaGUI implements GUI {
         if (MysteryBlock.getMysteryState() == 0) {
             drawCharacter(position.getX(), position.getY(), '?', "#8A3324");
         } else {
-            drawCharacter(position.getX(), position.getY(), '!', "#8A3324");
+            drawCharacter(position.getX(), position.getY(), '?', "#8A3324");
         }
     }
     @Override

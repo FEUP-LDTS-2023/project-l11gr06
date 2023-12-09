@@ -4,6 +4,8 @@ import com.aor.supermario.Game;
 import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.Map;
 import com.aor.supermario.model.Menu;
+import com.aor.supermario.model.Position;
+import com.aor.supermario.model.elements.*;
 import com.aor.supermario.states.MenuState;
 import com.aor.supermario.viewer.Viewer;
 
