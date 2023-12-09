@@ -70,7 +70,7 @@ public class PlayerController extends GameController {
         }
         if (action == GUI.ACTION.RIGHT) {
             for (GoalPole pole : getModel().getGoalPole())
-                if (getModel().getPlayer().getPosition().getX() == pole.getPosition().getX()) System.exit(0);
+                if (getModel().getPlayer().getPosition().getX() == pole.getPosition().getX()) game.setState(new VictoryState(new Victory()));
             if (!getModel().collision_x_front(getModel().getPlayer())) {
                 if (getModel().getPlayer().getPosition().getX() < Game.width_game / 2)
                     moveRight();
@@ -141,7 +141,6 @@ public class PlayerController extends GameController {
                 for (GoalPole pole : getModel().getGoalPole())
                     if (getModel().getPlayer().getPosition().getX() == pole.getPosition().getX()) {
                         game.setState(new VictoryState(new Victory()));
-                        //System.exit(0);
                     }
                 if (!getModel().collision_x_front(getModel().getPlayer())) {
                     if (getModel().getPlayer().getPosition().getX() < Game.width_game / 2)

@@ -38,6 +38,10 @@ public class LanternaGUI implements GUI {
         final Screen screen;
         screen = new TerminalScreen(terminal);
 
+        //TextGraphics t = screen.newTextGraphics();
+        //t.setForegroundColor(TextColor.ANSI.DEFAULT);
+        //t.setBackgroundColor(TextColor.ANSI.BLUE);
+
         screen.setCursorPosition(null);
         screen.startScreen();
         screen.doResizeIfNecessary();
@@ -52,27 +56,10 @@ public class LanternaGUI implements GUI {
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         Terminal terminal = terminalFactory.createTerminal();
-        terminal.setBackgroundColor(TextColor.Factory.fromString("#89CFF0"));
+        //terminal.setBackgroundColor(TextColor.Factory.fromString("#89CFF0"));
         //graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
         return terminal;
     }
-
-/*
-
-    private Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfig) throws IOException {
-        TerminalSize terminalSize = new TerminalSize(width, height + 1);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-        terminalFactory.setForceAWTOverSwing(true);
-        Terminal terminal = terminalFactory.createTerminal();
-        setTerminalBackgroundColor(terminal);
-        return terminal;
-    }
-    private static void setTerminalBackgroundColor(Terminal terminal) throws IOException {
-        TextGraphics graphics = terminal.newTextGraphics();
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#87CEFA"));
-        graphics.fillRectangle(new TerminalPosition(0,0), new TerminalSize(52*8, 8*5), ' ');
-
-    }*/
 
 
     private AWTTerminalFontConfiguration loadSquareFont() throws URISyntaxException, FontFormatException, IOException {
@@ -148,7 +135,7 @@ public class LanternaGUI implements GUI {
     }
     @Override
     public void drawGoalPole(Position position) {
-        if(position.getY() == Game.height_game-13)
+        if(position.getY() == Game.height_game-14)
             drawCharacter(position.getX(), position.getY(), '<', "#8A3324");
         else
         {
