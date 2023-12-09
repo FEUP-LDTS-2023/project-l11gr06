@@ -3,7 +3,7 @@ plugins {
     id 'application'
 }
 
-group = 'org.example'
+group = 'com.aor.supermario'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -21,6 +21,6 @@ test {
 }
 
 application {
-    mainClass.set("Main")
+    mainClass.set("com.aor.supermario.Main")
 }
 
