@@ -16,5 +16,4 @@ public abstract class Element {
     public void setPosition(Position p) {
         this.position = p;
     }
-
 }
