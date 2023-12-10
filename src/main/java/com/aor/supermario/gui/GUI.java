@@ -20,7 +20,7 @@ public interface GUI {
 
     void drawStair(Position position);
 
-    void drawPipe(Position position);
+    void drawPipe(Position position, char character);
     void drawCoin(Position position);
 
     void drawRedMushroom(Position position);

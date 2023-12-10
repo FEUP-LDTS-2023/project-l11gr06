@@ -312,7 +312,6 @@ public class Map {
 
         return false;
     }
-
     public void moveMap()
     {
         for(Ground ground: grounds)

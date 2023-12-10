@@ -22,13 +22,6 @@ public class PlayerController extends GameController {
         super(map, v);
     }
 
-    /*    public Position moveUp() {
-        return new Position(getPosition().getX(), getPosition().getY() - 1);
-    }
-    public Position moveLeft() {
-        return new Position(getPosition().getX()-1, getPosition().getY());
-    }
-    public Position moveRight() {return new Position(getPosition().getX()+1, getPosition().getY());}*/
 
     public void moveLeft() {
         movePlayer(getModel().getPlayer().getPosition().getLeft());

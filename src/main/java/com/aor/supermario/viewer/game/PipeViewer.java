@@ -6,6 +6,6 @@ import com.aor.supermario.gui.GUI;
 public class PipeViewer implements ElementViewer<Pipe> {
     @Override
     public void draw(Pipe pipe, GUI gui) {
-        gui.drawPipe(pipe.getPosition());
+        gui.drawPipe(pipe.getPosition(), pipe.getCharacter());
     }
 }

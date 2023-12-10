@@ -14,7 +14,6 @@ public class Gravity extends PlayerController implements Runnable{
     private Map map;
     private Viewer v;
     private Game game;
-
     private Element element;
     public Gravity(Map m, Viewer v, Game g, Element e)
     {
@@ -26,7 +25,7 @@ public class Gravity extends PlayerController implements Runnable{
     public void run() {
         while(element.getPosition().getY()!= getModel().getHeight())
         {
-            if(element.getPosition().getY()== getModel().getHeight()-1 && element instanceof Player) return;
+            if(element.getPosition().getY()== getModel().getHeight()-1 ) return;
             if(map.collision_y(element)) break;
             Position p = new Position(element.getPosition().getX(),element.getPosition().getY()+1);
             element.setPosition(p);
