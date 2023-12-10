@@ -12,7 +12,7 @@ public class GameOverViewer extends Viewer<GameOver> {
 
     @Override
     public void drawElements(GUI gui) {
-        gui.drawText(new Position(24, 5), "Game Over.", "#FFFFFF");
+        gui.drawText(new Position(24, 5), "GAME OVER", "#FFFFFF");
 
         for (int i = 0; i < getModel().getNumberEntries(); i++)
             gui.drawText( new Position(24, 7 + i), getModel().getEntry(i), getModel().isSelected(i) ? "#FF0000" : "#FFFFFF");
