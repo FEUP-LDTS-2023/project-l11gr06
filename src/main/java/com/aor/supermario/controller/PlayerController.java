@@ -158,10 +158,12 @@ public class PlayerController extends GameController {
                 }
             }
             if (getModel().collect_coins()){
+                getViewer().draw(game.getGui());
                 getModel().getPlayer().addPoint(100);
                 getViewer().draw(game.getGui());
             }
             if (getModel().collect_mushroom()) {
+                getViewer().draw(game.getGui());
                 getModel().getPlayer().addPoint(1000);
                 getViewer().draw(game.getGui());
             }

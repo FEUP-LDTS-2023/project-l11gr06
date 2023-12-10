@@ -3,7 +3,7 @@ package com.aor.supermario.model.elements;
 import com.aor.supermario.model.Position;
 
 public class MysteryBlock extends Element {
-    private static int MysteryState = 0;
+    private int MysteryState = 0;
 
     public MysteryBlock(Position p) {
         super(p);
@@ -13,7 +13,7 @@ public class MysteryBlock extends Element {
         super(x, y);
     }
 
-    public static int getMysteryState() {
+    public int getMysteryState() {
         return MysteryState;
     }
 
