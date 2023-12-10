@@ -94,7 +94,7 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawPlayer(Position position) {
-        drawCharacter(position.getX(), position.getY(), '+', "#FFFF33");
+        drawCharacter(position.getX(), position.getY(), '+', "#FF0000");
     }
     @Override
     public void drawGround(Position position) {
@@ -123,7 +123,7 @@ public class LanternaGUI implements GUI {
     }
     @Override
     public void drawPipe(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'P', "#8A3324");
+        drawCharacter(position.getX(), position.getY(), 'P', "#008000");
     }
     @Override
     public void drawRedMushroom(Position position) {
@@ -131,7 +131,7 @@ public class LanternaGUI implements GUI {
     }
     @Override
     public void drawCoin(Position position) {
-        drawCharacter(position.getX(), position.getY(), '0', "#8A3324");
+        drawCharacter(position.getX(), position.getY(), 'O', "#FED000");
     }
     @Override
     public void drawGoalPole(Position position) {
