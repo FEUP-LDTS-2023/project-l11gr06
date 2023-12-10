@@ -107,44 +107,44 @@ public class LanternaGUI implements GUI {
     //}
     @Override
     public void drawBlock(Position position) {
-        drawCharacter(position.getX(), position.getY(), '&',"#8A3324");
+        drawCharacter(position.getX(), position.getY(), '&',"#FF6400");
     }
     @Override
     public void drawMysteryBlock(Position position) {
         if (MysteryBlock.getMysteryState() == 0) {
-            drawCharacter(position.getX(), position.getY(), '#', "#8A3324");
+            drawCharacter(position.getX(), position.getY(), '#', "#FED000");
         } else {
-            drawCharacter(position.getX(), position.getY(), '#', "#8A3324");
+            drawCharacter(position.getX(), position.getY(), '#', "#FED000");
         }
     }
     @Override
     public void drawStair(Position position) {
-        drawCharacter(position.getX(), position.getY(), '$', "#8A3324");
+        drawCharacter(position.getX(), position.getY(), '$', "#FF6400");
     }
     @Override
     public void drawPipe(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'P', "#008000");
+        drawCharacter(position.getX(), position.getY(), '<', "#008000");
     }
     @Override
     public void drawRedMushroom(Position position) {
-        drawCharacter(position.getX(), position.getY(), '@', "#8A3324");
+        drawCharacter(position.getX(), position.getY(), '=', "#FF0000");
     }
     @Override
     public void drawCoin(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'O', "#FED000");
+        drawCharacter(position.getX(), position.getY(), '>', "#FED000");
     }
     @Override
     public void drawGoalPole(Position position) {
         if(position.getY() == Game.height_game-14)
-            drawCharacter(position.getX(), position.getY(), '<', "#8A3324");
+            drawCharacter(position.getX(), position.getY(), '[', "#FF007F");
         else
         {
-            drawCharacter(position.getX(), position.getY(), '|', "#8A3324");
+            drawCharacter(position.getX(), position.getY(), 'I', "#FF007F");
         }
     }
     @Override
     public void drawBrownMushroom(Position position) {
-        drawCharacter(position.getX(), position.getY(), '/', "#8A3324");
+        drawCharacter(position.getX(), position.getY(), '/', "#9400D3");
     }
     @Override
     public void drawTurtle(Position position) {
