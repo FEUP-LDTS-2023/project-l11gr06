@@ -37,6 +37,8 @@ public interface GUI {
 
     void drawText(Position position, String text, String color);
 
+    void drawCharacter(int x, int y, char c, String color);
+
     void clear();
 
     void refresh() throws IOException;
