@@ -124,9 +124,9 @@ public class Map1Builder extends MapBuilder{
         blocks.add(new Block(82, getHeight() - 7));
         for(int i = 83; i<=90;i++) blocks.add(new Block(i, getHeight() - 12));
         for(int i = 94; i<=96;i++) blocks.add(new Block(i, getHeight() - 12));
-        blocks.add(new Block(97, getHeight() - 7)); //TEM COIN
+        blocks.add(new Block(97, getHeight() - 7));
         blocks.add(new Block(103, getHeight() - 7));
-        blocks.add(new Block(104, getHeight() - 7)); //TEM ESTRELA
+        blocks.add(new Block(104, getHeight() - 7));
         blocks.add(new Block(121, getHeight() - 7));
         for(int i = 124; i<=126;i++) blocks.add(new Block(i, getHeight() - 12));
         blocks.add(new Block(131, getHeight() - 12));
@@ -223,19 +223,19 @@ public class Map1Builder extends MapBuilder{
     protected List <Monster> createMonsters()
     {
         List <Monster> monsters = new ArrayList<>();
-        //monsters.add(new BrownMushroom(25, height - 4));
+        monsters.add(new BrownMushroom(25, height - 4));
 
         //monsters.add(new PiranhaPlant(30,height-6));
         //monsters.add(new PiranhaPlant(31,height-6));
 
-        //monsters.add(new BrownMushroom(42, height - 4));
+        monsters.add(new BrownMushroom(42, height - 4));
 
 
         //monsters.add(new PiranhaPlant(48,height-8));
         //monsters.add(new PiranhaPlant(49,height-8));
 
-        //monsters.add(new BrownMushroom(53, height - 4));
-        //monsters.add(new BrownMushroom(55, height - 4));
+        monsters.add(new BrownMushroom(53, height - 4));
+        monsters.add(new BrownMushroom(55, height - 4));
 
         monsters.add(new BrownMushroom(83, height - 13));
         monsters.add(new BrownMushroom(83, height - 15));
