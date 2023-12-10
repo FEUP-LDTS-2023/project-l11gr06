@@ -144,7 +144,7 @@ public class LanternaGUI implements GUI {
     }
     @Override
     public void drawBrownMushroom(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'M', "#8A3324");
+        drawCharacter(position.getX(), position.getY(), '/', "#8A3324");
     }
     @Override
     public void drawTurtle(Position position) {

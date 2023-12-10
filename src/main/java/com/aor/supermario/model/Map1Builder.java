@@ -223,7 +223,7 @@ public class Map1Builder extends MapBuilder{
     protected List <Monster> createMonsters()
     {
         List <Monster> monsters = new ArrayList<>();
-        //monsters.add(new BrownMushroom(25, height - 4));
+        monsters.add(new BrownMushroom(25, height - 4));
 
         //monsters.add(new PiranhaPlant(30,height-6));
         //monsters.add(new PiranhaPlant(31,height-6));
