@@ -12,62 +12,28 @@ public class TurtleShellMoving extends MonsterController implements Runnable{
     private Map map;
     private Viewer v;
     private Game game;
-
-    private Element element;
-    public TurtleShellMoving(Map m, Viewer v, Game g, Element e)
+    private Monster monster;
+    public TurtleShellMoving(Map m, Viewer v, Game g, Monster monster)
     {
         super(m,v);
         map=m;
         game=g;
-        element=e;
+        this.monster=monster;
     }
     public void run() {
-        while(true)
+        while(((TurtleShell) monster).getState()==2)
         {
-            for(Monster m: getModel().monstersToMove()) {
-                Thread t1 = new Thread(new Gravity(getModel(), getViewer(),game,m));
-                t1.start();
-                if(getModel().collision_y(m)) {
-                    if(m instanceof BrownMushroom || (m instanceof TurtleShell && ((TurtleShell) m).getState()==0) ) {
-                        getModel().moveMonster(m);
-                    }
-                    else if (m instanceof TurtleShell && ((TurtleShell) m).getState()==2)
-                    {
-                        Thread t2 = new Thread(new TurtleShellMoving(getModel(),v,game,m));
-                        t2.start();
-                    }
-                    try {
-                        getViewer().draw(game.getGui());
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                if (getModel().monsterCollision(m))
-                {
-                    if(m instanceof TurtleShell && ((TurtleShell) m).getState()==1) ((TurtleShell) m).setState(2);
-                    try {
-                        game.getGui().close();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    return;
-                }
-                if(getModel().monsterDies(m)) break;
-                try {
-                    getViewer().draw(game.getGui());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+            map.moveMonster(monster);
             try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
+                getViewer().draw(game.getGui());
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-    }
-    @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
-        run();
     }
 }

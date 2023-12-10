@@ -5,12 +5,13 @@ import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.Map;
 import com.aor.supermario.model.Position;
 import com.aor.supermario.model.elements.Element;
+import com.aor.supermario.model.elements.Monster;
 import com.aor.supermario.model.elements.Player;
 import com.aor.supermario.viewer.Viewer;
 
 import java.io.IOException;
 
-public class Gravity extends PlayerController implements Runnable{
+public class Gravity extends MonsterController implements Runnable{
     private Map map;
     private Viewer v;
     private Game game;
@@ -26,12 +27,11 @@ public class Gravity extends PlayerController implements Runnable{
     public void run() {
         while(element.getPosition().getY()!= getModel().getHeight())
         {
-            if(element.getPosition().getY()== getModel().getHeight()-1 && element instanceof Player) return;
+            //if(element.getPosition().getY()== getModel().getHeight()-1 && element instanceof Player) return;
             if(map.collision_y(element)) break;
-            Position p = new Position(element.getPosition().getX(),element.getPosition().getY()+1);
-            element.setPosition(p);
+            moveDown((Monster) element);
             try {
-                getViewer().draw(game.getGui());
+                v.draw(game.getGui());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -43,8 +43,4 @@ public class Gravity extends PlayerController implements Runnable{
         }
     }
 
-    @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
-        run();
-    }
 }

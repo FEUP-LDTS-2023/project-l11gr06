@@ -8,6 +8,7 @@ import com.aor.supermario.states.State;
 import com.aor.supermario.gui.LanternaGUI;
 import com.aor.supermario.model.Menu;
 import com.aor.supermario.model.Map;
+import com.aor.supermario.viewer.game.MonsterViewer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -45,7 +46,7 @@ public class Game {
                 Thread t1 = new Thread(new MonsterMoving(
                         ((GameState) state).getViewer().getModel(),
                         ((GameState) state).getViewer(),
-                        this, ((GameState) state).getViewer().getModel().getPlayer()));
+                        this));
                 t1.start();
                 i =1;
             }
