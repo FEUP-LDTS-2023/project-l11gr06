@@ -1,6 +1,7 @@
 package com.aor.supermario.gui;
 
 import com.aor.supermario.model.Position;
+import com.aor.supermario.model.elements.MysteryBlock;
 import com.aor.supermario.model.elements.Turtle;
 
 import java.io.IOException;
@@ -16,7 +17,7 @@ public interface GUI {
 
     void drawBlock(Position position);
 
-    void drawMysteryBlock(Position position);
+    void drawMysteryBlock(MysteryBlock mb,Position position);
 
     void drawStair(Position position);
 
