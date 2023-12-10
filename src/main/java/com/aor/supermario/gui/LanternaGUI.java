@@ -101,10 +101,10 @@ public class LanternaGUI implements GUI {
         drawCharacter(position.getX(), position.getY(), '%', "#3333FF");
     }
 
-    //@Override
-    //public void drawMonster(Position position) {
-    //    drawCharacter(position.getX(), position.getY(), 'M', "#CC0000");
-    //}
+    @Override
+    public void drawMonster(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'M', "#CC0000");
+    }
     @Override
     public void drawBlock(Position position) {
         drawCharacter(position.getX(), position.getY(), '&',"#FF6400");
@@ -113,8 +113,12 @@ public class LanternaGUI implements GUI {
     public void drawMysteryBlock(Position position) {
         if (MysteryBlock.getMysteryState() == 0) {
             drawCharacter(position.getX(), position.getY(), '#', "#FED000");
+    public void drawMysteryBlock(MysteryBlock mb,Position position) {
+        if (mb.getMysteryState() == 0) {
+            drawCharacter(position.getX(), position.getY(), '#', "#8A3324");
         } else {
             drawCharacter(position.getX(), position.getY(), '#', "#FED000");
+            drawCharacter(position.getX(), position.getY(), 'A', "#8A3324");
         }
     }
     @Override

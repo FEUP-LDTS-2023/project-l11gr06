@@ -38,15 +38,6 @@ public class Map {
     public void setPlayer(Player player) {
         this.player = player;
     }
-
-    //public List<Monster> getMonsters() {
-    //    return monsters;
-    //}
-
-    //public void setMonsters(List<Monster> monsters) {
-    //    this.monsters = monsters;
-    //}
-
     public List<Ground> getGrounds() {
         return grounds;
     }
@@ -102,7 +93,6 @@ public class Map {
         this.monsters = monsters;
     }
 
-
 /*
     public void movePlayer(Position position) {
         player.setPosition(position);}*/
@@ -146,11 +136,12 @@ public class Map {
     }
 
     public boolean collect_coins() {
+
         for(Coin coin:coins) {
             for (MysteryBlock m:mysteryBlocks) {
                 if (coin.getPosition().equals(m.getPosition())) return false;
             }
-            if (player.getPosition().equals(coin.getPosition())) {
+            if (collision_x_back(coin) || collision_x_front(coin) || collision_y(coin)) {
                 coins.remove(coin);
                 return true;
             }
@@ -305,7 +296,6 @@ public class Map {
 
         return false;
     }
-
     public void moveMap()
     {
         for(Ground ground: grounds)

@@ -6,6 +6,6 @@ import com.aor.supermario.gui.GUI;
 public class MysteryBlockViewer implements ElementViewer<MysteryBlock> {
     @Override
     public void draw(MysteryBlock mysteryBlock, GUI gui) {
-        gui.drawMysteryBlock(mysteryBlock.getPosition());
+        gui.drawMysteryBlock(mysteryBlock,mysteryBlock.getPosition());
     }
 }
