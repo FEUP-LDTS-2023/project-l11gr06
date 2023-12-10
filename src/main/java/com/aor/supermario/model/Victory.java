@@ -8,7 +8,7 @@ public class Victory {
     private int currentEntry = 0;
 
     public Victory() {
-        this.entries = Arrays.asList("Play Again", "Menu", "Exit");
+        this.entries = Arrays.asList("PLAY AGAIN", "MENU", "EXIT");
     }
 
     public void nextEntry() {

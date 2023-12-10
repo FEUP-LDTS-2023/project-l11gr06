@@ -68,7 +68,7 @@ public class Map1Builder extends MapBuilder{
     @Override
     protected List<Stair> createStairs() {
         List<Stair> stairs = new ArrayList<>();
-
+        stairs.add(new Stair(5,getHeight() - 4));
         int i =0;
         for(int c = 137; c <141;c++) {
             i++;
@@ -223,19 +223,19 @@ public class Map1Builder extends MapBuilder{
     protected List <Monster> createMonsters()
     {
         List <Monster> monsters = new ArrayList<>();
-        monsters.add(new BrownMushroom(25, height - 4));
+        //monsters.add(new BrownMushroom(25, height - 4));
 
         //monsters.add(new PiranhaPlant(30,height-6));
         //monsters.add(new PiranhaPlant(31,height-6));
 
-        monsters.add(new BrownMushroom(42, height - 4));
+        //monsters.add(new BrownMushroom(42, height - 4));
 
 
         //monsters.add(new PiranhaPlant(48,height-8));
         //monsters.add(new PiranhaPlant(49,height-8));
 
-        monsters.add(new BrownMushroom(53, height - 4));
-        monsters.add(new BrownMushroom(55, height - 4));
+        //monsters.add(new BrownMushroom(53, height - 4));
+        //monsters.add(new BrownMushroom(55, height - 4));
 
         monsters.add(new BrownMushroom(83, height - 13));
         monsters.add(new BrownMushroom(83, height - 15));

@@ -7,7 +7,7 @@ public class About {
     private final List<String> entries;
     private int currentEntry = 0;
     public About() {
-        this.entries = Arrays.asList("Return to menu");
+        this.entries = Arrays.asList("RETURN TO MENU");
     }
     public void nextEntry() {
         currentEntry++;

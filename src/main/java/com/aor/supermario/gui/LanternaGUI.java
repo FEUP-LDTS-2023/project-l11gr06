@@ -63,7 +63,7 @@ public class LanternaGUI implements GUI {
 
 
     private AWTTerminalFontConfiguration loadSquareFont() throws URISyntaxException, FontFormatException, IOException {
-        URL resource = getClass().getClassLoader().getResource("fonts/pixelbabania-vi-deluxe-light.ttf");
+        URL resource = getClass().getClassLoader().getResource("fonts/fonte.ttf");
         //assert resource != null;
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -94,11 +94,11 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawPlayer(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'X', "#FFFF33");
+        drawCharacter(position.getX(), position.getY(), '+', "#FFFF33");
     }
     @Override
     public void drawGround(Position position) {
-        drawCharacter(position.getX(), position.getY(), '_', "#3333FF");
+        drawCharacter(position.getX(), position.getY(), '%', "#3333FF");
     }
 
     //@Override
@@ -107,19 +107,19 @@ public class LanternaGUI implements GUI {
     //}
     @Override
     public void drawBlock(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'B',"#8A3324");
+        drawCharacter(position.getX(), position.getY(), '&',"#8A3324");
     }
     @Override
     public void drawMysteryBlock(Position position) {
         if (MysteryBlock.getMysteryState() == 0) {
-            drawCharacter(position.getX(), position.getY(), '?', "#8A3324");
+            drawCharacter(position.getX(), position.getY(), '#', "#8A3324");
         } else {
-            drawCharacter(position.getX(), position.getY(), '?', "#8A3324");
+            drawCharacter(position.getX(), position.getY(), '#', "#8A3324");
         }
     }
     @Override
     public void drawStair(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'O', "#8A3324");
+        drawCharacter(position.getX(), position.getY(), '$', "#8A3324");
     }
     @Override
     public void drawPipe(Position position) {

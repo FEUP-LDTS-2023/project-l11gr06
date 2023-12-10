@@ -8,7 +8,7 @@ public class GameOver {
     private int currentEntry = 0;
 
     public GameOver() {
-        this.entries = Arrays.asList("Restart", "Return to Menu", "Exit");
+        this.entries = Arrays.asList("RESTART", "RETURN TO MENU", "EXIT");
     }
 
     public void nextEntry() {
