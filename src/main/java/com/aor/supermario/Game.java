@@ -48,7 +48,7 @@ public class Game {
                         ((GameState) state).getViewer(),
                         this));
                 t1.start();
-                i =1;
+                i = 1;
             }
             else if(!(state instanceof GameState)) i=0;
             long startTime = System.currentTimeMillis();

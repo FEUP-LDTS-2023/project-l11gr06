@@ -21,7 +21,7 @@ public class GameViewer extends Viewer<Map> {
         drawElements(gui, getModel().getCoins(), new CoinViewer());
         drawElement(gui, getModel().getPlayer(), new PlayerViewer());
         drawElements(gui, getModel().getMysteryBlocks(), new MysteryBlockViewer());
-        //drawElements(gui, getModel().getMonsters(), new MonsterViewer());
+        drawElements(gui, getModel().getMonsters(), new MonsterViewer());
 
         //gui.drawText(new Position(10, 0), "Points: " + Map.getPlayer().getPoints(), "#FFD700");
         //gui.drawText(new Position(0, 0), "Lives: " + getModel().getPlayer().getlives(), "#FFD700");
