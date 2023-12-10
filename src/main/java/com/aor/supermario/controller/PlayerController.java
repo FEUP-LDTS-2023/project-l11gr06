@@ -2,11 +2,9 @@ package com.aor.supermario.controller;
 
 import com.aor.supermario.Game;
 import com.aor.supermario.gui.GUI;
-import com.aor.supermario.model.Menu;
-import com.aor.supermario.model.Position;
-import com.aor.supermario.model.Map;
-import com.aor.supermario.model.Victory;
+import com.aor.supermario.model.*;
 import com.aor.supermario.model.elements.*;
+import com.aor.supermario.states.GameOverState;
 import com.aor.supermario.states.MenuState;
 import com.aor.supermario.states.VictoryState;
 import com.aor.supermario.viewer.game.PlayerViewer;
@@ -22,13 +20,6 @@ public class PlayerController extends GameController {
         super(map, v);
     }
 
-    /*    public Position moveUp() {
-        return new Position(getPosition().getX(), getPosition().getY() - 1);
-    }
-    public Position moveLeft() {
-        return new Position(getPosition().getX()-1, getPosition().getY());
-    }
-    public Position moveRight() {return new Position(getPosition().getX()+1, getPosition().getY());}*/
 
     public void moveLeft() {
         movePlayer(getModel().getPlayer().getPosition().getLeft());
@@ -156,7 +147,7 @@ public class PlayerController extends GameController {
             }
         }
         if (action == GUI.ACTION.NONE) {
-            while (getModel().getPlayer().getPosition().getY() != getModel().getHeight()-1) {
+            while (getModel().getPlayer().getPosition().getY() != getModel().getHeight() - 1) {
                 if (getModel().collision_y(getModel().getPlayer())) break;
                 moveDown();
                 getViewer().draw(game.getGui());
@@ -166,8 +157,16 @@ public class PlayerController extends GameController {
                     e.printStackTrace();
                 }
             }
+            if (getModel().collect_coins()){
+                getModel().getPlayer().addPoint(100);
+                getViewer().draw(game.getGui());
+            }
+            if (getModel().collect_mushroom()) {
+                getModel().getPlayer().addPoint(1000);
+                getViewer().draw(game.getGui());
+            }
             if (getModel().getPlayer().getPosition().getY() == getModel().getHeight() - 1) {
-                game.getGui().close();
+                game.setState(new GameOverState(new GameOver()));
             }
         }
     }

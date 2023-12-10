@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'info.solidsoft.pitest' version '1.6.0'
 }
 
 group = 'com.aor.supermario'
@@ -14,7 +15,12 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation group: 'com.googlecode.lanterna', name: 'lanterna', version: '3.1.1'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.mockito:mockito-core:3.7.7'
 }
+
 
 test {
     useJUnitPlatform()
@@ -22,5 +28,9 @@ test {
 
 application {
     mainClass.set("com.aor.supermario.Main")
+}
+
+pitest {
+    junit5PluginVersion = '0.12'
 }
 

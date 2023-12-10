@@ -12,7 +12,7 @@ public interface GUI {
 
     void drawGround(Position position);
 
-    //void drawMonster(Position position);
+    void drawMonster(Position position);
 
     void drawBlock(Position position);
 
@@ -20,8 +20,9 @@ public interface GUI {
 
     void drawStair(Position position);
 
-    void drawPipe(Position position);
     void drawCoin(Position position);
+
+    void drawPipe(Position position);
 
     void drawRedMushroom(Position position);
 
