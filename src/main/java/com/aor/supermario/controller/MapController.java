@@ -27,7 +27,7 @@ public class MapController extends GameController {
             game.setState(new MenuState(new Menu()));
         else {
             playerController.step(game, action, time);
-            monsterController.step(game, action, time);
+            //monsterController.step(game, action, time);
         }
     }
 }

@@ -1,6 +1,8 @@
 package com.aor.supermario.viewer;
 
 import com.aor.supermario.gui.GUI;
+import com.aor.supermario.viewer.game.MonsterViewer;
+
 import java.io.IOException;
 
 public abstract class Viewer<T> {

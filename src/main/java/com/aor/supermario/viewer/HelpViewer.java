@@ -12,14 +12,14 @@ public class HelpViewer extends Viewer<Help> {
 
     @Override
     public void drawElements(GUI gui) {
-        gui.drawText(new Position(24, 5), "Game Instructions: ", "#FFFFFF");
+        gui.drawText(new Position(24, 5), "GAME INSTRUCTIONS: ", "#FFFFFF");
         gui.drawText(new Position(15, 6), "     ", "#FFFFFF");
-        gui.drawText(new Position(15, 7), "Press the right or left arrow to run", "#FFFFFF");
-        gui.drawText(new Position(15, 8), "Press the up arrow to jump", "#FFFFFF");
-        gui.drawText(new Position(15, 9), "Jump on top of the enemies to kill them", "#FFFFFF");
-        gui.drawText(new Position(15, 10), "If you bump into them, you die", "#FFFFFF");
-        gui.drawText(new Position(15, 11), "After 3 lives, you lose", "#FFFFFF");
-        gui.drawText(new Position(15, 12), "Reach the final flag to win the game", "#FFFFFF");
+        gui.drawText(new Position(15, 7), "PRESS THE RIGHT OR LEFT ARROW TO RUN", "#FFFFFF");
+        gui.drawText(new Position(15, 8), "PRESS THE UP ARROW TO JUMP", "#FFFFFF");
+        gui.drawText(new Position(15, 9), "JUMP ON TOP OF THE ENEMIES TO KILL THEM", "#FFFFFF");
+        gui.drawText(new Position(15, 10), "IF YOU BUMP INTO THEM, YOU DIE", "#FFFFFF");
+        gui.drawText(new Position(15, 11), "AFTER 3 LIVES, YOU LOSE", "#FFFFFF");
+        gui.drawText(new Position(15, 12), "REACH THE FINAL FLAG TO WIN THE GAME", "#FFFFFF");
 
         for (int i = 0; i < getModel().getNumberEntries(); i++)
             gui.drawText( new Position(24, 14 + i), getModel().getEntry(i), getModel().isSelected(i) ? "#FF0000" : "#FFFFFF");

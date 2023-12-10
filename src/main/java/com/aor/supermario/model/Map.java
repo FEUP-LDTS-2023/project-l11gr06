@@ -102,13 +102,6 @@ public class Map {
         this.monsters = monsters;
     }
 
-    public boolean canPlayerMove(Position p)
-    {
-        for (Ground ground : grounds){
-            if (ground.getPosition().equals(p)) return false;}
-        return p.getX()<width-1 && p.getX()>0 && p.getY()<height-3 && p.getY()>0;
-
-    }
 
 /*
     public void movePlayer(Position position) {
@@ -392,20 +385,19 @@ public class Map {
         if(m.getMoveDirection()==0)
         {
             if(!collision_x_back(m)) {
-                m.setPosition(new Position(m.getPosition().getX()-1,player.getPosition().getY()));
+                m.setPosition(new Position(m.getPosition().getX()-1,m.getPosition().getY()));
             }
             else m.setMoveDirection(1);
         }
         else if (m.getMoveDirection()==1)
         {
             if(!collision_x_front(m)) {
-                m.setPosition(new Position(m.getPosition().getX()+1,player.getPosition().getY()));
+                m.setPosition(new Position(m.getPosition().getX()+1,m.getPosition().getY()));
             }
             else m.setMoveDirection(0);
         }
-
-
     }
+
     public List<Monster> monstersToMove()
     {
         List<Monster> l = new ArrayList<>();
@@ -415,11 +407,8 @@ public class Map {
         }
         return l;
     }
+
     public boolean monsterCollision(Monster m) {
-        //if(m instanceof PiranhaPlant) {
-        //    if (((PiranhaPlant) m).getOpenCloseState() == 4) return false;
-        //    else return player.getPosition().equals(m.getPosition());
-        //}
         if(player.getPosition().getY()==m.getPosition().getY()) {
             if(m instanceof TurtleShell && ((TurtleShell) m).getState()==1)
             {
