@@ -68,7 +68,6 @@ public class Map1Builder extends MapBuilder{
     @Override
     protected List<Stair> createStairs() {
         List<Stair> stairs = new ArrayList<>();
-        stairs.add(new Stair(5,getHeight() - 4));
         int i =0;
         for(int c = 137; c <141;c++) {
             i++;
@@ -122,17 +121,17 @@ public class Map1Builder extends MapBuilder{
         blocks.add(new Block(26, getHeight() - 7));
         blocks.add(new Block(80, getHeight() - 7));
         blocks.add(new Block(82, getHeight() - 7));
-        for(int i = 83; i<=90;i++) blocks.add(new Block(i, getHeight() - 12));
-        for(int i = 94; i<=96;i++) blocks.add(new Block(i, getHeight() - 12));
-        blocks.add(new Block(97, getHeight() - 7));
+        for(int i = 83; i<=90;i++) blocks.add(new Block(i, getHeight() - 11));
+        for(int i = 94; i<=96;i++) blocks.add(new Block(i, getHeight() - 11));
+        blocks.add(new Block(97, getHeight() - 7)); //TEM COIN
         blocks.add(new Block(103, getHeight() - 7));
         blocks.add(new Block(104, getHeight() - 7));
         blocks.add(new Block(121, getHeight() - 7));
-        for(int i = 124; i<=126;i++) blocks.add(new Block(i, getHeight() - 12));
-        blocks.add(new Block(131, getHeight() - 12));
+        for(int i = 124; i<=126;i++) blocks.add(new Block(i, getHeight() - 11));
+        blocks.add(new Block(131, getHeight() - 11));
         blocks.add(new Block(132, getHeight() - 7));
         blocks.add(new Block(133, getHeight() - 7));
-        blocks.add(new Block(134, getHeight() - 12));
+        blocks.add(new Block(134, getHeight() - 11));
         blocks.add(new Block(172, getHeight() - 7));
         blocks.add(new Block(173, getHeight() - 7));
         blocks.add(new Block(175, getHeight() - 7));
@@ -146,15 +145,16 @@ public class Map1Builder extends MapBuilder{
         mysteryBlocks.add(new MysteryBlock(18, getHeight() - 7));
         mysteryBlocks.add(new MysteryBlock(23, getHeight() - 7));
         mysteryBlocks.add(new MysteryBlock(25, getHeight() - 7));
-        mysteryBlocks.add(new MysteryBlock(24, getHeight() - 12));
+        mysteryBlocks.add(new MysteryBlock(24, getHeight() - 11));
         mysteryBlocks.add(new MysteryBlock(81, getHeight() - 7));
-        mysteryBlocks.add(new MysteryBlock(97, getHeight() - 12));
+        mysteryBlocks.add(new MysteryBlock(97, getHeight() - 11));
         mysteryBlocks.add(new MysteryBlock(109, getHeight() - 7));
         mysteryBlocks.add(new MysteryBlock(112, getHeight() - 7));
-        mysteryBlocks.add(new MysteryBlock(112, getHeight() - 12));
-        mysteryBlocks.add(new MysteryBlock(132, getHeight() - 12));
-        mysteryBlocks.add(new MysteryBlock(133, getHeight() - 12));
-        mysteryBlocks.add(new MysteryBlock(174, getHeight() - 12));
+        mysteryBlocks.add(new MysteryBlock(112, getHeight() - 11));
+        mysteryBlocks.add(new MysteryBlock(115, getHeight() - 7));
+        mysteryBlocks.add(new MysteryBlock(132, getHeight() - 11));
+        mysteryBlocks.add(new MysteryBlock(133, getHeight() - 11));
+        mysteryBlocks.add(new MysteryBlock(174, getHeight() - 7));
         return mysteryBlocks;
     }
     @Override
@@ -162,13 +162,14 @@ public class Map1Builder extends MapBuilder{
         List<Coin> coins = new ArrayList<>();
         coins.add(new Coin(18, getHeight() - 7));
         coins.add(new Coin(25, getHeight() - 7));
-        coins.add(new Coin(24, getHeight() - 12));
-        coins.add(new Coin(97, getHeight() - 12));
+        coins.add(new Coin(24, getHeight() - 11));
+        coins.add(new Coin(97, getHeight() - 11));
         coins.add(new Coin(109, getHeight() - 7));
         coins.add(new Coin(112, getHeight() - 7));
-        coins.add(new Coin(132, getHeight() - 12));
-        coins.add(new Coin(133, getHeight() - 12));
-        coins.add(new Coin(174, getHeight() - 12));
+        coins.add(new Coin(115, getHeight() - 7));
+        coins.add(new Coin(132, getHeight() - 11));
+        coins.add(new Coin(133, getHeight() - 11));
+        coins.add(new Coin(174, getHeight() - 7));
         return coins;
     }
     @Override
@@ -176,7 +177,7 @@ public class Map1Builder extends MapBuilder{
         List<RedMushroom> redMushrooms = new ArrayList<>();
         redMushrooms.add(new RedMushroom(23, getHeight() - 7));
         redMushrooms.add(new RedMushroom(81, getHeight() - 7));
-        redMushrooms.add(new RedMushroom(112, getHeight() - 12));
+        redMushrooms.add(new RedMushroom(112, getHeight() - 11));
         return redMushrooms;
     }
 
