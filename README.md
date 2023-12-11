@@ -57,7 +57,7 @@ Fig. 5: Modelo do Menu Victory.
 
 #
 ### Testes
-![TestCoverage.png](docs/TestCoverage.png)
+
 
 Fig. 6: Cobertura dos testes implementados.
 
