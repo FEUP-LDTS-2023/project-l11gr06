@@ -3,7 +3,7 @@
 * Duarte Marques; up202204973@up.pt
 * Maria Vieira; up202204802@up.pt
 * Marta Cruz; up202205028@up.pt
-#### Todos os mesmos participaram de igual forma para o desenvolvimento do projeto.
+#### Todos os membros participaram de igual forma para o desenvolvimento do projeto.
 
 ## Objetivo
 Percorrer o mapa, passando por diversos obstáculos e chegar à bandeira final, sem esgotar todas as vidas.
