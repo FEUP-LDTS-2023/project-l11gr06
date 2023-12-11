@@ -63,6 +63,17 @@ public class PlayerController extends GameController {
             }
         }
         if (action == GUI.ACTION.RIGHT) {
+            for(Monster monster: getModel().getMonsters())
+            {
+                if (getModel().monsterCollision(monster))
+                {
+                    if (monster instanceof TurtleShell && ((TurtleShell) monster).getState() == 1) ((TurtleShell) monster).setState(2);
+                    else {
+                        game.setState(new GameOverState(new GameOver()));
+                        return;
+                    }
+                }
+            }
             for (GoalPole pole : getModel().getGoalPole())
                 if (getModel().getPlayer().getPosition().getX() == pole.getPosition().getX()) game.setState(new VictoryState(new Victory()));
             if (!getModel().collision_x_front(getModel().getPlayer())) {
@@ -72,6 +83,17 @@ public class PlayerController extends GameController {
             }
         }
         if (action == GUI.ACTION.LEFT) {
+            for(Monster monster: getModel().getMonsters())
+            {
+                if (getModel().monsterCollision(monster))
+                {
+                    if (monster instanceof TurtleShell && ((TurtleShell) monster).getState() == 1) ((TurtleShell) monster).setState(2);
+                    else {
+                        game.setState(new GameOverState(new GameOver()));
+                        return;
+                    }
+                }
+            }
             if (!getModel().collision_x_back(getModel().getPlayer()))
                 if (getModel().getPlayer().getPosition().getX() != 0) moveLeft();
         }
@@ -150,7 +172,19 @@ public class PlayerController extends GameController {
             }
         }
         if (action == GUI.ACTION.NONE) {
+            for(Monster monster: getModel().getMonsters())
+            {
+                if (getModel().monsterCollision(monster))
+                {
+                    if (monster instanceof TurtleShell && ((TurtleShell) monster).getState() == 1) ((TurtleShell) monster).setState(2);
+                    else {
+                        game.setState(new GameOverState(new GameOver()));
+                        return;
+                    }
+                }
+            }
             while (getModel().getPlayer().getPosition().getY() != getModel().getHeight() - 1) {
+                getModel().getMonsters().removeIf(monster -> monster.getPosition().getX()==getModel().getPlayer().getPosition().getX() && monster.getPosition().getY()==getModel().getPlayer().getPosition().getY()+1);
                 if (getModel().collision_y(getModel().getPlayer())) break;
                 moveDown();
                 getViewer().draw(game.getGui());

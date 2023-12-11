@@ -386,7 +386,9 @@ public class Map {
         return l;
     }
     public boolean monsterCollision(Monster m) {
-        if(player.getPosition().getY()==m.getPosition().getY()) {
+
+        if(m.getPosition()==player.getPosition()) return true;
+        else if(player.getPosition().getY()==m.getPosition().getY()) {
             if(m instanceof TurtleShell && ((TurtleShell) m).getState()==1)
             {
                 if(player.getPosition().getX() - 1 == m.getPosition().getX())
@@ -400,12 +402,13 @@ public class Map {
                     m.setMoveDirection(1);
                 }
             }
-            else if (player.getPosition().getX() - 1 == m.getPosition().getX() && m.getMoveDirection()==1) return true;
-            else return (player.getPosition().getX() + 1 == m.getPosition().getX() && m.getMoveDirection()==0);
+            else return(player.getPosition().getX()== m.getPosition().getX());
         }
         else if(player.getPosition().getX()==m.getPosition().getX())
             return player.getPosition().getY()-1==m.getPosition().getY();
         return false;
+
+
     }
     public boolean monsterDies(Monster m) {
         if (player.getPosition().equals(m.getPosition())&&(m instanceof BrownMushroom))monsters.remove(m);

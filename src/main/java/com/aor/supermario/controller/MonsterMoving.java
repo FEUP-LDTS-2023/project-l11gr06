@@ -19,7 +19,6 @@ public class MonsterMoving extends MonsterController implements Runnable {
         map = m;
         game = g;
     }
-
     public void run() {
        while (true)
         {
@@ -34,14 +33,6 @@ public class MonsterMoving extends MonsterController implements Runnable {
                         t2.start();
                     }
                 }
-                if (getModel().monsterCollision(m)) {
-                    if (m instanceof TurtleShell && ((TurtleShell) m).getState() == 1) ((TurtleShell) m).setState(2);
-                    else {
-                        game.setState(new GameOverState(new GameOver()));
-                        return;
-                    }
-                }
-                if (getModel().monsterDies(m)) break;
             }
             try {
                 Thread.sleep(900);
