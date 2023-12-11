@@ -18,8 +18,6 @@ public class Map1Builder extends MapBuilder{
         Player player=new Player(1, getHeight()-4);
         return player;
     }
-
-
     @Override
     protected List<GoalPole> createGoalPole()
     {
@@ -31,12 +29,10 @@ public class Map1Builder extends MapBuilder{
     public int getWidth() {
         return width;
     }
-
     @Override
     public int getHeight() {
         return height;
     }
-
     @Override
     protected List<Ground> createGrounds() {
         List<Ground> grounds = new ArrayList<>();
@@ -63,8 +59,6 @@ public class Map1Builder extends MapBuilder{
 
         return grounds;
     }
-
-
     @Override
     protected List<Stair> createStairs() {
         List<Stair> stairs = new ArrayList<>();
@@ -76,7 +70,6 @@ public class Map1Builder extends MapBuilder{
                 stairs.add(new Stair(c, getHeight() - 4 -a));
             }
         }
-
         i =0;
         for(int c = 147; c > 143;c--) {
             i++;
@@ -93,7 +86,6 @@ public class Map1Builder extends MapBuilder{
                 stairs.add(new Stair(c, getHeight() - 4 -a));
             }
         }
-
         i =0;
         for(int c = 162; c >158;c--) {
             i++;
@@ -137,7 +129,6 @@ public class Map1Builder extends MapBuilder{
         blocks.add(new Block(175, getHeight() - 7));
         return blocks;
     }
-
     @Override
     protected List<MysteryBlock> createMysteryBlocks()
     {
@@ -165,7 +156,7 @@ public class Map1Builder extends MapBuilder{
         coins.add(new Coin(24, getHeight() - 11));
         coins.add(new Coin(97, getHeight() - 11));
         coins.add(new Coin(109, getHeight() - 7));
-        coins.add(new Coin(112, getHeight() - 7));
+        coins.add(new Coin(112, getHeight() - 11));
         coins.add(new Coin(115, getHeight() - 7));
         coins.add(new Coin(132, getHeight() - 11));
         coins.add(new Coin(133, getHeight() - 11));
@@ -177,10 +168,9 @@ public class Map1Builder extends MapBuilder{
         List<RedMushroom> redMushrooms = new ArrayList<>();
         redMushrooms.add(new RedMushroom(23, getHeight() - 7));
         redMushrooms.add(new RedMushroom(81, getHeight() - 7));
-        redMushrooms.add(new RedMushroom(112, getHeight() - 11));
+        redMushrooms.add(new RedMushroom(112, getHeight() - 7));
         return redMushrooms;
     }
-
     @Override
     protected List<Pipe> createPipes(){
         List<Pipe> pipes = new ArrayList<>();
@@ -225,38 +215,20 @@ public class Map1Builder extends MapBuilder{
     {
         List <Monster> monsters = new ArrayList<>();
         monsters.add(new BrownMushroom(25, height - 4));
-
-        //monsters.add(new PiranhaPlant(30,height-6));
-        //monsters.add(new PiranhaPlant(31,height-6));
-
         monsters.add(new BrownMushroom(42, height - 4));
-
-
-        //monsters.add(new PiranhaPlant(48,height-8));
-        //monsters.add(new PiranhaPlant(49,height-8));
-
         monsters.add(new BrownMushroom(53, height - 4));
         monsters.add(new BrownMushroom(55, height - 4));
-
         monsters.add(new BrownMushroom(83, height - 13));
         monsters.add(new BrownMushroom(83, height - 15));
-
         monsters.add(new BrownMushroom(100, height - 4));
         monsters.add(new BrownMushroom(102, height - 4));
-
         monsters.add(new Turtle(110, height - 4));
-
         monsters.add(new BrownMushroom(117, height - 4));
         monsters.add(new BrownMushroom(119, height - 4));
-
         monsters.add(new BrownMushroom(127, height - 4));
         monsters.add(new BrownMushroom(129, height - 4));
-
         monsters.add(new BrownMushroom(131, height - 4));
         monsters.add(new BrownMushroom(133, height - 4));
-
-        //monsters.add(new PiranhaPlant(183,height-6));
-        //monsters.add(new PiranhaPlant(184,height-6));
         return monsters;
     }
 }

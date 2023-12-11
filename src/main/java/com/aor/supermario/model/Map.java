@@ -19,9 +19,7 @@ public class Map {
     private List<Coin> coins;
     private List<RedMushroom> redMushrooms;
     private List<Pipe> pipes;
-
     private List<Monster> monsters;
-
     public Map(int width,int height) {
         this.width = width;
         this.height = height;
@@ -92,11 +90,6 @@ public class Map {
     public void setMonsters(List<Monster> monsters) {
         this.monsters = monsters;
     }
-
-/*
-    public void movePlayer(Position position) {
-        player.setPosition(position);}*/
-
     public boolean break_block()
     {
         for(Block block:blocks)
@@ -109,7 +102,6 @@ public class Map {
         }
         return false;
     }
-
     public boolean reveal_mysteryblock()
     {
         for(MysteryBlock mysteryblock:getMysteryBlocks())
@@ -134,21 +126,18 @@ public class Map {
         }
         return false;
     }
-
     public boolean collect_coins() {
-
         for(Coin coin:coins) {
             for (MysteryBlock m:mysteryBlocks) {
-                if (coin.getPosition().equals(m.getPosition())) return false;
-            }
-            if (collision_x_back(coin) || collision_x_front(coin) || collision_y(coin)) {
-                coins.remove(coin);
-                return true;
+                if (coin.getPosition().equals(m.getPosition())) break;
+                else if (collision_y(coin)) {
+                    coins.remove(coin);
+                    return true;
+                }
             }
         }
         return false;
     }
-
     public boolean collect_mushroom() {
         for(RedMushroom rm:redMushrooms) {
             for (MysteryBlock m:mysteryBlocks) {
@@ -162,7 +151,6 @@ public class Map {
         }
         return false;
     }
-
     public boolean collision_y(Element element)
     {
         for(Block block:blocks)
@@ -388,7 +376,6 @@ public class Map {
             else m.setMoveDirection(0);
         }
     }
-
     public List<Monster> monstersToMove()
     {
         List<Monster> l = new ArrayList<>();
@@ -398,7 +385,6 @@ public class Map {
         }
         return l;
     }
-
     public boolean monsterCollision(Monster m) {
         if(player.getPosition().getY()==m.getPosition().getY()) {
             if(m instanceof TurtleShell && ((TurtleShell) m).getState()==1)

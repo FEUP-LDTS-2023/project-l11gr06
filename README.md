@@ -1,38 +1,72 @@
 # LDTS_11_6 - Super Mario Bros
-### 2023/2024
-* Duarte Marques; up202204973@up.pt
-* Maria Vieira; up202204802@up.pt
-* Marta Cruz; up202205028@up.pt
-#### Todos os mesmos participaram de igual forma para o desenvolvimento do projeto.
 
-## Objetivo
-Percorrer o mapa, passando por diversos obstáculos e chegar à bandeira final, sem esgotar todas as vidas.
+No âmbito do projeto, desenvolvemos um jogo baseado no Super Mario Bros.
+Este consiste num jogo 2D em que o jogador percorre o mapa e ganha o jogo quando chega à bandeira.
+No mapa existem vários obstáculos e "Mystery Blocks" em que o jogador pode recolher moedas ou cogumelos, 
+que dão pontos.
+
+Este projeto foi desenvolvido por 
+Duarte Marques (up202204973@up.pt), 
+Maria Vieira (up202204802@up.pt)
+e Marta Cruz (up202205028@up.pt)
+para a cadeira LDTS 23/24.
 
 ## Comandos
 * ```<``` : Mover para trás;
 * ```>``` : Mover para a frente;
-* ```^```  ```^``` : Saltar;
-* ```^``` ```>``` : Saltar para a frente;
-* ```^``` ```<``` : Saltar para trás.
+* ```^```: Saltar verticalmente;
+* ```X``` : Saltar para a frente;
+* ```Z``` : Saltar para trás.
 
-## Funcionalidades
-* Partir blocos ao saltar por baixo deles;
-* Subir aos blocos e escadas;
+### Funcionalidades implementadas
 
-## MENU - modelo
-(ainda por implementar)
+- **Menus interligados** - O utilizador navega entre vários menus (ex. MenuState, GameState, GameOverState,...);
 
-![Menu_inicial.jpeg](Menu_inicial.jpeg)
-Figura 1: Modelo do Menu Inicial.
+- **Butões** - Botões interativos e funcionais nos menus do jogo;
 
+- **Controlo do teclado** - Os inputs do teclado são recebidos e interpretados de acordo com o estado de jogo atual;
 
-### Video Demonstrativo do Jogo - [ldts.mp4](ldts.mp4)
+- **Controlo do jogador** - O jogador move-se de acordo com os controlos do teclado;
 
-
-## Design Pattern
-Para a implementação do projeto foi utilizado o Factory Method.
-Este Pattern permite que as subclasses (com.aor.supermario.elements.Player, com.aor.supermario.elements.Ground, com.aor.supermario.elements.GoalPole, com.aor.supermario.elements.Block e com.aor.supermario.elements.Stair) escolham o tipo de objetos a serem criados. Além disso, promove a reutilização de código.
+- **Deteção de colisões** - As colisões entre diferentes objetos são detetadas e verificadas o que permite matar ou ser morto por monstros, 
+revelar Mystery Blocks e apanhar moedas e cogumelos (ex. Monstro-Monstro, Jogador-Monstro, Jogador, Obstáculo, ...).
 
 
-![UML.jpeg](UML.jpeg)
-Figura 2: Factory Pattern implementado no UML.
+
+## Imagens
+As imagens seguintes mostram uma visão geral do jogo, assim como as diferentes funcionalidades:
+
+### Amostra do jogo
+As imagens seguintes mostram uma visão geral do jogo, assim como as diferentes funcionalidades:
+
+
+
+GIF. 1: GIF Demonstrativo do Jogo.
+
+### Menus
+
+Fig. 1: Modelo do Menu Inicial.
+
+Fig. 2: Modelo do Menu Help.
+
+Fig. 3: Modelo do Menu About.
+
+Fig. 4: Modelo do Menu GameOver.
+
+Fig. 5: Modelo do Menu Victory.
+
+#
+### Testes
+![TestCoverage.png](docs/TestCoverage.png)
+
+Fig. 6: Cobertura dos testes implementados.
+
+Link para mutation testing report: 
+
+#
+## Auto-Avaliação
+
+Todos os membros participaram de igual forma no desenvolvimento do projeto:
+- Duarte Marques: 33.3%
+- Maria Vieira: 33.3%
+- Marta Cruz: 33.3%
