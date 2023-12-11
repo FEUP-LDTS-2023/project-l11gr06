@@ -148,7 +148,7 @@ public class LanternaGUI implements GUI {
             }
             @Override
             public void drawTurtle (Position position){
-                drawCharacter(position.getX(), position.getY(), '~', "#8A3324");
+                drawCharacter(position.getX(), position.getY(), '~', "#008000");
             }
             @Override
             public void drawTurtleShell (Position position){
