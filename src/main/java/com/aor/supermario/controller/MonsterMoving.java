@@ -2,8 +2,10 @@ package com.aor.supermario.controller;
 
 import com.aor.supermario.Game;
 import com.aor.supermario.gui.GUI;
+import com.aor.supermario.model.GameOver;
 import com.aor.supermario.model.Map;
 import com.aor.supermario.model.elements.*;
+import com.aor.supermario.states.GameOverState;
 import com.aor.supermario.viewer.Viewer;
 
 import java.io.IOException;
@@ -35,18 +37,14 @@ public class MonsterMoving extends MonsterController implements Runnable {
                 if (getModel().monsterCollision(m)) {
                     if (m instanceof TurtleShell && ((TurtleShell) m).getState() == 1) ((TurtleShell) m).setState(2);
                     else {
-                        try {
-                            game.getGui().close();
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
+                        game.setState(new GameOverState(new GameOver()));
                         return;
                     }
                 }
                 if (getModel().monsterDies(m)) break;
             }
             try {
-                Thread.sleep(1500);
+                Thread.sleep(900);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

@@ -18,10 +18,8 @@ import java.util.Objects;
 public class Game {
     public static int width_game = 60;
     public static int height_game = 21;
-    public int points = 0;
     private final LanternaGUI gui;
     private State state;
-
     public LanternaGUI getGui() {
         return gui;
     }
@@ -29,14 +27,13 @@ public class Game {
     public Game() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(width_game, height_game);
         this.state = new MenuState(new Menu());
-
     }
 
     public void setState(State state) {
         this.state = state;
     }
 
-    public void run() throws IOException {
+    public void run() throws IOException, URISyntaxException, FontFormatException {
         int FPS = 10;
         int frameTime = 1000 / FPS;
 

@@ -5,7 +5,9 @@ import com.aor.supermario.controller.Controller;
 import com.aor.supermario.gui.GUI;
 import com.aor.supermario.viewer.Viewer;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 
 public abstract class State<T> {
@@ -27,7 +29,7 @@ public abstract class State<T> {
         return model;
     }
 
-    public void step(Game game, GUI gui, long time) throws IOException {
+    public void step(Game game, GUI gui, long time) throws IOException, URISyntaxException, FontFormatException {
         GUI.ACTION action = gui.getNextAction();
         controller.step(game, action, time);
         viewer.draw(gui);

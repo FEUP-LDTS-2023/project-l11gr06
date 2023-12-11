@@ -25,7 +25,7 @@ public class GameViewer extends Viewer<Map> {
         drawElements(gui, getModel().getMonsters(), new MonsterViewer());
 
         gui.drawText(new Position(10, 0), "Points: " + getModel().getPlayer().getPoints(), "#FFD700");
-        //gui.drawText(new Position(0, 0), "Lives: " + getModel().getPlayer().getlives(), "#FFD700");
+        //gui.drawText(new Position(45, 0), "Lives: "  + getModel().getPlayer().getLives(), "#FFD700");
     }
     private <T extends Element> void drawElements(GUI gui, List<T> elements, ElementViewer<T> viewer) {
         for (T element : elements)

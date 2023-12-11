@@ -9,7 +9,9 @@ import com.aor.supermario.model.elements.*;
 import com.aor.supermario.states.MenuState;
 import com.aor.supermario.viewer.Viewer;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class MapController extends GameController {
     private final PlayerController playerController;
@@ -22,7 +24,7 @@ public class MapController extends GameController {
         this.monsterController = new MonsterController(map, v);
     }
 
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException, FontFormatException {
         if (action == GUI.ACTION.QUIT) //|| getModel().getPlayer().getlives() == 0 IMPORTANTE MUDAR
             game.setState(new MenuState(new Menu()));
         else {
