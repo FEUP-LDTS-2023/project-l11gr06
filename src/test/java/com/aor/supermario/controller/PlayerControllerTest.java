@@ -46,46 +46,46 @@ class PlayerControllerTest {
     }
 
     @Test
-    void movePlayerRightEmpty() throws IOException {
+    void movePlayerRightEmpty() throws IOException, URISyntaxException, FontFormatException {
         controller.step(game, GUI.ACTION.RIGHT, 100);
         assertEquals(new Position(7, 15), player.getPosition());
     }
     @Test
-    void movePlayerLeftEmpty() throws IOException {
+    void movePlayerLeftEmpty() throws IOException, URISyntaxException, FontFormatException {
         controller.step(game, GUI.ACTION.LEFT, 100);
         assertEquals(new Position(5, 15), player.getPosition());
     }
     @Test
-    void movePlayerUpEmpty() throws IOException {
+    void movePlayerUpEmpty() throws IOException, URISyntaxException, FontFormatException {
         controller.step(game, GUI.ACTION.UP, 100);
         assertEquals(new Position(6, 11), player.getPosition());
     }
     @Test
-    void movePlayerJumpRightEmpty() throws IOException {
+    void movePlayerJumpRightEmpty() throws IOException, URISyntaxException, FontFormatException {
         controller.step(game, GUI.ACTION.JUMPR, 100);
         assertEquals(new Position(10, 11), player.getPosition());
     }
     @Test
-    void movePlayerJumpLeftEmpty() throws IOException {
+    void movePlayerJumpLeftEmpty() throws IOException, URISyntaxException, FontFormatException {
         controller.step(game, GUI.ACTION.JUMPL, 100);
         assertEquals(new Position(2, 11), player.getPosition());
     }
 
 
     @Test
-    void movePlayerRightNotEmpty() throws IOException {
+    void movePlayerRightNotEmpty() throws IOException, URISyntaxException, FontFormatException {
         map.setStairs(Arrays.asList(new Stair(7, 15)));
         controller.step(game, GUI.ACTION.RIGHT, 100);
         assertEquals(new Position(6,15), player.getPosition());
     }
     @Test
-    void moveHeroLeftNotEmpty() throws IOException {
+    void moveHeroLeftNotEmpty() throws IOException, URISyntaxException, FontFormatException {
         map.setStairs(Arrays.asList(new Stair(5, 15)));
         controller.step(game, GUI.ACTION.LEFT, 100);
         assertEquals(new Position(6,15), player.getPosition());
     }
     @Test
-    void movePlayerUpNotEmpty() throws IOException {
+    void movePlayerUpNotEmpty() throws IOException, URISyntaxException, FontFormatException {
         map.setMysteryBlocks(Arrays.asList(new MysteryBlock(6, 13)));
         controller.step(game, GUI.ACTION.UP, 100);
         assertEquals(new Position(6,13), player.getPosition());
