@@ -97,6 +97,7 @@ public class Map {
             if(player.getPosition().equals(block.getPosition()))
             {
                 blocks.remove(block);
+                getPlayer().addPoint(50);
                 return true;
             }
         }
@@ -141,12 +142,11 @@ public class Map {
     public boolean collect_mushroom() {
         for(RedMushroom rm:redMushrooms) {
             for (MysteryBlock m:mysteryBlocks) {
-                if (rm.getPosition().equals(m.getPosition())) return false;
-            }
-            if (player.getPosition().equals(rm.getPosition())) {
-                //SUPERMARIO STATE
-                redMushrooms.remove(rm);
-                return true;
+                if (rm.getPosition().equals(m.getPosition())) break;
+                else if (player.getPosition().equals(rm.getPosition())) {
+                    redMushrooms.remove(rm);
+                    return true;
+                }
             }
         }
         return false;

@@ -115,7 +115,7 @@ public class LanternaGUI implements GUI {
                 if (mb.getMysteryState() == 0) {
                     drawCharacter(position.getX(), position.getY(), '#', "#FED000");
                 } else {
-                    drawCharacter(position.getX(), position.getY(), '#', "#FF6400");
+                    drawCharacter(position.getX(), position.getY(), ']', "#FF6400");
                 }
             }
             @Override
@@ -148,11 +148,11 @@ public class LanternaGUI implements GUI {
             }
             @Override
             public void drawTurtle (Position position){
-                drawCharacter(position.getX(), position.getY(), 'T', "#8A3324");
+                drawCharacter(position.getX(), position.getY(), '~', "#8A3324");
             }
             @Override
             public void drawTurtleShell (Position position){
-                drawCharacter(position.getX(), position.getY(), 'w', "#8A3324");
+                drawCharacter(position.getX(), position.getY(), '^', "#8A3324");
             }
             @Override
             public void drawText (Position position, String text, String color){
