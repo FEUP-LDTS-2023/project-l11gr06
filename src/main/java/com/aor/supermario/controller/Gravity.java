@@ -27,7 +27,7 @@ public class Gravity extends MonsterController implements Runnable{
     public void run() {
         while(element.getPosition().getY()!= getModel().getHeight())
         {
-            if(element.getPosition().getY()== getModel().getHeight()-1 ) return;
+            if(element.getPosition().getY()== getModel().getHeight() ) return;
             //if(element.getPosition().getY()== getModel().getHeight()-1 && element instanceof Player) return;
             if(map.collision_y(element)) break;
             moveDown((Monster) element);

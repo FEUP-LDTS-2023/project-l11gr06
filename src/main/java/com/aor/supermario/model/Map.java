@@ -308,12 +308,8 @@ public class Map {
         }
         for(Monster m:monsters)
         {
-            if(m.getMove())
-            {
                 Position p = new Position(m.getPosition().getX()-1,m.getPosition().getY());
                 m.setPosition(p);
-            }
-
         }
         for(MysteryBlock mysteryblock:mysteryBlocks)
         {
@@ -411,18 +407,19 @@ public class Map {
 
     }
     public boolean monsterDies(Monster m) {
-        if (player.getPosition().equals(m.getPosition())&&(m instanceof BrownMushroom))monsters.remove(m);
-        if (player.getPosition().getY() == m.getPosition().getY() - 1 && player.getPosition().getX() == m.getPosition().getX()) {
-            if (m instanceof BrownMushroom) {
+        if (m.getPosition().getX() == player.getPosition().getX() && m.getPosition().getY() == player.getPosition().getY() + 1)
+        {
+            if(m instanceof BrownMushroom) {
                 monsters.remove(m);
-            } else if (m instanceof Turtle) {
+            }
+            else if (m instanceof Turtle) {
                 Position p=m.getPosition();
                 monsters.remove(m);
                 monsters.add(new TurtleShell(p));
                 if (player.getPosition().getX() < Game.width_game / 2) {
 
-                    getPlayer().setPosition(new Position(player.getPosition().getX()+2,player.getPosition().getY()));
-                   // getViewer().draw(game.getGui());
+                    getPlayer().setPosition(new Position(player.getPosition().getX()+1,player.getPosition().getY()));
+                    //getViewer().draw(game.getGui());
                 }
 
                 else moveMap();
