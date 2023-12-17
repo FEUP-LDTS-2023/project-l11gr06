@@ -26,7 +26,7 @@ public class VictoryController extends Controller<Victory> {
             case SELECT:
                 if (getModel().isSelectedPlayAgain()) game.setState(new GameState(new Map1Builder(250,20).createMap()));
                 if (getModel().isSelectedMenu()) game.setState(new MenuState(new Menu()));
-                if (getModel().isSelectedExit()) game.setState(null);
+                if (getModel().isSelectedExit()) System.exit(0);
         }
     }
 }
