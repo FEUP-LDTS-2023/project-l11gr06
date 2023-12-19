@@ -33,6 +33,8 @@ public class Game {
         this.state = state;
     }
 
+    public State getState(){return state;}
+
     public void run() throws IOException, URISyntaxException, FontFormatException {
         int FPS = 10;
         int frameTime = 1000 / FPS;

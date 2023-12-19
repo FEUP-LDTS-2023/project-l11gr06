@@ -15,6 +15,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,7 +33,7 @@ class PlayerControllerTest {
         viewer=new GameViewer(map);
         player = new Player(6, 15);
         map.setPlayer(player);
-        map.setGrounds(Arrays.asList());
+        map.setGrounds(List.of());
         map.setStairs(Arrays.asList());
         map.setBlocks(Arrays.asList());
         map.setMysteryBlocks(Arrays.asList());
@@ -71,7 +72,6 @@ class PlayerControllerTest {
         assertEquals(new Position(2, 11), player.getPosition());
     }
 
-
     @Test
     void movePlayerRightNotEmpty() throws IOException, URISyntaxException, FontFormatException {
         map.setStairs(Arrays.asList(new Stair(7, 15)));
@@ -90,4 +90,6 @@ class PlayerControllerTest {
         controller.step(game, GUI.ACTION.UP, 100);
         assertEquals(new Position(6,13), player.getPosition());
     }
+
+
 }

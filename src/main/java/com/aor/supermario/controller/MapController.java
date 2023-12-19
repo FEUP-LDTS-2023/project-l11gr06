@@ -15,13 +15,12 @@ import java.net.URISyntaxException;
 
 public class MapController extends GameController {
     private final PlayerController playerController;
-    private final MonsterController monsterController;
 
     public MapController(Map map, Viewer v) {
         super(map, v);
 
         this.playerController = new PlayerController(map,v );
-        this.monsterController = new MonsterController(map, v);
+        MonsterController monsterController = new MonsterController(map, v);
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException, FontFormatException {

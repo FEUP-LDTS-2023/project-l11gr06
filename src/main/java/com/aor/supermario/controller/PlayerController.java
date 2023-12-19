@@ -46,128 +46,130 @@ public class PlayerController extends GameController {
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException, FontFormatException {
-        if (action == GUI.ACTION.UP) {
-            for (int i = 1; i <= 4; i++) {
-                moveUp();
-                getViewer().draw(game.getGui());
-                if (getModel().break_block()) break;
-                if (getModel().reveal_mysteryblock()) {
-                    break;
+        if (getModel().collision_y(getModel().getPlayer())) {
+            if (action == GUI.ACTION.UP) {
 
-                }
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        if (action == GUI.ACTION.RIGHT) {
-            for(Monster monster: getModel().getMonsters())
-            {
-                if (getModel().monsterCollision(monster))
-                {
-                    if (monster instanceof TurtleShell && ((TurtleShell) monster).getState() == 1) ((TurtleShell) monster).setState(2);
-                    else {
-                        game.setState(new GameOverState(new GameOver()));
-                        return;
+                for (int i = 1; i <= 4; i++) {
+                    moveUp();
+                    getViewer().draw(game.getGui());
+                    if (getModel().break_block()) break;
+                    if (getModel().reveal_mysteryblock()) {
+                        break;
+
+                    }
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
             }
-            for (GoalPole pole : getModel().getGoalPole())
-                if (getModel().getPlayer().getPosition().getX() == pole.getPosition().getX()) game.setState(new VictoryState(new Victory()));
-            if (!getModel().collision_x_front(getModel().getPlayer())) {
-                if (getModel().getPlayer().getPosition().getX() < Game.width_game / 2)
-                    moveRight();
-                else getModel().moveMap();
-            }
-        }
-        if (action == GUI.ACTION.LEFT) {
-            for(Monster monster: getModel().getMonsters())
-            {
-                if (getModel().monsterCollision(monster))
-                {
-                    if (monster instanceof TurtleShell && ((TurtleShell) monster).getState() == 1) ((TurtleShell) monster).setState(2);
-                    else {
-                        game.setState(new GameOverState(new GameOver()));
-                        return;
+            if (action == GUI.ACTION.RIGHT) {
+                for (Monster monster : getModel().getMonsters()) {
+                    if (getModel().monsterCollision(monster)) {
+                        if (monster instanceof TurtleShell && ((TurtleShell) monster).getState() == 1)
+                            ((TurtleShell) monster).setState(2);
+                        else {
+                            game.setState(new GameOverState(new GameOver()));
+                            return;
+                        }
                     }
                 }
-            }
-            if (!getModel().collision_x_back(getModel().getPlayer()))
-                if (getModel().getPlayer().getPosition().getX() != 0) moveLeft();
-        }
-        if (action == GUI.ACTION.JUMPR) {
-            int x = 0;
-            while (x < 4) {
-
-                getViewer().draw(game.getGui());
-                if (getModel().break_block()) {
-                    getViewer().draw(game.getGui());
-                    break;
-                }
-                if (getModel().reveal_mysteryblock()) {
-                    getViewer().draw(game.getGui());
-                    break;
-                }
-                moveUp();
-                x++;
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            for (int i = 0; i < 4; i++) {
-                if (getModel().collision_x_front(getModel().getPlayer())) break;
-
                 for (GoalPole pole : getModel().getGoalPole())
-                    if (getModel().getPlayer().getPosition().getX() == pole.getPosition().getX()) {
+                    if (getModel().getPlayer().getPosition().getX() == pole.getPosition().getX())
                         game.setState(new VictoryState(new Victory()));
-                    }
                 if (!getModel().collision_x_front(getModel().getPlayer())) {
                     if (getModel().getPlayer().getPosition().getX() < Game.width_game / 2)
                         moveRight();
                     else getModel().moveMap();
                 }
-
-                getViewer().draw(game.getGui());
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
-
-        }
-        if (action == GUI.ACTION.JUMPL) {
-            int x = 0;
-            while (x < 4) {
-                getViewer().draw(game.getGui());
-                if (getModel().break_block()) {
-                    getViewer().draw(game.getGui());
-                    break;
+            if (action == GUI.ACTION.LEFT) {
+                for (Monster monster : getModel().getMonsters()) {
+                    if (getModel().monsterCollision(monster)) {
+                        if (monster instanceof TurtleShell && ((TurtleShell) monster).getState() == 1)
+                            ((TurtleShell) monster).setState(2);
+                        else {
+                            game.setState(new GameOverState(new GameOver()));
+                            return;
+                        }
+                    }
                 }
-                if (getModel().reveal_mysteryblock()) {
-                    getViewer().draw(game.getGui());
-                    break;
-                }
-                moveUp();
-                x++;
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                if (!getModel().collision_x_back(getModel().getPlayer()))
+                    if (getModel().getPlayer().getPosition().getX() != 0) moveLeft();
             }
-            for (int i = 0; i < 4; i++) {
-                if (getModel().collision_x_front(getModel().getPlayer())) break;
-                moveLeft();
-                getViewer().draw(game.getGui());
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            if (action == GUI.ACTION.JUMPR) {
+                int x = 0;
+                while (x < 4) {
+
+                    getViewer().draw(game.getGui());
+                    if (getModel().break_block()) {
+                        getViewer().draw(game.getGui());
+                        break;
+                    }
+                    if (getModel().reveal_mysteryblock()) {
+                        getViewer().draw(game.getGui());
+                        break;
+                    }
+                    moveUp();
+                    x++;
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                for (int i = 0; i < 4; i++) {
+                    if (getModel().collision_x_front(getModel().getPlayer())) break;
+
+                    for (GoalPole pole : getModel().getGoalPole())
+                        if (getModel().getPlayer().getPosition().getX() == pole.getPosition().getX()) {
+                            game.setState(new VictoryState(new Victory()));
+                        }
+                    if (!getModel().collision_x_front(getModel().getPlayer())) {
+                        if (getModel().getPlayer().getPosition().getX() < Game.width_game / 2)
+                            moveRight();
+                        else getModel().moveMap();
+                    }
+
+                    getViewer().draw(game.getGui());
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+            if (action == GUI.ACTION.JUMPL) {
+                int x = 0;
+                while (x < 4) {
+                    getViewer().draw(game.getGui());
+                    if (getModel().break_block()) {
+                        getViewer().draw(game.getGui());
+                        break;
+                    }
+                    if (getModel().reveal_mysteryblock()) {
+                        getViewer().draw(game.getGui());
+                        break;
+                    }
+                    moveUp();
+                    x++;
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                for (int i = 0; i < 4; i++) {
+                    if (getModel().collision_x_front(getModel().getPlayer())) break;
+                    moveLeft();
+                    getViewer().draw(game.getGui());
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
