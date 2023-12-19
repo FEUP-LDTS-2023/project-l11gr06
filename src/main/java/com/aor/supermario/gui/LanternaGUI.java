@@ -37,11 +37,6 @@ public class LanternaGUI implements GUI {
     private Screen createScreen(Terminal terminal) throws IOException {
         final Screen screen;
         screen = new TerminalScreen(terminal);
-
-        //TextGraphics t = screen.newTextGraphics();
-        //t.setForegroundColor(TextColor.ANSI.DEFAULT);
-        //t.setBackgroundColor(TextColor.ANSI.BLUE);
-
         screen.setCursorPosition(null);
         screen.startScreen();
         screen.doResizeIfNecessary();
@@ -88,7 +83,6 @@ public class LanternaGUI implements GUI {
         if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
         if (keyStroke.getKeyType() == KeyType.Character && (keyStroke.getCharacter() == 'x'||keyStroke.getCharacter() == 'X')) return ACTION.JUMPR;
         if (keyStroke.getKeyType() == KeyType.Character && (keyStroke.getCharacter() == 'z' || keyStroke.getCharacter() == 'Z')) return ACTION.JUMPL;
-        if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
         return ACTION.NONE;
     }
 
@@ -112,73 +106,71 @@ public class LanternaGUI implements GUI {
     @Override
     public void drawMysteryBlock(MysteryBlock mb,Position position) {
 
-                if (mb.getMysteryState() == 0) {
-                    drawCharacter(position.getX(), position.getY(), '#', "#FED000");
-                } else {
-                    drawCharacter(position.getX(), position.getY(), ']', "#FF6400");
-                }
-            }
-            @Override
-            public void drawStair (Position position){
-                drawCharacter(position.getX(), position.getY(), '$', "#FF6400");
-            }
-            @Override
-            public void drawPipe (Position position){
-                drawCharacter(position.getX(), position.getY(), '<', "#008000");
-            }
-            @Override
-            public void drawRedMushroom (Position position){
-                drawCharacter(position.getX(), position.getY(), '=', "#FF0000");
-            }
-            @Override
-            public void drawCoin (Position position){
-                drawCharacter(position.getX(), position.getY(), '>', "#FED000");
-            }
-            @Override
-            public void drawGoalPole (Position position){
-                if (position.getY() == Game.height_game - 14)
-                    drawCharacter(position.getX(), position.getY(), '[', "#FF007F");
-                else {
-                    drawCharacter(position.getX(), position.getY(), 'I', "#FF007F");
-                }
-            }
-            @Override
-            public void drawBrownMushroom (Position position){
-                drawCharacter(position.getX(), position.getY(), '/', "#9400D3");
-            }
-            @Override
-            public void drawTurtle (Position position){
-                drawCharacter(position.getX(), position.getY(), '~', "#008000");
-            }
-            @Override
-            public void drawTurtleShell (Position position){
-                drawCharacter(position.getX(), position.getY(), '^', "#8A3324");
-            }
-            @Override
-            public void drawText (Position position, String text, String color){
-                TextGraphics tg = screen.newTextGraphics();
-                tg.setForegroundColor(TextColor.Factory.fromString(color));
-                tg.putString(position.getX(), position.getY(), text);
-            }
-            @Override
-            public void drawCharacter(int x, int y, char c, String color){
-                TextGraphics tg = screen.newTextGraphics();
-                tg.setForegroundColor(TextColor.Factory.fromString(color));
-                tg.putString(x, y + 1, "" + c);
-            }
-
-            @Override
-            public void clear () {
+        if (mb.getMysteryState() == 0) {
+            drawCharacter(position.getX(), position.getY(), '#', "#FED000");
+        } else {
+            drawCharacter(position.getX(), position.getY(), ']', "#FF6400");
+        }
+    }
+    @Override
+    public void drawStair (Position position){
+        drawCharacter(position.getX(), position.getY(), '$', "#FF6400");
+    }
+    @Override
+    public void drawPipe (Position position){
+           drawCharacter(position.getX(), position.getY(), '<', "#008000");
+    }
+    @Override
+    public void drawRedMushroom (Position position){
+        drawCharacter(position.getX(), position.getY(), '=', "#FF0000");
+    }
+    @Override
+    public void drawCoin (Position position){
+        drawCharacter(position.getX(), position.getY(), '>', "#FED000");
+    }
+    @Override
+    public void drawGoalPole (Position position){
+        if (position.getY() == Game.height_game - 14)
+            drawCharacter(position.getX(), position.getY(), '[', "#FF007F");
+        else {
+            drawCharacter(position.getX(), position.getY(), 'I', "#FF007F");
+        }
+    }
+    @Override
+    public void drawBrownMushroom (Position position){
+        drawCharacter(position.getX(), position.getY(), '/', "#9400D3");
+    }
+    @Override
+    public void drawTurtle (Position position){
+        drawCharacter(position.getX(), position.getY(), '~', "#008000");
+    }
+    @Override
+    public void drawTurtleShell (Position position){
+        drawCharacter(position.getX(), position.getY(), '^', "#8A3324");
+    }
+    @Override
+    public void drawText (Position position, String text, String color){
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString(color));
+        tg.putString(position.getX(), position.getY(), text);
+    }
+    @Override
+    public void drawCharacter(int x, int y, char c, String color){
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString(color));
+        tg.putString(x, y + 1, "" + c);
+    }
+    @Override
+    public void clear () {
                 screen.clear();
             }
+    @Override
+    public void refresh () throws IOException {
+        screen.refresh();
+    }
 
-            @Override
-            public void refresh () throws IOException {
-                screen.refresh();
-            }
-
-            @Override
-            public void close () throws IOException {
-                screen.close();
-            }
-        }
+    @Override
+    public void close () throws IOException {
+        screen.close();
+    }
+}

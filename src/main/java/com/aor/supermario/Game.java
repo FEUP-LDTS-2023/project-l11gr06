@@ -64,12 +64,3 @@ public class Game {
         gui.close();
     }
 }
-
-   /*               if (map.collect_coins())
-                    points+=100;
-                    draw();
-
-                if (map.collect_mushroom())
-                    points+=1000;
-                    draw();
-   */
