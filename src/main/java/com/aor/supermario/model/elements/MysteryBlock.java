@@ -21,8 +21,4 @@ public class MysteryBlock extends Element {
         this.MysteryState = MysteryState;
 
     }
-    public void moveMapLeft() {
-        Position p=new Position(getPosition().getX()-1, getPosition().getY());
-        setPosition(p);
-    }
 }
