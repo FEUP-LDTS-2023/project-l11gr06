@@ -10,12 +10,12 @@ import com.aor.supermario.viewer.Viewer;
 import com.aor.supermario.viewer.game.GameViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -28,12 +28,13 @@ class PlayerControllerTest {
 
     @BeforeEach
     void setUp() throws IOException, URISyntaxException, FontFormatException {
+
         map = new Map(20, 20);
-        game=new Game();
-        viewer=new GameViewer(map);
+        game= Mockito.mock(Game.class);
+        viewer = Mockito.mock(GameViewer.class);
         player = new Player(6, 15);
         map.setPlayer(player);
-        map.setGrounds(List.of());
+        map.setGrounds(Arrays.asList());
         map.setStairs(Arrays.asList());
         map.setBlocks(Arrays.asList());
         map.setMysteryBlocks(Arrays.asList());
@@ -45,6 +46,8 @@ class PlayerControllerTest {
 
         controller = new PlayerController(map, viewer);
     }
+
+
 
     @Test
     void movePlayerRightEmpty() throws IOException, URISyntaxException, FontFormatException {
@@ -72,6 +75,7 @@ class PlayerControllerTest {
         assertEquals(new Position(2, 11), player.getPosition());
     }
 
+
     @Test
     void movePlayerRightNotEmpty() throws IOException, URISyntaxException, FontFormatException {
         map.setStairs(Arrays.asList(new Stair(7, 15)));
@@ -90,6 +94,4 @@ class PlayerControllerTest {
         controller.step(game, GUI.ACTION.UP, 100);
         assertEquals(new Position(6,13), player.getPosition());
     }
-
-
 }

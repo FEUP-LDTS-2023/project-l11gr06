@@ -4,15 +4,12 @@ import com.aor.supermario.Game;
 import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.Map;
 import com.aor.supermario.model.Position;
-import com.aor.supermario.model.elements.BrownMushroom;
 import com.aor.supermario.model.elements.Monster;
-import com.aor.supermario.model.elements.Turtle;
-import com.aor.supermario.model.elements.TurtleShell;
 import com.aor.supermario.viewer.Viewer;
 
 import java.io.IOException;
 
-public class MonsterController extends GameController {
+public class MonsterController extends Controller<Map> {
     public MonsterController(Map map, Viewer v) {
         super(map, v);
     }

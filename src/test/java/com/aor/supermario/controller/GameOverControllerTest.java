@@ -1,29 +1,16 @@
 package com.aor.supermario.controller;
-
 import com.aor.supermario.Game;
 import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.*;
-import com.aor.supermario.model.Menu;
-import com.aor.supermario.model.elements.Player;
-import com.aor.supermario.states.AboutState;
 import com.aor.supermario.states.GameState;
 import com.aor.supermario.states.MenuState;
-import com.aor.supermario.states.State;
-import com.aor.supermario.viewer.AboutViewer;
 import com.aor.supermario.viewer.GameOverViewer;
-import com.aor.supermario.viewer.Viewer;
-import com.aor.supermario.viewer.game.GameViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Arrays;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GameOverControllerTest {
     private GameOver gameover;
@@ -37,7 +24,6 @@ public class GameOverControllerTest {
         viewer = new GameOverViewer(gameover);
         controller = new GameOverController(gameover,viewer);
         game=new Game();
-
     }
 
     @Test

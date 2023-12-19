@@ -5,19 +5,14 @@ import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.*;
 import com.aor.supermario.model.elements.*;
 import com.aor.supermario.states.GameOverState;
-import com.aor.supermario.states.GameState;
-import com.aor.supermario.states.MenuState;
 import com.aor.supermario.states.VictoryState;
-import com.aor.supermario.viewer.game.PlayerViewer;
 import com.aor.supermario.viewer.Viewer;
-import com.aor.supermario.gui.LanternaGUI;
-import com.googlecode.lanterna.input.KeyType;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class PlayerController extends GameController {
+public class PlayerController extends Controller<Map> {
 
     public PlayerController(Map map, Viewer v) {
         super(map, v);
