@@ -18,8 +18,12 @@ public class AboutController extends Controller<About> {
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         switch (action) {
+            case UP: break;
             case SELECT:
-                if (getModel().isSelectedMenu()) game.setState(new MenuState(new Menu()));
+                if (getModel().isSelectedMenu()) {
+                    game.setState(new MenuState(new Menu()));
+                    System.out.println(game.getState().getClass());
+                }
         }
     }
 }

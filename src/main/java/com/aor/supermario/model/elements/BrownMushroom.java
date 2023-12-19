@@ -10,9 +10,5 @@ public class BrownMushroom extends Monster{
     public BrownMushroom(int x, int y) {
         super(x,y);
     }
-    public void draw(TextGraphics graphics) {
-        graphics.setForegroundColor(TextColor.Factory.fromString("#8A3324"));
-        graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(getPosition().getX(),getPosition().getY()), "#");
-    }
+
 }

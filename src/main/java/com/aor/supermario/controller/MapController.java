@@ -4,8 +4,6 @@ import com.aor.supermario.Game;
 import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.Map;
 import com.aor.supermario.model.Menu;
-import com.aor.supermario.model.Position;
-import com.aor.supermario.model.elements.*;
 import com.aor.supermario.states.MenuState;
 import com.aor.supermario.viewer.Viewer;
 
@@ -13,15 +11,14 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class MapController extends GameController {
+public class MapController extends Controller<Map> {
     private final PlayerController playerController;
-    private final MonsterController monsterController;
 
     public MapController(Map map, Viewer v) {
         super(map, v);
 
         this.playerController = new PlayerController(map,v );
-        this.monsterController = new MonsterController(map, v);
+        MonsterController monsterController = new MonsterController(map, v);
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException, FontFormatException {
@@ -29,7 +26,7 @@ public class MapController extends GameController {
             game.setState(new MenuState(new Menu()));
         else {
             playerController.step(game, action, time);
-            //monsterController.step(game, action, time);
         }
     }
+
 }

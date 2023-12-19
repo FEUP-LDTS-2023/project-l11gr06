@@ -10,6 +10,7 @@ import com.aor.supermario.viewer.Viewer;
 import com.aor.supermario.viewer.game.GameViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.awt.*;
 import java.io.IOException;
@@ -27,9 +28,10 @@ class PlayerControllerTest {
 
     @BeforeEach
     void setUp() throws IOException, URISyntaxException, FontFormatException {
+
         map = new Map(20, 20);
-        game=new Game();
-        viewer=new GameViewer(map);
+        game= Mockito.mock(Game.class);
+        viewer = Mockito.mock(GameViewer.class);
         player = new Player(6, 15);
         map.setPlayer(player);
         map.setGrounds(Arrays.asList());
@@ -44,6 +46,8 @@ class PlayerControllerTest {
 
         controller = new PlayerController(map, viewer);
     }
+
+
 
     @Test
     void movePlayerRightEmpty() throws IOException, URISyntaxException, FontFormatException {

@@ -33,6 +33,8 @@ public class Game {
         this.state = state;
     }
 
+    public State getState(){return state;}
+
     public void run() throws IOException, URISyntaxException, FontFormatException {
         int FPS = 10;
         int frameTime = 1000 / FPS;
@@ -64,12 +66,3 @@ public class Game {
         gui.close();
     }
 }
-
-   /*               if (map.collect_coins())
-                    points+=100;
-                    draw();
-
-                if (map.collect_mushroom())
-                    points+=1000;
-                    draw();
-   */

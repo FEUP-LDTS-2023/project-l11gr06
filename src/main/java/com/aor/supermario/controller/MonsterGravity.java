@@ -3,21 +3,19 @@ package com.aor.supermario.controller;
 import com.aor.supermario.Game;
 import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.Map;
-import com.aor.supermario.model.Position;
 import com.aor.supermario.model.elements.Element;
 import com.aor.supermario.model.elements.Monster;
-import com.aor.supermario.model.elements.Player;
 import com.aor.supermario.viewer.Viewer;
 
 import java.io.IOException;
 
-public class Gravity extends MonsterController implements Runnable{
+public class MonsterGravity extends MonsterController implements Runnable{
     private Map map;
     private Viewer v;
     private Game game;
 
     private Element element;
-    public Gravity(Map m, Viewer v, Game g, Element e)
+    public MonsterGravity(Map m, Viewer v, Game g, Element e)
     {
         super(m,v);
         map=m;
