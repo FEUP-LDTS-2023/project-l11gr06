@@ -11,6 +11,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
 
 public class GameOverControllerTest {
     private GameOver gameover;
@@ -23,7 +24,7 @@ public class GameOverControllerTest {
         gameover = new GameOver();
         viewer = new GameOverViewer(gameover);
         controller = new GameOverController(gameover,viewer);
-        game=new Game();
+        game = mock(Game.class);
     }
 
     @Test

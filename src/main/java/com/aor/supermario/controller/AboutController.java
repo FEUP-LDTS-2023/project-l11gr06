@@ -22,7 +22,6 @@ public class AboutController extends Controller<About> {
             case SELECT:
                 if (getModel().isSelectedMenu()) {
                     game.setState(new MenuState(new Menu()));
-                    System.out.println(game.getState().getClass());
                 }
         }
     }
