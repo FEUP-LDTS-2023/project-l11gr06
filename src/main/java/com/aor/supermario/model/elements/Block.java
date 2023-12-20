@@ -8,7 +8,7 @@ public class Block extends Element {
         super(x, y);
     }
 
-    public Block(Position p) {
-        super(p);
+    public Block(Position position) {
+        super(position);
     }
 }

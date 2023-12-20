@@ -7,10 +7,11 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class BrownMushroom extends Monster{
-    public BrownMushroom(Position p){
-        super(p);
-    }
     public BrownMushroom(int x, int y) {
         super(x,y);
+    }
+
+    public BrownMushroom(Position position) {
+        super(position);
     }
 }

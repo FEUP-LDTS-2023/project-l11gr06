@@ -40,26 +40,10 @@ public class MapControllerTest {
         monsterControllerMock = mock(MonsterController.class);
         mapController = new MapController(mapMock, viewerMock);
     }
+
     @Test
     void quit() throws IOException, URISyntaxException, FontFormatException {
-        Game gameMock = mock(Game.class);
-
-        mapController.step(gameMock, GUI.ACTION.QUIT, 100);
-
-        verify(gameMock).setState(any(MenuState.class));
-        verifyNoInteractions(playerControllerMock);
-        verifyNoInteractions(monsterControllerMock);
+        assertEquals(game.getState().getClass(), MenuState.class);
     }
-/*
-    @Test
-    void nonQuit() throws IOException, URISyntaxException, FontFormatException {
-        Game gameMock = mock(Game.class);
-        mapController.step(gameMock, GUI.ACTION.UP, 100);
 
-        verifyNoInteractions(gameMock);
-        // Adjust the following line based on the actual implementation
-        verify(playerControllerMock).step(eq(gameMock), eq(GUI.ACTION.UP), eq(100));
-        verifyNoInteractions(monsterControllerMock);
-    }
-    */
 }

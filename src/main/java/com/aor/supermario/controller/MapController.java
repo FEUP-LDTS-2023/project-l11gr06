@@ -28,5 +28,4 @@ public class MapController extends Controller<Map> {
             playerController.step(game, action, time);
         }
     }
-
 }
