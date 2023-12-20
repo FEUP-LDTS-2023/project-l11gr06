@@ -7,7 +7,7 @@ public class Ground extends Element {
         super(x,y);
     }
 
-    public Ground(Position position) {
-        super(position);
+    public Ground(Position p) {
+        super(p);
     }
 }

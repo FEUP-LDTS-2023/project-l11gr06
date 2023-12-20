@@ -8,7 +8,7 @@ public class RedMushroom extends Element {
         super(x, y);
     }
 
-    public RedMushroom(Position position) {
-        super(position);
+    public RedMushroom(Position p) {
+        super(p);
     }
 }

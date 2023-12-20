@@ -9,8 +9,8 @@ public class MysteryBlock extends Element {
         super(x, y);
     }
 
-    public MysteryBlock(Position position) {
-        super(position);
+    public MysteryBlock(Position p) {
+        super(p);
     }
 
     public int getMysteryState() {

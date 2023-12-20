@@ -7,7 +7,7 @@ public class GoalPole extends Element {
         super(x,y);
     }
 
-    public GoalPole(Position position) {
-        super(position);
+    public GoalPole(Position p) {
+        super(p);
     }
 }

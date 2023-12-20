@@ -1,5 +1,4 @@
 package com.aor.supermario.model;
-import com.aor.supermario.model.Victory;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

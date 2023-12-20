@@ -7,7 +7,7 @@ public class Coin extends Element {
         super(x, y);
     }
 
-    public Coin(Position position) {
-        super(position);
+    public Coin(Position p) {
+        super(p);
     }
 }

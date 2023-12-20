@@ -44,4 +44,24 @@ public class PositionTest {
         Position position2 = new Position(3, 5);
         assertEquals(position1, position2);
     }
+    @Test
+    void testSetX() {
+        Position position = new Position(7, 5);
+
+        position.setX(4);
+
+        assertEquals(4, position.getX());
+        assertEquals(5, position.getY());
+    }
+
+    @Test
+    void testSetY() {
+        Position position = new Position(3, 2);
+
+        position.setY(9);
+
+        assertEquals(3, position.getX());
+        assertEquals(9, position.getY());
+    }
+
 }

@@ -1,18 +1,27 @@
 package com.aor.supermario.model.elements;
-
+import static org.junit.jupiter.api.Assertions.*;
 import com.aor.supermario.model.Position;
-import com.aor.supermario.model.elements.BrownMushroom;
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 
 public class BrownMushroomTest {
+    @Test
+    void constructorAndGettersTest() {
+        BrownMushroom brownMushroom = new BrownMushroom(7, 6);
+
+        Position position = brownMushroom.getPosition();
+        assertEquals(7, position.getX());
+        assertEquals(6, position.getY());
+    }
 
 
+    @Test
+    void testSetPosition() {
+        BrownMushroom brownMushroom = new BrownMushroom(7, 6);
+
+        brownMushroom.setPosition(new Position(3, 4));
+
+        Position position = brownMushroom.getPosition();
+        assertEquals(3, position.getX());
+        assertEquals(4, position.getY());
+    }
 }

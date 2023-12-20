@@ -10,8 +10,8 @@ public class Player extends Element {
         super(x, y);
     }
 
-    public Player(Position position) {
-        super(position);
+    public Player(Position p) {
+        super(p);
     }
 
     public int getPoints() {
