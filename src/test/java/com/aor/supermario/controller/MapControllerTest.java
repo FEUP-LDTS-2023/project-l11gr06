@@ -17,33 +17,29 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 public class MapControllerTest {
-    private GameOver gameover;
-    private GameOverViewer viewer;
-    private GameOverController controller;
-    private Game game;
-    private int currentEntry;
+
     private MapController mapController;
-    private Map mapMock;
-    private Viewer viewerMock;
-    private PlayerController playerControllerMock;
-    private MonsterController monsterControllerMock;
+    private Game game;
+    private GUI gui;
+    private Map map;
+    private Viewer<Map> viewer;
 
     @BeforeEach
-    void setUp() throws IOException, URISyntaxException, FontFormatException {
-        gameover = new GameOver();
-        viewer = new GameOverViewer(gameover);
-        controller = new GameOverController(gameover, viewer);
-        game = new Game();
-        mapMock = mock(Map.class);
-        viewerMock = mock(Viewer.class);
-        playerControllerMock = mock(PlayerController.class);
-        monsterControllerMock = mock(MonsterController.class);
-        mapController = new MapController(mapMock, viewerMock);
+    void setUp() {
+        map = mock(Map.class);
+        viewer = mock(Viewer.class);
+        mapController = new MapController(map, viewer);
+        game = mock(Game.class);
+        gui = mock(GUI.class);
     }
 
     @Test
     void quit() throws IOException, URISyntaxException, FontFormatException {
-        assertEquals(game.getState().getClass(), MenuState.class);
-    }
 
+        when(gui.getNextAction()).thenReturn(GUI.ACTION.QUIT);
+        mapController.step(game, gui.getNextAction(), 1000);
+        verify(game).setState(any(MenuState.class));
+        verify(game, never()).getState();
+        verify(gui).getNextAction();
+    }
 }
