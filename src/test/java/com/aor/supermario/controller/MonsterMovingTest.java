@@ -1,39 +1,41 @@
 package com.aor.supermario.controller;
 
 import com.aor.supermario.Game;
-import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.Map;
 import com.aor.supermario.model.Position;
 import com.aor.supermario.model.elements.BrownMushroom;
+import com.aor.supermario.model.elements.Ground;
 import com.aor.supermario.model.elements.Monster;
-import com.aor.supermario.model.elements.Player;
 import com.aor.supermario.viewer.Viewer;
 import com.aor.supermario.viewer.game.GameViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 
 public class MonsterMovingTest {
-    /*private PlayerController controller;
-    private Viewer viewer;
-    private Player player;
-    private Game game;
+
     private Map map;
+    private Viewer viewer;
+    private Game game;
+    private MonsterMoving monsterMoving;
 
     @BeforeEach
     void setUp() throws IOException, URISyntaxException, FontFormatException {
         map = new Map(20, 20);
-        game = new Game();
-        viewer = new GameViewer(map);
-        player = new Player(6, 15);
-        map.setPlayer(player);
-        map.setGrounds(Arrays.asList());
+        //game= new Game();
+        //viewer = new GameViewer(map);
+        viewer = mock(Viewer.class);
+        game = mock(Game.class);
+        monsterMoving = new MonsterMoving(map, viewer, game);
         map.setStairs(Arrays.asList());
         map.setBlocks(Arrays.asList());
         map.setMysteryBlocks(Arrays.asList());
@@ -42,32 +44,37 @@ public class MonsterMovingTest {
         map.setRedMushrooms(Arrays.asList());
         map.setGoalPoles(Arrays.asList());
         map.setMonsters(Arrays.asList());
-
-        controller = new PlayerController(map, viewer);
+        List<Ground> grounds = new ArrayList<>();
+        for (int c = 0; c < 20; c++) {
+            grounds.add(new Ground(c, 19));
+            grounds.add(new Ground(c, 18));
+            grounds.add(new Ground(c, 17));
+        }
+        map.setGrounds(grounds);
+        List<Monster> monsters = new ArrayList<>();
+        monsters.add(new BrownMushroom(5, 16));
+        map.setMonsters(monsters);
     }
 
     @Test
-    void testMonsterMoving() throws InterruptedException {
-        map.getMonsters().add(new BrownMushroom(25, 20 - 4));
-        MonsterMoving monsterMoving = new MonsterMoving(map, viewer, game);
-        Position old_p = map.monstersToMove().get(0).getPosition();
-
-        // Create a thread to run MonsterMoving
+    void testMonsterstoMove() throws InterruptedException, IOException {
         Thread monsterMovingThread = new Thread(monsterMoving);
         monsterMovingThread.start();
-
-        // Allow some time for the thread to execute
-        Thread.sleep(900); // Adjust this time according to your requirements
-
-        // Interrupt the thread to stop the loop
+        Thread.sleep(1000);
+        assertEquals(map.monstersToMove().size(), map.getMonsters().size());
         monsterMovingThread.interrupt();
-
-        // Wait for the MonsterMoving thread to finish
         monsterMovingThread.join();
+    }
+    @Test
+    void isMonsterMoving() throws InterruptedException, IOException {
+        Thread monsterMovingThread = new Thread(monsterMoving);
+        monsterMovingThread.start();
+        Thread.sleep(100);
+        assertEquals(map.monstersToMove().get(0).getPosition(), new Position(4, 16));
+        monsterMovingThread.interrupt();
+        monsterMovingThread.join();
+    }
 
-        // Assertions based on the expected behavior
-        Position p = new Position(map.monstersToMove().get(0).getPosition().getX()-1,map.monstersToMove().get(0).getPosition().getY());
-        assertEquals(old_p,p);
-    }*/
 }
+
 

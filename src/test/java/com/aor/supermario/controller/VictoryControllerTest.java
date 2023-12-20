@@ -17,7 +17,6 @@ public class VictoryControllerTest {
     private VictoryViewer viewer;
     private VictoryController controller;
     private Game game;
-    private int currentEntry;
     @BeforeEach
     void setUp() throws IOException, URISyntaxException, FontFormatException {
         victory = new Victory();
@@ -25,9 +24,9 @@ public class VictoryControllerTest {
         controller = new VictoryController(victory,viewer);
         game=new Game();
     }
-
     @Test
     void upVictory() throws IOException, URISyntaxException, FontFormatException {
+
         controller.step(game, GUI.ACTION.UP, 100);
         assertEquals(controller.getModel().getCurrentEntry(),2);
     }
@@ -36,6 +35,7 @@ public class VictoryControllerTest {
         controller.step(game, GUI.ACTION.DOWN, 100);
         assertEquals(controller.getModel().getCurrentEntry(),1);
     }
+
     @Test
     void selectRestart() throws IOException, URISyntaxException, FontFormatException {
         controller.step(game, GUI.ACTION.SELECT, 100);

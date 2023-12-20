@@ -18,7 +18,6 @@ public class MapController extends Controller<Map> {
         super(map, v);
 
         this.playerController = new PlayerController(map,v );
-        MonsterController monsterController = new MonsterController(map, v);
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException, FontFormatException {

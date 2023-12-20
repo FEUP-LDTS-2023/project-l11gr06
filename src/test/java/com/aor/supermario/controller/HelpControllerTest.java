@@ -25,9 +25,11 @@ public class HelpControllerTest {
         controller = new HelpController(help,viewer);
         game=new Game();
     }
+
     @Test
     void selectMenu() throws IOException, URISyntaxException, FontFormatException {
         controller.step(game, GUI.ACTION.SELECT, 100);
         assertEquals(game.getState().getClass(),MenuState.class);
     }
+
 }

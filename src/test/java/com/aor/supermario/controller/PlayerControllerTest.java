@@ -6,6 +6,8 @@ import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.Position;
 import com.aor.supermario.model.Map;
 import com.aor.supermario.model.elements.*;
+import com.aor.supermario.states.GameOverState;
+import com.aor.supermario.states.MenuState;
 import com.aor.supermario.viewer.Viewer;
 import com.aor.supermario.viewer.game.GameViewer;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,7 +34,7 @@ class PlayerControllerTest {
     void setUp() throws IOException, URISyntaxException, FontFormatException {
 
         map = new Map(20, 20);
-        game= Mockito.mock(Game.class);
+        game= new Game();
         viewer = Mockito.mock(GameViewer.class);
         player = new Player(6, 16);
         map.setPlayer(player);
@@ -62,36 +64,26 @@ class PlayerControllerTest {
     @Test
     void movePlayerRightEmpty() throws IOException, URISyntaxException, FontFormatException {
         controller.step(game, GUI.ACTION.RIGHT, 100);
-        System.out.println(player.getPosition().getX());
-        System.out.println(player.getPosition().getY());
         assertEquals(new Position(7, 16), player.getPosition());
     }
     @Test
     void movePlayerLeftEmpty() throws IOException, URISyntaxException, FontFormatException {
         controller.step(game, GUI.ACTION.LEFT, 100);
-        System.out.println(player.getPosition().getX());
-        System.out.println(player.getPosition().getY());
         assertEquals(new Position(5, 16), player.getPosition());
     }
     @Test
     void movePlayerUpEmpty() throws IOException, URISyntaxException, FontFormatException {
         controller.step(game, GUI.ACTION.UP, 100);
-        System.out.println(player.getPosition().getX());
-        System.out.println(player.getPosition().getY());
         assertEquals(new Position(6, 12), player.getPosition());
     }
     @Test
     void movePlayerJumpRightEmpty() throws IOException, URISyntaxException, FontFormatException {
         controller.step(game, GUI.ACTION.JUMPR, 100);
-        System.out.println(player.getPosition().getX());
-        System.out.println(player.getPosition().getY());
         assertEquals(new Position(10, 12), player.getPosition());
     }
     @Test
     void movePlayerJumpLeftEmpty() throws IOException, URISyntaxException, FontFormatException {
         controller.step(game, GUI.ACTION.JUMPL, 100);
-        System.out.println(player.getPosition().getX());
-        System.out.println(player.getPosition().getY());
         assertEquals(new Position(2, 12), player.getPosition());
     }
 
@@ -100,24 +92,36 @@ class PlayerControllerTest {
     void movePlayerRightNotEmpty() throws IOException, URISyntaxException, FontFormatException {
         map.setStairs(Arrays.asList(new Stair(7, 16)));
         controller.step(game, GUI.ACTION.RIGHT, 100);
-        System.out.println(player.getPosition().getX());
-        System.out.println(player.getPosition().getY());
         assertEquals(new Position(6,16), player.getPosition());
     }
     @Test
     void moveHeroLeftNotEmpty() throws IOException, URISyntaxException, FontFormatException {
         map.setStairs(Arrays.asList(new Stair(5, 16)));
         controller.step(game, GUI.ACTION.LEFT, 100);
-        System.out.println(player.getPosition().getX());
-        System.out.println(player.getPosition().getY());
         assertEquals(new Position(6,16), player.getPosition());
     }
     @Test
     void movePlayerUpNotEmpty() throws IOException, URISyntaxException, FontFormatException {
         map.setMysteryBlocks(Arrays.asList(new MysteryBlock(6, 13)));
         controller.step(game, GUI.ACTION.UP, 100);
+        assertEquals(new Position(6,13), player.getPosition());
+    }
+    /*@Test
+    void moveDown() throws IOException, URISyntaxException, FontFormatException {
+        player.setPosition(new Position(6, 15));
+        controller.moveDown();
         System.out.println(player.getPosition().getX());
         System.out.println(player.getPosition().getY());
-        assertEquals(new Position(6,13), player.getPosition());
+        assertEquals(new Position(6,16), player.getPosition());
+    }
+     */
+
+    @Test
+    void collisionWithMonster() throws IOException, URISyntaxException, FontFormatException {
+        List<Monster> monsters = new ArrayList<>();
+        monsters.add(new BrownMushroom(6, 16));
+        map.setMonsters(monsters);
+        controller.step(game, GUI.ACTION.NONE, 100);
+        assertEquals(game.getState().getClass(), GameOverState.class);
     }
 }
