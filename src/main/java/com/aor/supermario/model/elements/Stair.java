@@ -8,4 +8,7 @@ public class Stair extends Element {
         super(x,y);
     }
 
+    public Stair(Position position) {
+        super(position);
+    }
 }

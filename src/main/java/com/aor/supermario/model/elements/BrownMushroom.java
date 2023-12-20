@@ -11,4 +11,7 @@ public class BrownMushroom extends Monster{
         super(x,y);
     }
 
+    public BrownMushroom(Position position) {
+        super(position);
+    }
 }

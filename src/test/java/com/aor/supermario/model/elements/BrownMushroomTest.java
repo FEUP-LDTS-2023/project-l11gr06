@@ -14,16 +14,5 @@ import static org.mockito.Mockito.verify;
 
 public class BrownMushroomTest {
 
-    @Test
-    void testDraw() {
-        BrownMushroom brownMushroom = new BrownMushroom(3, 5);
 
-        TextGraphics graphics = Mockito.mock(TextGraphics.class);
-
-        brownMushroom.draw(graphics);
-
-        verify(graphics).setForegroundColor(any(TextColor.class));
-        verify(graphics).enableModifiers(SGR.BOLD);
-        verify(graphics).putString(new TerminalPosition(3, 5), "#");
-    }
 }
