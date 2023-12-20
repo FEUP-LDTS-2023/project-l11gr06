@@ -9,6 +9,11 @@ public class Player extends Element {
     public Player(int x, int y) {
         super(x, y);
     }
+
+    public Player(Position p) {
+        super(p);
+    }
+
     public int getPoints() {
         return points;
     }

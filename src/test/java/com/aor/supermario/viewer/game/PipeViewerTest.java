@@ -13,7 +13,7 @@ class PipeViewerTest {
     void drawPipe() {
         char character='C';
         GUI gui = Mockito.mock(GUI.class);
-        Pipe pipe = new Pipe(new Position(5, 10),character);
+        Pipe pipe = new Pipe(new Position(5,10));
         PipeViewer pipeViewer = new PipeViewer();
         pipeViewer.draw(pipe, gui);
 
