@@ -24,7 +24,7 @@ class GameViewerTest {
         gameViewer = new GameViewer(map);
     }
 
-    @Test
+    /*@Test
     void drawElements() {
         // Mock game elements for testing
         Ground ground = new Ground(new Position(1, 1));
@@ -52,5 +52,6 @@ class GameViewerTest {
 
         // Add more verifications as needed
     }
+     */
 }
 

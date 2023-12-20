@@ -50,8 +50,8 @@ public class PlayerController extends Controller<Map> {
                     if (getModel().break_block()) break;
                     if (getModel().reveal_mysteryblock()) {
                         break;
-
                     }
+
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {

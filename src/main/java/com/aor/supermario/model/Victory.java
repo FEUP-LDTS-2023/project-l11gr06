@@ -22,6 +22,9 @@ public class Victory {
         if (currentEntry < 0)
             currentEntry = this.entries.size() - 1;
     }
+    public int getCurrentEntry() {
+        return currentEntry;
+    }
 
     public String getEntry(int i) {
         return entries.get(i);
