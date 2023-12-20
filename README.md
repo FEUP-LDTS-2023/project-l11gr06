@@ -1,4 +1,4 @@
-# LDTS_11_6 - Super Mario Bros
+## LDTS_11_6 - Super Mario Bros
 
 No âmbito do projeto, desenvolvemos um jogo baseado no Super Mario Bros.
 Este consiste num jogo 2D em que o jogador percorre o mapa e ganha o jogo quando chega à bandeira.
@@ -11,7 +11,7 @@ Maria Vieira (up202204802@up.pt)
 e Marta Cruz (up202205028@up.pt)
 para a cadeira LDTS 23/24.
 
-## Comandos
+### Comandos
 * ```<``` : Mover para trás;
 * ```>``` : Mover para a frente;
 * ```^```: Saltar verticalmente;
@@ -22,7 +22,7 @@ para a cadeira LDTS 23/24.
 
 - **Menus interligados** - O utilizador navega entre vários menus (ex. MenuState, GameState, GameOverState,...);
 
-- **Butões** - Botões interativos e funcionais nos menus do jogo;
+- **Botões** - Botões interativos e funcionais nos menus do jogo;
 
 - **Controlo do teclado** - Os inputs do teclado são recebidos e interpretados de acordo com o estado de jogo atual;
 
@@ -33,17 +33,17 @@ revelar Mystery Blocks e apanhar moedas e cogumelos (ex. Monstro-Monstro, Jogado
 
 
 
-## Imagens
+### Imagens
 As imagens seguintes mostram uma visão geral do jogo, assim como as diferentes funcionalidades:
 
-### Amostra do jogo
+#### Amostra do jogo
 As imagens seguintes mostram uma visão geral do jogo, assim como as diferentes funcionalidades:
 
 
 
 GIF. 1: GIF Demonstrativo do Jogo.
 
-### Menus
+#### Menus
 
 Fig. 1: Modelo do Menu Inicial.
 
@@ -55,18 +55,3 @@ Fig. 4: Modelo do Menu GameOver.
 
 Fig. 5: Modelo do Menu Victory.
 
-#
-### Testes
-
-
-Fig. 6: Cobertura dos testes implementados.
-
-Link para mutation testing report: 
-
-#
-## Auto-Avaliação
-
-Todos os membros participaram de igual forma no desenvolvimento do projeto:
-- Duarte Marques: 33.3%
-- Maria Vieira: 33.3%
-- Marta Cruz: 33.3%

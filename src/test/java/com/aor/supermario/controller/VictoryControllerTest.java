@@ -5,8 +5,11 @@ import com.aor.supermario.model.*;
 import com.aor.supermario.states.GameState;
 import com.aor.supermario.states.MenuState;
 import com.aor.supermario.viewer.VictoryViewer;
+import com.aor.supermario.viewer.game.GameViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -21,9 +24,10 @@ public class VictoryControllerTest {
     @BeforeEach
     void setUp() throws IOException, URISyntaxException, FontFormatException {
         victory = new Victory();
-        viewer = new VictoryViewer(victory);
         controller = new VictoryController(victory,viewer);
-        game=new Game();
+        game= Mockito.mock(Game.class);
+        viewer = Mockito.mock(VictoryViewer.class);
+
     }
 
     @Test
