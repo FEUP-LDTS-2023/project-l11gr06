@@ -45,4 +45,8 @@ public class GameOver {
     public int getNumberEntries() {
         return this.entries.size();
     }
+
+    public void setCurrentEntry(int i) {
+    this.currentEntry=i;
+    }
 }

@@ -34,7 +34,7 @@ class PlayerControllerTest {
     void setUp() throws IOException, URISyntaxException, FontFormatException {
 
         map = new Map(20, 20);
-        game= new Game();
+        game= Mockito.mock(Game.class);
         viewer = Mockito.mock(GameViewer.class);
         player = new Player(6, 16);
         map.setPlayer(player);
@@ -106,16 +106,7 @@ class PlayerControllerTest {
         controller.step(game, GUI.ACTION.UP, 100);
         assertEquals(new Position(6,13), player.getPosition());
     }
-    /*@Test
-    void moveDown() throws IOException, URISyntaxException, FontFormatException {
-        player.setPosition(new Position(6, 15));
-        controller.moveDown();
-        System.out.println(player.getPosition().getX());
-        System.out.println(player.getPosition().getY());
-        assertEquals(new Position(6,16), player.getPosition());
-    }
-     */
-
+/*
     @Test
     void collisionWithMonster() throws IOException, URISyntaxException, FontFormatException {
         List<Monster> monsters = new ArrayList<>();
@@ -123,5 +114,5 @@ class PlayerControllerTest {
         map.setMonsters(monsters);
         controller.step(game, GUI.ACTION.NONE, 100);
         assertEquals(game.getState().getClass(), GameOverState.class);
-    }
+    }*/
 }

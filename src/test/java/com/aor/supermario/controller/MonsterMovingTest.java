@@ -31,8 +31,6 @@ public class MonsterMovingTest {
     @BeforeEach
     void setUp() throws IOException, URISyntaxException, FontFormatException {
         map = new Map(20, 20);
-        //game= new Game();
-        //viewer = new GameViewer(map);
         viewer = mock(Viewer.class);
         game = mock(Game.class);
         monsterMoving = new MonsterMoving(map, viewer, game);

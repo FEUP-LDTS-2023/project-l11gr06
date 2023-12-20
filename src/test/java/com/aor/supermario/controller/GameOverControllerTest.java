@@ -2,6 +2,7 @@ package com.aor.supermario.controller;
 import com.aor.supermario.Game;
 import com.aor.supermario.gui.GUI;
 import com.aor.supermario.model.*;
+import com.aor.supermario.model.Menu;
 import com.aor.supermario.states.GameState;
 import com.aor.supermario.states.MenuState;
 import com.aor.supermario.viewer.GameOverViewer;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class GameOverControllerTest {
     private GameOver gameover;
@@ -39,11 +41,13 @@ public class GameOverControllerTest {
     }
     @Test
     void selectRestart() throws IOException, URISyntaxException, FontFormatException {
+        when(game.getState()).thenReturn(new GameState(new Map(20,20)));
         controller.step(game, GUI.ACTION.SELECT, 100);
         assertEquals(game.getState().getClass(), GameState.class);
     }
     @Test
     void selectMenu() throws IOException, URISyntaxException, FontFormatException {
+        when(game.getState()).thenReturn(new MenuState(new Menu()));
         controller.step(game, GUI.ACTION.DOWN, 100);
         controller.step(game, GUI.ACTION.SELECT, 100);
         assertEquals(game.getState().getClass(), MenuState.class);

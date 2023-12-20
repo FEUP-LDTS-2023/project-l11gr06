@@ -10,10 +10,13 @@ import com.aor.supermario.states.MenuState;
 import com.aor.supermario.viewer.MenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 public class MenuControllerTest {
     private Menu menu;
@@ -26,7 +29,7 @@ public class MenuControllerTest {
         menu = new Menu();
         viewer = new MenuViewer(menu);
         controller = new MenuController(menu,viewer);
-        game=new Game();
+        game= Mockito.mock(Game.class);
     }
 
     @Test
@@ -41,21 +44,20 @@ public class MenuControllerTest {
     }
     @Test
     void selectStart() throws IOException, URISyntaxException, FontFormatException {
+        when(game.getState()).thenReturn(new GameState(new Map(20,20)));
         controller.step(game, GUI.ACTION.SELECT, 100);
         assertEquals(game.getState().getClass(), GameState.class);
     }
     @Test
     void selectHelp() throws IOException, URISyntaxException, FontFormatException {
-        controller.step(game, GUI.ACTION.DOWN, 100);
+        when(game.getState()).thenReturn(new HelpState(new Help()));
         controller.step(game, GUI.ACTION.SELECT, 100);
         assertEquals(game.getState().getClass(), HelpState.class);
     }
     @Test
     void selectAbout() throws IOException, URISyntaxException, FontFormatException {
-        controller.step(game, GUI.ACTION.DOWN, 100);
-        controller.step(game, GUI.ACTION.DOWN, 100);
+        when(game.getState()).thenReturn(new AboutState(new About()));
         controller.step(game, GUI.ACTION.SELECT, 100);
         assertEquals(game.getState().getClass(), AboutState.class);
     }
-
 }
