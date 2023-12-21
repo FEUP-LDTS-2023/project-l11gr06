@@ -4,7 +4,7 @@ plugins {
     id 'info.solidsoft.pitest' version '1.6.0'
 }
 
-group = 'com.aor.supermario'
+group = 'com.ldts.supermario'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -27,10 +27,11 @@ test {
 }
 
 application {
-    mainClass.set("com.aor.supermario.Main")
+    mainClass.set("com.ldts.supermario.Main")
 }
 
 pitest {
     junit5PluginVersion = '0.12'
+    verbose = true
 }
 
