@@ -154,6 +154,16 @@ public class PlayerController extends Controller<Map> {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                    if (getModel().collect_coins()){
+                        getViewer().draw(game.getGui());
+                        getModel().getPlayer().addPoint(100);
+                        getViewer().draw(game.getGui());
+                    }
+                    if (getModel().collect_mushroom()) {
+                        getViewer().draw(game.getGui());
+                        getModel().getPlayer().addPoint(1000);
+                        getViewer().draw(game.getGui());
+                    }
                 }
 
             }
@@ -185,6 +195,16 @@ public class PlayerController extends Controller<Map> {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                    }
+                    if (getModel().collect_coins()){
+                        getViewer().draw(game.getGui());
+                        getModel().getPlayer().addPoint(100);
+                        getViewer().draw(game.getGui());
+                    }
+                    if (getModel().collect_mushroom()) {
+                        getViewer().draw(game.getGui());
+                        getModel().getPlayer().addPoint(1000);
+                        getViewer().draw(game.getGui());
                     }
                 }
             }
