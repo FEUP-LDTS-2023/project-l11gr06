@@ -30,9 +30,11 @@ Implementámos a maioria das funcionalidades que tínhamos planeadas. Não desen
 ### Design
 Aplicámos vários design patterns: State Pattern, Factory Method Pattern, Game Loop Pattern, e também MVC Arquitectural Pattern.
 
-#### OS COMANDOS FUNCIONAM DE FORMAS DIFERENTES DEPENDENDO DO ESTADO DO JOGO
-**Problema em contexto**
+#### Estrutura Geral
+**Problema em contexto:**
+
 Para a implementação de um menu inicial, as intruções do jogo, 
+
 **O padrão**
 **Implementação**
 **Consequências**
