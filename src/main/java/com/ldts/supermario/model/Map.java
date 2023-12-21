@@ -405,7 +405,7 @@ public class Map {
 
 
     }
-    public boolean monsterDies(Monster m) {
+    /*public boolean monsterDies(Monster m) {
         if (m.getPosition().getX() == player.getPosition().getX() && m.getPosition().getY() == player.getPosition().getY() + 1)
         {
             if(m instanceof BrownMushroom) {
@@ -427,8 +427,11 @@ public class Map {
             else if (m instanceof TurtleShell && ((TurtleShell) m).getState() == 2) ((TurtleShell) m).setState(1);
             return true;
         }
+
+
         return false;
     }
+    */
 
 
 }

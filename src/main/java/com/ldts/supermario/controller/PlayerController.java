@@ -2,20 +2,20 @@ package com.ldts.supermario.controller;
 
 import com.ldts.supermario.Game;
 import com.ldts.supermario.gui.GUI;
+import com.ldts.supermario.model.*;
 import com.ldts.supermario.model.elements.GoalPole;
 import com.ldts.supermario.model.elements.Monster;
 import com.ldts.supermario.states.GameOverState;
+import com.ldts.supermario.states.GameState;
 import com.ldts.supermario.states.VictoryState;
 import com.ldts.supermario.viewer.Viewer;
-import com.ldts.supermario.model.GameOver;
-import com.ldts.supermario.model.Map;
-import com.ldts.supermario.model.Position;
-import com.ldts.supermario.model.Victory;
 import com.ldts.supermario.model.elements.TurtleShell;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
+
+import static com.ldts.supermario.Main.lives;
 
 public class PlayerController extends Controller<Map> {
 
@@ -69,7 +69,15 @@ public class PlayerController extends Controller<Map> {
                     if (getModel().monsterCollision(monster)) {
                         if (monster instanceof TurtleShell && ((TurtleShell) monster).getState() == 1)
                             ((TurtleShell) monster).setState(2);
-                        else {
+                        else if(lives>1)
+                        {
+                            lives--;
+                            game.setState(new GameState(new Map1Builder(250,20).createMap()));
+                            return;
+                        }
+                        else
+                        {
+                            lives=3;
                             game.setState(new GameOverState(new GameOver()));
                             return;
                         }
@@ -89,7 +97,15 @@ public class PlayerController extends Controller<Map> {
                     if (getModel().monsterCollision(monster)) {
                         if (monster instanceof TurtleShell && ((TurtleShell) monster).getState() == 1)
                             ((TurtleShell) monster).setState(2);
-                        else {
+                        else if(lives>1)
+                        {
+                            lives--;
+                            game.setState(new GameState(new Map1Builder(250,20).createMap()));
+                            return;
+                        }
+                        else
+                        {
+                            lives=3;
                             game.setState(new GameOverState(new GameOver()));
                             return;
                         }
@@ -179,7 +195,15 @@ public class PlayerController extends Controller<Map> {
                 if (getModel().monsterCollision(monster))
                 {
                     if (monster instanceof TurtleShell && ((TurtleShell) monster).getState() == 1) ((TurtleShell) monster).setState(2);
-                    else {
+                    else if(lives>1)
+                    {
+                        lives--;
+                        game.setState(new GameState(new Map1Builder(250,20).createMap()));
+                        return;
+                    }
+                    else
+                    {
+                        lives=3;
                         game.setState(new GameOverState(new GameOver()));
                         return;
                     }
@@ -207,7 +231,16 @@ public class PlayerController extends Controller<Map> {
                 getViewer().draw(game.getGui());
             }
             if (getModel().getPlayer().getPosition().getY() == getModel().getHeight() - 1) {
+                if(lives>1)
+                {
+                    game.setState(new GameState(new Map1Builder(250,20).createMap()));
+                    lives--;
+                }
+                else
+                {
                     game.setState(new GameOverState(new GameOver()));
+                    lives=3;
+                }
 
             }
         }

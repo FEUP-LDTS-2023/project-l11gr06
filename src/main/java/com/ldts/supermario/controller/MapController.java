@@ -11,6 +11,8 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import static com.ldts.supermario.Main.lives;
+
 public class MapController extends Controller<Map> {
     private final PlayerController playerController;
 
@@ -21,8 +23,12 @@ public class MapController extends Controller<Map> {
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException, FontFormatException {
-        if (action == GUI.ACTION.QUIT) //|| getModel().getPlayer().getlives() == 0 IMPORTANTE MUDAR
+        if (action == GUI.ACTION.QUIT)
+        {
             game.setState(new MenuState(new Menu()));
+            lives=3;
+        }
+
         else {
             playerController.step(game, action, time);
         }

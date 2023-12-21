@@ -7,6 +7,8 @@ import com.ldts.supermario.viewer.Viewer;
 
 import java.util.List;
 
+import static com.ldts.supermario.Main.lives;
+
 public class GameViewer extends Viewer<Map> {
     public GameViewer(Map map) {
         super(map);
@@ -25,6 +27,7 @@ public class GameViewer extends Viewer<Map> {
         drawElements(gui, getModel().getMonsters(), new MonsterViewer());
 
         gui.drawText(new Position(10, 2), "SCORE  " + getModel().getPlayer().getPoints(), "#FFD700");
+        gui.drawText(new Position(43, 2), "LIVES  " + lives, "#FFD700");
 
     }
     private <T extends Element> void drawElements(GUI gui, List<T> elements, ElementViewer<T> viewer) {
