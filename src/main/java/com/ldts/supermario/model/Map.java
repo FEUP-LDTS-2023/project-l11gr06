@@ -1,6 +1,5 @@
 package com.ldts.supermario.model;
 
-import com.ldts.supermario.Game;
 import com.ldts.supermario.model.elements.*;
 
 import java.util.ArrayList;
