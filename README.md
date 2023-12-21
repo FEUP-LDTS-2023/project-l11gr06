@@ -17,7 +17,7 @@ para a cadeira LDTS 23/24.
 * ```^```: Saltar verticalmente;
 * ```X``` : Saltar para a frente;
 * ```Z``` : Saltar para trás.
-
+* ```q``` : Voltar ao menu inicial a meio do jogo.
 ### Funcionalidades implementadas
 
 - **Menus interligados** - O utilizador navega entre vários menus (ex. MenuState, GameState, GameOverState,...);
@@ -31,6 +31,7 @@ para a cadeira LDTS 23/24.
 - **Deteção de colisões** - As colisões entre diferentes objetos são detetadas e verificadas o que permite matar ou ser morto por monstros, 
 revelar Mystery Blocks e apanhar moedas e cogumelos (ex. Monstro-Monstro, Jogador-Monstro, Jogador, Obstáculo, ...).
 
+- **Vidas** - O jogador tem 3 oportunidades antes de perder o jogo.
 
 
 ### Imagens

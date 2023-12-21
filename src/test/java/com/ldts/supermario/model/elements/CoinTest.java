@@ -12,6 +12,14 @@ public class CoinTest {
         assertEquals(8, position.getX());
         assertEquals(2, position.getY());
     }
+    @Test
+    void constructorAndGettersTest2() {
+        Position p=new Position(7,6);
+        Coin c = new Coin(p);
+
+        Position position = c.getPosition();
+        assertEquals(p, position);
+    }
 
 
     @Test

@@ -13,6 +13,15 @@ public class StairTest {
         assertEquals(3, position.getY());
     }
 
+    @Test
+    void constructorAndGettersTest2() {
+        Position p=new Position(7,6);
+        Stair s= new Stair(p);
+
+        Position position = s.getPosition();
+        assertEquals(p, position);
+
+    }
 
     @Test
     void testSetPosition() {

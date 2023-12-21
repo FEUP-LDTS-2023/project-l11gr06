@@ -29,37 +29,22 @@ public class LanternaGUI implements GUI {
     }
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
-        AWTTerminalFontConfiguration fontConfig = loadSquareFont();
-        Terminal terminal = createTerminal(width, height, fontConfig);
-        this.screen = createScreen(terminal);
+        AWTTerminalFontConfiguration fontConfig = loadSquareFont(); Terminal terminal = createTerminal(width, height, fontConfig); this.screen = createScreen(terminal);
     }
 
-    private Screen createScreen(Terminal terminal) throws IOException {
-        final Screen screen;
-        screen = new TerminalScreen(terminal);
-        screen.setCursorPosition(null);
-        screen.startScreen();
-        screen.doResizeIfNecessary();
+    Screen createScreen(Terminal terminal) throws IOException {
+        final Screen screen; screen = new TerminalScreen(terminal); screen.setCursorPosition(null); screen.startScreen(); screen.doResizeIfNecessary();
         return screen;
     }
 
-    private Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfig) throws IOException {
-        TerminalSize terminalSize = new TerminalSize(width, height);
-
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
-                .setInitialTerminalSize(terminalSize);
-        terminalFactory.setForceAWTOverSwing(true);
-        terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
-        Terminal terminal = terminalFactory.createTerminal();
-        //terminal.setBackgroundColor(TextColor.Factory.fromString("#89CFF0"));
-        //graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
+    Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfig) throws IOException {
+        TerminalSize terminalSize = new TerminalSize(width, height); DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize); terminalFactory.setForceAWTOverSwing(true); terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig); Terminal terminal = terminalFactory.createTerminal();
         return terminal;
     }
 
 
-    private AWTTerminalFontConfiguration loadSquareFont() throws URISyntaxException, FontFormatException, IOException {
+    AWTTerminalFontConfiguration loadSquareFont() throws URISyntaxException, FontFormatException, IOException {
         URL resource = getClass().getClassLoader().getResource("fonts/fonte.ttf");
-        //assert resource != null;
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 

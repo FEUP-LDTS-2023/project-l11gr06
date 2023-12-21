@@ -12,6 +12,15 @@ public class PipeTest {
         assertEquals(4, position.getX());
         assertEquals(1, position.getY());
     }
+    @Test
+    void constructorAndGettersTest2() {
+        Position p=new Position(7,6);
+        Pipe pipe = new Pipe(p);
+
+        Position position = pipe.getPosition();
+        assertEquals(p, position);
+
+    }
 
 
     @Test
