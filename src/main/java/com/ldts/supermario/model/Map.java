@@ -402,36 +402,5 @@ public class Map {
         else if(player.getPosition().getX()==m.getPosition().getX())
             return player.getPosition().getY()-1==m.getPosition().getY();
         return false;
-
-
     }
-    /*public boolean monsterDies(Monster m) {
-        if (m.getPosition().getX() == player.getPosition().getX() && m.getPosition().getY() == player.getPosition().getY() + 1)
-        {
-            if(m instanceof BrownMushroom) {
-                monsters.remove(m);
-            }
-            else if (m instanceof Turtle) {
-                Position p=m.getPosition();
-                monsters.remove(m);
-                monsters.add(new TurtleShell(p));
-                if (player.getPosition().getX() < Game.width_game / 2) {
-
-                    getPlayer().setPosition(new Position(player.getPosition().getX()+1,player.getPosition().getY()));
-                    //getViewer().draw(game.getGui());
-                }
-
-                else moveMap();
-            }
-            else if (m instanceof TurtleShell && ((TurtleShell) m).getState() == 1) ((TurtleShell) m).setState(2);
-            else if (m instanceof TurtleShell && ((TurtleShell) m).getState() == 2) ((TurtleShell) m).setState(1);
-            return true;
-        }
-
-
-        return false;
-    }
-    */
-
-
 }
