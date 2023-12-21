@@ -88,12 +88,9 @@ public class Map {
     public void setMonsters(List<Monster> monsters) {
         this.monsters = monsters;
     }
-    public boolean break_block()
-    {
-        for(Block block:blocks)
-        {
-            if(player.getPosition().equals(block.getPosition()))
-            {
+    public boolean break_block() {
+        for(Block block:blocks) {
+            if(player.getPosition().equals(block.getPosition())) {
                 blocks.remove(block);
                 getPlayer().addPoint(50);
                 return true;
@@ -151,44 +148,44 @@ public class Map {
     }
     public boolean collision_y(Element element)
     {
-        for(Block block:blocks)
-        {
-            Position p = new Position(block.getPosition().getX(),block.getPosition().getY()-1);
-            if(element.getPosition().equals(p)&&element.getPosition().equals(p))
-            {
-                return true;
+        if (!blocks.isEmpty()){
+            for(Block block:blocks) {
+                Position p = new Position(block.getPosition().getX(),block.getPosition().getY()-1);
+                if(element.getPosition().equals(p)&&element.getPosition().equals(p)) {
+                    return true;
+                }
             }
         }
-        for(Ground ground:grounds)
-        {
-            Position p = new Position(ground.getPosition().getX(),ground.getPosition().getY()-1);
-            if(element.getPosition().equals(p))
-            {
-                return true;
+        if (!grounds.isEmpty()) {
+            for (Ground ground : grounds) {
+                Position p = new Position(ground.getPosition().getX(), ground.getPosition().getY() - 1);
+                if (element.getPosition().equals(p)) {
+                    return true;
+                }
             }
         }
-        for(Stair stair:stairs)
-        {
-            Position p = new Position(stair.getPosition().getX(),stair.getPosition().getY()-1);
-            if(element.getPosition().equals(p))
-            {
-                return true;
+        if (!stairs.isEmpty()) {
+            for (Stair stair : stairs) {
+                Position p = new Position(stair.getPosition().getX(), stair.getPosition().getY() - 1);
+                if (element.getPosition().equals(p)) {
+                    return true;
+                }
             }
         }
-        for(MysteryBlock mysteryblock:mysteryBlocks)
-        {
-            Position p = new Position(mysteryblock.getPosition().getX(),mysteryblock.getPosition().getY()-1);
-            if(element.getPosition().equals(p))
-            {
-                return true;
+        if (!mysteryBlocks.isEmpty()) {
+            for (MysteryBlock mysteryblock : mysteryBlocks) {
+                Position p = new Position(mysteryblock.getPosition().getX(), mysteryblock.getPosition().getY() - 1);
+                if (element.getPosition().equals(p)) {
+                    return true;
+                }
             }
         }
-        for(Pipe pipe:pipes)
-        {
-            Position p = new Position(pipe.getPosition().getX(),pipe.getPosition().getY()-1);
-            if(element.getPosition().equals(p))
-            {
-                return true;
+        if (!pipes.isEmpty()) {
+            for (Pipe pipe : pipes) {
+                Position p = new Position(pipe.getPosition().getX(), pipe.getPosition().getY() - 1);
+                if (element.getPosition().equals(p)) {
+                    return true;
+                }
             }
         }
         return false;
@@ -284,49 +281,40 @@ public class Map {
     }
     public void moveMap()
     {
-        for(Ground ground: grounds)
-        {
+        for(Ground ground: grounds) {
             Position p = new Position(ground.getPosition().getX()-1,ground.getPosition().getY());
             ground.setPosition(p);
         }
-        for(Block block: blocks)
-        {
+        for(Block block: blocks) {
             Position p = new Position(block.getPosition().getX()-1,block.getPosition().getY());
             block.setPosition(p);
         }
-        for(Stair stair: stairs)
-        {
+        for(Stair stair: stairs) {
             Position p = new Position(stair.getPosition().getX()-1,stair.getPosition().getY());
             stair.setPosition(p);
         }
-        for(GoalPole pole: poles)
-        {
+        for(GoalPole pole: poles) {
             Position p = new Position(pole.getPosition().getX()-1,pole.getPosition().getY());
             pole.setPosition(p);
         }
-        for(Monster m:monsters)
-        {
+        for(Monster m:monsters) {
                 Position p = new Position(m.getPosition().getX()-1,m.getPosition().getY());
                 m.setPosition(p);
         }
-        for(MysteryBlock mysteryblock:mysteryBlocks)
-        {
+        for(MysteryBlock mysteryblock:mysteryBlocks) {
             Position p = new Position(mysteryblock.getPosition().getX()-1,mysteryblock.getPosition().getY());
             mysteryblock.setPosition(p);
         }
-        for(Coin coin:coins)
-        {
+        for(Coin coin:coins) {
             Position p = new Position(coin.getPosition().getX()-1,coin.getPosition().getY());
             coin.setPosition(p);
         }
-        for(RedMushroom rm:redMushrooms)
-        {
+        for(RedMushroom rm:redMushrooms) {
             Position p = new Position(rm.getPosition().getX()-1,rm.getPosition().getY());
             rm.setPosition(p);
         }
 
-        for(Pipe pipe: pipes)
-        {
+        for(Pipe pipe: pipes) {
             Position p = new Position(pipe.getPosition().getX()-1,pipe.getPosition().getY());
             pipe.setPosition(p);
         }
@@ -336,38 +324,27 @@ public class Map {
         for(Monster mt:monsters) {
             if (m.getPosition().getY() == mt.getPosition().getY()) {
                 if ((m.getPosition().getX()+1 == mt.getPosition().getX())&&
-                        m.getMoveDirection()==1 && mt.getMoveDirection()==0)
-                {
+                        m.getMoveDirection()==1 && mt.getMoveDirection()==0) {
                     m.setMoveDirection(0);
                     mt.setMoveDirection(1);
-                }
-                else if((m.getPosition().getX()-1 == mt.getPosition().getX())&&
-                        m.getMoveDirection()==0 && mt.getMoveDirection()==1)
-                {
+                } else if((m.getPosition().getX()-1 == mt.getPosition().getX())&&
+                        m.getMoveDirection()==0 && mt.getMoveDirection()==1) {
                     m.setMoveDirection(1);
                     mt.setMoveDirection(0);
                 }
             }
         }
-
-
     }
-    public void moveMonster(Monster m)
-    {
+    public void moveMonster(Monster m) {
         monsterMonsterCollision(m);
-        if(m.getMoveDirection()==0)
-        {
+        if(m.getMoveDirection()==0) {
             if(!collision_x_back(m)) {
                 m.setPosition(new Position(m.getPosition().getX()-1,m.getPosition().getY()));
-            }
-            else m.setMoveDirection(1);
-        }
-        else if (m.getMoveDirection()==1)
-        {
+            } else m.setMoveDirection(1);
+        } else if (m.getMoveDirection()==1) {
             if(!collision_x_front(m)) {
                 m.setPosition(new Position(m.getPosition().getX()+1,m.getPosition().getY()));
-            }
-            else m.setMoveDirection(0);
+            } else m.setMoveDirection(0);
         }
     }
     public List<Monster> monstersToMove()
@@ -377,8 +354,8 @@ public class Map {
             m.setMove(m.getPosition().getX() < 65 && m.getPosition().getX() >= 0);
             if (m.getMove()) l.add(m);
         }
-        return l;
-    }
+        return l;}
+
     public boolean monsterCollision(Monster m) {
 
         if(m.getPosition()==player.getPosition()) return true;

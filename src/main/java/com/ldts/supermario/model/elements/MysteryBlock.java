@@ -19,6 +19,5 @@ public class MysteryBlock extends Element {
 
     public void setMysteryState(int MysteryState) {
         this.MysteryState = MysteryState;
-
     }
 }
