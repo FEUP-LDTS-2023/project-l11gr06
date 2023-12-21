@@ -1,6 +1,6 @@
 ## LDTS_11_6 - Super Mario Bros
 
-No âmbito do projeto, desenvolvemos um jogo baseado no Super Mario Bros.
+No âmbito do  projeto, desenvolvemos um jogo baseado no Super Mario Bros.
 Este consiste num jogo 2D em que o jogador percorre o mapa e ganha o jogo quando chega à bandeira.
 No mapa existem vários obstáculos e "Mystery Blocks" em que o jogador pode recolher moedas ou cogumelos, 
 que dão pontos.
@@ -45,14 +45,18 @@ As imagens seguintes mostram uma visão geral do jogo, assim como as diferentes 
 GIF. 1: GIF Demonstrativo do Jogo.
 
 #### Menus
-
+![MenuInicial.png](docs%2Fimagens%2FMenuInicial.png)
 Fig. 1: Modelo do Menu Inicial.
 
+![MenuHelp.png](docs%2Fimagens%2FMenuHelp.png)
 Fig. 2: Modelo do Menu Help.
 
+![MenuAbout.png](docs%2Fimagens%2FMenuAbout.png)
 Fig. 3: Modelo do Menu About.
 
+![GameOver.png](docs%2Fimagens%2FGameOver.png)
 Fig. 4: Modelo do Menu GameOver.
 
+FALTA METER SCORE
 Fig. 5: Modelo do Menu Victory.
 
