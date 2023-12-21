@@ -25,7 +25,6 @@ public class Victory {
     public int getCurrentEntry() {
         return currentEntry;
     }
-
     public String getEntry(int i) {
         return entries.get(i);
     }

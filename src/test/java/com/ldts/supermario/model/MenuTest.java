@@ -19,6 +19,16 @@ class MenuTest {
         assertFalse(menu.isSelectedHelp());
         assertFalse(menu.isSelectedStart());
 
+        menu.nextEntry();
+        assertTrue(menu.isSelectedExit());
+        assertFalse(menu.isSelectedHelp());
+        assertFalse(menu.isSelectedStart());
+
+        menu.nextEntry();
+        assertTrue(menu.isSelectedStart());
+        assertFalse(menu.isSelectedHelp());
+        assertFalse(menu.isSelectedExit());
+
     }
 
     @Test
@@ -36,6 +46,17 @@ class MenuTest {
         assertFalse(menu.isSelectedHelp());
     }
 
+    @Test
+    void GetCurrentEntryTest() {
+        Menu menu = new Menu();
+        assertEquals(0, menu.getCurrentEntry());
+
+        menu.nextEntry();
+        assertEquals(1, menu.getCurrentEntry());
+
+        menu.previousEntry();
+        assertEquals(0, menu.getCurrentEntry());
+    }
     @Test
     void testGetEntry() {
         Menu menu = new Menu();
