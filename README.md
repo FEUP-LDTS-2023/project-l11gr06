@@ -1,62 +1,62 @@
 ## LDTS_11_6 - Super Mario Bros
 
-No âmbito do  projeto, desenvolvemos um jogo baseado no Super Mario Bros.
-Este consiste num jogo 2D em que o jogador percorre o mapa e ganha o jogo quando chega à bandeira.
-No mapa existem vários obstáculos e "Mystery Blocks" em que o jogador pode recolher moedas ou cogumelos, 
-que dão pontos.
+In the context of the project,we developed a game based on Super Mario Bros.
+This is a 2D game where the player goes along the map and when he reaches the flag the player wins.
+Throughout the map there are a lot of obstacles such as monsters, blocks and some pits.
+Furthermore, there are Mystery Blocks where the player must collect coins and mushrooms to get some extra points.
 
-Este projeto foi desenvolvido por 
+This project was developed by:
 Duarte Marques (up202204973@up.pt), 
 Maria Vieira (up202204802@up.pt)
 e Marta Cruz (up202205028@up.pt)
-para a cadeira LDTS 23/24.
+for the LDTS subject 23/24.
 
-### Comandos
-* ```<``` : Mover para trás;
-* ```>``` : Mover para a frente;
-* ```^```: Saltar verticalmente;
-* ```X``` : Saltar para a frente;
-* ```Z``` : Saltar para trás.
-* ```q``` : Voltar ao menu inicial a meio do jogo.
-### Funcionalidades implementadas
-
-- **Menus interligados** - O utilizador navega entre vários menus (ex. MenuState, GameState, GameOverState,...);
-
-- **Botões** - Botões interativos e funcionais nos menus do jogo;
-
-- **Controlo do teclado** - Os inputs do teclado são recebidos e interpretados de acordo com o estado de jogo atual;
-
-- **Controlo do jogador** - O jogador move-se de acordo com os controlos do teclado;
-
-- **Deteção de colisões** - As colisões entre diferentes objetos são detetadas e verificadas o que permite matar ou ser morto por monstros, 
-revelar Mystery Blocks e apanhar moedas e cogumelos (ex. Monstro-Monstro, Jogador-Monstro, Jogador, Obstáculo, ...).
-
-- **Vidas** - O jogador tem 3 oportunidades antes de perder o jogo.
+### Commands
+* ```<``` : Move backward;
+* ```>``` : Move forward;
+* ```^```: Jump vertically;
+* ```X``` : Front Jump;
+* ```Z``` : Back jump;
+* ```q``` : Return to the main menu in the middle of the game. 
 
 
-### Imagens
-As imagens seguintes mostram uma visão geral do jogo, assim como as diferentes funcionalidades:
+### Implemented features
 
-#### Amostra do jogo
-As imagens seguintes mostram uma visão geral do jogo, assim como as diferentes funcionalidades:
+- **Linked Menus ** - The user has the capability of browsing through the different menus (ex. MenuState, GameState, GameOverState,...);
+
+- **Buttons** - Interactive and functional buttons in the game menus;
+
+- **Keyboard controls** - The keyboard inputs are received and interpreted according to the current game state;
+
+- **PLayer control** - The player moves according to the keyboard controls;
+
+- **Collision detection** - Collisions between different objects are detected and checked, allowing the player to kill or be killed by monsters, reveal Mystery Blocks, and collect coins and mushrooms(ex. Monster-Monster, Player-Monster, PLayer, Obstacle, ...);
+
+- **Lives** - The player has 3 chances before losing the game.
 
 
 
-GIF. 1: GIF Demonstrativo do Jogo.
+### Images
+
+#### Game Demo
+The following images show an overview of the game, as well as its different functionalities:
+
+
+GIF. 1: Game Demo GIF.
 
 #### Menus
 ![MenuInicial.png](docs%2Fimagens%2FMenuInicial.png)
-Fig. 1: Modelo do Menu Inicial.
+Fig. 1: Model of the Main Menu.
 
 ![MenuHelp.png](docs%2Fimagens%2FMenuHelp.png)
-Fig. 2: Modelo do Menu Help.
+Fig. 2: Model of the Help Menu.
 
 ![MenuAbout.png](docs%2Fimagens%2FMenuAbout.png)
-Fig. 3: Modelo do Menu About.
+Fig. 3: Model of the About Menu.
 
 ![GameOver.png](docs%2Fimagens%2FGameOver.png)
-Fig. 4: Modelo do Menu GameOver.
+Fig. 4: Model of the GameOver Menu.
 
 FALTA METER SCORE
-Fig. 5: Modelo do Menu Victory.
+Fig. 5: Model of the Victory Menu.
 
