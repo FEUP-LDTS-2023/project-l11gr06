@@ -18,12 +18,4 @@ public abstract class Monster extends Element{
     public Monster(int x, int y) {
         super(x,y);
     }
-    /*
-    public Position moveLeft() {
-        return new Position(getPosition().getX()-1, getPosition().getY());
-    }
-    public Position moveRight() {return new Position(getPosition().getX()+1, getPosition().getY());}
-    public Position moveUp() {return new Position(getPosition().getX(), getPosition().getY()-1);}
-    public Position moveDown() {return new Position(getPosition().getX(), getPosition().getY()+1);}
-*/
 }

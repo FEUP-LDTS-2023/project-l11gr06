@@ -12,6 +12,15 @@ public class TurtleTest {
         assertEquals(2, position.getX());
         assertEquals(6, position.getY());
     }
+    @Test
+    void constructorAndGettersTest2() {
+        Position p=new Position(7,6);
+        Turtle t = new Turtle(p);
+
+        Position position = t.getPosition();
+        assertEquals(p, position);
+
+    }
 
 
     @Test

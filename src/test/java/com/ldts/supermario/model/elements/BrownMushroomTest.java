@@ -12,6 +12,15 @@ public class BrownMushroomTest {
         assertEquals(7, position.getX());
         assertEquals(6, position.getY());
     }
+    @Test
+    void constructorAndGettersTest2() {
+        Position p=new Position(7,6);
+        BrownMushroom brownMushroom = new BrownMushroom(p);
+
+        Position position = brownMushroom.getPosition();
+        assertEquals(p, position);
+
+    }
 
 
     @Test
@@ -24,4 +33,5 @@ public class BrownMushroomTest {
         assertEquals(3, position.getX());
         assertEquals(4, position.getY());
     }
+
 }

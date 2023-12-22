@@ -12,6 +12,15 @@ public class GoalPoleTest {
         assertEquals(5, position.getX());
         assertEquals(6, position.getY());
     }
+    @Test
+    void constructorAndGettersTest2() {
+        Position p=new Position(7,6);
+        GoalPole goalpole = new GoalPole(p);
+
+        Position position = goalpole.getPosition();
+        assertEquals(p, position);
+
+    }
 
 
     @Test

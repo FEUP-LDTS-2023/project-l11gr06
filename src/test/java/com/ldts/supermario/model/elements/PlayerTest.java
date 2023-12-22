@@ -1,4 +1,5 @@
 package com.ldts.supermario.model.elements;
+import com.ldts.supermario.model.Position;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,6 +15,14 @@ public class PlayerTest {
         assertEquals(5, player.getPosition().getY());
 
         assertEquals(0, player.getPoints());
+    }
+    @Test
+    void constructorAndGettersTest2() {
+        Position p=new Position(7,6);
+        Player player = new Player(p);
+
+        Position position = player.getPosition();
+        assertEquals(p, position);
     }
 
     @Test

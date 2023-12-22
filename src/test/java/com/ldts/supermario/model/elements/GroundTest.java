@@ -12,6 +12,15 @@ public class GroundTest {
         assertEquals(2, position.getX());
         assertEquals(5, position.getY());
     }
+    @Test
+    void constructorAndGettersTest2() {
+        Position p=new Position(7,6);
+        Ground g = new Ground(p);
+
+        Position position = g.getPosition();
+        assertEquals(p, position);
+
+    }
 
 
     @Test

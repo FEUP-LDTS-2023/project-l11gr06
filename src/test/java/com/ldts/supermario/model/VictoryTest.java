@@ -45,6 +45,18 @@ public class VictoryTest {
     }
 
     @Test
+    void GetCurrentEntryTest() {
+        Victory victory = new Victory();
+        assertEquals(0, victory.getCurrentEntry());
+
+        victory.nextEntry();
+        assertEquals(1, victory.getCurrentEntry());
+
+        victory.previousEntry();
+        assertEquals(0, victory.getCurrentEntry());
+    }
+
+    @Test
     void getEntryTest() {
         Victory victory = new Victory();
 
