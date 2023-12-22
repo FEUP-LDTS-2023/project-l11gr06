@@ -1,28 +1,30 @@
 ## LDTS_11_6 - Super Mario Bros
 
-No âmbito do projeto, desenvolvemos um jogo baseado no Super Mario Bros.
-Este consiste num jogo 2D em que o jogador percorre o mapa e ganha o jogo quando chega à bandeira.
-No mapa existem vários obstáculos e "Mystery Blocks" em que o jogador pode recolher moedas ou cogumelos,
-que dão pontos.
+In the context of the project,we developed a game based on Super Mario Bros.
+This is a 2D game where the player goes along the map and when he reaches the flag the player wins.
+Throughout the map there are a lot of obstacles such as monsters, blocks and some pits.
+Furthermore, there are Mystery Blocks which the player can reveal to collect coins and mushrooms in order to win points.
 
-Este projeto foi desenvolvido por
+This project was developed by
 Duarte Marques (up202204973@up.pt),
 Maria Vieira (up202204802@up.pt)
-e Marta Cruz (up202205028@up.pt)
-para a cadeira LDTS 23/24.
+and Marta Cruz (up202205028@up.pt)
+for LDTS 23/24.
 
-### Funcionalidades implementadas
+### Implemented features
 
-- **Menus interligados** - O utilizador navega entre vários menus (ex. MenuState, GameState, GameOverState,...);
+- **Linked Menus ** - The user has the capability of browsing through the different menus (ex. MenuState, GameState, GameOverState,...);
 
-- **Botões** - Botões interativos e funcionais nos menus do jogo;
+- **Buttons** - Interactive and functional buttons in the game menus;
 
-- **Controlo do teclado** - Os inputs do teclado são recebidos e interpretados de acordo com o estado de jogo atual;
+- **Keyboard controls** - The keyboard inputs are received and interpreted according to the current game state;
 
-- **Controlo do jogador** - O jogador move-se de acordo com os controlos do teclado;
+- **PLayer control** - The player moves according to the keyboard controls;
 
-- **Deteção de colisões** - As colisões entre diferentes objetos são detetadas e verificadas o que permite matar ou ser morto por monstros,
-  revelar Mystery Blocks e apanhar moedas e cogumelos (ex. Monstro-Monstro, Jogador-Monstro, Jogador, Obstáculo, ...).
+- **Collision detection** - Collisions between different objects are detected and checked, allowing the player to kill or be killed by monsters, reveal Mystery Blocks, and collect coins and mushrooms(ex. Monster-Monster, Player-Monster, PLayer, Obstacle, ...);
+
+- **Lives** - The player has 3 chances before losing the game.
+
 
 ### Planned features
 The SuperMario feature to make him stronger and bigger when the red mushroom is collected wasn´t implemented.
