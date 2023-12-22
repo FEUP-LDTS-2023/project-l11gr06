@@ -24,27 +24,51 @@ para a cadeira LDTS 23/24.
 - **Deteção de colisões** - As colisões entre diferentes objetos são detetadas e verificadas o que permite matar ou ser morto por monstros,
   revelar Mystery Blocks e apanhar moedas e cogumelos (ex. Monstro-Monstro, Jogador-Monstro, Jogador, Obstáculo, ...).
 
-### Funcionalidades planeadas
-Implementámos a maioria das funcionalidades que tínhamos planeadas. Não desenvolvemos a funcionalidade do Mario ficar maior e mais forte após apanhar o cogumelo, tal como no jogo original. 
+### Planned features
+The SuperMario feature to make him stronger and bigger when the red mushroom is collected wasn´t implemented.
+Besides that, all the planned features were implemented.
 
 ### Design
 Aplicámos vários design patterns: State Pattern, Factory Method Pattern, Game Loop Pattern, e também MVC Arquitectural Pattern.
 
-#### Estrutura Geral
-**Problema em contexto:**
+#### General Structure
+**Problem in context:**
+One of our initial doubts in the development of the project was the general structure of the code. We wanted to make sure we used the design patterns that would better suit our code, since our game is divided in different game states and handles a GUI. 
 
-Para a implementação de um menu inicial, as intruções do jogo, 
+**The pattern:**
+The main patterns used in the project were the State Pattern, a behavioral design pattern that lets an object alter its behavior when its internal state changes, and the MVC Architectural Pattern, the Model-View-Controller, commonly used in GUIs.
 
-**O padrão**
-**Implementação**
-**Consequências**
+**Implementation of MVC pattern:**
+
+In the implementation of the MVC Architectural Pattern, we divided our code in three parts:
+ - Models: only represent the data;
+ - Viewers: display the model data and send user actions to the controller;
+ - Controllers: provide model data to the view and interpret user actions.
+
+![MVCpattern.png](UMLs%2FMVCpattern.png)
+
+Fig. 1: Model, Controller and Viewer pattern design
 
 
 
+**Implementation of State pattern:**
+
+The image below shows the implementation of the State Pattern, with a 
+
+![Statepattern.png](UMLs%2FStatepattern.png)
+Fig. 2: State pattern design
+
+**Consequences:**
+
+There are some benefits of applying the above patterns:
+- More understandable code because of the division of the states by different classes.
+- Maintability of code, as it can accommodate modifications without affecting the other components/states.
+- Makes the testing process easier, by isolating the different components/states, which facilitates the development of robust and reliable code.
 
 
 
 ### Code Smells
+FAZER ERROR PRONE
 
 
 
