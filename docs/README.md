@@ -31,7 +31,6 @@ The SuperMario feature to make him stronger and bigger when the red mushroom is 
 Besides that, all the planned features were implemented.
 
 ### Design
-Aplicámos vários design patterns: State Pattern, Factory Method Pattern, Game Loop Pattern, e também MVC Arquitectural Pattern.
 
 #### General Structure
 **Problem in context:**
