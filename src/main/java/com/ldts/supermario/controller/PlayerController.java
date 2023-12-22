@@ -3,13 +3,11 @@ package com.ldts.supermario.controller;
 import com.ldts.supermario.Game;
 import com.ldts.supermario.gui.GUI;
 import com.ldts.supermario.model.*;
-import com.ldts.supermario.model.elements.GoalPole;
-import com.ldts.supermario.model.elements.Monster;
+import com.ldts.supermario.model.elements.*;
 import com.ldts.supermario.states.GameOverState;
 import com.ldts.supermario.states.GameState;
 import com.ldts.supermario.states.VictoryState;
 import com.ldts.supermario.viewer.Viewer;
-import com.ldts.supermario.model.elements.TurtleShell;
 
 import java.awt.*;
 import java.io.IOException;
@@ -230,7 +228,78 @@ public class PlayerController extends Controller<Map> {
                 }
             }
             while (getModel().getPlayer().getPosition().getY() != getModel().getHeight() - 1) {
-                getModel().getMonsters().removeIf(monster -> monster.getPosition().getX()==getModel().getPlayer().getPosition().getX() && monster.getPosition().getY()==getModel().getPlayer().getPosition().getY()+1);
+
+                for(Monster monster: getModel().getMonsters())
+                {
+                    if(monster.getPosition().getX()==getModel().getPlayer().getPosition().getX() &&
+                            monster.getPosition().getY()==getModel().getPlayer().getPosition().getY()+1)
+                    {
+                        if(monster instanceof Turtle)
+                        {
+                            Position p = monster.getPosition();
+                            getModel().getMonsters().remove(monster);
+                            getModel().getMonsters().add(new TurtleShell(p));
+                            while(true) {
+                                moveUp();
+                                moveRight();
+                                getViewer().draw(game.getGui());
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                                if (getModel().break_block()) break;
+                                if (getModel().reveal_mysteryblock()) {
+                                    break;
+                                }
+                                moveDown();
+                                moveRight();
+                                getViewer().draw(game.getGui());
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                                if (getModel().break_block()) break;
+                                if (getModel().reveal_mysteryblock()) {
+                                    break;
+                                }
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            }
+
+                            break;
+                        }
+                        else if(monster instanceof TurtleShell)
+                        {
+                            if (((TurtleShell) monster).getState() == 1) {
+                                ((TurtleShell) monster).setState(2);
+                                for (int i = 1; i <= 3; i++) {
+                                    moveUp();
+                                    getViewer().draw(game.getGui());
+                                    if (getModel().break_block()) break;
+                                    if (getModel().reveal_mysteryblock()) {
+                                        break;
+                                    }
+
+                                    try {
+                                        Thread.sleep(100);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }
+                        else{
+                            getModel().getMonsters().remove(monster);
+                            break;
+                        }
+                    }
+                }
                 if (getModel().collision_y(getModel().getPlayer())) break;
                 moveDown();
                 getViewer().draw(game.getGui());

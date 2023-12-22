@@ -37,16 +37,6 @@ public class Game {
 
         int i=0;
         while (this.state != null) {
-            /*if (state instanceof GameState && i==0) {
-                Thread t1 = new Thread(new MonsterMoving(
-                        ((GameState) state).getViewer().getModel(),
-                        ((GameState) state).getViewer(),
-                        this));
-                t1.start();
-                i = 1;
-            }
-
-             */
             if(!(state instanceof GameState)) i=0;
             long startTime = System.currentTimeMillis();
 

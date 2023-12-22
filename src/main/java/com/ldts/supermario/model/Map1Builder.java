@@ -108,6 +108,7 @@ public class Map1Builder extends MapBuilder{
     @Override
     protected List<Block> createBlocks() {
         List<Block> blocks = new ArrayList<>();
+        blocks.add(new Block(5, getHeight() - 4));
         blocks.add(new Block(22, getHeight() - 7));
         blocks.add(new Block(24, getHeight() - 7));
         blocks.add(new Block(26, getHeight() - 7));
@@ -214,7 +215,8 @@ public class Map1Builder extends MapBuilder{
     protected List <Monster> createMonsters()
     {
         List <Monster> monsters = new ArrayList<>();
-        monsters.add(new BrownMushroom(25, height - 4));
+        monsters.add(new Turtle(25, height - 4)); //15
+        monsters.add(new BrownMushroom(15, height - 4));//25
         monsters.add(new BrownMushroom(42, height - 4));
         monsters.add(new BrownMushroom(53, height - 4));
         monsters.add(new BrownMushroom(55, height - 4));

@@ -16,20 +16,17 @@ public class MonsterMoving extends MonsterController implements Runnable {
         super(m, v);
         map = m;
         game = g;
+        this.v=v;
     }
     public void run() {
        while (true)
         {
             for (Monster m : getModel().monstersToMove()) {
+                if (m instanceof TurtleShell) continue;
                 Thread t1 = new Thread(new MonsterGravity(getModel(), v, game, m));
                 t1.start();
                 if (getModel().collision_y(m)) {
-                    if (m instanceof BrownMushroom || (m instanceof Turtle)) {
-                        getModel().moveMonster(m);
-                    } else if (m instanceof TurtleShell && ((TurtleShell) m).getState() == 2) {
-                        Thread t2 = new Thread(new TurtleShellMoving(getModel(), v, game, m));
-                        t2.start();
-                    }
+                    getModel().moveMonster(m);
                 }
             }
             try {
