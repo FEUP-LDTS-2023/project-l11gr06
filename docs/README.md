@@ -136,7 +136,7 @@ in every move of the player.
 
 
 ### Link to mutation testing report: 
-[Mutation tests](docs/reports/pitest/202312212037/index.html)
+[Mutation tests](reports/pitest/202312212037/index.html)
 
 
 ## Self-evaluation
