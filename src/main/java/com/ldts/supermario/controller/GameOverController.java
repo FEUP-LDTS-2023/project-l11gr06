@@ -21,6 +21,7 @@ public class GameOverController extends Controller<GameOver> {
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException, FontFormatException {
         switch (action) {
+            case RIGHT, LEFT, JUMPR, JUMPL, NONE, QUIT:break;
             case UP:
                 getModel().previousEntry();
                 break;

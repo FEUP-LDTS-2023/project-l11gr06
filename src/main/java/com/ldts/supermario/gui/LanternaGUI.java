@@ -56,6 +56,7 @@ public class LanternaGUI implements GUI {
         return fontConfig;
     }
 
+    @Override
     public ACTION getNextAction() throws IOException {
         KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return ACTION.NONE;
