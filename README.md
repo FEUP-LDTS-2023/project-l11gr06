@@ -41,35 +41,78 @@ The following images show an overview of the game, as well as its different func
 
 ### Game Demo
 
-![GamePlay (1).gif](docs%2FGIFs%2FGamePlay%20%281%29.gif)
+![GamePlay.gif](docs%2FGIFs%2FGamePlay.gif)
 
-GIF 1: Game Demo.
+<p align="" justify="">
+  <b><i>GIF 1: Game Demo.</i></b>
+</p>
+<br>
+<br />
+
 
 ![Monsters.gif](docs%2FGIFs%2FMonsters.gif)
+<p align="" justify="">
+  <b><i>GIF 2: Monsters.</i></b>
+</p>
+<br>
+<br />
 
-GIF 2: Monsters.
 
 ![MysteryBlock.gif](docs%2FGIFs%2FMysteryBlock.gif)
+<p align="" justify="">
+  <b><i>GIF 3: Mystery Blocks.</i></b>
+</p>
+<br>
+<br />
 
-GIF 3: Mystery Blocks.
 
 
 ### Menus
 ![InitialMenu.png](docs%2Fimages%2FInitialMenu.png)
-Figure 1: Model of the Main Menu.
+<p align="" justify="">
+  <b><i>Figure 1: Model of the Main Menu.</i></b>
+</p>
+<br>
+<br />
+
 
 ![HelpMenu.png](docs%2Fimages%2FHelpMenu.png)
-Figure 2: Model of the Help Menu.
+<p align="" justify="">
+  <b><i>Figure 2: Model of the Help Menu.</i></b>
+</p>
+<br>
+<br />
+
 
 ![AboutMenu.png](docs%2Fimages%2FAboutMenu.png)
-Figure 3: Model of the About Menu.
+<p align="" justify="">
+  <b><i>Figure 3: Model of the About Menu.</i></b>
+</p>
+<br>
+<br />
+
 
 ![Game.png](docs%2Fimages%2FGame.png)
-Figure 4: Model of the Game initially.
+<p align="" justify="">
+  <b><i>Figure 4: Model of the Game initially.</i></b>
+</p>
+<br>
+<br />
+
 
 ![GameOver.png](docs%2Fimages%2FGameOver.png)
-Figure 5: Model of the GameOver Menu.
+<p align="" justify="">
+  <b><i>Figure 5: Model of the GameOver Menu.</i></b>
+</p>
+<br>
+<br />
+
 
 ![Victory.png](docs%2Fimages%2FVictory.png)
-Figure 6: Model of the Victory Menu.
+<p align="" justify="">
+  <b><i>Figure 6: Model of the Victory Menu.</i></b>
+</p>
+<br>
+<br />
+
 

@@ -128,10 +128,15 @@ in every move of the player.
 
 ### Screenshot of coverage report
 ![CodeCoverage.png](images%2FCodeCoverage.png)
-Fig. 4: Code coverage screenshot.
+<p align="" justify="">
+  <b><i>Fig. 4: Code coverage screenshot.</i></b>
+</p>
+<br>
+<br />
+
 
 ### Link to mutation testing report: 
-[Mutation tests](../build/reports/pitest/202312212037/index.html)
+[Mutation tests](../docs/index.html)
 
 
 ## Self-evaluation
