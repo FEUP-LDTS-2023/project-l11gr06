@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>Monster.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.ldts.supermario.model.elements;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.ldts.supermario.model.Position;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public abstract class Monster extends Element{</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    private boolean move=false;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    private int moveDirection = 0;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    // 0 -&#62; tr&#195;&#161;s</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    // 1 -&#62; frente</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public void setMove(boolean b) {move=b;}</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_12'/>
+12
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_12'>2</a>
+<span>
+
+1. getMove : replaced boolean return with false for com/ldts/supermario/model/elements/Monster::getMove &rarr; KILLED<br/>
+
+2. getMove : replaced boolean return with true for com/ldts/supermario/model/elements/Monster::getMove &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    public boolean getMove() {return move;}</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_13'/>
+13
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_13'>1</a>
+<span>
+
+1. getMoveDirection : replaced int return with 0 for com/ldts/supermario/model/elements/Monster::getMoveDirection &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    public int getMoveDirection() {return moveDirection;}</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public void setMoveDirection(int moveDirection) {this.moveDirection = moveDirection;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Monster(Position p){</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        super(p);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Monster(int x, int y) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        super(x,y);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3c596a57_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3c596a57_12'>12</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_12'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMove<br/><b>Killed by : </b>com.ldts.supermario.model.elements.MonsterTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.MonsterTest]/[method:testMonsterMovement()]</span></span> replaced boolean return with false for com/ldts/supermario/model/elements/Monster::getMove &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getMove<br/><b>Killed by : </b>com.ldts.supermario.model.elements.MonsterTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.MonsterTest]/[method:testMonsterMovement()]</span></span> replaced boolean return with true for com/ldts/supermario/model/elements/Monster::getMove &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3c596a57_13'>13</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3c596a57_13'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMoveDirection<br/><b>Killed by : </b>com.ldts.supermario.model.elements.MonsterTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.MonsterTest]/[method:testMonsterMovement()]</span></span> replaced int return with 0 for com/ldts/supermario/model/elements/Monster::getMoveDirection &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+
+<li class='mutator'>EMPTY_RETURNS</li>
+
+<li class='mutator'>FALSE_RETURNS</li>
+
+<li class='mutator'>INCREMENTS</li>
+
+<li class='mutator'>INVERT_NEGS</li>
+
+<li class='mutator'>MATH</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+
+<li class='mutator'>NULL_RETURNS</li>
+
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+
+<li class='mutator'>TRUE_RETURNS</li>
+
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.ldts.supermario.model.VictoryTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.VictoryTest]/[method:isSelectedExitTest()] (5 ms)</li><li>com.ldts.supermario.model.elements.TurtleShellTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.TurtleShellTest]/[method:testTurtleShellInitialization()] (5 ms)</li><li>com.ldts.supermario.model.VictoryTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.VictoryTest]/[method:getNumberEntriesTest()] (6 ms)</li><li>com.ldts.supermario.controller.MenuControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.MenuControllerTest]/[method:upMenu()] (8 ms)</li><li>com.ldts.supermario.model.elements.TurtleShellTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.TurtleShellTest]/[method:testTurtleShellStateChange()] (6 ms)</li><li>com.ldts.supermario.controller.GameOverControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.GameOverControllerTest]/[method:upGameOver()] (16 ms)</li><li>com.ldts.supermario.controller.PlayerControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.PlayerControllerTest]/[method:movePlayerJumpRightEmpty()] (891 ms)</li><li>com.ldts.supermario.model.VictoryTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.VictoryTest]/[method:GetCurrentEntryTest()] (7 ms)</li><li>com.ldts.supermario.controller.VictoryControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.VictoryControllerTest]/[method:selectRestart()] (8 ms)</li><li>com.ldts.supermario.model.elements.TurtleTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.TurtleTest]/[method:testSetPosition()] (5 ms)</li><li>com.ldts.supermario.controller.MenuControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.MenuControllerTest]/[method:selectStart()] (42 ms)</li><li>com.ldts.supermario.model.elements.BlockTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.BlockTest]/[method:constructorAndGettersTest()] (6 ms)</li><li>com.ldts.supermario.controller.MenuControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.MenuControllerTest]/[method:selectAbout()] (12 ms)</li><li>com.ldts.supermario.controller.AboutControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.AboutControllerTest]/[method:SelectAction()] (50 ms)</li><li>com.ldts.supermario.model.elements.GroundTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.GroundTest]/[method:constructorAndGettersTest()] (6 ms)</li><li>com.ldts.supermario.viewer.HelpViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.HelpViewerTest]/[method:drawElements()] (63 ms)</li><li>com.ldts.supermario.controller.PlayerControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.PlayerControllerTest]/[method:movePlayerUpEmpty()] (454 ms)</li><li>com.ldts.supermario.controller.PlayerControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.PlayerControllerTest]/[method:movePlayerJumpLeftEmpty()] (888 ms)</li><li>com.ldts.supermario.model.VictoryTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.VictoryTest]/[method:isSelectedPlayAgainTest()] (7 ms)</li><li>com.ldts.supermario.model.elements.RedMushroomTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.RedMushroomTest]/[method:constructorAndGettersTest()] (4 ms)</li><li>com.ldts.supermario.model.elements.MonsterTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.MonsterTest]/[method:testMonsterMovement()] (5 ms)</li><li>com.ldts.supermario.controller.GameOverControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.GameOverControllerTest]/[method:selectMenu()] (9 ms)</li><li>com.ldts.supermario.controller.PlayerControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.PlayerControllerTest]/[method:movePlayerUpNotEmpty()] (233 ms)</li><li>com.ldts.supermario.controller.MenuControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.MenuControllerTest]/[method:selectHelp()] (22 ms)</li><li>com.ldts.supermario.model.VictoryTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.VictoryTest]/[method:previousEntryTest()] (5 ms)</li><li>com.ldts.supermario.viewer.AboutViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.AboutViewerTest]/[method:drawElements()] (15 ms)</li><li>com.ldts.supermario.model.elements.RedMushroomTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.RedMushroomTest]/[method:testSetPosition()] (7 ms)</li><li>com.ldts.supermario.controller.MonsterMovingTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.MonsterMovingTest]/[method:isMonsterMoving()] (123 ms)</li><li>com.ldts.supermario.gui.LanternaGUITest.[engine:junit-jupiter]/[class:com.ldts.supermario.gui.LanternaGUITest]/[method:getNextActionTest()] (39 ms)</li><li>com.ldts.supermario.model.elements.CoinTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.CoinTest]/[method:constructorAndGettersTest2()] (5 ms)</li><li>com.ldts.supermario.states.GameOverStateTest.[engine:junit-jupiter]/[class:com.ldts.supermario.states.GameOverStateTest]/[method:getController()] (6 ms)</li><li>com.ldts.supermario.controller.MonsterMovingTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.MonsterMovingTest]/[method:testMonsterstoMove()] (1032 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.7.0
+
+</body>
+</html>

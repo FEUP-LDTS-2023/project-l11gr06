@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>Element.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.ldts.supermario.model.elements;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.ldts.supermario.model.Position;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public abstract class Element {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private Position position;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public Element(Position position) {this.position = position;}</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public Element(int x, int y) {this.position = new Position(x,y);}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Position getPosition() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_10'/>
+10
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_10'>1</a>
+<span>
+
+1. getPosition : replaced return value with null for com/ldts/supermario/model/elements/Element::getPosition &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return position;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void setPosition(Position p) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.position = p;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@258be1c6_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@258be1c6_10'>10</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@258be1c6_10'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getPosition<br/><b>Killed by : </b>com.ldts.supermario.model.elements.BrownMushroomTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.BrownMushroomTest]/[method:constructorAndGettersTest2()]</span></span> replaced return value with null for com/ldts/supermario/model/elements/Element::getPosition &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+
+<li class='mutator'>EMPTY_RETURNS</li>
+
+<li class='mutator'>FALSE_RETURNS</li>
+
+<li class='mutator'>INCREMENTS</li>
+
+<li class='mutator'>INVERT_NEGS</li>
+
+<li class='mutator'>MATH</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+
+<li class='mutator'>NULL_RETURNS</li>
+
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+
+<li class='mutator'>TRUE_RETURNS</li>
+
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.ldts.supermario.controller.PlayerControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.PlayerControllerTest]/[method:moveHeroLeftNotEmpty()] (11 ms)</li><li>com.ldts.supermario.model.MapTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.MapTest]/[method:testRevealMysteryBlockwithcoin()] (7 ms)</li><li>com.ldts.supermario.model.elements.PipeTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.PipeTest]/[method:constructorAndGettersTest2()] (5 ms)</li><li>com.ldts.supermario.model.elements.TurtleShellTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.TurtleShellTest]/[method:testTurtleShellInitialization()] (5 ms)</li><li>com.ldts.supermario.model.MapTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.MapTest]/[method:breakBlock_PlayerNotAdjacentToBlock_NoBlockBroken()] (8 ms)</li><li>com.ldts.supermario.controller.MenuControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.MenuControllerTest]/[method:upMenu()] (8 ms)</li><li>com.ldts.supermario.controller.GameOverControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.GameOverControllerTest]/[method:upGameOver()] (16 ms)</li><li>com.ldts.supermario.controller.PlayerControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.PlayerControllerTest]/[method:movePlayerJumpRightEmpty()] (891 ms)</li><li>com.ldts.supermario.model.elements.StairTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.StairTest]/[method:constructorAndGettersTest2()] (5 ms)</li><li>com.ldts.supermario.model.elements.TurtleTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.TurtleTest]/[method:constructorAndGettersTest2()] (5 ms)</li><li>com.ldts.supermario.controller.VictoryControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.VictoryControllerTest]/[method:selectRestart()] (8 ms)</li><li>com.ldts.supermario.viewer.game.PipeViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.game.PipeViewerTest]/[method:drawPipe()] (5 ms)</li><li>com.ldts.supermario.controller.MenuControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.MenuControllerTest]/[method:selectStart()] (42 ms)</li><li>com.ldts.supermario.model.elements.BrownMushroomTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.BrownMushroomTest]/[method:constructorAndGettersTest2()] (4 ms)</li><li>com.ldts.supermario.viewer.game.MonsterViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.game.MonsterViewerTest]/[method:drawBrownMushroom()] (4 ms)</li><li>com.ldts.supermario.model.elements.BlockTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.BlockTest]/[method:constructorAndGettersTest()] (6 ms)</li><li>com.ldts.supermario.controller.MenuControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.MenuControllerTest]/[method:selectAbout()] (12 ms)</li><li>com.ldts.supermario.model.elements.BrownMushroomTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.BrownMushroomTest]/[method:testSetPosition()] (4 ms)</li><li>com.ldts.supermario.model.elements.GroundTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.GroundTest]/[method:testSetPosition()] (5 ms)</li><li>com.ldts.supermario.model.elements.GoalPoleTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.GoalPoleTest]/[method:constructorAndGettersTest2()] (6 ms)</li><li>com.ldts.supermario.model.elements.GroundTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.GroundTest]/[method:constructorAndGettersTest()] (6 ms)</li><li>com.ldts.supermario.model.MapTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.MapTest]/[method:testCollectCoinsPassed()] (6 ms)</li><li>com.ldts.supermario.model.elements.PlayerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.PlayerTest]/[method:testConstructorAndGetters()] (3 ms)</li><li>com.ldts.supermario.controller.PlayerControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.PlayerControllerTest]/[method:movePlayerUpEmpty()] (454 ms)</li><li>com.ldts.supermario.controller.PlayerControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.PlayerControllerTest]/[method:movePlayerJumpLeftEmpty()] (888 ms)</li><li>com.ldts.supermario.model.elements.GoalPoleTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.GoalPoleTest]/[method:testSetPosition()] (6 ms)</li><li>com.ldts.supermario.model.elements.PlayerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.PlayerTest]/[method:constructorAndGettersTest2()] (5 ms)</li><li>com.ldts.supermario.viewer.game.StairViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.game.StairViewerTest]/[method:drawStair()] (6 ms)</li><li>com.ldts.supermario.controller.PlayerControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.PlayerControllerTest]/[method:movePlayerRightNotEmpty()] (12 ms)</li><li>com.ldts.supermario.model.elements.PipeTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.PipeTest]/[method:testSetPosition()] (4 ms)</li><li>com.ldts.supermario.controller.GameOverControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.GameOverControllerTest]/[method:selectMenu()] (9 ms)</li><li>com.ldts.supermario.controller.PlayerControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.PlayerControllerTest]/[method:movePlayerLeftEmpty()] (13 ms)</li><li>com.ldts.supermario.model.elements.GoalPoleTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.GoalPoleTest]/[method:constructorAndGettersTest()] (5 ms)</li><li>com.ldts.supermario.model.MapTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.MapTest]/[method:testCollectMushroomsFailed()] (5 ms)</li><li>com.ldts.supermario.viewer.AboutViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.AboutViewerTest]/[method:drawElements()] (15 ms)</li><li>com.ldts.supermario.model.MapTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.MapTest]/[method:breakBlock_PlayerAdjacentToBlock_BlockBroken()] (7 ms)</li><li>com.ldts.supermario.model.elements.RedMushroomTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.RedMushroomTest]/[method:testSetPosition()] (7 ms)</li><li>com.ldts.supermario.model.elements.CoinTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.CoinTest]/[method:constructorAndGettersTest2()] (5 ms)</li><li>com.ldts.supermario.model.elements.RedMushroomTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.RedMushroomTest]/[method:constructorAndGettersTest2()] (6 ms)</li><li>com.ldts.supermario.model.MapTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.MapTest]/[method:testCollectMushroomsFailed2()] (5 ms)</li><li>com.ldts.supermario.model.VictoryTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.VictoryTest]/[method:isSelectedExitTest()] (5 ms)</li><li>com.ldts.supermario.model.VictoryTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.VictoryTest]/[method:getNumberEntriesTest()] (6 ms)</li><li>com.ldts.supermario.model.MapTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.MapTest]/[method:testCollectMushroomPassed()] (6 ms)</li><li>com.ldts.supermario.model.elements.MysteryBlockTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.MysteryBlockTest]/[method:constructorAndGettersTest()] (4 ms)</li><li>com.ldts.supermario.viewer.game.BlockViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.game.BlockViewerTest]/[method:drawBlock()] (5 ms)</li><li>com.ldts.supermario.model.VictoryTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.VictoryTest]/[method:GetCurrentEntryTest()] (7 ms)</li><li>com.ldts.supermario.viewer.game.CoinViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.game.CoinViewerTest]/[method:drawBlock()] (4 ms)</li><li>com.ldts.supermario.model.elements.StairTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.StairTest]/[method:constructorAndGettersTest()] (6 ms)</li><li>com.ldts.supermario.model.elements.TurtleTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.TurtleTest]/[method:testSetPosition()] (5 ms)</li><li>com.ldts.supermario.model.elements.PipeTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.PipeTest]/[method:constructorAndGettersTest()] (5 ms)</li><li>com.ldts.supermario.model.elements.GroundTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.GroundTest]/[method:constructorAndGettersTest2()] (5 ms)</li><li>com.ldts.supermario.viewer.game.MonsterViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.game.MonsterViewerTest]/[method:drawTurtleShell()] (5 ms)</li><li>com.ldts.supermario.controller.AboutControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.AboutControllerTest]/[method:SelectAction()] (50 ms)</li><li>com.ldts.supermario.viewer.game.MonsterViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.game.MonsterViewerTest]/[method:drawTurtle()] (6 ms)</li><li>com.ldts.supermario.viewer.HelpViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.HelpViewerTest]/[method:drawElements()] (63 ms)</li><li>com.ldts.supermario.model.elements.StairTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.StairTest]/[method:testSetPosition()] (5 ms)</li><li>com.ldts.supermario.model.elements.BrownMushroomTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.BrownMushroomTest]/[method:constructorAndGettersTest()] (5 ms)</li><li>com.ldts.supermario.viewer.game.RedMushroomViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.game.RedMushroomViewerTest]/[method:drawRedMushroom()] (4 ms)</li><li>com.ldts.supermario.viewer.game.PlayerViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.game.PlayerViewerTest]/[method:drawPlayer()] (6 ms)</li><li>com.ldts.supermario.model.VictoryTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.VictoryTest]/[method:isSelectedPlayAgainTest()] (7 ms)</li><li>com.ldts.supermario.model.elements.RedMushroomTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.RedMushroomTest]/[method:constructorAndGettersTest()] (4 ms)</li><li>com.ldts.supermario.model.MapTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.MapTest]/[method:testCollectCoinsFailed()] (6 ms)</li><li>com.ldts.supermario.model.elements.MysteryBlockTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.MysteryBlockTest]/[method:constructorAndGettersTest2()] (5 ms)</li><li>com.ldts.supermario.model.elements.CoinTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.CoinTest]/[method:constructorAndGettersTest()] (5 ms)</li><li>com.ldts.supermario.model.elements.BlockTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.BlockTest]/[method:testSetPosition()] (5 ms)</li><li>com.ldts.supermario.viewer.game.GroundViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.game.GroundViewerTest]/[method:drawGround()] (3 ms)</li><li>com.ldts.supermario.viewer.game.GoalPoleViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.game.GoalPoleViewerTest]/[method:drawGoalPole()] (4 ms)</li><li>com.ldts.supermario.controller.AboutControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.AboutControllerTest]/[method:SelectActionNotSelectedMenu()] (15 ms)</li><li>com.ldts.supermario.model.elements.TurtleTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.TurtleTest]/[method:constructorAndGettersTest()] (7 ms)</li><li>com.ldts.supermario.model.elements.CoinTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.CoinTest]/[method:testSetPosition()] (6 ms)</li><li>com.ldts.supermario.controller.PlayerControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.PlayerControllerTest]/[method:movePlayerUpNotEmpty()] (233 ms)</li><li>com.ldts.supermario.controller.MenuControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.MenuControllerTest]/[method:selectHelp()] (22 ms)</li><li>com.ldts.supermario.viewer.game.MysteryBlockViewerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.viewer.game.MysteryBlockViewerTest]/[method:drawMysteryBlock()] (5 ms)</li><li>com.ldts.supermario.model.MapTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.MapTest]/[method:testRevealMysteryBlockwithmushroom()] (6 ms)</li><li>com.ldts.supermario.model.VictoryTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.VictoryTest]/[method:previousEntryTest()] (5 ms)</li><li>com.ldts.supermario.controller.PlayerControllerTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.PlayerControllerTest]/[method:movePlayerRightEmpty()] (16 ms)</li><li>com.ldts.supermario.controller.MonsterMovingTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.MonsterMovingTest]/[method:isMonsterMoving()] (123 ms)</li><li>com.ldts.supermario.gui.LanternaGUITest.[engine:junit-jupiter]/[class:com.ldts.supermario.gui.LanternaGUITest]/[method:getNextActionTest()] (39 ms)</li><li>com.ldts.supermario.model.elements.MysteryBlockTest.[engine:junit-jupiter]/[class:com.ldts.supermario.model.elements.MysteryBlockTest]/[method:testSetPosition()] (4 ms)</li><li>com.ldts.supermario.states.GameOverStateTest.[engine:junit-jupiter]/[class:com.ldts.supermario.states.GameOverStateTest]/[method:getController()] (6 ms)</li><li>com.ldts.supermario.controller.MonsterMovingTest.[engine:junit-jupiter]/[class:com.ldts.supermario.controller.MonsterMovingTest]/[method:testMonsterstoMove()] (1032 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.7.0
+
+</body>
+</html>
