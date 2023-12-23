@@ -1,5 +1,6 @@
 ## LDTS_11_6 - Super Mario Bros
 
+## Game Description
 In the context of the project, we developed a game based on Super Mario Bros.
 This is a 2D game where the player goes along the map and wins when reaches the flag.
 Throughout the map there are several obstacles such as monsters, blocks and some pits.
@@ -11,7 +12,7 @@ Maria Vieira (up202204802@up.pt)
 and Marta Cruz (up202205028@up.pt)
 for LDTS 23/24.
 
-### Commands
+## Commands
 * ```<``` : Move backward;
 * ```>``` : Move forward;
 * ```^```: Jump vertically;
@@ -20,7 +21,7 @@ for LDTS 23/24.
 * ```q``` : Return to the main menu in the middle of the game. 
 
 
-### Implemented features
+## Implemented features
 
 - **Linked Menus** - The user has the capability of browsing through the different menus (ex. MenuState, GameState, GameOverState,...);
 
@@ -35,15 +36,16 @@ for LDTS 23/24.
 - **Lives** - The player has 3 chances before losing the game.
 
 
-### Images
-
-#### Game Demo
+## Images
 The following images show an overview of the game, as well as its different functionalities:
+
+### Game Demo
+
 
 
 GIF. 1: Game Demo GIF.
 
-#### Menus
+### Menus
 ![InitialMenu.png](docs%2Fimages%2FInitialMenu.png)
 Fig. 1: Model of the Main Menu.
 
