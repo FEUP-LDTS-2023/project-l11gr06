@@ -13,13 +13,13 @@ for LDTS 23/24.
 
 ### Implemented features
 
-- **Linked Menus ** - The user has the capability of browsing through the different menus (ex. MenuState, GameState, GameOverState,...);
+- **Linked Menus** - The user has the capability of browsing through the different menus (ex. MenuState, GameState, GameOverState,...);
 
 - **Buttons** - Interactive and functional buttons in the game menus;
 
 - **Keyboard controls** - The keyboard inputs are received and interpreted according to the current game state;
 
-- **PLayer control** - The player moves according to the keyboard controls;
+- **Player control** - The player moves according to the keyboard controls;
 
 - **Collision detection** - Collisions between different objects are detected and checked, allowing the player to kill or be killed by monsters, reveal Mystery Blocks, and collect coins and mushrooms(ex. Monster-Monster, Player-Monster, PLayer, Obstacle, ...);
 
@@ -27,8 +27,8 @@ for LDTS 23/24.
 
 
 ### Planned features
-The SuperMario feature to make him stronger and bigger when the red mushroom is collected wasn´t implemented.
-Besides that, all the planned features were implemented.
+The SuperMario feature to make him stronger and bigger when the red mushroom is collected and the development of several levels weren´t implemented.
+Besides that, all the planned features were implemented successfully.
 
 ### Design
 
@@ -47,9 +47,11 @@ In the implementation of the MVC Architectural Pattern, we divided our code in t
  - Controllers: provide model data to the view and interpret user actions.
 
 ![MVCpattern.png](UMLs%2FMVCpattern.png)
-
-Fig. 1: Model, Controller and Viewer pattern design
-
+<p align="center" justify="center">
+  <b><i>Fig. 1: Model, Controller and Viewer pattern design</i></b>
+</p>
+<br>
+<br />
 
 
 **Implementation of State pattern:**
@@ -57,7 +59,12 @@ Fig. 1: Model, Controller and Viewer pattern design
 The image below shows the implementation of the State Pattern, with a 
 
 ![Statepattern.png](UMLs%2FStatepattern.png)
-Fig. 2: State pattern design
+<p align="center" justify="center">
+  <b><i>Fig. 2: State pattern design</i></b>
+</p>
+<br>
+<br />
+
 
 **Consequences:**
 
@@ -67,16 +74,56 @@ There are some benefits of applying the above patterns:
 - Makes the testing process easier, by isolating the different components/states, which facilitates the development of robust and reliable code.
 
 
+#### Map Builder
+**Problem in context:**
+A map is an aglomeration of elements such as grounds, stairs, blocks, coins, etc. Because of our initial ideia of creating several maps for the several levels, we needed builder classes for each map.
+
+**The pattern:**
+The Factory Method, a creational design pattern, was the appropriate pattern for this situation, since it provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.
+
+**Implementation:**
+A factory is responsible for constructing the whole but the workers 
+are the ones that actually execute the job. 
+Analogously, our MapBuilder is a factory and its subclasses represent the workers. 
+As for the implementation, the MapBuilder is an 
+abstract class which knows how to construct a map, 
+however only its subclasses supply the necessary components 
+of the map.
+
+![FactoryMethodpattern.png](UMLs%2FFactoryMethodpattern.png)
+<p align="center" justify="center">
+  <b><i>Fig. 3: Factory Method pattern design</i></b>
+</p>
+<br>
+<br />
+
+**Consequences:**
+Benefits of applying the above pattern:
+- You avoid tight coupling between the creator and the concrete products.
+- Open/Closed Principle. You can introduce new types of products into the program without breaking existing client code.
+- You can construct objects step-by-step, defer construction steps or run steps recursively.
+
 
 ### Code Smells
-FAZER ERROR PRONE
+We have fixed all the errors reported by error-prone. 
+However, we identified some code smells:
 
+**Large Class**:
+Some classes (like Map, for example) contain many methods. 
+We find it justifiable as the classes require these fields. 
+Because the Map class is one of the main classes of our program 
+it needs to have a considerable amount of methods
+to check several interactions between elements in the game.
 
+**Object-Oriented Abusers (Switch Statements)**:
+The 'step' method, applied in several classes has a complex switch statement, for example in the PlayerController class.
+However, this is hard to avoid because of the amount of interactions and elements that need to be considered
+in every move of the player.
 
 
 ### Testes
 
-Fig. 6: Cobertura dos testes implementados.
+Fig. 4: Cobertura dos testes implementados.
 
 Link para mutation testing report:
 

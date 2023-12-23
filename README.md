@@ -1,9 +1,9 @@
 ## LDTS_11_6 - Super Mario Bros
 
 In the context of the project,we developed a game based on Super Mario Bros.
-This is a 2D game where the player goes along the map and when he reaches the flag the player wins.
+This is a 2D game where the player goes along the map and wins when reaches the flag.
 Throughout the map there are a lot of obstacles such as monsters, blocks and some pits.
-Furthermore, there are Mystery Blocks where the player must collect coins and mushrooms to get some extra points.
+Furthermore, there are Mystery Blocks which the player can reveal to collect coins and mushrooms in order to win points.
 
 This project was developed by:
 Duarte Marques (up202204973@up.pt), 
@@ -22,15 +22,15 @@ for LDTS 23/24.
 
 ### Implemented features
 
-- **Linked Menus ** - The user has the capability of browsing through the different menus (ex. MenuState, GameState, GameOverState,...);
+- **Linked Menus** - The user has the capability of browsing through the different menus (ex. MenuState, GameState, GameOverState,...);
 
 - **Buttons** - Interactive and functional buttons in the game menus;
 
 - **Keyboard controls** - The keyboard inputs are received and interpreted according to the current game state;
 
-- **PLayer control** - The player moves according to the keyboard controls;
+- **Player control** - The player moves according to the keyboard controls;
 
-- **Collision detection** - Collisions between different objects are detected and checked, allowing the player to kill or be killed by monsters, reveal Mystery Blocks, and collect coins and mushrooms(ex. Monster-Monster, Player-Monster, PLayer, Obstacle, ...);
+- **Collision detection** - Collisions between different objects are detected and checked, allowing the player to kill or be killed by monsters, reveal Mystery Blocks, and collect coins and mushrooms (ex. Monster-Monster, Player-Monster, Player-Obstacle, ...);
 
 - **Lives** - The player has 3 chances before losing the game.
 
