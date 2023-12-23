@@ -1,5 +1,6 @@
 package com.ldts.supermario.model;
 
+import com.ldts.supermario.Game;
 import com.ldts.supermario.model.elements.*;
 
 import java.util.ArrayList;
@@ -322,39 +323,69 @@ public class Map {
     public void monsterMonsterCollision(Monster m)
     {
         for(Monster mt:monsters) {
+
             if (m.getPosition().getY() == mt.getPosition().getY()) {
-                if ((m.getPosition().getX()+1 == mt.getPosition().getX())&&
-                        m.getMoveDirection()==1 && mt.getMoveDirection()==0) {
-                    m.setMoveDirection(0);
-                    mt.setMoveDirection(1);
-                } else if((m.getPosition().getX()-1 == mt.getPosition().getX())&&
-                        m.getMoveDirection()==0 && mt.getMoveDirection()==1) {
-                    m.setMoveDirection(1);
-                    mt.setMoveDirection(0);
+                if ((m.getPosition().getX()+1 == mt.getPosition().getX()))
+                {
+                    if( m.getMoveDirection()==1 && mt.getMoveDirection()==0)
+                    {
+                        m.setMoveDirection(0);
+                        mt.setMoveDirection(1);
+                    }
+                }
+
+                else if((m.getPosition().getX()-1 == mt.getPosition().getX()))
+                {
+                    if(m.getMoveDirection()==0 && mt.getMoveDirection()==1)
+                    {
+                        m.setMoveDirection(1);
+                        mt.setMoveDirection(0);
+                    }
                 }
             }
         }
     }
-    public void moveMonster(Monster m) {
+    public void moveMonster(Monster m)
+    {
         monsterMonsterCollision(m);
-        if(m.getMoveDirection()==0) {
+        if(m.getMoveDirection()==0)
+        {
             if(!collision_x_back(m)) {
                 m.setPosition(new Position(m.getPosition().getX()-1,m.getPosition().getY()));
-            } else m.setMoveDirection(1);
-        } else if (m.getMoveDirection()==1) {
+            }
+            else m.setMoveDirection(1);
+        }
+        else if (m.getMoveDirection()==1)
+        {
             if(!collision_x_front(m)) {
                 m.setPosition(new Position(m.getPosition().getX()+1,m.getPosition().getY()));
-            } else m.setMoveDirection(0);
+            }
+            else m.setMoveDirection(0);
         }
     }
     public List<Monster> monstersToMove()
     {
         List<Monster> l = new ArrayList<>();
         for(Monster m: monsters) {
+            if(m instanceof TurtleShell)continue;
             m.setMove(m.getPosition().getX() < 65 && m.getPosition().getX() >= 0);
             if (m.getMove()) l.add(m);
         }
-        return l;}
+        return l;
+    }
+    public List<Monster> shellsToMove()
+    {
+        List<Monster> l = new ArrayList<>();
+        for(Monster m: monsters) {
+            if(m instanceof TurtleShell)
+            {
+                m.setMove(m.getPosition().getX() < 65 && m.getPosition().getX() >= 0);
+                if (m.getMove()) l.add(m);
+            }
+
+        }
+        return l;
+    }
 
     public boolean monsterCollision(Monster m) {
 
@@ -366,11 +397,13 @@ public class Map {
                 {
                     ((TurtleShell) m).setState(2);
                     m.setMoveDirection(0);
+
                 }
                 else if (player.getPosition().getX() + 1 == m.getPosition().getX())
                 {
                     ((TurtleShell) m).setState(2);
                     m.setMoveDirection(1);
+
                 }
             }
             else return(player.getPosition().getX()== m.getPosition().getX());
@@ -378,5 +411,7 @@ public class Map {
         else if(player.getPosition().getX()==m.getPosition().getX())
             return player.getPosition().getY()-1==m.getPosition().getY();
         return false;
+
+
     }
 }
