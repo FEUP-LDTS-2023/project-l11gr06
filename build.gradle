@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'info.solidsoft.pitest' version '1.7.0'
+    //id 'org.kordamp.gradle.errorprone' version '0.53.0'
 }
 
 group = 'com.ldts.supermario'
@@ -19,6 +20,8 @@ dependencies {
     testImplementation 'net.jqwik:jqwik:1.5.1'
 
     implementation group: 'com.googlecode.lanterna', name: 'lanterna', version: '3.1.1'
+    //implementation 'com.google.errorprone:error_prone_core:2.10.0'
+    //annotationProcessor 'com.google.errorprone:error_prone_core:2.10.0'
 }
 
 
@@ -40,5 +43,6 @@ java {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
+
 
 

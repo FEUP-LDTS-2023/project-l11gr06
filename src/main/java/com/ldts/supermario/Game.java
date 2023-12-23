@@ -34,7 +34,10 @@ public class Game {
     public void run() throws IOException, URISyntaxException, FontFormatException {
         int FPS = 10;
         int frameTime = 1000 / FPS;
+
+        int i=0;
         while (this.state != null) {
+            if(!(state instanceof GameState)) i=0;
             long startTime = System.currentTimeMillis();
 
             state.step(this, gui, startTime);
@@ -45,6 +48,7 @@ public class Game {
             try {
                 if (sleepTime > 0) Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
 

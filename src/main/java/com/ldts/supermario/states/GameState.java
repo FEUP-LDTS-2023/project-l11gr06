@@ -3,19 +3,25 @@ import com.ldts.supermario.Game;
 import com.ldts.supermario.controller.Controller;
 import com.ldts.supermario.controller.MapController;
 import com.ldts.supermario.controller.MonsterMoving;
+import com.ldts.supermario.controller.TurtleShellMoving;
 import com.ldts.supermario.model.Map;
 import com.ldts.supermario.viewer.Viewer;
 import com.ldts.supermario.viewer.game.GameViewer;
 
 public class GameState extends State<Map> {
     private Game game;
+    Thread t1 = new Thread(new MonsterMoving(
+            this.getViewer().getModel(),
+            this.getViewer(),
+            game));
+    Thread t2 = new Thread(new TurtleShellMoving(
+            this.getViewer().getModel(),
+            this.getViewer(),
+            game));
     public GameState(Map map) {
         super(map);
-        Thread t1 = new Thread(new MonsterMoving(
-                this.getViewer().getModel(),
-                this.getViewer(),
-                game));
         t1.start();
+        t2.start();
     }
 
     @Override

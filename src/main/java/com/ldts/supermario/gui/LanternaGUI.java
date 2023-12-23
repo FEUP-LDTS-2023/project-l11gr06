@@ -56,6 +56,7 @@ public class LanternaGUI implements GUI {
         return fontConfig;
     }
 
+    @Override
     public ACTION getNextAction() throws IOException {
         KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return ACTION.NONE;
@@ -131,7 +132,7 @@ public class LanternaGUI implements GUI {
     }
     @Override
     public void drawTurtleShell (Position position){
-        drawCharacter(position.getX(), position.getY(), '^', "#8A3324");
+        drawCharacter(position.getX(), position.getY(), '^', "#008000");
     }
     @Override
     public void drawText (Position position, String text, String color){
