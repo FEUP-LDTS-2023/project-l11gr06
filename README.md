@@ -42,12 +42,15 @@ The following images show an overview of the game, as well as its different func
 ### Game Demo
 
 ![GamePlay (1).gif](docs%2FGIFs%2FGamePlay%20%281%29.gif)
+
 GIF 1: Game Demo.
 
 ![Monsters.gif](docs%2FGIFs%2FMonsters.gif)
+
 GIF 2: Monsters.
 
 ![MysteryBlock.gif](docs%2FGIFs%2FMysteryBlock.gif)
+
 GIF 3: Mystery Blocks.
 
 
