@@ -105,7 +105,8 @@ Benefits of applying the above pattern:
 
 
 ### Code Smells
-FAZER ERROR PRONE
+We have fixed all the errors reported by error-prone. 
+However, we identified some code smells:
 
 **Large Class**:
 Some classes (like Map, for example) contain many methods. 
