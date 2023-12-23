@@ -14,10 +14,14 @@ public class GameState extends State<Map> {
             this.getViewer().getModel(),
             this.getViewer(),
             game));
-
+    Thread t2 = new Thread(new TurtleShellMoving(
+            this.getViewer().getModel(),
+            this.getViewer(),
+            game));
     public GameState(Map map) {
         super(map);
         t1.start();
+        t2.start();
     }
 
     @Override

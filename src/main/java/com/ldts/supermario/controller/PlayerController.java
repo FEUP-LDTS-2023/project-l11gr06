@@ -63,24 +63,6 @@ public class PlayerController extends Controller<Map> {
                 }
             }
             if (action == GUI.ACTION.RIGHT) {
-                for (Monster monster : getModel().getMonsters()) {
-                    if (getModel().monsterCollision(monster)) {
-                        if (monster instanceof TurtleShell && ((TurtleShell) monster).getState() == 1)
-                            ((TurtleShell) monster).setState(2);
-                        else if(lives>1)
-                        {
-                            lives--;
-                            game.setState(new GameState(new Map1Builder(250,20).createMap()));
-                            return;
-                        }
-                        else
-                        {
-                            lives=3;
-                            game.setState(new GameOverState(new GameOver()));
-                            return;
-                        }
-                    }
-                }
                 for (GoalPole pole : getModel().getGoalPole())
                     if (getModel().getPlayer().getPosition().getX() == pole.getPosition().getX())
                         game.setState(new VictoryState(new Victory()));
@@ -89,8 +71,6 @@ public class PlayerController extends Controller<Map> {
                         moveRight();
                     else getModel().moveMap();
                 }
-            }
-            if (action == GUI.ACTION.LEFT) {
                 for (Monster monster : getModel().getMonsters()) {
                     if (getModel().monsterCollision(monster)) {
                         if (monster instanceof TurtleShell && ((TurtleShell) monster).getState() == 1)
@@ -109,8 +89,29 @@ public class PlayerController extends Controller<Map> {
                         }
                     }
                 }
+            }
+            if (action == GUI.ACTION.LEFT) {
+
                 if (!getModel().collision_x_back(getModel().getPlayer()))
                     if (getModel().getPlayer().getPosition().getX() != 0) moveLeft();
+                for (Monster monster : getModel().getMonsters()) {
+                    if (getModel().monsterCollision(monster)) {
+                        if (monster instanceof TurtleShell && ((TurtleShell) monster).getState() == 1)
+                            ((TurtleShell) monster).setState(2);
+                        else if(lives>1)
+                        {
+                            lives--;
+                            game.setState(new GameState(new Map1Builder(250,20).createMap()));
+                            return;
+                        }
+                        else
+                        {
+                            lives=3;
+                            game.setState(new GameOverState(new GameOver()));
+                            return;
+                        }
+                    }
+                }
             }
             if (action == GUI.ACTION.JUMPR) {
                 int x = 0;

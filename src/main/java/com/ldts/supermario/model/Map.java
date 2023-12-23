@@ -320,48 +320,35 @@ public class Map {
             pipe.setPosition(p);
         }
     }
-    public boolean monsterMonsterCollision(Monster m)
+    public void monsterMonsterCollision(Monster m)
     {
         for(Monster mt:monsters) {
-            if(m.equals(mt))continue;
-            else if (mt instanceof TurtleShell && ((TurtleShell) mt).getState() == 2)
-            {
-                if(m.getPosition()==mt.getPosition()) return true;
-            }
-            else if (m.getPosition().getY() == mt.getPosition().getY()) {
-                if (m.getPosition().getX() + 1 == mt.getPosition().getX()) {
 
-                    if(mt instanceof TurtleShell && ((TurtleShell) mt).getState() == 1)
+            if (m.getPosition().getY() == mt.getPosition().getY()) {
+                if ((m.getPosition().getX()+1 == mt.getPosition().getX()))
+                {
+                    if( m.getMoveDirection()==1 && mt.getMoveDirection()==0)
                     {
-                        if(m.getMoveDirection()==0) m.setMoveDirection(1);
-                        else m.setMoveDirection(0);
-                    }
-                    else if (m.getMoveDirection() == 1 && mt.getMoveDirection() == 0) {
                         m.setMoveDirection(0);
                         mt.setMoveDirection(1);
                     }
-
                 }
-                else if (m.getPosition().getX() - 1 == mt.getPosition().getX()) {
 
-                    if(mt instanceof TurtleShell && ((TurtleShell) mt).getState() == 1)
+                else if((m.getPosition().getX()-1 == mt.getPosition().getX()))
+                {
+                    if(m.getMoveDirection()==0 && mt.getMoveDirection()==1)
                     {
-                        if(m.getMoveDirection()==0) m.setMoveDirection(1);
-                        else m.setMoveDirection(0);
-                    }
-                    else if (m.getMoveDirection() == 0 && mt.getMoveDirection() == 1) {
                         m.setMoveDirection(1);
                         mt.setMoveDirection(0);
                     }
                 }
             }
         }
-        return false;
     }
     public void moveMonster(Monster m)
     {
-        if(monsterMonsterCollision(m))monsters.remove(m);
-        else if(m.getMoveDirection()==0)
+        monsterMonsterCollision(m);
+        if(m.getMoveDirection()==0)
         {
             if(!collision_x_back(m)) {
                 m.setPosition(new Position(m.getPosition().getX()-1,m.getPosition().getY()));
@@ -380,11 +367,26 @@ public class Map {
     {
         List<Monster> l = new ArrayList<>();
         for(Monster m: monsters) {
+            if(m instanceof TurtleShell)continue;
             m.setMove(m.getPosition().getX() < 65 && m.getPosition().getX() >= 0);
             if (m.getMove()) l.add(m);
         }
         return l;
     }
+    public List<Monster> shellsToMove()
+    {
+        List<Monster> l = new ArrayList<>();
+        for(Monster m: monsters) {
+            if(m instanceof TurtleShell)
+            {
+                m.setMove(m.getPosition().getX() < 65 && m.getPosition().getX() >= 0);
+                if (m.getMove()) l.add(m);
+            }
+
+        }
+        return l;
+    }
+
     public boolean monsterCollision(Monster m) {
 
         if(m.getPosition()==player.getPosition()) return true;
@@ -395,11 +397,13 @@ public class Map {
                 {
                     ((TurtleShell) m).setState(2);
                     m.setMoveDirection(0);
+
                 }
                 else if (player.getPosition().getX() + 1 == m.getPosition().getX())
                 {
                     ((TurtleShell) m).setState(2);
                     m.setMoveDirection(1);
+
                 }
             }
             else return(player.getPosition().getX()== m.getPosition().getX());

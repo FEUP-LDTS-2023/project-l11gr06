@@ -31,6 +31,7 @@ public class MonsterGravity extends MonsterController implements Runnable{
             moveDown((Monster) element);
             try {
                 v.draw(game.getGui());
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
