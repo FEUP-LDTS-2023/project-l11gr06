@@ -49,7 +49,7 @@ In the implementation of the MVC Architectural Pattern, we divided our code in t
 
 ![MVCpattern.png](UMLs%2FMVCpattern.png)
 <p align="" justify="">
-  <b><i>Fig. 1: Model, Controller and Viewer pattern design</i></b>
+  <b><i>Figure 1: Model, Controller and Viewer pattern design.</i></b>
 </p>
 <br>
 <br />
@@ -61,7 +61,7 @@ The image below shows the implementation of the State Pattern, with a
 
 ![Statepattern.png](UMLs%2FStatepattern.png)
 <p align="" justify="">
-  <b><i>Fig. 2: State pattern design</i></b>
+  <b><i>Figure 2: State pattern design.</i></b>
 </p>
 <br>
 <br />
@@ -95,7 +95,7 @@ of the map.
 
 ![FactoryMethodpattern.png](UMLs%2FFactoryMethodpattern.png)
 <p align="" justify="">
-  <b><i>Fig. 3: Factory Method pattern design</i></b>
+  <b><i>Figure 3: Factory Method pattern design.</i></b>
 </p>
 <br>
 <br />
@@ -128,10 +128,15 @@ in every move of the player.
 
 ### Screenshot of coverage report
 ![CodeCoverage.png](images%2FCodeCoverage.png)
-Fig. 4: Code coverage screenshot.
+<p align="" justify="">
+  <b><i>Figure 4: Code coverage screenshot.</i></b>
+</p>
+<br>
+<br />
+
 
 ### Link to mutation testing report: 
-[Mutation tests](../build/reports/pitest/202312212037/index.html)
+[Mutation tests](reports/pitest/202312212037/index.html)
 
 
 ## Self-evaluation
