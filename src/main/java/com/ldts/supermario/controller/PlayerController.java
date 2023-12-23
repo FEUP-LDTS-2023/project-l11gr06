@@ -65,7 +65,7 @@ public class PlayerController extends Controller<Map> {
                 }
             }
             if (action == GUI.ACTION.RIGHT) {
-                for (Monster monster : getModel().getMonsters()) {
+                for(Monster monster : getModel().getMonsters()){
                     if (getModel().monsterCollision(monster)) {
                         if (monster instanceof TurtleShell && ((TurtleShell) monster).getState() == 1)
                             ((TurtleShell) monster).setState(2);

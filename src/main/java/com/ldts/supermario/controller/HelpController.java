@@ -17,7 +17,7 @@ public class HelpController extends Controller<Help> {
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         switch (action) {
-            case UP: break;
+            case UP, RIGHT, DOWN, LEFT, JUMPR, JUMPL, NONE, QUIT: break;
             case SELECT:
                 if (getModel().isSelectedMenu()) game.setState(new MenuState(new Menu()));
         }

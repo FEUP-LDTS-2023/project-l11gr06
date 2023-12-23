@@ -151,7 +151,7 @@ public class Map {
         if (!blocks.isEmpty()){
             for(Block block:blocks) {
                 Position p = new Position(block.getPosition().getX(),block.getPosition().getY()-1);
-                if(element.getPosition().equals(p)&&element.getPosition().equals(p)) {
+                if(element.getPosition().equals(p)) {
                     return true;
                 }
             }
@@ -195,7 +195,7 @@ public class Map {
         for(Block block:blocks)
         {
             Position p = new Position(block.getPosition().getX()-1,block.getPosition().getY());
-            if(element.getPosition().equals(p)&&element.getPosition().equals(p))
+            if(element.getPosition().equals(p))
             {
                 return true;
             }
@@ -239,7 +239,7 @@ public class Map {
         for(Block block:blocks)
         {
             Position p = new Position(block.getPosition().getX()+1,block.getPosition().getY());
-            if(e.getPosition().equals(p)&&e.getPosition().equals(p))
+            if(e.getPosition().equals(p))
             {
                 return true;
             }
@@ -358,7 +358,7 @@ public class Map {
 
     public boolean monsterCollision(Monster m) {
 
-        if(m.getPosition()==player.getPosition()) return true;
+        if(m.getPosition().equals(player.getPosition())) return true;
         else if(player.getPosition().getY()==m.getPosition().getY()) {
             if(m instanceof TurtleShell && ((TurtleShell) m).getState()==1)
             {

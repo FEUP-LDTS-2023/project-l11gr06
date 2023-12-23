@@ -17,8 +17,9 @@ public class MonsterMoving extends MonsterController implements Runnable {
         map = m;
         game = g;
     }
+    @Override
     public void run() {
-       while (true)
+       while(true)
         {
             for (Monster m : getModel().monstersToMove()) {
                 Thread t1 = new Thread(new MonsterGravity(getModel(), v, game, m));

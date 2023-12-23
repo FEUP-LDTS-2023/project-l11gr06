@@ -22,6 +22,7 @@ public class MenuController extends Controller<Menu> {
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         switch (action) {
+            case RIGHT, LEFT, JUMPR, JUMPL, NONE, QUIT:break;
             case UP:
                 getModel().previousEntry();
                 break;

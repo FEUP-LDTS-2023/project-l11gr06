@@ -8,8 +8,8 @@ Furthermore, there are Mystery Blocks where the player must collect coins and mu
 This project was developed by:
 Duarte Marques (up202204973@up.pt), 
 Maria Vieira (up202204802@up.pt)
-e Marta Cruz (up202205028@up.pt)
-for the LDTS subject 23/24.
+and Marta Cruz (up202205028@up.pt)
+for LDTS 23/24.
 
 ### Commands
 * ```<``` : Move backward;

@@ -21,7 +21,7 @@ public class MapController extends Controller<Map> {
 
         this.playerController = new PlayerController(map,v );
     }
-
+    @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException, FontFormatException {
         if (action == GUI.ACTION.QUIT)
         {

@@ -22,6 +22,7 @@ public class MonsterGravity extends MonsterController implements Runnable{
         game=g;
         element=e;
     }
+    @Override
     public void run() {
         while(element.getPosition().getY()!= getModel().getHeight())
         {
