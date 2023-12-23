@@ -1,6 +1,8 @@
 package com.ldts.supermario;
 
 import com.ldts.supermario.controller.MonsterMoving;
+import com.ldts.supermario.controller.TurtleShellMoving;
+import com.ldts.supermario.model.Map;
 import com.ldts.supermario.states.GameState;
 import com.ldts.supermario.states.MenuState;
 import com.ldts.supermario.states.State;
@@ -27,6 +29,15 @@ public class Game {
 
     public void setState(State state) {
         this.state = state;
+        /*if (state instanceof GameState)
+        {
+            Thread t1 = new Thread(new MonsterMoving(
+                    (Map) state.getModel(),((GameState) state).getViewer(),this));
+            Thread t2 = new Thread(new TurtleShellMoving(
+                    (Map) state.getModel(),((GameState) state).getViewer(),this));
+            t1.start();
+            t2.start();
+        }*/
     }
 
     public State getState(){return state;}
@@ -35,9 +46,7 @@ public class Game {
         int FPS = 10;
         int frameTime = 1000 / FPS;
 
-        int i=0;
         while (this.state != null) {
-            if(!(state instanceof GameState)) i=0;
             long startTime = System.currentTimeMillis();
 
             state.step(this, gui, startTime);

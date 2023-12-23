@@ -10,11 +10,11 @@ import com.ldts.supermario.viewer.game.GameViewer;
 
 public class GameState extends State<Map> {
     private Game game;
-    Thread t1 = new Thread(new MonsterMoving(
+    private Thread t1 = new Thread(new MonsterMoving(
             this.getViewer().getModel(),
             this.getViewer(),
             game));
-    Thread t2 = new Thread(new TurtleShellMoving(
+    private Thread t2 = new Thread(new TurtleShellMoving(
             this.getViewer().getModel(),
             this.getViewer(),
             game));
@@ -23,7 +23,6 @@ public class GameState extends State<Map> {
         t1.start();
         t2.start();
     }
-
     @Override
     public Viewer<Map> getViewer() {
         return new GameViewer(getModel());

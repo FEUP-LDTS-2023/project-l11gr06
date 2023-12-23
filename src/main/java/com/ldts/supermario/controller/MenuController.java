@@ -11,7 +11,9 @@ import com.ldts.supermario.model.Help;
 import com.ldts.supermario.model.Map1Builder;
 import com.ldts.supermario.model.Menu;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class MenuController extends Controller<Menu> {
     public int lives=3;
@@ -20,7 +22,7 @@ public class MenuController extends Controller<Menu> {
     }
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException, FontFormatException {
         switch (action) {
             case UP:
                 getModel().previousEntry();

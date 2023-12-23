@@ -210,7 +210,7 @@ public class LanternaGUITest {
     void drawTurtleShell() {
         gui.drawTurtleShell(new Position(1, 1));
 
-        verify(tg, times(1)).setForegroundColor(TextColor.Factory.fromString("#8A3324"));
+        verify(tg, times(1)).setForegroundColor(TextColor.Factory.fromString("#008000"));
         verify(tg, times(1)).putString(1, 2, "^");
     }
 

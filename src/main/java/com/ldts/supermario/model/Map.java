@@ -4,6 +4,7 @@ import com.ldts.supermario.Game;
 import com.ldts.supermario.model.elements.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Map {
@@ -89,6 +90,7 @@ public class Map {
     public void setMonsters(List<Monster> monsters) {
         this.monsters = monsters;
     }
+
     public boolean break_block() {
         for(Block block:blocks) {
             if(player.getPosition().equals(block.getPosition())) {
@@ -373,19 +375,23 @@ public class Map {
         }
         return l;
     }
-    public List<Monster> shellsToMove()
-    {
-        List<Monster> l = new ArrayList<>();
-        for(Monster m: monsters) {
-            if(m instanceof TurtleShell)
-            {
-                m.setMove(m.getPosition().getX() < 65 && m.getPosition().getX() >= 0);
-                if (m.getMove()) l.add(m);
-            }
+    public List<TurtleShell> shellsToMove() {
+        List<TurtleShell> shellsToMove = new ArrayList<>();
+        List<Monster> monstersCopy = new ArrayList<>(monsters);
 
+        for (Monster monster : monstersCopy) {
+            if (monster instanceof TurtleShell) {
+                TurtleShell shell = (TurtleShell) monster;
+                shell.setMove(shell.getPosition().getX() < 65 && shell.getPosition().getX() >= 0);
+                if (shell.getMove()) {
+                    shellsToMove.add(shell);
+                }
+            }
         }
-        return l;
+        return shellsToMove;
     }
+
+
 
     public boolean monsterCollision(Monster m) {
 

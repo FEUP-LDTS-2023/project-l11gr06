@@ -22,7 +22,6 @@ public class MonsterMoving extends MonsterController implements Runnable {
        while (true)
         {
             for (Monster m : getModel().monstersToMove()) {
-                //if (m instanceof TurtleShell) continue;
                 Thread t1 = new Thread(new MonsterGravity(getModel(), v, game, m));
                 t1.start();
                 if (getModel().collision_y(m)) {
