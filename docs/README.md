@@ -125,7 +125,7 @@ in every move of the player.
 
 Fig. 4: Cobertura dos testes implementados.
 
-Link para mutation testing report:
+Link to mutation testing report: [Mutation tests](../build/reports/pitest/202312212037/index.html)
 
 
 ### Auto-Avaliação
