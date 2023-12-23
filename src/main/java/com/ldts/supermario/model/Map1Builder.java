@@ -216,7 +216,7 @@ public class Map1Builder extends MapBuilder{
     {
         List <Monster> monsters = new ArrayList<>();
         monsters.add(new Turtle(25, height - 4));
-        monsters.add(new BrownMushroom(15, height - 4)); //42
+        monsters.add(new BrownMushroom(42, height - 4));
         monsters.add(new BrownMushroom(53, height - 4));
         monsters.add(new BrownMushroom(55, height - 4));
         monsters.add(new BrownMushroom(83, height - 13));
